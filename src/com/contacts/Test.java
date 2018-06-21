@@ -1,4 +1,4 @@
-package com.agilecrm;
+package com.contacts;
 
 public class Test {
 
