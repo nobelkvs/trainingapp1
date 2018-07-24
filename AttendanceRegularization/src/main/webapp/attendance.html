@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <title>Attendance Regularization</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <!-- Filter function -->
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <!-- CSS styles -->
+    <style>
+        h1,
+        h1 {
+            font-size: 2.5rem;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table td,
+        table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            color: #004085;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        body {
+            background-image: url("https://wallup.net/wp-content/uploads/2017/11/23/441968-empty-stage_shots-stages-spotlights-lights-simple_background-gradient-748x468.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        label {
+            margin-bottom: .5rem;
+            color: #0062cc;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header style="text-align:center">
+            <h1>Attendance Regularization</h1>
+        </header>
+    </div>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#Create" id="Create">Create
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#Retrieve" id="Retrieve">Retrieve</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#Delete" id="Delete">Delete</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="card-body">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 form_style">
+
+                    <!-------------------- Create form --------- -->
+
+                    <form style="display: none;" id="Create_form">
+                        <div class="form-group">
+                            <label for="Id">Employee Id</label>
+                            <input type="text" class="form-control" id="id" placeholder="Enter your id">
+                        </div>
+                        <div class="form-group">
+                            <label for="ldate">Date</label>
+                            <input type="date" class="form-control" id="date" placeholder="Enter date">
+                        </div>
+                        <div class="form-group">
+                            <label for="cit">Check In Time(ex:HH:MM:SS)</label>
+                            <input type="text" class="form-control" id="checkintime" placeholder="Enter Check In Time">
+                        </div>
+                        <div class="form-group">
+                            <label for="cot">Check Out Time(ex:HH:MM:SS)</label>
+                            <input type="text" class="form-control" id="checkouttime" placeholder="Enter Check Out Time">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="cancel">Cancel</button>
+
+                    </form>
+
+                    <!---------- ------- Delete form ---------- -->
+
+                    <form style="display: none;" id="Delete_form">
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <input type="text" class="form-control" id="userRole" placeholder="Enter role here">
+                        </div>
+                        <div class="form-group">
+                            <label for="Eid">Employee ID</label>
+                            <input type="text" class="form-control" id="Eid" placeholder="Enter Employee id">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="dcancel">Cancel</button>
+
+                    </form>
+
+                    <!---------- ------- Retrieve form ------------>
+
+                    <form style="display: none;" id="Retrieve_form">
+                        <div class="form-group">
+                            <label for="rdate">Date</label>
+                            <input type="date" class="form-control" id="Rdate" placeholder="Enter date">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        <div class="form-group" id="table" style="display: none">
+                            <label for="Table">Table Details:</label>
+                            <br>
+                            <input id="myInput" type="text" placeholder="Search Id here">
+                            <table class="Retrieve" id="retreiveTable">
+
+                                <!---------- ------- Create table ---------- -->
+                                <thead>
+                                    <tr>
+                                        <th>
+                                        </th>
+                                        <th>Employee ID</th>
+                                        <th>Date</th>
+                                        <th>Check In Time</th>
+                                        <th>Check Out Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                </tbody>
+                            </table>
+                            <br>
+                            <button type="button" id="deletebtn" style="margin: left">DELETE</button>
+                        </div>
+                </div>
+                </form>
+                <script>    
+
+                //create form on click function
+                    $("#Create").click(function () {
+                        $("#Create_form").css("display", "block");
+                        $("#Retrieve_form").css("display", "none");
+                        $("#Delete_form").css("display", "none");
+                   });
+                    $("#cancel").click(function () {
+                        $("#create_form").css("display", "none");
+                    });
+
+                    //Retrieve form on click function
+                    $("#Retrieve").click(function () {
+                        $("#Retrieve_form").css("display", "block");
+                        $("#Create_form").css("display", "none");
+                        $("#Delete_form").css("display", "none");
+                    });
+
+                    $("#cancel").click(function () {
+                        $("#Retrieve_form").css("display", "none");
+
+                    });
+
+                   //Delete form click function
+                    $("#Delete").click(function () {
+                        $("#Delete_form").css("display", "block");
+                        $("#Create_form").css("display", "none");
+                        $("#Retrieve_form").css("display", "none");
+                    });
+                    $("#cancel").click(function () {
+                        $("#Delete_form").css("display", "none");
+
+                    });
+                    
+                </script>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/JavaScript" src="js/attendance.js"></script>
+</body>
+
+</html>
