@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <servlet>
+        <servlet-name>documentservlet</servlet-name>
+        <servlet-class>com.controller.DocumentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>documentservlet</servlet-name>
+        <url-pattern>/document</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>f1</filter-name>
+        <filter-class>com.controller.MyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>f1</filter-name>
+        <url-pattern>/servlet</url-pattern>
+    </filter-mapping>
+    <context-param>
+        <param-name>log4j-config-location</param-name>
+        <param-value>WEB-INF/log4j.properties</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>com.controller.ContextListener</listener-class>
+    </listener>
+
+
+</web-app>
