@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <servlet>
+        <servlet-name>secondservlet</servlet-name>
+        <servlet-class>com.account.controller.AccountController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>secondservlet</servlet-name>
+        <url-pattern>/servlets</url-pattern>
+    </servlet-mapping>
+
+    <!--<servlet>-->
+        <!--<servlet-name>servlet</servlet-name>-->
+        <!--<servlet-class></servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>servlet</servlet-name>-->
+        <!--<url-pattern>/updateservlets</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+
+    <!--<filter>-->
+        <!--<filter-name>ServletFilter</filter-name> &lt;!&ndash; mandatory &ndash;&gt;-->
+        <!--<filter-class></filter-class> &lt;!&ndash; mandatory &ndash;&gt;-->
+        <!--<init-param> &lt;!&ndash; optional &ndash;&gt;-->
+            <!--<param-name>test</param-name>-->
+            <!--<param-value>testValue</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+
+    <!--<filter-mapping>-->
+        <!--<filter-name>ServletFilter</filter-name> &lt;!&ndash; mandatory &ndash;&gt;-->
+        <!--<url-pattern>/ServletFilter</url-pattern> &lt;!&ndash; either url-pattern or servlet-name is mandatory &ndash;&gt;-->
+        <!--&lt;!&ndash;   <dispatcher>REQUEST</dispatcher>&ndash;&gt;-->
+    <!--</filter-mapping>-->
+
+    <context-param>
+        <param-name>log4j-config-location</param-name>
+        <param-value>WEB-INF/log4j.properties</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>com.account.controller.ContextListener</listener-class>
+    </listener>
+
+
+</web-app>
