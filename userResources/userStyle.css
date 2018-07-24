@@ -1,0 +1,61 @@
+
+    .table{
+        width: 80%;
+        margin-left: 400px;
+        background-color:transparent;
+    }
+    
+   .container{
+       background-image: url(/home/admin/Desktop/back.png);
+   }
+  
+
+    #header{
+        background-color:lightpink;
+        align-content: center;
+        height: 150px;
+        width: 100%;   
+    }
+    .title_name{
+        color: azure;
+    }
+    #submenu li a:hover
+    {
+        border: 1px solid dodgerblue;
+      
+    }
+    a{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 24px;
+        color:purple
+    }
+    #search{
+        float: right;
+        height: 30px;
+        width: auto;
+        animation-delay: 3ms;
+        margin-left: 900px;
+    }
+    .bg-light{
+        background-color: powderblue
+    }
+     .thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+  #addUser{
+      display: inline-block;
+      height: 20px;
+      width: 40px;
+      background-color: darkcyan;
+    
+  }
+  body{
+      background-image: url("bgimage.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+  label{
+      color: white;
+  }
