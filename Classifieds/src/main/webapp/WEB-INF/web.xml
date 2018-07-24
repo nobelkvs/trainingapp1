@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <servlet>
+        <servlet-name>firstservlet</servlet-name>
+        <servlet-class>com.classifieds.controller.ClassifiedsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>firstservlet</servlet-name>
+        <url-pattern>/servlets</url-pattern>
+    </servlet-mapping>
+    <context-param>
+        <param-name>log4j-config-location</param-name>
+        <param-value>WEB-INF/log4j.properties</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>com.classifieds.controller.ContextListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>ServletFilter</filter-name>
+        <filter-class>com.classifieds.Filters.DeleteFilter</filter-class>
+        <init-param>
+            <param-name>test</param-name>
+            <param-value>testValue</param-value>
+        </init-param>
+
+    </filter>
+    <filter-mapping>
+        <filter-name>ServletFilter</filter-name>
+        <url-pattern>/servletFilter</url-pattern>
+
+    </filter-mapping>
+    
+    <welcome-file-list>
+        <welcome-file>classifieds.html</welcome-file>
+    </welcome-file-list>
+</web-app>
