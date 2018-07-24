@@ -1,0 +1,225 @@
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+          crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/deal.css" crossorigin="anonymous">
+    <title>Deal Application</title>
+
+</head>
+
+<!--nav bar or menu bar on top-->
+
+<body background="img/white.jpg" style="background-repeat: no-repeat;background-size:cover;">
+<div id="header">
+    <span class="d-block p-2 bg-dark text-white">DEAL APPLICATION</span>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav" id="submenu">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#Create" id="s1">Create
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Update" id="s2">Update</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Retrieve" id="s3">Retrieve</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#Delete" id="s4">Delete</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+</nav>
+<!--create form-->
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 form_style">
+            <form style="display: none;" id="Create">
+                <div>
+                    <span id="create_mesg"></span>
+                </div>
+                <div class="form-group">
+                    <label class="required">Deal Name</label>
+                    <input type="text" class="form-control" pattern="[a-zA-Z]{1,30}" id="deal_name" placeholder="deal name" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Owner Name</label>
+                    <input type="text" class="form-control" pattern="[a-zA-Z]{1,30}" id="owner_name" placeholder="owner name" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Deal Value</label>
+                    <input type="text" class="form-control" pattern="[a-zA-Z0-9]{1,10}" id="deal_value" placeholder="deal value" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Probability</label>
+                    <input type="text" class="form-control" pattern="[0-9]{1,10}" id="probability" placeholder="probability" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Customer Name</label>
+                    <input type="text" class="form-control" pattern="[a-zA-Z]{1,30}" id="customer_name" placeholder="customer name" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Customer Contact</label>
+                    <input type="text" class="form-control" pattern="[0-9]{1,10}" id="customer_contact" placeholder="customer contact" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" id="c1">Cancel</button>
+            </form>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+<!--update form-->
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 form_style">
+            <form style="display: none;" id="Update">
+                <div>
+                    <span id="update_mesg"></span>
+                </div>
+                <div class="form-group">
+                    <label class="required">Deal-Id</label>
+                    <input type="text" class="form-control" pattern="[0-9]{1,10}" id="deal_id" placeholder="deal id" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Deal Value</label>
+                    <input type="text" class="form-control" pattern="[a-zA-Z0-9]{1,10}" id="deal_value1" placeholder="deal value" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Probability</label>
+                    <input type="text" class="form-control" pattern="[0-9]{1,10}" id="probability1" placeholder="probability" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" id="c2">Cancel</button>
+
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+<!--retrive form-->
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 form_style">
+            <form style="display: none;" id="Retrieve">
+                <div class="form-group">
+                    <label class="required">Deal Name</label>
+                    <input type="text" class="form-control" pattern="[a-zA-Z]{1,30}" id="deal_name22" placeholder="deal name" required>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" id="c3">Cancel</button>
+                <br>
+                <br>
+                <div class="form-group">
+                    <input id="myInput" type="text" placeholder="Search.." style="display: none;">
+                    <br>
+                    <br>
+                    <div>
+                        <span id="retrive_mesg"></span>
+                    </div>
+                    <table class="table" id="retrive" style="display: none;" data-toggle="table" data-search="true" data-filter-control="true"
+                           data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+
+                        <thead class="thead-dark">
+                        <tr>
+                            <th data-field="state" data-checkbox="true"></th>
+                            <th data-field="deal_id" data-filter-control="select" data-sortable="true" scope="col">
+                                DEAL_ID
+                            </th>
+                            <th data-field="deal_name" data-filter-control="select" data-sortable="true" scope="col">
+                                DEAL_NAME
+                            </th>
+                            <th data-field="owner_name" data-filter-control="input" data-sortable="true" scope="col">
+                                OWNER_NAME
+                            </th>
+                            <th data-field="deal_value" data-filter-control="input" data-sortable="true" scope="col">
+                                DEAL_VALUE
+                            </th>
+                            <th data-field="probability" data-filter-control="input" data-sortable="true" scope="col">
+                                PROBABILITY
+                            </th>
+                            <th data-field="customer_name" data-filter-control="input" data-sortable="true" scope="col">
+                                CUSTOMER_NAME
+                            </th>
+                            <th data-field="customer_contact" data-filter-control="input" data-sortable="true" scope="col">CUSTOMER_CONTACT
+                            </th>
+
+                        </tr>
+                        </thead>
+                        <tbody id="myTable" style="color:black;">
+
+                        </tbody>
+
+                    </table>
+                    <button type="button" id="deletebtn" style="margin: left;display: none;">DELETE</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+
+<!--delete form-->
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 form_style">
+            <form style="display: none;" id="Delete">
+                <div>
+                    <span id="delete_mesg"></span>
+                </div>
+                <div class="form-group">
+                    <label class="required">Deal Id</label>
+                    <input type="text" class="form-control" pattern="[0-9]{1,10}" id="deal_id2" placeholder="deal Id" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" id="c4">Cancel</button>
+
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+</table>
+
+<div id="output">
+
+</div>
+<script src="./js/deal.js"></script>
+</body>
+
+<html>
