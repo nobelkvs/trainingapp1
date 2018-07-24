@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+
+    <servlet>
+        <servlet-name>CompanyServlet</servlet-name>
+        <servlet-class>com.company.controller.CompanyController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CompanyServlet</servlet-name>
+        <url-pattern>/companies</url-pattern>
+    </servlet-mapping>
+    <context-param>
+        <param-name>log4j-config-location</param-name>
+        <param-value>WEB-INF/log4j.properties</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>com.company.controller.ContextListener</listener-class>
+    </listener>
+
+
+
+    <filter>
+        <filter-name>ServletFilter</filter-name> <!-- mandatory -->
+        <filter-class>com.company.controller.FilterController</filter-class> <!-- mandatory -->
+        <init-param> <!-- optional -->
+            <param-name>test</param-name>
+            <param-value>testValue</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>ServletFilter</filter-name> <!-- mandatory -->
+        <url-pattern>/filterCompanies</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+        <!--   <dispatcher>REQUEST</dispatcher>-->
+    </filter-mapping>
+
+
+
+
+</web-app>
