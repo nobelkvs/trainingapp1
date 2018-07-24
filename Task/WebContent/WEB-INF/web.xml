@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>Task</display-name>
+	<!--	<welcome-file-list>
+	 <welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list> -->
+	<servlet>
+		<description></description>
+		<display-name>CreateTaskServlet</display-name>
+		<servlet-name>CreateTaskServlet</servlet-name>
+		<servlet-class>com.task.controller.CreateTaskServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateTaskServlet</servlet-name>
+		<url-pattern>/CreateTaskServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>RetrieveTaskServlet</display-name>
+		<servlet-name>RetrieveTaskServlet</servlet-name>
+		<servlet-class>com.task.controller.RetrieveTaskServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RetrieveTaskServlet</servlet-name>
+		<url-pattern>/RetrieveTaskServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>DeleteTaskServlet</display-name>
+		<servlet-name>DeleteTaskServlet</servlet-name>
+		<servlet-class>com.task.controller.DeleteTaskServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteTaskServlet</servlet-name>
+		<url-pattern>/DeleteTaskServlet</url-pattern>
+	</servlet-mapping>
+</web-app>
