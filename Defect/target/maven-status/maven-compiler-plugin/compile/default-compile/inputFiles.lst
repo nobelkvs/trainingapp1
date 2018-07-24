@@ -1,0 +1,9 @@
+/home/admin/IdeaProjects/Defect/src/main/java/com/defect/Model/defectModel.java
+/home/admin/IdeaProjects/Defect/src/main/java/com/defect/Controller/defectController.java
+/home/admin/IdeaProjects/Defect/src/main/java/com/defect/DAO/defectDAOImplementation.java
+/home/admin/IdeaProjects/Defect/src/main/java/com/defect/Service/defectServiceImplementation.java
+/home/admin/IdeaProjects/Defect/src/main/java/com/defect/Controller/ServletFilters.java
+/home/admin/IdeaProjects/Defect/src/main/java/com/defect/Service/defectService.java
+/home/admin/IdeaProjects/Defect/src/main/java/com/defect/util/MySQLConnection.java
+/home/admin/IdeaProjects/Defect/src/main/java/com/defect/DAO/defectDAO.java
+/home/admin/IdeaProjects/Defect/src/main/java/com/defect/Controller/ContextListener.java

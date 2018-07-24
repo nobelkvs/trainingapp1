@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#filter").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#RetrieveTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <style>
+        body {
+            padding: 25px;
+            background-color: rgb(11, 229, 236);
+            background-image: url("http://proxy53.hellorf.com/ak7/shutterstock/videos/28360627/thumb/1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: dodgerblue;
+            font-weight: 900;
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            margin: 0;
+            font: inherit;
+            color: black;
+        }
+
+        h1 {
+            color: rgb(81, 216, 250);
+            font-family: verdana;
+            font-size: 300%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: center;
+            padding: 8px;
+        }
+
+        tr {
+            background-color: #ffffff;
+            color: rgb(10, 10, 10)
+        }
+
+        th {
+            background-color: rgb(78, 171, 247);
+            color: rgb(255, 255, 255);
+        }
+
+        .modal-content {
+            background-color: #04cafc;
+            margin: auto;
+            padding: 20px;
+            color: #ffffff;
+            width: 30%;
+            height: 35%;
+            text-align: center;
+
+            padding: 100px;
+            top: 200px;
+        }
+    </style>
+    <title>Defects Application</title>
+</head>
+
+<body>
+    <div class="container">
+        <header style="text-align:center">
+            <h1>Defects Application</h1>
+        </header>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <a class="navbar-brand" href="#"></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item ">
+                    <a class="nav-link" href="#create" id="showCreate">
+                        <img src="https://png.icons8.com/cotton/50/000000/create-new.png">Create</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#retrive" id="showRetrive">
+                        <img src="https://png.icons8.com/dusk/50/000000/search.png">Retrive</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#delete" id="showDelete">
+                        <img src="https://png.icons8.com/dusk/50/000000/delete-forever.png">Delete</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <div class="card-body">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 form_style">
+
+                    <!-- Create form -->
+                    <form style="display: none;" id="Create_form">
+
+                        <!-- Description form -->
+                        <div class="form-group">
+                            <label for="description"><b>Description</b></label>
+                            <textarea class="form-control" id="description" rows="3" required></textarea>
+                        </div>
+
+                        <!-- AssignedTo form -->
+                        <div class="form-group">
+                            <label for="assignedTo"><b>Enter whom you want to assign</b></label>
+                            &nbsp&nbsp
+                            <input type="text" id="assignedTo" placeholder="assigne name" required>
+                        </div>
+
+                        <!-- Select form for category,priority & status -->
+                        <div class="form-group">
+
+                            <!-- Category  -->
+                            <label for="category"><b>Category</b></label>
+                            &nbsp
+                            <select id="category">
+                                <option value="hardware">Hardware</option>
+                                <option value="software">Software</option>
+                            </select>
+
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                            <!-- Priority -->
+                            <label for="priority"><b>Priority</b></label>
+                            &nbsp
+                            <select id="priority">
+                                <option value="p1">P1</option>
+                                <option value="p2">P2</option>
+                                <option value="p3">P3</option>
+                            </select>
+
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                            <!-- Status -->
+                            <label for="status"><b>Status</b></label>
+                            &nbsp
+                            <select id="status">
+                                <option value="open">Open</option>
+                                <option value="inProgress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary" id="createSubmit">Submit</button>
+
+                        <!-- The Modal -->
+                        <div id="successCreateModal" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>Successfully Inserted</p>
+                            </div>
+                        </div>
+
+                        <!-- The Modal -->
+                        <div id="failCreateModal" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>Failed to Insert</p>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <!-- Retrieve form -->
+                    <form style="display: none;" id="Retrive_form">
+
+                        <!-- AssignedTo -->
+                        <div class="form-group">
+                            <label for="assigned"><b>Search</b></label>
+                            &nbsp&nbsp
+                            <input type="text" id="assigned" placeholder="search"> 
+                            &nbsp&nbsp
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary" id="Retrievesubmit">Submit</button>
+                        </div>
+
+                        <!-- table form -->
+                        <div id="table" style="display: none">
+
+                            <!-- Filter to search -->
+                            <label for="filter">Filter</label>
+                            <input id="filter" type="text" placeholder="Filter Rows...">
+                            <br><br>
+
+                            <table class="Retrieve" id="retreiveTable">
+                                
+                                <!-- Table heading -->
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>description</th>
+                                        <th>category</th>
+                                        <th>assignedTo</th>
+                                        <th>priority</th>
+                                        <th>status</th>
+                                        <th>remove</th>
+                                    </tr>
+                                </thead>
+
+                                <!-- Table body -->
+                                <tbody id="RetrieveTable">
+                                </tbody>
+
+                            </table>
+                            <br>
+
+                            <!-- Submit Button -->
+                            <div>
+                                <button type='button' class='btn btn-primary' id='deleteMul'>Submit</button>
+                            </div>
+                            <br>
+
+                        </div>
+
+                        <!-- Modal -->
+                        <div id="noData" class="modal" style="display: none;">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>No Data avaliable on this assigne</p>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <form style="display: none;" id="RetrieveForm">
+
+                        <div class="form-group">
+
+                            <div>
+                                <label for="role1"><b>Role</b></label>
+                                &nbsp&nbsp&nbsp&nbsp
+                                <select id="role1">
+                                    <option value="choose1">choose the role</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="user">User</option>
+                                </select>
+                                <br>&nbsp&nbsp
+                            </div>
+
+                            <div>
+                                <label for="password1"><b>Enter password</b></label>
+                                &nbsp&nbsp&nbsp&nbsp
+                                <input type="password" id="password1" required>
+                                <br> &nbsp&nbsp
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="button" class="btn btn-primary" id="rolePwdSubmit">Submit</button>
+
+                            <div id="unauthorisedAccess1" class="modal" style="display: none;">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <p>Unauthorised Access</p>
+                                </div>
+                            </div>
+
+                            <div id="wrongPassword1" class="modal" style="display: none;">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <p>Wrong Password</p>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div id="successDeleteModal1" class="modal" style="display: none;">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <p>Succesfully Deleted</p>
+                                </div>
+                            </div>
+    
+                            <!-- Modal -->
+                            <div id="failDeleteModal1" class="modal" style="display: none;">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <p>Failed to Delete</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                    <!-- Delete form -->
+                    <form style="display: none;" id="Delete_form">
+
+                        <div class="form-group">
+
+                            <div>
+                                <label for="role"><b>Role</b></label>
+                                &nbsp&nbsp&nbsp&nbsp
+                                
+                                <select id="role">
+                                    <option value="choose">choose the role</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="user">User</option>
+                                </select>
+                                &nbsp&nbsp
+                            </div>
+
+                            <div>
+                                <label for="password"><b>Enter password</b></label>
+                                &nbsp&nbsp&nbsp&nbsp
+                                <input type="password" id="password" required>
+                                <br> &nbsp&nbsp
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="roleSubmit">Submit</button>
+
+                        </div>
+
+                    </form>
+
+                    <!-- Delete Form-->
+                    <form style="display: none;" id="DeleteForm">
+                        
+                        <label for="id"><b>Enter Id to be deleted</b></label>
+                        &nbsp&nbsp
+                        <input type="text" id="Id"> 
+                        &nbsp&nbsp
+                        <button type="submit" class="btn btn-primary" id="deleteSubmit">Submit</button>
+
+                        <!-- Modal -->
+                        <div id="successDeleteModal" class="modal" style="display: none;">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>Succesfully Deleted</p>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div id="failDeleteModal" class="modal" style="display: none;">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>Failed to Delete</p>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div id="unauthorisedAccess" class="modal" style="display: none;">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>Unauthorised Access</p>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div id="wrongPassword" class="modal" style="display: none;">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>Wrong Password</p>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                
+                <div class="col-md-3"></div>
+
+
+            </div>
+        </div>
+
+        <script>    
+
+            //displaying create form
+            $("#showCreate").click(function () {
+
+                $("#Create_form").css("display", "block");
+                $("#Retrive_form").css("display", "none");
+                $("#RetrieveForm").css("display", "none");
+                $("#Delete_form").css("display", "none");
+                $("#DeleteForm").css("display", "none");
+
+            });
+
+            //insert Data
+            $("#Create_form").submit(function (event) {
+
+                event.preventDefault();
+
+                var created_by, agent_id, issue_desc;
+                //json object
+                const data = {
+                    "description": document.getElementById("description").value,
+                    "category": document.getElementById("category").value,
+                    "assignedTo": document.getElementById("assignedTo").value,
+                    "priority": document.getElementById("priority").value,
+                    "status": document.getElementById("status").value
+                }
+
+                console.log(data);
+
+                //call ajax function for post method
+                $.ajax({
+                    url: `http://localhost:8080/Defect-1.0-SNAPSHOT/servlets`,
+                    type: 'POST',
+                    data: data,
+                    success: function () {
+                        $("#successCreateModal").modal('show');
+                    },
+                    error: function () {
+                        $("#failCreateModal").modal('show');
+                    }
+                });
+
+            });
+
+            //displaying delete form
+            $("#showDelete").click(function () {
+
+                $("#Create_form").css("display", "none");
+                $("#Retrive_form").css("display", "none");
+                $("#RetrieveForm").css("display", "none");
+                $("#Delete_form").css("display", "block");
+
+            });
+
+            //Delete data
+            $("#Delete_form").submit(function (event) {
+
+                event.preventDefault();
+
+                $("#Delete_form").css("display", "none");
+                $("#DeleteForm").css("display", "block");
+                $("#DeleteForm").submit(function (event) {
+                const id = document.getElementById("Id").value;
+                const role = document.getElementById("role").value;
+                const Password = document.getElementById("password").value;
+
+                var webServiceURL = `http://localhost:8080/Defect-1.0-SNAPSHOT/filter?UserRole=${role}&password=${Password}&Id=${id}`;
+
+                //call ajax function for delete method
+                $.ajax({
+                    url: webServiceURL,
+                    type: 'DELETE',
+                    success: function (data) {
+                            
+                        if(data >= 1){
+                            if (role != "admin") {
+                                $("#unauthorisedAccess").modal('show');
+                            } else {
+                                $("#wrongPassword").modal('show');
+                            }
+                        }
+                        else {
+                            if (data === "success") {
+                                $("#successDeleteModal").modal('show');
+                            } else {
+                                alert("fail")
+                                $("#failDeleteModal").modal('show');
+                            }
+                        }         
+
+                        },
+                        error: function () {
+                            alert("Enter the value...");
+                        }
+                    });
+                    $('form').each(function () {
+                        this.reset()
+                    });
+                });
+            });
+
+
+            //displaying retrireve form
+            $("#showRetrive").click(function () {
+                $("#Retrive_form").css("display", "block");
+                $("#Create_form").css("display", "none");
+                $("#Delete_form").css("display", "none");
+                $("#DeleteForm").css("display", "none");
+
+            });
+
+            //Retrive data 
+            $("#Retrive_form").submit(function () {
+
+                event.preventDefault();
+                const retrieve = {
+                    "assignedTo": document.getElementById("assigned").value
+                }
+
+                console.log(retrieve);
+
+                //call ajax function for get method
+                $.ajax({
+                    url: `http://localhost:8080/Defect-1.0-SNAPSHOT/servlets`,
+                    type: 'GET',
+                    data: retrieve,
+                    dataType: 'json',
+                    success: toTable,
+                    error: Error
+                });
+
+                function Error(request, status, error) {
+                    alert('error' + request + status + error);
+
+                }
+
+                //for inserting retrieved data into table
+                function toTable(data, status, response) {
+
+                    console.log(data);
+                    if (data.length === 0) {
+                        $("#noData").modal('show');
+                    }
+                    else {
+                        $('form').each(function () {
+                            this.reset()
+                        });
+                        $("#table").css("display", "block");
+                        $("#RetrieveTable").empty();
+                        var tableRef = table.getElementsByTagName('tbody')[0];
+
+                        $(data).each(function (index, value) {
+                            var row = tableRef.insertRow(tableRef.rows.length);
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            var cell4 = row.insertCell(3);
+                            var cell5 = row.insertCell(4);
+                            var cell6 = row.insertCell(5);
+                            var cell7 = row.insertCell(6);
+
+                            cell1.innerHTML = value.Id;
+                            cell2.innerHTML = value.description;
+                            cell3.innerHTML = value.category;
+                            cell4.innerHTML = value.assignedTo;
+                            cell5.innerHTML = value.priority;
+                            cell6.innerHTML = value.status;
+                            cell7.innerHTML = "<input type='checkbox' value='" + value.Id + "' name='check' id='check_" + index + "' />";
+
+                        });
+                    }
+                }
+            });
+
+            $("#deleteMul").on('click', function (event) {
+
+                $("#RetrieveForm").css("display", "block");
+                $("#rolePwdSubmit").on('click',function (event) {
+
+                    const role = document.getElementById("role1").value;
+                    const Password = document.getElementById("password1").value;
+            
+                    event.preventDefault();
+                    var Id = [];
+
+                    $("input[name='check']:checked").each(function (i) {
+                        Id[i] = $(this).val();
+                    });
+
+                    var webServiceURL = `http://localhost:8080/Defect-1.0-SNAPSHOT/filter?UserRole=${role}&password=${Password}&Id=${Id}`;
+
+                    //call ajax function for delete method in retrieve form
+                    $.ajax({
+                        url: webServiceURL,
+                        type: 'DELETE',
+                        success: function (data) {
+
+                                if(data >= 1){
+                                    if(role != "admin"){
+                                        $("#unauthorisedAccess1").modal('show');
+                                    }else {
+                                        $("#wrongPassword1").modal('show');
+                                    }
+                                }
+                                else {
+                                    if(data === "success"){
+                                        jQuery('input:checkbox:checked').map(function() {
+                                        return this.value;
+                                    }).get();
+                                    jQuery('input:checkbox:checked').parents("tr").remove();
+                                        $("#successDeleteModal1").modal('show');
+                                    }else {
+                                        $("#failDeleteModal1").modal('show'); 
+                                    }
+                                }
+
+                            },
+                            error: function () {
+                                alert("select the value");
+                            }
+                        });
+
+                });
+
+            });
+
+        </script>
+
+</body>
+
+</html>
