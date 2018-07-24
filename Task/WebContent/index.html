@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<!-- It is a Simple web application project -->
+<head>
+<style type="text/css">
+.customtable {
+	width: 80%;
+	margin: 0px auto;
+	margin-top: 30px;
+}
+
+.customtable>caption {
+	font-size: 20px;
+}
+
+.customtable>thead>tr {
+	align: center;
+	font-size: 14px;
+}
+
+.customtable>thead>tr>th {
+	background-color: #9999FF;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.customtable>tbody {
+	font-size: 14px;
+	overflow: auto;
+	height: 300px;
+}
+
+.customtable>tbody>tr {
+	text-align: center;
+	vertical-align: middle;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+</style>
+<title>Bootstrap Example</title>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+	​
+
+	<nav class="navbar navbar-inverse">
+
+		<div class="container-fluid">
+
+			<ul class="nav navbar-nav">
+
+				<li><a style="font: 1em sans-serif; font-size: 0.5cm"
+					href="#newTask">New task</a></li>
+
+				<li><a style="font: 1em sans-serif; font-size: 0.5cm"
+					href="#retrieve">Retrieve</a></li>
+
+			<!-- 	<li><a style="font: 1em sans-serif; font-size: 0.5cm"
+					href="#delete">Delete</a></li> -->
+
+
+			</ul>
+
+		</div>
+
+	</nav>
+
+	<form class="container-fluid"
+		style="margin: 0 auto; width: 80%; display: none;" id="createTaskForm">
+
+		<div style="font-size: 1cm">New Task</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="form-group row">
+			<label class="col-sm-1 col-form-label">Task*</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="task"
+					placeholder="Task Name" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-1 col-form-label">Category*</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="category"
+					placeholder="type of task" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-1 col-form-label">Date(Due)*</label>
+			<div class="col-sm-2">
+				<input type="date" class="form-control" id="dueDate" required>
+			</div>
+			<label class="col-sm-1 col-form-label">Time*</label>
+			<div class="col-sm-2">
+				<input type="time" class="form-control" id="time" placeholder="time"
+					step="1" required>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label class="col-sm-1 col-form-label">Owner*</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="owner"
+					placeholder="name of the owner" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-1 col-form-label">Priority</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="priority"
+					placeholder="priority">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-1 col-form-label">Status</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="status"
+					placeholder="enter status here">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-1 col-form-label">Related To</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="relatedTo"
+					placeholder="Contact Name">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-1 col-form-label">Related Deals</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="relatedDeals"
+					placeholder="Related Deals">
+			</div>
+		</div>
+
+		<button class="btn btn-primary" id="saveButton" type="submit">Save</button>
+
+	</form>
+
+
+	<div id="searchTaskForm" style="display: none">
+		<h3 style="margin-left: 15cm">Retrive The Task</h3>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<form class="container-fluid" style="margin: 0 auto; width: 80%;"
+			id="searchForm">
+
+
+			<div class="form-group row" style="margin-left: 8cm">
+				<label class="col-sm-2 col-form-label">Enter As Your Wish</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="searchFieldValue"
+						placeholder="task name,owner name etc..." required>
+				</div>
+
+				<button class="btn btn-primary" id="searchButton" type="submit">Search</button>
+			</div>
+		</form>
+
+
+	</div>
+	
+	<div id="retrieveTable" style="display: none">
+		<table id="task" class="customtable" name="retrieveTable">
+			<caption>Task Details</caption>
+			<thead>
+				<tr>
+					<th>Check To Delete</th>
+					<th>Id</th>
+					<th>Task</th>
+					<th>Category</th>
+					<th>Owner</th>
+					<th>Priority</th>
+					<th>Status</th>
+					<th>dueDate</th>
+					<th>time</th>
+					<th>RelatedTo</th>
+					<th>Related Deals</th>
+				</tr>
+			</thead>
+			<tbody id="tableBody">
+			</tbody>
+		</table>
+	</div>
+	<div id="deleteButton"
+		style="margin-left: 6.5cm; margin-top: 2cm; display: none">
+		<button type='button' class='btn btn-success'
+			onclick='deleteTheChecked()'>Delete</button>
+	</div>
+
+	<p style='font-size: 2cm; display: none' id='message'></p>
+    <p style='font-size: 2cm; display: none' id='deleteMessage'></p>
+	<div id="output"></div>
+
+	<script src="index.js"></script>
+
+
+</body>
+
+</html>
