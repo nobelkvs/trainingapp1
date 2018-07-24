@@ -1,0 +1,17 @@
+
+label {
+color: black;
+font-weight: bold;
+font-size: 25px;
+}
+.success{
+font-weight: bold;
+color: green;
+}
+.fail{
+font-weight:bold;
+color:red;
+}
+
+
+
