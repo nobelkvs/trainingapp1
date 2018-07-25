@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Book App</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/style.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="js/ajaxcalls.js"></script>
+   </head>
+   <body>
+   
+   <!-- NavBar Start -->
+      <nav class="navbar navbar-inverse">
+         <div class="container">
+            <div class="navbar-header">
+               <a class="navbar-brand" href="#">Book App</a>
+            </div>
+            <ul class="nav navbar-nav">
+               <li><a href="#" id="home">Home</a></li>
+               <li><a href="#" id="availble_books">Available Books</a></li>
+               <li><a href="#" id="order_book">Order books</a></li>
+               <li><a href="#" id="total_orders">Total Orders</a></li>
+               <li><a href="#" id="orders">Search Books</a></li>
+            </ul>
+         </div>
+      </nav>
+   <!-- NavBar End -->
+   
+   
+   <!-- Home Page Start -->   
+      <div class="container" id="homee" >
+         <h3 style="text-align:center;color:#4CAF50;">Programming Books</h3>
+         <div class="row" id="display_book">
+            <!--     <div class="col-sm-4">
+               <div class="thumbnail">
+                 <img src="paris.jpg" alt="Paris" width="400" height="300">
+                 <p><strong>Paris</strong></p>
+                 <p>Friday 27 November 2015</p>
+                 <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+               </div>
+               </div>
+               -->
+         </div>
+      </div>
+   <!-- Home Page End -->
+      
+   <!-- Order book page start -->   
+      <div class="container" id="order_Book" >
+         <h3 style="text-align:center">Order Books</h3>
+         <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+               <h4 id="success" style="color:#4CAF50"></h4>
+               <div class="form-group">
+                  <label for="usr">Your Name:</label>
+                  <input type="text" class="form-control " id="customer" name="y_name">
+               </div>
+               <div class="form-group">
+                  <label for="sel1">Select Book:</label>
+                  <select class="form-control" id="bookname" name="s_book">
+                     <!-- <option></option>
+                        <option>c</option>
+                        <option>c++</option>
+                        <option>java</option>
+                        <option>python</option>
+                        <option>selenium</option> -->
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label for="usr">Quantity:</label>
+                  <input type="number" class="form-control" id="quantity" name="quantity">
+               </div>
+               <p id="error" style="color:rgb(218, 80, 57);"></p>
+               <button type="submit" class="btn btn-success" id="orderbook" >Submit</button>
+            </div>
+            <div class="col-md-3"></div>
+         </div>
+      </div>
+   <!-- Order book page end -->   
+      
+   <!-- Search book  page start -->   
+      <div class="container" id="Orders">
+         <h3 style="text-align:center">Search Books</h3>
+         <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+               <div id="register-form">
+                  <div class="form-group">
+                     <label for="sel1">Search By:</label>
+                     <select class="form-control" id="bookname">
+                        <option></option>
+                        <option value="author">Author</option>
+                        <option value="book">Book</option>
+                     </select>
+                  </div>
+                  <div class="form-group" style="display:none" id="author">
+                     <label for="usr">Author Name:</label>
+                     <input type="text" class="form-control" id="author_name" name="author_name">
+                  </div>
+                  <div class="form-group" style="display:none" id="book">
+                     <label for="usr">Book Name:</label>
+                     <input type="text" class="form-control" id="book_name" name="book_name">
+                  </div>
+                  <button type="submit" class="btn btn-success" id="disable" disabled style="display:none">Submit</button>
+                  <button type="submit" class="btn btn-success" id="disable1" disabled>Submit</button>
+               </div>
+               <div id="showData2" style="margin-top:100px"></div>
+            </div>
+            <div class="col-md-3"></div>
+         </div>
+      </div>
+   <!-- Search book  page start -->   
+      
+    <!-- Total Orders page start -->   
+      <div class="container" id="Total_Orders">
+         <h3 style="text-align:center">Total Orders</h3>
+         <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+               <div class="form-group" >
+                  <label for="usr">Search order:</label>
+                  <input type="text" class="form-control" id="searchh">
+               </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div id="showData" style="margin-top:100px"></div>
+          <button type="submit" class="btn btn-success" id="delete_order"  style="display:none">Submit</button>
+            
+         </div>
+      </div>
+    <!-- Total Orders page end -->   
+      
+    <!-- Available books page start -->   
+      <div class="container" id="Available_Books">
+         <h3 style="text-align:center">Available Books</h3>
+         <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+               <div class="form-group" >
+                  <label for="usr">Search Book:</label>
+                  <input type="text" class="form-control" id="searchhh">
+               </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div id="showData1" style="margin-top:100px"></div>
+         </div>
+      </div>
+   <!-- Available books page End -->   
+      
+      
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.js"></script>
+      <script src="js/index.js"></script>
+   </body>
+</html>
