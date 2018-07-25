@@ -1,9 +1,0 @@
-/home/agilecrm/IdeaProjects/groups/src/main/java/com/groups/dao/GroupDao.java
-/home/agilecrm/IdeaProjects/groups/src/main/java/com/groups/model/Group.java
-/home/agilecrm/IdeaProjects/groups/src/main/java/com/groups/utils/MysqlConnection.java
-/home/agilecrm/IdeaProjects/groups/src/main/java/com/groups/dao/GroupDaoImp.java
-/home/agilecrm/IdeaProjects/groups/src/main/java/com/groups/service/GroupServiceImp.java
-/home/agilecrm/IdeaProjects/groups/src/main/java/com/groups/controller/ContextListener.java
-/home/agilecrm/IdeaProjects/groups/src/main/java/com/groups/controller/GroupsController.java
-/home/agilecrm/IdeaProjects/groups/src/main/java/com/groups/Filters/DeleteFilter.java
-/home/agilecrm/IdeaProjects/groups/src/main/java/com/groups/service/GroupService.java
