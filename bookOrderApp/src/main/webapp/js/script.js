@@ -188,7 +188,7 @@ $('#deleteBtn').on('click', function (event) {
     function deleteRow() {
         $('#deleteSuccess').addClass("success").html("Deleted successfully...");
 
-        $('#deleteSuccess').html("<b>deal deleted sucessfully</b>");
+        // $('#deleteSuccess').html("<b>deal deleted sucessfully</b>");
     }
 
     function DeleteError(request, status, error) {

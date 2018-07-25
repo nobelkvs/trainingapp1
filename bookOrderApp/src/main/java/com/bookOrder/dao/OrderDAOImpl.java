@@ -15,10 +15,10 @@ import java.util.List;
 public class OrderDAOImpl implements OrderDAO {
     static final Logger log = Logger.getLogger(OrderController.class);
 
-    // initi
+    // queries for sql
     private static final String SQL_INSERT_INTO_ORDER = "insert into book_order.order(order_date,order_by,book_id,quantity) values(?,?,?,?)";
     private static final String SQL_DELETE_ORDER = "DELETE FROM book_order.order WHERE order_id= ?";
-    private static final String SQL_GET_ORDER = "SELECT o.order_id,o.order_date,o.quantity,b.book_name, b.author_name FROM book_order.order o, book_order.book b WHERE b.book_id=o.book_id and b.author_name=?";
+    private static final String SQL_GET_ORDER = "SELECT o.order_id,o.order_date,o.quantity,b.book_name, b.author_name FROM book_order.order o, book_order.book b WHERE b.book_id=o.book_id and b.author_name=? order by order_date desc";
     private static final String SQL_UPDATE_ORDER = "UPDATE book_order.order SET quantity=? WHERE order_id=?";
 
 
