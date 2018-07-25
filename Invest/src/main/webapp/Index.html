@@ -1,0 +1,557 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="new.css" crossorigin="anonymous">
+
+<head>
+    <title>APPLICATION</title>
+</head>
+
+<body class="image">
+    <div id="header">
+        <span class="d-block p-2 bg-dark text-white">Saving Investment</span>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav" id="submenu">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#Home" id="s0">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#Create" id="s1">Invest
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Retrieve" id="s3">Retrieve</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Delete" id="s4" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Delete</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+    </nav>
+    </nav>
+    <div class="content" id="home">
+        <div class="col-sm-8 text-left">
+            <img src="https://moneyline.sg/wp-content/uploads/2015/11/investments-879x480.jpg" alt="Smiley face" width="300" height="300"
+                align="left">
+            <h1>Investment and Economic Growth</h1>
+            <p>An investment is an asset or item acquired with the goal of generating income or appreciation. In an economic
+                sense, an investment is the purchase of goods that are not consumed today but are used in the future to create
+                wealth. In finance, an investment is a monetary asset purchased with the idea that the asset will provide
+                income in the future or will later be sold at a higher price for a profit.</p>
+            <hr>
+
+        </div>
+        <img src="http://www.get-rich-and-retire-early.com/wp-content/uploads/2018/01/investment.jpg" alt="Smiley face" width="300"
+            height="300" align="right">
+    </div>
+    </div>
+    <!-- Displays the Home page and hides all the other forms when user clicks on Home button-->
+    <script>   
+        $("#s0").click(function () {
+            $("#home").css("display", "block");
+            $("#Create").css("display", "none");
+            $("#Retrieve").css("display", "none");
+            $("#Delete").css("display", "none");
+            $("#myDIV").css("display", "none");
+            $("tbody").children().remove();
+        });
+    </script>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 form_style">
+                <form style="display: none;" id="Create">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" id="First_Name" minlength=5 class="form-control"  title="Enter only Alphabets"
+                            placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" minlength=5 class="form-control" id="Last_Name"  title="Enter only Alphabets"
+                            placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Prinicipal Amount:</label>
+                        <input type="Number" min="1000" max="1000000" class="form-control" id="Principal" placeholder="Prinicipal Amount">
+                    </div>
+                    <div class="form-group">
+                        <label>Annual Rate:</label>
+                        <input type="Number" min="1" max="10" class="form-control" id="Annual_rate" placeholder="Annual Rate">
+                    </div>
+                    <div class="form-group">
+                        <label>Number Of Years:</label>
+                        <input type="Number" min="1" max="5" class="form-control" id="No_years" placeholder="Number Of Years">
+                    </div>
+                    <div class="form-group">
+                        <label>Periods per year:</label>
+                        <input type="Number" min="3" max="6" class="form-control" id="Periods" placeholder="Periods per year">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-primary" id="c1">Cancel</button>
+                </form>
+            </div>
+
+            <div class="col-md-3"></div>
+
+        </div>
+        <!--By click on-Invest Button, it displays the Invest form-->
+        <script>   
+            $("#s1").click(function () {
+                $("#Create").css("display", "block");
+                $("#Retrieve").css("display", "none");
+                $("#Delete").css("display", "none");
+                $("#home").css("display", "none");
+                $("#myDIV").css("display", "none");
+                $("tbody").children().remove();
+            });
+            //By click on Cancel button of Invest form--it goes to Home page
+            $("#c1").click(function () {
+                $("#Create").css("display", "block")
+                $("#home").css("display", "none");
+                $("#Retrieve").css("display", "none");
+            });
+            //On clicking on Submit button, user data is passed to Servlet
+            $('#Create').on('submit', function (event) {
+                var First_Name, Last_Name, Principal, Annual_rate, No_years, Periods;
+                event.preventDefault();
+                const data1 = {
+                    "First_Name": document.getElementById("First_Name").value,
+                    "Last_Name": document.getElementById("Last_Name").value,
+                    "Principal": document.getElementById("Principal").value,
+                    "Annual_rate": document.getElementById("Annual_rate").value,
+                    "No_years": document.getElementById("No_years").value,
+                    "Periods": document.getElementById("Periods").value,
+                }
+                console.log(data1);
+                document.getElementById("Create").reset();
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8080/Invest-1.0-SNAPSHOT/invest",
+                    data: data1,
+                    success: succe_Fun,
+                    error: error_fun,
+                });
+
+                //define whether the data in inserted or not
+                function succe_Fun(data, status, response) {
+
+                    if (data >= 1) {
+                        alert("Data inserted Successfully");
+                    }
+                    else {
+                        alert("Unable to insert the data")
+                    }
+                }
+                //executed when user provides data in different format
+                function error_fun(data, status, response) {
+                    console.log(data);
+                    alert("Unable to fetch the data");
+                }
+            });
+        </script>
+        <div id="id01" class="modal">
+            <form class="modal-content animate" id="admin">
+                <div class="imgcontainer">
+                    <img src="https://cdn3.iconfinder.com/data/icons/gray-user-toolbar/512/oficcial-512.png" width="100" height="200" alt="Avatar"
+                        class="avatar">
+                </div>
+
+                <div class="container">
+                    <label for="uname">
+                        <b>Username</b>
+                    </label>
+                    <input type="text" placeholder="Enter Username" id="uname" pattern="[A-Za-z]{1,15}" minlength=5 title="Enter only Alphabets">
+
+                    <label for="psw">
+                        <b>Password</b>
+                    </label>
+                    <input type="password" placeholder="Enter Password" id="psw" required>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                </div>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="submit" id="check" class="btn btn-primary">Submit</button>
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-primary" id="return">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <div class="container">
+            <form style="display: none;" id="Retrieve">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" name="username" minlength=5 id="First" placeholder="First Name" pattern="[A-Za-z]{1,15}"
+                        title="Enter only Alphabets">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div id="myDIV">
+                    <table class="table table-hover" id="retrive" style="display: none">
+                        <caption>Investment Details</caption>
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">First_Name</th>
+                                <th scope="col">Last_Name</th>
+                                <th scope="col">Principal_Amount</th>
+                                <th scope="col">Annual_rate</th>
+                                <th scope="col">No_Of_years</th>
+                                <th scope="col">Periods_per_Years</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 form_style">
+                        <input type="text" style="display: none" id="myInput" placeholder="Search.." title="Type in a name">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- By clicking on Retrieve button, it displays the Retrieve form  -->
+        <script>    
+            $("#s3").click(function () {
+                $("#Delete").css("display", "none");
+                $("#Retrieve").css("display", "block");
+                $("#Create").css("display", "none");
+                $("#home").css("display", "none");
+                $("#retrive1").css("display", "none");
+                $("#myDIV").css("display", "none");
+                $("#myInput").css("display", "none");
+            });
+            //On submitting the required retrival data, it displays the table and its contents.
+            $('#Retrieve').on('submit', function (event) {
+                $("#myDIV").css("display", "block");
+                $("#myInput").css("display", "block");
+                $("#myTable tr").remove();
+                event.preventDefault();
+                getData();      //It is used to get the required contents and fill in the table
+
+
+
+                //Filtering the table based on given data in text field
+                $(document).ready(function () {
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $("#myTable tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                });
+            });
+
+
+            //used to get the data and set the table
+            function getData() {
+                let data = document.getElementById("First").value;
+                document.getElementById("Retrieve").reset();
+                $.ajax({
+                    url: `http://localhost:8080/Invest-1.0-SNAPSHOT/invest?First_Name=${data}`,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (res) {
+                        //used to check whether the object we get from servlet is empty or not 
+                        if (jQuery.isEmptyObject(res)) {
+                            alert("No data found");
+                            $("#retrive").css("display", "none");
+                            $("#myInput").css("display", "none");
+                        } else {
+                            $("#retrive").css("display", "block");
+                            $("#myInput").css("display", "block");
+                            //set the data in rows of tables
+                            fillTicket(res)
+                        }
+                    },
+                    crossDomain: true,
+                    error: CustomerError
+                });
+                //error function 
+                function CustomerError(request, status, error) {
+                    alert("Unable to fetch the given name");
+                }
+                function fillTicket(res) {
+                    var table = document.getElementById("retrive");
+                    var tableRef = table.getElementsByTagName('tbody')[0];
+                    $(res).each(function (index, value) {
+                        var row = tableRef.insertRow(tableRef.rows.length);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        var cell4 = row.insertCell(3);
+                        var cell5 = row.insertCell(4);
+                        var cell6 = row.insertCell(5);
+                        var cell7 = row.insertCell(6);
+                        var cell8 = row.insertCell(7);
+
+                        cell1.innerHTML = value.User_id;
+                        cell2.innerHTML = value.First_Name;
+                        cell3.innerHTML = value.Last_Name;
+                        cell4.innerHTML = value.Principal;
+                        cell5.innerHTML = value.Annual_rate;
+                        cell6.innerHTML = value.No_years;
+                        cell7.innerHTML = value.Periods;
+                        $('#myTable tr > *:nth-child(1)').hide();
+
+                    });
+                }
+            }
+
+        </script>
+    </div>
+
+    <div class="container">
+        <form style="display: none;" id="Delete">
+            <div class="panel panel-primary filterable">
+                <div class="panel-heading">
+                    <div class="pull-right">
+                        <button class="btn btn-default btn-xs btn-filter">
+                            <span class="glyphicon glyphicon-filter"></span> Filter</button>
+                    </div>
+                </div>
+                <div id="myDIV">
+                    <table class="table table-striped" id="retrive1" style="display: none">
+                        <thead class="thead-dark">
+                            <tr class="filters">
+                                <th>
+                                    <input type="text" class="form-control" placeholder="User Id" disabled>
+                                </th>
+                                <th>
+                                    <input type="text" class="form-control" placeholder="First Name" disabled>
+                                </th>
+                                <th>
+                                    <input type="text" class="form-control" placeholder="Last Name" disabled>
+                                </th>
+                                <th>
+                                    <input type="text" class="form-control" placeholder="Principal" disabled>
+                                </th>
+                                <th>
+                                    <input type="text" class="form-control" placeholder="Annual rate" disabled>
+                                </th>
+                                <th>
+                                    <input type="text" class="form-control" placeholder="Years" disabled>
+                                </th>
+                                <th>
+                                    <input type="text" class="form-control" placeholder="Periods" disabled>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable1">
+
+                        </tbody>
+                    </table>
+                </div>
+        </form>
+        </div>
+        <script>
+
+            //used to filter the table based on coloumn
+            $(document).ready(function () {
+                $('.filterable .btn-filter').click(function () {
+                    var $panel = $(this).parents('.filterable'),
+                        $filters = $panel.find('.filters input'),
+                        $tbody = $panel.find('.table tbody');
+                    if ($filters.prop('disabled') == true) {
+                        $filters.prop('disabled', false);
+                        $filters.first().focus();
+                    } else {
+                        $filters.val('').prop('disabled', true);
+                        $tbody.find('.no-result').remove();
+                        $tbody.find('tr').show();
+                    }
+                });
+
+                $('.filterable .filters input').keyup(function (e) {
+                    /* Ignore tab key */
+                    var code = e.keyCode || e.which;
+                    if (code == '9') return;
+                    /* Useful DOM data and selectors */
+                    var $input = $(this),
+                        inputContent = $input.val().toLowerCase(),
+                        $panel = $input.parents('.filterable'),
+                        column = $panel.find('.filters th').index($input.parents('th')),
+                        $table = $panel.find('.table'),
+                        $rows = $table.find('tbody tr');
+                    /* Dirtiest filter function ever ;) */
+                    var $filteredRows = $rows.filter(function () {
+                        var value = $(this).find('td').eq(column).text().toLowerCase();
+                        return value.indexOf(inputContent) === -1;
+                    });
+                    /* Clean previous no-result if exist */
+                    $table.find('tbody .no-result').remove();
+                    /* Show all rows, hide filtered ones (never do that outside of a demo ! xD) */
+                    $rows.show();
+                    $filteredRows.hide();
+                    /* Prepend no-result row if all rows are filtered */
+                    if ($filteredRows.length === $rows.length) {
+                        $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="' + $table.find('.filters th').length + '">No result found</td></tr>'));
+                    }
+                });
+            });
+
+            //On clicking on submit button of admin page,it verifies the user
+            $("#check").click(function () {
+                $("#myDIV").css("display", "none");
+                const uname1 = document.getElementById("uname").value;
+                const psw1 = document.getElementById("psw").value;
+                event.preventDefault();
+                document.getElementById("admin").reset();
+                //passes the admin data to the servlet for verification
+                $.ajax({
+                    type: "POST",
+                    url: `http://localhost:8080/Invest-1.0-SNAPSHOT/check?Uname=${uname1}&password=${psw1}`,
+                    success: succe_Fun,
+                    error: error_fun,
+                });
+
+                //When used provide data in unappropiate format
+                function error_fun(data, status, response) {
+                    alert("Plz..provide appropiate information");
+                }
+                // if user is authorized, then entire data is displayed
+                function succe_Fun(data, status, response) {
+                    if (data >= 1) {
+                        alert("Authorized User");
+
+                        //if used is authorized then it displays delete form, table and hides all other forms
+                        document.getElementById('id01').style.display = 'none';
+                        $("#Delete").css("display", "block");
+                        $("#Retrieve").css("display", "none");
+                        $("#home").css("display", "none");
+                        $("#Create").css("display", "none");
+                        $("#retrive1").css("display", "block");
+
+                        //call the function to get the entire data
+                        getInfo();
+                    }
+                    else {
+                        alert("un-authorized user");
+                    }
+                }
+            });
+            //This function is used to get the entire data and fill it in table
+            function getInfo() {
+                $.ajax({
+                    type: "GET",
+                    url: `http://localhost:8080/Invest-1.0-SNAPSHOT/check`,
+                    dataType: 'json',
+                    crossDomain: true,
+                    error: CustomerError,
+                    success: function (res) {
+                        //used to check whether the object we get from servlet is empty or not 
+                        if (jQuery.isEmptyObject(res)) {
+                            alert("No data found");
+                            $("#home").css("display", "none");
+                            $("#myInput").css("display", "none");
+                            $("#Delete").css("display", "block");
+
+                        } else {
+                            $("#retrive1").css("display", "block");
+                            $("#myInput").css("display", "block");
+                            $("#myTable1 tr").remove();
+                            fillTicket(res);
+                        }
+                    }
+                });
+
+                function CustomerError(request, status, error) {
+                    alert("error");
+                }
+
+                function fillTicket(res) {
+                    var table = document.getElementById("retrive1");
+                    var tableRef = table.getElementsByTagName('tbody')[0];
+                    $(res).each(function (index, value) {
+                        var row = tableRef.insertRow(tableRef.rows.length);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        var cell4 = row.insertCell(3);
+                        var cell5 = row.insertCell(4);
+                        var cell6 = row.insertCell(5);
+                        var cell7 = row.insertCell(6);
+                        var cell8 = row.insertCell(7);
+
+
+                        cell1.innerHTML = value.User_id;
+                        cell2.innerHTML = value.First_Name;
+                        cell3.innerHTML = value.Last_Name;
+                        cell4.innerHTML = value.Principal;
+                        cell5.innerHTML = value.Annual_rate;
+                        cell6.innerHTML = value.No_years;
+                        cell7.innerHTML = value.Periods;
+                        //$('#myTable1 tr > *:nth-child(1)').hide();
+                        cell8.innerHTML = "<button type='button' class='button1' onclick='deleteUser1(" + value.User_id + ")'>Delete</button>";
+                    });
+                }
+            }
+            //When user clicks on delete button, it deletes the particular row and displays all other data
+            function deleteUser1(User_id) {
+                $.ajax({
+                    type: "DELETE",
+                    url: `http://localhost:8080/Invest-1.0-SNAPSHOT/invest?User_id=${User_id}`,
+                    success: succe_Fun,
+                    error: error_fun,
+                });
+                //After deletion of data, it displays the remaining rows
+                function succe_Fun(data, status, response) {
+                    if (data >= 1) {
+                        $("#myTable1 tr").remove();
+                        alert("deleted successfully");
+                        getInfo();
+                    }
+                    else {
+                        alert("unable to Delete")
+                    }
+                }
+                //Error function
+                function error_fun(data, status, response) {
+                    alert("Unale to fetch the deletioon data");
+
+                }
+            }
+
+            //By clicking on Cancel button of admin page, it displays home page
+            $("#return").click(function () {
+                document.getElementById('id01').style.display = 'none'
+                $("#Retrieve").css("display", "none");
+                $("#home").css("display", "block");
+
+            });
+        </script>
+</body>
+
+</html>
