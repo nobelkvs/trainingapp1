@@ -1,0 +1,288 @@
+<html>
+
+<head>
+    <title>Contacts</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='custom.css' rel='stylesheet' type='text/css'>
+
+    <!-- table css-->
+    <link href=https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css>
+
+    <!-- javascript file location link-->
+    <script src="contact.js"></script>
+
+</head>
+
+<body>
+
+ <!-- Navbar start -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">Employee Contacts Information</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li>
+                <a id="createContact">Add Contact</a>
+            </li>
+            <li>
+                <a id="search">Search</a>
+            </li>
+            <li>
+                <a id="deleteContact">Delete</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+ <!-- navbar end -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- table to show retrieve data start-->
+        <div id="contactsDetails" class="col-lg-10 col-lg-offset-1" style="display:none">
+            <h3>All Contacts Details</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="select">Select list:</label>
+                        <select class="form-control" id="select" style="width:150px;">
+                            <option value="5000">Show All</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="searchInput">Search in table</label>
+                        <input id="searchInput" type="text" onkeyup="searchTable()" name="search" class="form-control" placeholder="Search table ">
+                    </div>
+                </div>
+            </div>
+            <table id="contactsTable" class="table table-striped table-bordered" style="width:100%">
+
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">first name</th>
+                    <th scope="col">last name</th>
+                    <th scope="col">phone number</th>
+                    <th scope="col">title</th>
+                    <th scope="col">tags</th>
+                    <th scope="col">email</th>
+                    <th scope="col">company</th>
+                    <th scope="col">delete</th>
+                    <th scope="col">edit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">company</th>
+                    <th scope="col">firstName</th>
+                    <th scope="col">lastName</th>
+                    <th scope="col">phoneNumber</th>
+                    <th scope="col">title</th>
+                    <th scope="col">tags</th>
+                    <th scope="col">email</th>
+                    <th scope="col">delete</th>
+                    <th scope="col">edit</th>
+                </tr>
+                </tfoot>
+            </table>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="pagination container" id="contacttable">
+                        <nav>
+                            <ul class="pagination"> </ul>
+                        </nav>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" id="delete-button" class="btn btn-primary" >Delete Contacts</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- table to show retrieve data end-->
+
+        <div class="col-lg-8 col-lg-offset-2">
+
+            <!-- form to save new contact start -->
+            <form id="contact-form" onsubmit='return formSubmit(this)' method="post" style="display:none" action="contact" role="form">
+                <p>Contact</p>
+                <div class="messages"></div>
+
+                <div class="controls">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_name">First name *</label>
+                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your first name *" required="required"
+                                       data-error="First name is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_last_name">Last name</label>
+                                <input id="form_last_name" type="text" name="last_name" class="form-control" placeholder="Please enter your lastname ">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_title">Title</label>
+                                <input id="form_title" type="text" name="title" class="form-control" placeholder="Please enter your title">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_company">Company Name</label>
+                                <input id="form_company" type="text" name="company" class="form-control" placeholder="Please enter your company name">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_email">Email *</label>
+                                <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required"
+                                       data-error="Valid email is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_phone">Phone</label>
+                                <input id="form_phone" type="number" name="phone" class="form-control" placeholder="Please enter your phone *" required="required"
+                                       data-error="Valid phone number is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="form_tags">Tags *</label>
+                                <input id="form_tags" type="text" name="tags" class="form-control" placeholder="Please enter your tags *" required="required"
+                                       data-error="tag is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="submit" class="btn btn-success btn-send" id="create_submit" value="Send message">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary" id="cancel2">Cancel</button>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="text-muted">
+                                <strong>*</strong> These fields are required.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <div class="col-md-12" id="contactResponse"></div>
+
+            <!-- form to save new contact end -->
+        </div>
+
+        <div class="col-lg-8 col-lg-offset-2">
+
+            <!-- delete form start -->
+            <form id="delete-form" onsubmit='return deleteContact(this)' method="post" style="display:none" action="contact" role="form">
+
+                <p>Delete Contact</p>
+                <div class="messages"></div>
+
+                <div class="controls">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_contactId">Contact Id *</label>
+                                <input id="form_contactId" type="number" name="contactId" class="form-control" placeholder="Please enter contact id *" required="required"
+                                       data-error="contact id is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input type="submit" class="btn btn-success btn-send" id="delete_submit" value="Delete contact">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary" id="cancel3">Cancel</button>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="text-muted">
+                                <strong>*</strong> These fields are required.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <div class="col-md-12" id="deleteResponse"></div>
+
+            <!-- delete form end -->
+
+        </div>
+        <!-- /.8 -->
+
+    </div>
+    <!-- /.row-->
+
+</div>
+
+<script src="validator.js"></script>
+</body>
+
+</html>
