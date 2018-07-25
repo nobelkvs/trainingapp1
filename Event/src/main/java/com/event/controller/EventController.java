@@ -26,10 +26,10 @@ import static java.lang.System.out;
 /**
  * This program used to control the request and response calls from UI to manage Events
  * In controller we make use of four different methods
- * doPost-->Create operation
- * doGet--->Retrieve operation
- * doPut--->Update operation
- * doDelete--->Delete operation
+ * doPost for Create operation
+ * doGet for Retrieve operation
+ * doPut for Update operation
+ * doDelete for Delete operation
  */
 //@WebServlet(description = "Get Event Details", urlPatterns = { "/EventController" })
 //Event controller extends http servlet
@@ -38,6 +38,13 @@ public class EventController extends HttpServlet {
 
     //creating a log to check the flow of program
     static final Logger log = Logger.getLogger(EventController.class);
+
+    /**
+     * @param request
+     * @param response
+     * @throws IOException
+     * @see EventService
+     */
 
     //writing method to Insert(POST) user details in a database
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -78,27 +85,29 @@ public class EventController extends HttpServlet {
             log.error("Got SQL exception " + e);
         }
         //get to know whether data inserted successfully or not
-        if (insertStatus >= 1) {
-            out.print("Successfully Inserted the data");
-            log.info("Successfully Inserted the data");
-        } else {
-            log.error("Failed to Insert the Data");
-        }
+        log.info((insertStatus >= 1)?"Successfully Inserted the data":"Failed to Insert the Data");
     }
 
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     //Retrieving method to get the data from event data table
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         log.info("In doGet method of Event controller");
-         PrintWriter out = response.getWriter();
-         //Creating object to call service
-         EventService es = new EventServiceImp();;
+        log.info("In doGet method of Event controller");
+        PrintWriter out = response.getWriter();
+        //Creating object to call service
+        EventService es = new EventServiceImp();
+        ;
 
-         //Creating GSOn object
-         Gson gson = new Gson();
+        //Creating GSOn object
+        Gson gson = new Gson();
 
-         try
-         {
+        try {
             //creating a list for storing the retrieved records
             List<EventModel> listOfEvents = new ArrayList<>();
             //calling method retrieveEventDataService of service class
@@ -108,9 +117,7 @@ public class EventController extends HttpServlet {
             log.info(json2);
             //Writing json data to the UI
             out.println(json2);
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             log.error("SQL Exception " + e);
         }
 
@@ -148,42 +155,38 @@ public class EventController extends HttpServlet {
         }*/
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     //Deleting method to remove the data from event data table
-    protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        PrintWriter out = res.getWriter();
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         //accessing eventId from user and assigning to a variable
-        String userRole = req.getParameter("userRole");
-        int eventId = Integer.parseInt(req.getParameter("eventId"));
+        String userRole = request.getParameter("userRole");
+        int eventId = Integer.parseInt(request.getParameter("eventId"));
         EventModel eventModel = new EventModel();
         //Comparing user Role
-        if (userRole.equalsIgnoreCase("admin"))
-        {
-
-            EventService eventService = new EventServiceImp();//creating object for class TicketServiceCustomerImp
+        if (userRole.equalsIgnoreCase("admin")) {
+            //creating object for service classes
+            EventService eventService = new EventServiceImp();
             try {
-                    //passing ticketId to the deleteServiceCustomer method of class TicketsServiceCustomerImp through object
-                    deleteStatus = eventService.deleteEventDataService(eventId);
-                    if (deleteStatus >= 1)
-                    {
-                         log.info("Successfully removed event details");
-                         out.print(deleteStatus);
-                     }
-                    else
-                         log.error("sorry!! failed to remove the event details, try again");
-               }
-            catch (SQLException e)
-               {
-                   e.printStackTrace();
-                   log.error(e);
-               }
-
-        }
-        else
-            {
-                   deleteStatus = 0;
-                   log.info(deleteStatus);
-                   out.print(deleteStatus);
+                //sending event id to the deleteEventDataService method of serivce classes
+                deleteStatus = eventService.deleteEventDataService(eventId);
+                log.info((deleteStatus >= 1)?"Successfully removed event details" : "sorry!! failed to remove the event details, try again");
+                out.print(deleteStatus);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                log.error(e);
             }
+        } else {
+            deleteStatus = 0;
+            log.info(deleteStatus);
+            out.print(deleteStatus);
+        }
 
-     }
- }
+    }
+}
