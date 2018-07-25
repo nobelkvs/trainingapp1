@@ -4,7 +4,7 @@ function formSubmit(form) {
 
     var form_data = {};
 
-    // if contactId  is not null then update data else save new data
+    // if contactId  is not null then update contact data
     if(form.contactId != null ){
         form_data = form;
     }
@@ -36,7 +36,7 @@ function formSubmit(form) {
     return false;
 }
 
-// Delete data from database based on id
+// Delete data from database
 
 function deleteContact(deleteContact) {
     var data;
@@ -106,8 +106,6 @@ $(document).ready(function () {
         event.preventDefault();
         var tbl_row = $(this).closest('tr');
 
-        var row_id = tbl_row.attr('row_id');
-
         tbl_row.find('.btn_save').show();
         tbl_row.find('.btn_cancel').show();
 
@@ -172,9 +170,6 @@ $(document).ready(function () {
         event.preventDefault();
         var tbl_row = $(this).closest('tr');
 
-        var row_id = tbl_row.attr('row_id');
-
-
         //hide save and cacel buttons
         tbl_row.find('.btn_save').hide();
         tbl_row.find('.btn_cancel').hide();
@@ -182,10 +177,7 @@ $(document).ready(function () {
         //show edit button
         tbl_row.find('.btn_edit').show();
 
-
         //make the whole row text
-
-
         tbl_row.find('.row_data')
             .attr('contenteditable', 'false')
             .removeClass('bg-warning')
@@ -206,17 +198,8 @@ $(document).ready(function () {
             arr[col_name] = col_val;
         });
         console.log(arr);
-
-        formSubmit(arr);
-        //--->get row data > end
-
         //use the "arr"	object for your ajax call
-        $.extend(arr, {row_id:row_id});
-
-        //out put to show
-        $('.post_msg').html( '<pre class="bg-success">'+JSON.stringify(arr, null, 2) +'</pre>')
-
-
+        formSubmit(arr);
     });
 
     // Delete multiple checked records from table
@@ -384,7 +367,6 @@ $(document).ready(function () {
     });
 
     $("#search").click(function () {
-        // language=JQuery-CSS
         $("#contactResponse").empty();
         $("#deleteResponse").empty();
         $("#contact-form").css("display", "none");
