@@ -1,0 +1,328 @@
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+          integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+            integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Event</title>
+    <style>
+        .text-white {
+            color: #1d1f1e !important;
+        }
+
+        .p-2 {
+            padding: 1rem !important;
+        }
+
+        .bg-dark {
+            background-color: #37a7ad !important;
+        }
+
+
+        .mt-2,
+        .my-2 {
+            margin-top: 1rem !important;
+        }
+
+
+        .custom-select {
+            height: calc(3rem + 2px);
+        }
+
+        #srch_btn {
+            float: right;
+        }
+
+        body {
+            background-image: url(super6.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+    </style>
+
+    <!--  *****Project Heading***** -->
+
+    <div id="header">
+        <center>
+            <span class="d-block p-2 bg-dark text-white"
+                  style="background-image: url(header.jpg);font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+                <h1>EVENT BOOKING</h1>
+            </span>
+        </center>
+    </div>
+
+    <!--- ******Nav bar Creation******* -->
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#Register" id="register">
+                        <h4>Register</h4>
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li class="nav-item">
+                    <a class="nav-link" href="#Details" id="details">
+                        <h4>Details</h4>
+                    </a>
+                </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li class="nav-item">
+                    <a class="nav-link" href="#Remove" id="remove">
+                        <h4>Remove</h4>
+                    </a>
+                </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </ul>
+            <form class="form-inline my-2 my-lg-0" id="srch_btn">
+                <input class="form-control mr-sm-2" type="search" id="myInput" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- ****** Register Form *******-->
+
+    <div class="container" style="display: none;" id="Register">
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 form_style">
+                <form id="myRegisterForm">
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Event Name<sup>*</sup></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" pattern="[a-zA-Z ]{3,30}"
+                                   title="Only Characters acceptable" id="event_name" placeholder="Enter Event Name"
+                                   required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Priority<sup>*</sup></label>
+                        <div class="col-sm-10">
+                            <select class="custom-select mr-sm-2" id="priority">
+                                <option selected>Choose...</option>
+                                <option value="One">One</option>
+                                <option value="Two">Two</option>
+                                <option value="Three">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Status<sup>*</sup></label>
+                        <div class="col-sm-10">
+                            <select class="custom-select mr-sm-2" id="status">
+                                <option selected>Select...</option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Owner Name<sup>*</sup></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="owner_name" pattern="[a-zA-Z ]{3,30}"
+                                   title="Only Characters acceptable" placeholder="Enter Owner Name"
+                                   required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Email Address<sup>*</sup></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="email_addrs"
+                                   pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="xyz123@gmail.com"
+                                   required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Start Date</label>
+                        <div class="col-sm-4">
+                            <input type="date" class="form-control" id="start_date" placeholder="Date" required>
+                        </div>
+                        <label class="col-sm-2 col-form-label">Start Time</label>
+                        <div class="col-sm-4">
+                            <input type="time" class="form-control" id="start_time" placeholder="Time" step="1"
+                                   required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">End Date</label>
+                        <div class="col-sm-4">
+                            <input type="date" class="form-control" id="end_date" placeholder="Date" required/>
+                        </div>
+                        <label class="col-sm-2 col-form-label">End Time</label>
+                        <div class="col-sm-4">
+                            <input type="time" class="form-control" id="end_time" placeholder="Time" step="1" required/>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button type="submit" class="btn btn-primary" id="c1">Cancel</button>
+                </form>
+
+                <div id="msgRegister">
+
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <script>
+        //By clicking on register in UI register form will be displayed
+        $("#register").click(function () {
+            $("#Register").css("display", "block");
+            $("#Details").css("display", "none");
+            $("#Remove").css("display", "none");
+            $("#displayTable").css("display", "none");
+        });
+
+        $("#c1").click(function () {
+            $("#Register").css("display", "none");
+
+        });
+
+
+    </script>
+
+
+    <!-- ****** Remove Form *******-->
+
+    <div class="container" style="display: none;" id="Remove">
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 form_style">
+                <form id="myRemoveForm">
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">User Role<sup>*</sup></label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="user_role" placeholder="Enter Your Role"
+                                   required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Event Id<sup>*</sup></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="event_id" pattern="[0-9 ]{1,30}"
+                                   title="Only Numbers acceptable" placeholder="Enter Event Id" required/>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit" id="s1">Submit</button>
+                    <button type="submit" class="btn btn-primary" id="c1">Cancel</button>
+                </form>
+
+                <div id="msgRemove">
+
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <script>
+        //By clicking on remove in UI remove form will be displayed
+        $("#remove").click(function () {
+            $("#Register").css("display", "none");
+            $("#Details").css("display", "none");
+            $("#Remove").css("display", "block");
+            $("#displayTable").css("display", "none");
+        });
+
+        $("#c1").click(function () {
+            $("#Remove").css("display", "none");
+
+        });
+
+    </script>
+
+
+    <!-- **********Creating table*********-->
+    <div class="container" style="display: none;" id="displayTable">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <script>
+                    //For searching table data on UI
+                    $(document).ready(function () {
+                        $("#myInput").on("keyup", function () {
+                            var value = $(this).val().toLowerCase();
+                            $("#myTable tr").filter(function () {
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            });
+                        });
+                    });
+
+                </script>
+
+                <center>
+                    <h2>
+                        <caption>Event Details</caption>
+                    </h2>
+                    <center>
+
+                        <table class="table" id="details_table">
+                            <thead>
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Owner</th>
+                                <th>Start Date</th>
+                                <th>Start Time</th>
+                                <th>End Date</th>
+                                <th>End Time</th>
+                                <th>Email Address</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody id="myTable">
+
+                            </tbody>
+                        </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        //By clicking on details event details will be displayed
+        $("#details").click(function () {
+            $("#Register").css("display", "none");
+            $("#Details").css("display", "block");
+            $("#Remove").css("display", "none");
+            $("#displayTable").css("display", "block");
+        });
+
+
+    </script>
+
+    <div id="output">
+
+    </div>
+
+</head>
+
+<body>
+<script src="event.js"></script>
+</body>
+
+</html>

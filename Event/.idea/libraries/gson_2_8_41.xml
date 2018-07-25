@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="gson-2.8.41">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/gson-2.8.4.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/java-json.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/javax.servlet-3.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/lombok.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/java-json.jar!/" />
+    </SOURCES>
+  </library>
+</component>
