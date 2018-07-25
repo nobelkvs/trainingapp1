@@ -1,9 +1,0 @@
-/home/admin/IdeaProjects/CannedResponse_test/src/main/java/com/response/service/ResponseServiceInterface.java
-/home/admin/IdeaProjects/CannedResponse_test/src/main/java/com/response/controller/ResponseController.java
-/home/admin/IdeaProjects/CannedResponse_test/src/main/java/com/response/service/ResponseService.java
-/home/admin/IdeaProjects/CannedResponse_test/src/main/java/com/response/controller/ResponseFilter.java
-/home/admin/IdeaProjects/CannedResponse_test/src/main/java/com/response/dbconnection/DBConnection.java
-/home/admin/IdeaProjects/CannedResponse_test/src/main/java/com/response/dao/ResponseDAOInterface.java
-/home/admin/IdeaProjects/CannedResponse_test/src/main/java/com/response/dao/ResponseDAO.java
-/home/admin/IdeaProjects/CannedResponse_test/src/main/java/com/response/model/Response.java
-/home/admin/IdeaProjects/CannedResponse_test/src/main/java/com/response/controller/ContextListener.java
