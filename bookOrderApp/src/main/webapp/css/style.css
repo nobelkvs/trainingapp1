@@ -1,0 +1,52 @@
+/*  
+    styles for book.html file
+*/
+header {
+    position: relative;
+    left: 20px;
+}
+
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+.required:before {
+    content: "*";
+    font-weight: bold;
+    font-size:22px;
+    color: red;
+}
+
+.success {
+    font-weight: bold;
+    color: green;
+    font-size: 24px;
+    background-color:  yellow;
+}
+.fail{
+    font-weight: bold;
+    color: red;
+    font-size: 22px;
+    background-color: yellow;
+
+}
+
+#orderTableBody{
+    font-size: 18px;
+    color: white;
+    background-color: grey;
+}
+
+#id_column{
+    display: none;
+    
+}
+td:nth-child(2){
+    display:none;
+}
+label{
+    font-size: 20px;
+}
