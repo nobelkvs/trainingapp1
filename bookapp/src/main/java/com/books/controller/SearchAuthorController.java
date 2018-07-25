@@ -41,6 +41,11 @@ public class SearchAuthorController extends HttpServlet {
 		List<Book> books  = new BookOrderServiceImpl().retriveBooksBySearchAuthor(Name);
 		
 		log.info("Sending Books details to UI");
-		out.println(gson.toJson(books));
+		if(books.isEmpty()) {
+			log.info("No records found");
+			out.println(0);
+		}else {
+			out.println(gson.toJson(books));
+		}
 	}
 }

@@ -7,7 +7,16 @@
          var bookname = $('#bookname').val();
          var quantity = $('#quantity').val();
 
-         if (customer != '' && bookname != '' && quantity != '') {
+         if (customer != '' && !customer.match(/^[a-zA-Z]+$/)) {
+             $("#quantityerror").html('');
+             $("#nameerror").html("Name should contain only alphabets");
+         } else if (quantity < 0 || quantity.match(/^[a-zA-Z]+$/) || !quantity.match(/^[0-9]+$/)) {
+             $("#nameerror").html('');
+             $("#quantityerror").html("please enter quantity properly");
+         } else if (customer != '' && bookname != '' && quantity != '') {
+             $("#nameerror").html('');
+             $("#quantityerror").html('');
+
              var orderdata = {
                  customer: customer,
                  bookname: bookname,
@@ -19,7 +28,6 @@
                  url: "http://localhost:8081/bookapp/BookController",
                  data: orderdata,
                  success: function(response) {
-                     alert();
                      $('#customer').val('');
                      $('#bookname').val('');
                      $('#quantity').val('');
@@ -28,13 +36,9 @@
 
                  },
                  error: function(response) {
-                     console.log('fail' + response)
-                     console.log(response)
+                     alert("Error in order books function" + response)
                  }
              });
-
-         } else {
-             $("#error").html("please fill all fields");
 
          }
 
@@ -53,16 +57,13 @@
                  display_data(response);
              },
              error: function(response) {
-                 console.log('fail' + response)
-                 console.log(response)
+                 alert("Error in Getting total orders" + response)
              }
          });
 
          // Displaying data to front-end
          function display_data(output) {
              var out = JSON.parse(output);
-             console.log(out);
-             console.log(out.length);
              var col = [];
              for (var i = 0; i < out.length; i++) {
                  for (var key in out[i]) {
@@ -110,7 +111,7 @@
          }
      }
 
-     // Deleting Orders using checkboxes
+     // Deleting Orders using checkboxs
      $('#delete_order').click(function() {
 
          var delete_array = [];
@@ -127,8 +128,7 @@
                  $("#total_orders").click();
              },
              error: function(response) {
-                 console.log('fail' + response)
-                 console.log(response)
+                 alert("Error in Deleting Orders using checkboxs" + response)
              }
          });
 
@@ -145,16 +145,13 @@
                  display_data(response);
              },
              error: function(response) {
-                 console.log('fail' + response)
-                 console.log(response)
+                 alert("Error in Deleting Orders using checkboxs" + response);
              }
          });
 
          // Displaying data to front-end
          function display_data(output) {
              var out = JSON.parse(output);
-             console.log(out);
-             console.log(out.length);
              var col = [];
              for (var i = 0; i < out.length; i++) {
                  for (var key in out[i]) {
@@ -181,7 +178,6 @@
 
                  for (var j = 0; j < col.length - 1; j++) {
                      var tabCell = tr.insertCell(-1);
-                     console.log(out[i][col[4]])
                      tabCell.innerHTML = out[i][col[j]];
                      if (j == 4)
                          if (out[i][col[j]] > 100) {
@@ -217,8 +213,7 @@
                  display_data(response);
              },
              error: function(response) {
-                 console.log('fail' + response)
-                 console.log(response)
+                 alert("Error in function Getting data for select options" + response);
              }
          });
 
@@ -361,35 +356,34 @@
 
      // function for getting book details by book name
      $('#disable').click(function() {
-         alert("book")
-
 
          var book_name = $('#book_name').val();
          var jsondata = null;
          jsondata = {
              book_name: book_name
          }
-         alert(jsondata)
-         console.log(jsondata)
+
 
          $.ajax({
              type: "GET",
              url: "http://localhost:8081/bookapp/SearchBookController",
              data: jsondata,
              success: function(response) {
-                 console.log(response)
-                 display_data(response);
+                 if (response != 0) {
+                     $("#recorderror").html('')
+                     display_data(response);
+
+                 } else
+                     $("#recorderror").html('No records found')
              },
-             error: function(response) {
-                 console.log('fail' + response)
-                 console.log(response)
+             error: function() {
+                 alert("Error in function for getting book details by book name")
+
              }
          });
 
          function display_data(output) {
              var out = JSON.parse(output);
-             console.log(out);
-             console.log(out.length);
              var col = [];
              for (var i = 0; i < out.length; i++) {
                  for (var key in out[i]) {
@@ -440,32 +434,31 @@
 
      // function for getting book details by Author name
      $('#disable1').click(function() {
-         alert("author")
          var author_name = $('#author_name').val();
          var jsondata = null;
          jsondata = {
              author_name: author_name
          }
-         alert(jsondata)
-         console.log(jsondata)
 
          $.ajax({
              type: "GET",
              url: "http://localhost:8081/bookapp/SearchAuthorController",
              data: jsondata,
              success: function(response) {
-                 display_data(response);
+                 if (response != 0) {
+                     $("#recorderror").html('')
+                     display_data(response);
+
+                 } else
+                     $("#recorderror").html('No records found')
              },
              error: function(response) {
-                 console.log('fail' + response)
-                 console.log(response)
+                 alert("Error in function for getting book details by Author name")
              }
          });
 
          function display_data(output) {
              var out = JSON.parse(output);
-             console.log(out);
-             console.log(out.length);
              var col = [];
              for (var i = 0; i < out.length; i++) {
                  for (var key in out[i]) {
@@ -513,9 +506,6 @@
          }
 
      });
-
-
-
 
      $('#login').click(function() {
          var username = $('#username').val();
