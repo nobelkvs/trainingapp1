@@ -1,6 +1,6 @@
  $(document).ready(function() {
-	 
-	 //order books function
+
+     //order books function
      $('#orderbook').click(function() {
 
          var customer = $('#customer').val();
@@ -43,7 +43,7 @@
 
 
      // Getting total orders
-     $('#total_orders').click(function() {
+     function showOrders() {
 
          $.ajax({
              type: "GET",
@@ -57,7 +57,7 @@
                  console.log(response)
              }
          });
-         
+
          // Displaying data to front-end
          function display_data(output) {
              var out = JSON.parse(output);
@@ -77,50 +77,49 @@
              table.setAttribute("id", "example")
              var tr = table.insertRow(-1);
 
-             for (var i = 0; i < col.length+1; i++) {
-            	 if(i < col.length){
-            		 var th = document.createElement("th");
+             for (var i = 0; i < col.length + 1; i++) {
+                 if (i < col.length) {
+                     var th = document.createElement("th");
                      th.innerHTML = col[i];
                      tr.appendChild(th);
-            	 }else{
-            		 var th = document.createElement("th");
+                 } else {
+                     var th = document.createElement("th");
                      th.innerHTML = "delete orders";
                      tr.appendChild(th);
-            	 }
-                 
+                 }
+
              }
 
              for (var i = 0; i < out.length; i++) {
                  tr = table.insertRow(-1);
-                 for (var j = 0; j < col.length+1; j++) {
-                	 if(j < col.length){
+                 for (var j = 0; j < col.length + 1; j++) {
+                     if (j < col.length) {
                          var tabCell = tr.insertCell(-1);
-                         tabCell.innerHTML = out[i][col[j]]; 
-                	 }else{  		 
-                       var tabCell = tr.insertCell(-1);
-                       tabCell.innerHTML = '<input type="checkbox" name="delete" value="'+out[i][col[0]]+'">';
-                	 }
+                         tabCell.innerHTML = out[i][col[j]];
+                     } else {
+                         var tabCell = tr.insertCell(-1);
+                         tabCell.innerHTML = '<input type="checkbox" name="delete" value="' + out[i][col[0]] + '">';
+                     }
                  }
              }
-             
-             $("#delete_order").css("display","block");
+
+             $("#delete_order").css("display", "block");
              var divContainer = document.getElementById("showData");
              divContainer.innerHTML = "";
              divContainer.appendChild(table);
          }
-
-     });
+     }
 
      // Deleting Orders using checkboxes
      $('#delete_order').click(function() {
-    	 
-    	 var delete_array = [];
-    	 
-    	 $.each($("input[name='delete']:checked"), function(){            
-    		 delete_array.push($(this).val());
+
+         var delete_array = [];
+
+         $.each($("input[name='delete']:checked"), function() {
+             delete_array.push($(this).val());
          });
-    	 alert(delete_array)
-    	 
+         alert(delete_array)
+
          $.ajax({
              type: "DELETE",
              url: `http://localhost:8081/bookapp/BookController?delete_array=${delete_array}`,
@@ -133,8 +132,8 @@
              }
          });
 
-     });  
-     
+     });
+
      // Getting Available books
      $('#availble_books').click(function() {
 
@@ -150,7 +149,7 @@
                  console.log(response)
              }
          });
-         
+
          // Displaying data to front-end
          function display_data(output) {
              var out = JSON.parse(output);
@@ -329,7 +328,7 @@
 
                  for (var j = 0; j < col.length; j++) {
                      var tabCell = tr.insertCell(-1);
-                     
+
                      tabCell.innerHTML = out[i][col[j]];
                      if (j == 1)
                          books.push(out[i][col[j]]);
@@ -445,7 +444,7 @@
          var author_name = $('#author_name').val();
          var jsondata = null;
          jsondata = {
-        		 author_name: author_name
+             author_name: author_name
          }
          alert(jsondata)
          console.log(jsondata)
@@ -513,5 +512,22 @@
              divContainer.appendChild(table);
          }
 
+     });
+
+
+
+
+     $('#login').click(function() {
+         var username = $('#username').val();
+         var password = $('#password').val();
+         if (username == "admin" && password == "admin") {
+             $("#errormsg").css("display", "none");
+             $('#username').val('');
+             $('#password').val('');
+             showOrders();
+             $('#close').click();
+         } else {
+             $("#errormsg").css("display", "block");
+         }
      });
  });
