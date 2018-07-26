@@ -15,18 +15,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-    <script>
-        $(document).ready(function () {
-            $("#filter").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#RetrieveTable tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
-
     <style>
         body {
             padding: 25px;
@@ -144,14 +132,14 @@
                         <!-- Description form -->
                         <div class="form-group">
                             <label for="description"><b>Description</b></label>
-                            <textarea class="form-control" id="description" rows="3" required></textarea>
+                            <textarea class="form-control" id="description" rows="3" pattern="[A-Za-z]{1,15}" required></textarea>
                         </div>
 
                         <!-- AssignedTo form -->
                         <div class="form-group">
                             <label for="assignedTo"><b>Enter whom you want to assign</b></label>
                             &nbsp&nbsp
-                            <input type="text" id="assignedTo" placeholder="assigne name" required>
+                            <input type="text" class="form-control" id="assignedTo" placeholder="assigne name" pattern="[A-Za-z]{1,15}" required>
                         </div>
 
                         <!-- Select form for category,priority & status -->
@@ -160,28 +148,29 @@
                             <!-- Category  -->
                             <label for="category"><b>Category</b></label>
                             &nbsp
-                            <select id="category">
+                            <select id="category" class="form-control" style="height: 34px">
                                 <option value="hardware">Hardware</option>
                                 <option value="software">Software</option>
                             </select>
+                        </div>
 
-                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <div class="form-group">
 
                             <!-- Priority -->
                             <label for="priority"><b>Priority</b></label>
                             &nbsp
-                            <select id="priority">
+                            <select id="priority" class="form-control" style="height: 34px">
                                 <option value="p1">P1</option>
                                 <option value="p2">P2</option>
                                 <option value="p3">P3</option>
                             </select>
-
-                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
+                        </div>
+                            
+                        <div class="form-group">
                             <!-- Status -->
                             <label for="status"><b>Status</b></label>
                             &nbsp
-                            <select id="status">
+                            <select id="status" class="form-control" style="height: 34px">
                                 <option value="open">Open</option>
                                 <option value="inProgress">In Progress</option>
                                 <option value="completed">Completed</option>
@@ -217,8 +206,7 @@
                         <div class="form-group">
                             <label for="assigned"><b>Search</b></label>
                             &nbsp&nbsp
-                            <input type="text" id="assigned" placeholder="search"> 
-                            &nbsp&nbsp
+                            <input type="text" class="form-control" id="assigned" placeholder="search" pattern="[A-Za-z]{1,}" required><br> 
                             <!-- Submit Button -->
                             <button type="submit" class="btn btn-primary" id="Retrievesubmit">Submit</button>
                         </div>
@@ -277,24 +265,24 @@
 
                             <div>
                                 <label for="role1"><b>Role</b></label>
-                                &nbsp&nbsp&nbsp&nbsp
-                                <select id="role1">
-                                    <option value="choose1">choose the role</option>
+                                
+                                <select id="role1" class="form-control" style="height: 34px">
+                                    <option value="choose">choose the role</option>
                                     <option value="admin">Admin</option>
                                     <option value="user">User</option>
                                 </select>
-                                <br>&nbsp&nbsp
+                                <br>
                             </div>
 
                             <div>
                                 <label for="password1"><b>Enter password</b></label>
-                                &nbsp&nbsp&nbsp&nbsp
-                                <input type="password" id="password1" required>
+                                
+                                <input type="password" id="password1" class="form-control" required>
                                 <br> &nbsp&nbsp
                             </div>
 
                             <!-- Submit Button -->
-                            <button type="button" class="btn btn-primary" id="rolePwdSubmit">Submit</button>
+                            <button type="button" class="btn btn-primary" id="rolePwdSubmit">LOGIN</button>
 
                             <div id="unauthorisedAccess1" class="modal" style="display: none;">
                                 <!-- Modal content -->
@@ -339,7 +327,7 @@
                                 <label for="role"><b>Role</b></label>
                                 &nbsp&nbsp&nbsp&nbsp
                                 
-                                <select id="role">
+                                <select id="role" name="role1" class="form-control" style="height: 34px">
                                     <option value="choose">choose the role</option>
                                     <option value="admin">Admin</option>
                                     <option value="user">User</option>
@@ -347,14 +335,14 @@
                                 &nbsp&nbsp
                             </div>
 
-                            <div>
+                            <div id="pwd" style="display: none">
                                 <label for="password"><b>Enter password</b></label>
                                 &nbsp&nbsp&nbsp&nbsp
-                                <input type="password" id="password" required>
+                                <input type="password" id="password" class="form-control" required>
                                 <br> &nbsp&nbsp
                             </div>
 
-                            <button type="submit" class="btn btn-primary" id="roleSubmit">Submit</button>
+                            <button type="submit" class="btn btn-primary" id="roleSubmit">LOGIN</button>
 
                         </div>
 
@@ -365,7 +353,7 @@
                         
                         <label for="id"><b>Enter Id to be deleted</b></label>
                         &nbsp&nbsp
-                        <input type="text" id="Id"> 
+                        <input type="text" id="Id" pattern="[0-9,]{1,150}" required> 
                         &nbsp&nbsp
                         <button type="submit" class="btn btn-primary" id="deleteSubmit">Submit</button>
 
@@ -411,234 +399,7 @@
             </div>
         </div>
 
-        <script>    
-
-            //displaying create form
-            $("#showCreate").click(function () {
-
-                $("#Create_form").css("display", "block");
-                $("#Retrive_form").css("display", "none");
-                $("#RetrieveForm").css("display", "none");
-                $("#Delete_form").css("display", "none");
-                $("#DeleteForm").css("display", "none");
-
-            });
-
-            //insert Data
-            $("#Create_form").submit(function (event) {
-
-                event.preventDefault();
-
-                var created_by, agent_id, issue_desc;
-                //json object
-                const data = {
-                    "description": document.getElementById("description").value,
-                    "category": document.getElementById("category").value,
-                    "assignedTo": document.getElementById("assignedTo").value,
-                    "priority": document.getElementById("priority").value,
-                    "status": document.getElementById("status").value
-                }
-
-                console.log(data);
-
-                //call ajax function for post method
-                $.ajax({
-                    url: `http://localhost:8080/Defect-1.0-SNAPSHOT/servlets`,
-                    type: 'POST',
-                    data: data,
-                    success: function () {
-                        $("#successCreateModal").modal('show');
-                    },
-                    error: function () {
-                        $("#failCreateModal").modal('show');
-                    }
-                });
-
-            });
-
-            //displaying delete form
-            $("#showDelete").click(function () {
-
-                $("#Create_form").css("display", "none");
-                $("#Retrive_form").css("display", "none");
-                $("#RetrieveForm").css("display", "none");
-                $("#Delete_form").css("display", "block");
-
-            });
-
-            //Delete data
-            $("#Delete_form").submit(function (event) {
-
-                event.preventDefault();
-
-                $("#Delete_form").css("display", "none");
-                $("#DeleteForm").css("display", "block");
-                $("#DeleteForm").submit(function (event) {
-                const id = document.getElementById("Id").value;
-                const role = document.getElementById("role").value;
-                const Password = document.getElementById("password").value;
-
-                var webServiceURL = `http://localhost:8080/Defect-1.0-SNAPSHOT/filter?UserRole=${role}&password=${Password}&Id=${id}`;
-
-                //call ajax function for delete method
-                $.ajax({
-                    url: webServiceURL,
-                    type: 'DELETE',
-                    success: function (data) {
-                            
-                        if(data >= 1){
-                            if (role != "admin") {
-                                $("#unauthorisedAccess").modal('show');
-                            } else {
-                                $("#wrongPassword").modal('show');
-                            }
-                        }
-                        else {
-                            if (data === "success") {
-                                $("#successDeleteModal").modal('show');
-                            } else {
-                                alert("fail")
-                                $("#failDeleteModal").modal('show');
-                            }
-                        }         
-
-                        },
-                        error: function () {
-                            alert("Enter the value...");
-                        }
-                    });
-                    $('form').each(function () {
-                        this.reset()
-                    });
-                });
-            });
-
-
-            //displaying retrireve form
-            $("#showRetrive").click(function () {
-                $("#Retrive_form").css("display", "block");
-                $("#Create_form").css("display", "none");
-                $("#Delete_form").css("display", "none");
-                $("#DeleteForm").css("display", "none");
-
-            });
-
-            //Retrive data 
-            $("#Retrive_form").submit(function () {
-
-                event.preventDefault();
-                const retrieve = {
-                    "assignedTo": document.getElementById("assigned").value
-                }
-
-                console.log(retrieve);
-
-                //call ajax function for get method
-                $.ajax({
-                    url: `http://localhost:8080/Defect-1.0-SNAPSHOT/servlets`,
-                    type: 'GET',
-                    data: retrieve,
-                    dataType: 'json',
-                    success: toTable,
-                    error: Error
-                });
-
-                function Error(request, status, error) {
-                    alert('error' + request + status + error);
-
-                }
-
-                //for inserting retrieved data into table
-                function toTable(data, status, response) {
-
-                    console.log(data);
-                    if (data.length === 0) {
-                        $("#noData").modal('show');
-                    }
-                    else {
-                        $('form').each(function () {
-                            this.reset()
-                        });
-                        $("#table").css("display", "block");
-                        $("#RetrieveTable").empty();
-                        var tableRef = table.getElementsByTagName('tbody')[0];
-
-                        $(data).each(function (index, value) {
-                            var row = tableRef.insertRow(tableRef.rows.length);
-                            var cell1 = row.insertCell(0);
-                            var cell2 = row.insertCell(1);
-                            var cell3 = row.insertCell(2);
-                            var cell4 = row.insertCell(3);
-                            var cell5 = row.insertCell(4);
-                            var cell6 = row.insertCell(5);
-                            var cell7 = row.insertCell(6);
-
-                            cell1.innerHTML = value.Id;
-                            cell2.innerHTML = value.description;
-                            cell3.innerHTML = value.category;
-                            cell4.innerHTML = value.assignedTo;
-                            cell5.innerHTML = value.priority;
-                            cell6.innerHTML = value.status;
-                            cell7.innerHTML = "<input type='checkbox' value='" + value.Id + "' name='check' id='check_" + index + "' />";
-
-                        });
-                    }
-                }
-            });
-
-            $("#deleteMul").on('click', function (event) {
-
-                $("#RetrieveForm").css("display", "block");
-                $("#rolePwdSubmit").on('click',function (event) {
-
-                    const role = document.getElementById("role1").value;
-                    const Password = document.getElementById("password1").value;
-            
-                    event.preventDefault();
-                    var Id = [];
-
-                    $("input[name='check']:checked").each(function (i) {
-                        Id[i] = $(this).val();
-                    });
-
-                    var webServiceURL = `http://localhost:8080/Defect-1.0-SNAPSHOT/filter?UserRole=${role}&password=${Password}&Id=${Id}`;
-
-                    //call ajax function for delete method in retrieve form
-                    $.ajax({
-                        url: webServiceURL,
-                        type: 'DELETE',
-                        success: function (data) {
-
-                                if(data >= 1){
-                                    if(role != "admin"){
-                                        $("#unauthorisedAccess1").modal('show');
-                                    }else {
-                                        $("#wrongPassword1").modal('show');
-                                    }
-                                }
-                                else {
-                                    if(data === "success"){
-                                        jQuery('input:checkbox:checked').map(function() {
-                                        return this.value;
-                                    }).get();
-                                    jQuery('input:checkbox:checked').parents("tr").remove();
-                                        $("#successDeleteModal1").modal('show');
-                                    }else {
-                                        $("#failDeleteModal1").modal('show'); 
-                                    }
-                                }
-
-                            },
-                            error: function () {
-                                alert("select the value");
-                            }
-                        });
-
-                });
-
-            });
-
-        </script>
+        <script type="text/javascript" src="js/script.js"></script>
 
 </body>
 
