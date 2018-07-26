@@ -1,15 +1,15 @@
 package com.task.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
+import com.task.controller.CreateTaskServlet;
 import com.task.model.Task;
 import com.task.utils.DBConnection;
 
@@ -22,11 +22,15 @@ public class TaskDAO {
 	PreparedStatement preparedStatement = null;
 	String deleteStatus = null;
 
+	static final Logger log = Logger.getLogger(TaskDAO.class);
+
 	private static final String INSERT_INTO_TASK = "insert into tbl_tasks(taskName,category,dueDate,time,owner,priority,status,relatedTo,relatedDeals) values(?,?,?,?,?,?,?,?,?)";
 	private static final String DELETE_FROM_TASK = "delete from tbl_tasks where id=?";
 
-	//creates the task inside the database
+	// creates the task inside the database
 	public String createTask(Task task) throws ClassNotFoundException, SQLException {
+
+		log.info("inside create task method of TaskDAO");
 
 		connection = DBConnection.getConnection();
 
@@ -51,52 +55,28 @@ public class TaskDAO {
 		return status;
 
 	}
-	//this method retrieves the task from database using any field from the database(taskName,category,owner,priority,dueDate)
+
+	// this method retrieves the task from database using any field from the
+	// database(taskName,category,owner,priority,dueDate)
 	public List<Task> retrieveTasks(String searchString) throws ClassNotFoundException, SQLException {
+		
+		log.info("inside retrieve task method of TaskDAO");
+		
 		ResultSet result = null;
 
-		PreparedStatement preparedStatement1 = null, preparedStatement2 = null, preparedStatement3 = null,
-				preparedStatement4 = null, preparedStatement5 = null;
 		connection = DBConnection.getConnection();
 
 		taskList = new ArrayList<>();
 
-		String query1 = "select * from tbl_tasks where taskName='" + searchString + "'";
-		preparedStatement1 = connection.prepareStatement(query1, ResultSet.TYPE_SCROLL_INSENSITIVE);
-		result = preparedStatement1.executeQuery();
+		// this query will retrieves the data based upon any field regarding the
+		// database
+		String query1 = "select * from tbl_tasks where taskName='" + searchString + "' or category='" + searchString
+				+ "' or owner='" + searchString + "' or priority='" + searchString + "' or dueDate='" + searchString
+				+ "' ";
 
-		if (result.next()) {
-			result.beforeFirst();
-		} else {
-			String query2 = "select * from tbl_tasks where category='" + searchString + "'";
-			preparedStatement2 = connection.prepareStatement(query2);
-			result = preparedStatement2.executeQuery();
-			if (result.next()) {
-				result.beforeFirst();
-			} else {
-				String query3 = "select * from tbl_tasks where owner='" + searchString + "'";
-				preparedStatement3 = connection.prepareStatement(query3);
+		preparedStatement = connection.prepareStatement(query1);
+		result = preparedStatement.executeQuery();
 
-				result = preparedStatement3.executeQuery();
-				if (result.next()) {
-					result.beforeFirst();
-				} else {
-					String query4 = "select * from tbl_tasks where priority='" + searchString + "'";
-					preparedStatement4 = connection.prepareStatement(query4);
-					result = preparedStatement4.executeQuery();
-					if (result.next()) {
-						result.beforeFirst();
-					} else {
-						String query5 = "select * from tbl_tasks where dueDate='" + searchString + "'";
-						preparedStatement5 = connection.prepareStatement(query5);
-						result = preparedStatement5.executeQuery();
-
-					}
-				}
-
-			}
-
-		}
 		while (result.next()) {
 
 			task = new Task();
@@ -119,8 +99,10 @@ public class TaskDAO {
 
 	}
 
-	//this method deletes the task inside database using task id
+	// this method deletes the task inside database using task id
 	public String deleteTask(Integer taskId) throws ClassNotFoundException, SQLException {
+		
+		log.info("inside delete task method of TaskDAO");
 
 		connection = DBConnection.getConnection();
 
@@ -138,4 +120,3 @@ public class TaskDAO {
 		return deleteStatus;
 	}
 }
-

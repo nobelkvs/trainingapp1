@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.google.gson.Gson;
 import com.task.model.Task;
 import com.task.service.*;
@@ -23,9 +25,12 @@ public class RetrieveTaskServlet extends HttpServlet {
 	List<Task> taskList = null;
 	TaskService taskService = null;
 	Task task = null;
+	static final Logger log = Logger.getLogger(RetrieveTaskServlet.class);
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		log.info("inside Retrieve Task Servlet");
 
 		out = response.getWriter();
 

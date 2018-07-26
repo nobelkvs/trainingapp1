@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.task.model.Task;
 import com.task.service.TaskService;
 /*
@@ -17,13 +19,16 @@ public class CreateTaskServlet extends HttpServlet {
 
 	String insertStatus = "";//used to hold the insert status of task in the database
 	
+	static final Logger log=Logger.getLogger(CreateTaskServlet.class);
+	
 	/*
 	 *  this method recieves the data from the ajax and binds to task object and  sends the object to service 
 	 */
-   
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+        log.info("inside Create task controller");
 
 		PrintWriter out = response.getWriter();
 		String taskName = request.getParameter("taskName");
