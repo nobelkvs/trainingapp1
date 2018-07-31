@@ -1,0 +1,160 @@
+<html>
+
+<head>
+    <title>Groups Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body class="image">
+    <div class="card text-center">
+        <div class="card-header">
+            <h1>Groups Application</h1>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><button class="btn" onclick="home()">Home</button></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="create">CREATE</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="retrieve">RETRIEVE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="delete">DELETE</a>
+                </li>
+            </ul>
+         </div>
+    </nav>
+
+    <h4 id="homePageData" class="homePageData" style="text-align: center;"></h4>
+
+    <div class="container">
+
+        <div class="row">
+
+
+            <div class="col-md-3"></div>
+
+            <div class="col-md-6 form_style">
+                <!-alert messages->
+                <div id="alert_placeholder"></div>
+
+                <!--Creation form -->
+
+                <form style="display: none;" id="create_form">
+                    <div class="form-group">
+
+                        <label>Group Name </label>
+                        <input type="text" class="form-control" id="groupName" placeholder="GroupName" pattern="[A-Za-z]{1,45}" required>
+
+                    </div>
+                    <div class="form-group">
+                        <label >Group Owner</label>
+                        <input type="text" class="form-control" id="owner" placeholder="Owner" pattern="[A-Za-z]{1,45}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>SendAs Email</label>
+                        <input type="email" class="form-control" id="sendAs" placeholder="SendAs Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" value="NO" id="feedback">
+                        <label class="form-check-label">Enable Feedback</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="reset" class="btn btn-primary" id="cancel1">Cancel</button>
+
+                </form>
+
+                <!--Retrieve form -->
+                <form style="display: none;" id="retrieve_form">
+                    <div class="form-group">
+
+                        <label>Group Name</label>
+                        <input type="text" class="form-control" id="GroupName1" placeholder="GroupName" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary" id="cancel2">Cancel</button>
+                    <br><br>
+                    <div id="tableshow"  style="display: none">     
+                    <input id="myInput" type="text" placeholder="Search...." class="form-control">
+                    <br><br>
+
+                   <div class="table-responsive">
+
+                    <table class="table" id="Group" style="display: block;">
+
+                        <thead class="thead-dark">
+                            <tr>
+                                <th data-field="state" data-checkbox="true"></th>
+                                <!-- <th data-field="group_id">Group_Id</th> -->
+                                <th >Group Name</th>
+                                <th >Owner Name</th>
+                                <th >SendAs</th>
+                                <th >Feedback</th>
+                            </tr>
+                        </thead>
+                     <tbody id="myTable" style="color:black;">
+
+                     </tbody>
+
+                    </table>
+                   </div>
+                    <button type="button" id="deletebtn" class="btn btn-outline-danger" style="margin: left">DELETE</button>
+                    </div>
+        
+                </form>
+
+                <!--Delete form based on given credentials -->
+
+                <form style="display: none;" id="delete_form">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Username" pattern="[A-Za-z]{1,7}" required>
+                        <label>Admin Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                        <label>Group_Id</label>
+                        <input type="text" class="form-control" id="gid" placeholder="Group_Id" required>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary" id="cancel3">Cancel</button>
+                </form>
+
+
+
+
+                <form style="display: none;" id="delete_form2">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" id="username1" placeholder="Username" pattern="[A-Za-z]{1,7}" required>
+                            <label>Admin Password</label>
+                            <input type="password" class="form-control" id="password1" placeholder="Password" required>
+    
+                        </div>
+                        <button type="button" id="deletebtnn" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-primary" id="cancel4">Cancel</button>
+                </form>
+            </div>
+             <div class="col-md-3"></div>
+     </div>
+    </div>
+    <div class="fixed-bottom">
+        <footer> Copyright © 2018 by Rajashekar Shingarapu. </footer>
+    </div>
+
+    <script type="text/javascript" src="js/group.js" ></script>
+
+  </body>
+
+</html>
