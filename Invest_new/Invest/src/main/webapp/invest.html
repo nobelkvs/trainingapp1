@@ -1,0 +1,231 @@
+<html>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+<head>
+    <title>INVESTMENT APPLICATION</title>
+    <link rel="stylesheet" href="new.css" crossorigin="anonymous">
+
+</head>
+<!-- Navigation Bar of Invest Application -->
+
+<body class="image" id="alert">
+<div id="header">
+    <span class="d-block p-2 bg-dark text-white">Saving Investment</span>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav" id="submenu">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#Home" id="s0">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#Create" id="s1">Invest
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Retrieve" id="s3">Retrieve</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Delete" id="s4" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Delete</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</nav>
+<!-- Home form of Invest Application -->
+<div class="content" id="home">
+    <div class="col-sm-8 text-left">
+        <img src="https://moneyline.sg/wp-content/uploads/2015/11/investments-879x480.jpg" alt="Smiley face" width="300" height="300"
+             align="left">
+        <h1>Investment</h1>
+        <p>An investment is an asset or item acquired with the goal of generating income or appreciation. In an economic
+            sense, an investment is the purchase of goods that are not consumed today but are used in the future to create
+            wealth. In finance, an investment is a monetary asset purchased with the idea that the asset will provide
+            income in the future or will later be sold at a higher price for a profit.</p>
+        <hr>
+
+    </div>
+    <img src="http://www.get-rich-and-retire-early.com/wp-content/uploads/2018/01/investment.jpg" alt="Smiley face" width="300"
+         height="300" align="right">
+</div>
+<!-- Invest Page for the application -->
+<div class="container">
+    <div id="alert_placeholder"></div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 form_style">
+            <form style="display: none;" id="Create">
+                <div class="form-group">
+                    <label>First Name:</label>
+                    <input type="text" id="First_Name" minlength=5 class="form-control" title="Enter only Alphabets" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <label>Last Name:</label>
+                    <input type="text" minlength=5 class="form-control" id="Last_Name" title="Enter only Alphabets" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <label>Prinicipal Amount:</label>
+                    <input type="Number" min="1000" max="1000000" class="form-control" id="Principal" placeholder="Prinicipal Amount">
+                </div>
+                <div class="form-group">
+                    <label>Annual Rate:</label>
+                    <input type="Number" min="1" max="10" class="form-control" id="Annual_rate" placeholder="Annual Rate">
+                </div>
+                <div class="form-group">
+                    <label>Number Of Years:</label>
+                    <input type="Number" min="1" max="5" class="form-control" id="No_years" placeholder="Number Of Years">
+                </div>
+                <div class="form-group">
+                    <label>Periods per year:</label>
+                    <input type="Number" min="3" max="6" class="form-control" id="Periods" placeholder="Periods per year">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-primary" id="c1">Cancel</button>
+                <br>
+            </form>
+        </div>
+
+        <div class="col-md-3">
+
+        </div>
+
+    </div>
+</div>
+<!-- Retrival form -->
+<div class="container">
+    <div id="alert_placeholder_retrieve"></div>
+    <form style="display: none;" id="Retrieve">
+        <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" class="form-control" name="username" minlength=5 id="First" placeholder="First Name" pattern="[A-Za-z]{1,15}"
+                   title="Enter only Alphabets">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="myDIV1" class="table-responsive">
+            <table class="table table-hover" id="retrive" style="display: none">
+                <caption>Investment Details</caption>
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">First_Name</th>
+                    <th scope="col">Last_Name</th>
+                    <th scope="col">Principal_Amount</th>
+                    <th scope="col">Annual_rate</th>
+                    <th scope="col">No_Of_years</th>
+                    <th scope="col">Periods_per_Years</th>
+                </tr>
+                </thead>
+                <tbody id="myTable">
+
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 form_style">
+                <input type="text" style="display: none" id="myInput" placeholder="Search.." title="Type in a name">
+            </div>
+        </div>
+    </form>
+    <br>
+
+</div>
+<!-- Admin pop-up page -->
+<div id="id01" class="modal">
+    <form class="modal-content animate" id="admin">
+        <div class="imgcontainer">
+            <img src="https://cdn3.iconfinder.com/data/icons/gray-user-toolbar/512/oficcial-512.png" width="100" height="200" alt="Avatar"
+                 class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="uname">
+                <b>Username:</b>
+            </label>
+            <input type="text" placeholder="Enter Username" id="uname" pattern="[A-Za-z]{1,15}" minlength=5 title="Enter only Alphabets">
+            <label for="psw">
+                <b>Password:</b>
+            </label>
+            <input type="password" placeholder="Enter Password" id="psw" required>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="submit" id="check" class="btn btn-primary">Submit</button>
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-primary" id="return">Cancel</button>
+        </div>
+
+    </form>
+</div>
+
+<!-- Delete form -->
+<div class="container">
+    <div id="alert_placeholder_fail"></div>
+    <form style="display: none;" id="Delete">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter">
+                        <span class="glyphicon glyphicon-filter"></span> Filter</button>
+                </div>
+            </div>
+            <div id="myDIV" class="table-responsive">
+                <table class="table table-striped" id="retrive1" style="display: none">
+                    <thead class="thead-dark">
+                    <tr class="filters">
+                        <th>
+                            <input type="text" class="form-control" placeholder="User Id" disabled>
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" placeholder="First Name" disabled>
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Last Name" disabled>
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Principal" disabled>
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Annual rate" disabled>
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Years" disabled>
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Periods" disabled>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="myTable1">
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="alert_placeholder_delete"></div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="js/invest.js"></script>
+</body>
+
+</html>
