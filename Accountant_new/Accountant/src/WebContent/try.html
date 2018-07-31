@@ -1,0 +1,109 @@
+<html>
+<head>
+        
+</head>
+<body>
+    <table border="1" id="movie">
+        <thead>
+            <tr>
+                <th class="ranking">Ranking</th>
+                <th class="title">Movie</th>
+                <th class="year">Release Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Citizen Kane</td>
+                <td>1941</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>The Godfather</td>
+                <td>1972</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>The Godfather</td>
+                <td>1972</td>
+            </tr>
+         ...
+        </tbody>
+    </table>
+ 
+    <script type='text/javascript'>
+ 
+        $(function () {
+            // Selectors for future use
+            var myTable = "#movie";
+            var myTableBody = myTable + " tbody";
+            var myTableRows = myTableBody + " tr";
+            var myTableColumn = myTable + " th";
+     
+            // Starting table state
+            function initTable() {
+     
+                // Increment the table width for sort icon support
+                $(myTableColumn).each(function () {
+                    var width = $(this).width();
+                    $(this).width(width + 40);
+                });
+     
+                // Set the first column as sorted ascending
+                $(myTableColumn).eq(0).addClass("sorted-asc");
+     
+                //Sort the table using the current sorting order
+                sortTable($(myTable), 0, "asc");
+     
+            }
+     
+            // Table starting state
+            initTable();
+     
+            // Table sorting function
+            function sortTable(table, column, order) {
+                var asc = order === 'asc';
+                var tbody = table.find('tbody');
+     
+                // Sort the table using a custom sorting function by switching 
+                // the rows order, then append them to the table body
+                tbody.find('tr').sort(function (a, b) {
+                    if (asc) {
+                        return $('td:eq(' + column + ')', a).text()
+                            .localeCompare($('td:eq(' + column + ')', b).text());
+                    } else {
+                        return $('td:eq(' + column + ')', b).text()
+                            .localeCompare($('td:eq(' + column + ')', a).text());
+                    }
+                }).appendTo(tbody);
+     
+            }
+     
+            // Heading click
+            $(myTableColumn).click(function () {
+     
+                // Remove the sort classes for all the column, but not the first
+                $(myTableColumn).not($(this)).removeClass("sorted-asc sorted-desc");
+     
+                // Set or change the sort direction
+                if ($(this).hasClass("sorted-asc") || $(this).hasClass("sorted-desc")) {
+                    $(this).toggleClass("sorted-asc sorted-desc");
+                } else {
+                    $(this).addClass("sorted-asc");
+                }
+     
+                //Sort the table using the current sorting order
+                sortTable($(myTable),
+                            $(this).index(),
+                            $(this).hasClass("sorted-asc") ? "asc" : "desc");
+     
+            });
+     
+        });
+     
+    </script>
+</body>
+<form>
+    
+</form>
+</html>
