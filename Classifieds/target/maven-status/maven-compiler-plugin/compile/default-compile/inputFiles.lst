@@ -1,0 +1,9 @@
+/home/agile/IdeaProjects/Classifieds/src/main/java/com/classifieds/model/Classifieds.java
+/home/agile/IdeaProjects/Classifieds/src/main/java/com/classifieds/controller/ClassifiedsController.java
+/home/agile/IdeaProjects/Classifieds/src/main/java/com/classifieds/controller/ContextListener.java
+/home/agile/IdeaProjects/Classifieds/src/main/java/com/classifieds/DAO/ClassifiedsDAO.java
+/home/agile/IdeaProjects/Classifieds/src/main/java/com/classifieds/service/ClassifiedsServiceImpl.java
+/home/agile/IdeaProjects/Classifieds/src/main/java/com/classifieds/service/ClassifiedsService.java
+/home/agile/IdeaProjects/Classifieds/src/main/java/com/classifieds/utils/MySqlConnection.java
+/home/agile/IdeaProjects/Classifieds/src/main/java/com/classifieds/DAO/ClassifiedsDAOImpl.java
+/home/agile/IdeaProjects/Classifieds/src/main/java/com/classifieds/Filters/DeleteFilter.java

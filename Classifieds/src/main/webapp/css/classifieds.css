@@ -1,0 +1,53 @@
+.container1{
+
+    background-image:  url("https://image.shutterstock.com/image-photo/blue-background-only-empty-simply-260nw-492768928.jpg");
+    background-repeat: no-repeat;
+    background-size: 2100px;
+
+}
+
+
+footer {
+        background-color: #777;
+        padding: 5px;
+        text-align: center;
+        color: white;
+        }
+
+
+
+table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+th  {
+       background-color: rgb(95, 158, 160);
+       color:white;
+       text-align: center
+
+    }
+
+tr:nth-child(even) {
+
+        background-color: #dddddd;
+
+    }
+tr:nth-child(odd) {
+
+        background-color: whitesmoke;
+
+    }
+
+label{
+
+        color:blue;
+
+}

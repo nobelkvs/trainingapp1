@@ -1,0 +1,267 @@
+<!doctype html>
+    <html lang="en">
+        <head>
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+            <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+            <!--Toaster cdn -->
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
+            <!--Favicon -->
+            <link rel="shortcut icon" type="image/png" href="https://lh3.googleusercontent.com/uyp45ZkNYECuJPHNkFDEONnLDCqwIgRqj9l7gxooEVRKsZiX4BJm8JrX67nzU_eVJQ"/>
+
+            <!--title for browser-->
+            <title>Classifieds</title>
+
+            <!--CSS Styling-->
+
+            <link rel="stylesheet" href="css/classifieds.css" type="text/css">
+
+        </head>
+
+        <body class="container1">
+
+            <!--header container-->
+            <div class="container-fluid">
+
+                <header style="text-align:center"><h1>Classifieds</h1></header>
+
+            </div>
+
+            <!--navbar-->
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+                <a class="navbar-brand" href="#" id="home">Home</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item ">
+
+                            <a class="nav-link" href="#" id="create">Create<span class="sr-only">(current)</span></a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="#" id="retrive">Retrieve</a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </nav>
+
+            <br><br>
+
+            <!--display container-->
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-3"></div>
+
+                    <div class="col-md-6 form_style">
+
+                        <!--Home page info-->
+
+                            <p id="homeForm" style="font-size:40px">
+
+                                This application will help you to post and see the classifieds. User can post the classifieds and can see the classifieds based on city. User cannot delete the classifieds , only admin can delete them.
+                                
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-o3igI4xGfFLQJYFJgtDiazCVwPSvzd1QYCifX5nAkvzyoWaH" width="500px">
+                                
+                            </p>
+
+
+                        <!--Create Form -->
+
+                        <form style="display: none;" id="CreateForm">
+
+                            <div class="form-group">
+
+                                <label>Classified Description</label>
+
+                                <textarea class="form-control"  id="classifiedDesc"  rows="3" placeholder="Enter Description" required></textarea>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>Category</label>
+
+                                <input class="form-control" type="text"id="classifiedCategory" placeholder="Enter Category" required pattern="[A-Za-z]{2,45}" title="Enter only alphabets and range is 45">
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>City</label>
+
+                                <input class="form-control" type="text" id="classifiedCity" placeholder="Enter City" required pattern="[A-Za-z]{2,45}" title="Enter only alphabets and range is 45">
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                            <button type="reset" class="btn btn-primary" id="createCancel">Cancel</button>
+
+                        </form>
+
+                        <!--Retrieve Form -->
+
+                        <form style="display: none;" id="retriveForm">
+
+                            <div class="form-group">
+
+                                <label>City</label>
+
+                                <input class="form-control" type="text" id="searchCity" placeholder="Enter city" required pattern="[A-Za-z]{2,45}" title="Enter only alphabets and range is 45">
+
+                            </div>
+
+                            <div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                            <button type="reset" class="btn btn-primary" id="retrieveCancel">Cancel</button>
+
+                                <br><br>
+
+                            </div>
+
+                            <div id="tableDiv" style="display:none">
+
+                                <input id="myInput" type="text" placeholder="Search..">
+
+                                <br><br>
+
+                                <caption>Classified Details</caption>
+
+                                <!-- Table to display retrieved values -->
+
+                                <table id="classified" class="classifiedTable" >
+
+                                    <thead>
+
+                                        <tr>
+
+                                            <th data-field="state" data-checkbox="true"></th>
+
+                                            <th data-field="classifiedDescription" data-filter-control="select" data-sortable="true" scope="col">
+                                                Classifieds
+
+                                            </th>
+
+                                            <th data-field="category" data-filter-control="input" data-sortable="true" scope="col">
+                                                category
+                                            <th data-field="city" data-filter-control="input" data-sortable="true" scope="col">
+                                                city
+                                            </th>
+
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody id="myTable">
+
+                                    </tbody>
+
+                                </table>
+
+                                <br><br>
+
+                                <!--Button to delete the retrieved data -->
+
+                                <button type="button" id="deleteBtn" style="margin: left">DELETE</button>
+
+                            </div>
+
+
+                        </form>
+
+                        <!--Form to delete the retrieved data directly from the table -->
+
+                        <form style="display: none;" id="deleteForm1">
+
+                            <div class="form-group">
+
+
+                                <label>Role</label>
+
+                                <select class="custom-select" id="roleId1" name="things1" required>
+
+                                    <option value="">Enter role</option>
+
+                                    <option value="admin" id="admin">admin</option>
+
+                                    <option value="user" id="user">user</option>
+
+                                </select>
+
+                                <div id="add1" style="display: none;">
+
+                                    <label>Password</label>
+
+                                    <input class="form-control" type="password" id="pwd1" placeholder="Enter password">
+
+                                </div>
+
+
+
+                            </div>
+
+                            <button type="button" class="btn btn-primary" id="delSubmit">Submit</button>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <script type="text/javascript" src="js/classifieds.js"></script>
+
+            <!--footer container-->
+
+            <div class="fixed-bottom">
+
+                <footer>
+
+                    <p>Footer</p>
+
+                </footer>
+
+            </div>
+
+
+        </body>
+
+    </html>
