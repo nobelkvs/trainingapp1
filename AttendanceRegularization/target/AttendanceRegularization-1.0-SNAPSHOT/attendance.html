@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>Attendance Regularization</title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <header style="text-align:center">
+            <h1>Attendance Regularization</h1>
+        </header>
+    </div>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#Home" id="home">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#Create" id="Create">Create
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#Retrieve" id="Retrieve">Retrieve</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#Delete" id="Delete">Delete</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="card-body">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 form_style">
+
+                    <!-------------------- Home form --------- -->
+
+                    <form id="Home_form">
+
+                        <p>A manager receives requests from employees to regularize their attendance based on org policy, such
+                            as month end attendance processing, or when sign in/out of Employee Self Serve is not available
+                            for a period. Admin can also regularize attendance using greytHR.</p>
+
+                    </form>
+
+                    <!-------------------- Create form --------- -->
+
+                    <form style="display: none;" id="Create_form">
+                            <div id="message" class="message"></div>
+                        <div class="form-group">
+                            <label for="Id">Employee Id</label>
+                            <input type="text" class="form-control" id="id" pattern="[0-9]{1,10}" placeholder="Enter your id" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ldate">Date</label>
+                            <input type="date" class="form-control" id="date" placeholder="Enter date">
+                        </div>
+                        <div class="form-group">
+                            <label for="cit">Check In Time</label>
+                            <input type="text" class="form-control" id="checkintime" placeholder="HH:MM:SS(24 hours format)">
+                        </div>
+                        <div class="form-group">
+                            <label for="cot">Check Out Time</label>
+                            <input type="text" class="form-control" id="checkouttime" placeholder="HH:MM:SS(24 hours format)">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="cancel">Cancel</button>
+
+                        <div id="successCreateModal" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>Successfully Inserted
+                                    <img src="https://png.icons8.com/flat_round/50/000000/checkmark.png">
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!---------- ------- Delete form ---------- -->
+
+                    <form style="display: none;" id="Delete_form">
+                            <div id="dltmessage" class="message"></div>
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <input type="text" class="form-control" id="userRole" placeholder="Enter role here">
+                        </div>
+                        <div class="form-group">
+                            <label for="Eid">Employee ID</label>
+                            <input type="text" class="form-control" id="Eid" placeholder="Enter Employee id">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="dcancel">Cancel</button>
+
+                    </form>
+
+                    <!---------- ------- Retrieve form ------------>
+
+                    <form style="display: none;" id="Retrieve_form">
+                            <div id="rtvmessage" class="message"></div>
+                        <div class="form-group">
+                            <label for="rdate">Date</label>
+                            <input type="date" class="form-control" id="Rdate" placeholder="Enter date">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" id="rtvbtn">Submit</button>
+                        </div>
+                        <div class="form-group" id="table" style="display: none">
+                            <input id="myInput" type="text" placeholder="Search Id here">
+                            <table class="Retrieve" id="retreiveTable">
+
+                                <!---------- ------- Create table ---------- -->
+                                <thead>
+                                    <tr>
+                                        <th>
+                                        </th>
+                                        <th>Employee ID</th>
+                                        <th>Date</th>
+                                        <th>Check In Time</th>
+                                        <th>Check Out Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                </tbody>
+                            </table>
+                            <br>
+                            <button type="button" id="deletebtn" style="margin: left">DELETE</button>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/JavaScript" src="js/attendance.js"></script>
+</body>
+
+</html>

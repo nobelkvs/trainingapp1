@@ -1,0 +1,64 @@
+        h1,
+        h1 {
+            font-size: 2.5rem;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table td,
+        table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            color: #004085;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        body {
+            background-image: url("https://wallup.net/wp-content/uploads/2017/11/23/441968-empty-stage_shots-stages-spotlights-lights-simple_background-gradient-748x468.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        label {
+            margin-bottom: .5rem;
+            color: #0062cc;
+            font-weight: bold;
+            font-size: 20px;
+        }
+.success{
+    color: green;
+}
+.failure{
+    color: red;
+}
+.message{
+    text-align: center;
+}
+
