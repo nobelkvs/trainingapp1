@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface NoteService {
 
-    public int createNoteService(NoteModel noteModel);
+    int createNote(NoteModel noteModel);
 
-    public int deleteNoteService(String[] arr);
+    int[] deleteNote(String[] arr);
 
-    public List<NoteModel> retrieveByNoteNameService();
+    List<NoteModel> retrieveByNoteName();
 }

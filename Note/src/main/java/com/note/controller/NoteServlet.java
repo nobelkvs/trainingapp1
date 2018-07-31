@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,12 +22,31 @@ public class NoteServlet extends HttpServlet {
     Logger log = Logger.getLogger(NoteServlet.class);
 
     //options function
+    //
+
+    /**
+     *
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+
     protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("in options servlet");
         super.doOptions(req, resp);
     }
 
     //post
+
+    /**
+     * gets the data from ui and calls the service to create a note
+     * @param req
+     * @param res
+     * @throws IOException
+     * @throws ServletException
+     */
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         PrintWriter out = res.getWriter();
         //to get data
@@ -48,7 +66,7 @@ public class NoteServlet extends HttpServlet {
         try {
             //creating service object and calling it
             NoteService ns = new NoteServiceImpl();
-            status = ns.createNoteService(noteModel);
+            status = ns.createNote(noteModel);
         } catch (Exception e) {
             log.error(e);
             e.printStackTrace();
@@ -62,6 +80,14 @@ public class NoteServlet extends HttpServlet {
 
 
     }
+
+    /**
+     * method to retrieve data from database and pass to ui
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("in do get");
@@ -77,7 +103,7 @@ public class NoteServlet extends HttpServlet {
             log.info("try");
 
             //calling service method
-            tlist = ns.retrieveByNoteNameService();
+            tlist = ns.retrieveByNoteName();
 
             //converting list to json
             String obj = gson.toJson(tlist);
@@ -94,6 +120,13 @@ public class NoteServlet extends HttpServlet {
 
     }
 
+    /**
+     * method to perform delete operation
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     //delete method
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -111,11 +144,31 @@ public class NoteServlet extends HttpServlet {
 
         //service object creation and calling method
         NoteService ns = new NoteServiceImpl();
-        int count = ns.deleteNoteService(multidelete);
-        if (count == multidelete.length)
-            out.print("deleted sucessfully");
-        else
-            out.print("failed to delete");
+
+        int[] deletearr = ns.deleteNote(multidelete);
+
+        for (int i = 0; i < deletearr.length; i++) {
+            if (deletearr[i] > 0)
+              //  out.println(multidelete[i] + "deleted sucessfully");
+                out.print("deleted sucessfully");
+            else
+                //out.println(multidelete[i] + "deleted sucessfully");
+                out.print("deleted sucessfully");
+//
+//        int count=ns.deleteNoteService(multidelete);
+//        if(count==multidelete.length)
+//            out.print("deleted sucessfully");
+//        else
+//               out.print("failed to delete");
+
+
+        }
+
+
+//        if (count == multidelete.length)
+//            out.print("deleted sucessfully");
+//
     }
 }
+
 

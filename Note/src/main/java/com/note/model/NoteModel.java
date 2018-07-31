@@ -6,10 +6,11 @@ import lombok.ToString;
 
 import java.io.Serializable;
 
-
+//getter and setter methods(lombok)
 @Setter
 @Getter
 @ToString
+//model class
 public class NoteModel implements Serializable {
 
     private Integer id;

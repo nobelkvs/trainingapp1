@@ -5,9 +5,9 @@ import com.note.model.NoteModel;
 import java.util.List;
 
 public interface NoteDao {
-    public int createNoteDao(NoteModel noteModel);
+    int createNote(NoteModel noteModel);
 
-    public int deleteNoteDao(String[] arr);
+    int[] deleteNote(String[] arr);
 
-    public List<NoteModel> retrieveByNoteNameDao();
+    List<NoteModel> retrieveByNoteName();
 }

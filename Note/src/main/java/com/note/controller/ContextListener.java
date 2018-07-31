@@ -20,7 +20,7 @@ public class ContextListener implements ServletContextListener {
         ServletContext context = event.getServletContext();
         String log4jConfigFile = context.getInitParameter("log4j-config-location");
         String fullPath = context.getRealPath("") + File.separator + log4jConfigFile;
-        System.out.println("fullPath " + fullPath);
+        //System.out.println("fullPath " + fullPath);
         PropertyConfigurator.configure(fullPath);
 
     }

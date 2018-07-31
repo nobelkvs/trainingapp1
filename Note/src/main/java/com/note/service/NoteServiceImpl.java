@@ -1,6 +1,5 @@
 package com.note.service;
 
-import com.note.controller.NoteServlet;
 import com.note.dao.NoteDao;
 import com.note.dao.NoteDaoImpl;
 import com.note.model.NoteModel;
@@ -15,32 +14,63 @@ public class NoteServiceImpl implements NoteService {
     int status = 0;
     Logger log = Logger.getLogger(NoteServiceImpl.class);
 
-    public int createNoteService(NoteModel noteModel) {
+    /**
+     * create method in service,calls the dao method
+     *
+     * @param noteModel
+     * @return
+     */
+
+    public int createNote(NoteModel noteModel) {
         log.info("into  create service");
-        log.info(noteModel);
+        log.info("object : " + noteModel);
         //object creation for dao and calling method
         nd = new NoteDaoImpl();
-        status = nd.createNoteDao(noteModel);
+        status = nd.createNote(noteModel);
 
         return status;
     }
 
-    public int deleteNoteService(String[] arr) {
+    /**
+     * delete method for service,calls the dao method
+     *
+     * @param arr
+     * @return
+     */
+
+    public int[] deleteNote(String[] arr) {
+        int[] deletearr = new int[arr.length];
         nd = new NoteDaoImpl();
         log.info("in service delete");
-        log.info(arr);
+        log.info("array : " + arr);
         //object creation for dao and calling method
-        status = nd.deleteNoteDao(arr);
-        return status;
+        try {
+            //x=arr.length;
+            deletearr = nd.deleteNote(arr);
+            //status = nd.deleteNoteDao(arr);
+
+        } catch (Exception e) {
+            log.error("sql exception " + e);
+            e.printStackTrace();
+
+        }
+        return deletearr;
+        //return status;
     }
 
-    public List<NoteModel> retrieveByNoteNameService() {
+    /**
+     * retrieve method in service,calls the dao method
+     *
+     * @return
+     */
+
+    public List<NoteModel> retrieveByNoteName() {
         nd = new NoteDaoImpl();
         log.info("in service retrieve");
         // log.info(name);
         List<NoteModel> list = new ArrayList<NoteModel>();
         //object creation for dao and calling method
-        list = nd.retrieveByNoteNameDao();
+        list = nd.retrieveByNoteName();
         return list;
     }
 }

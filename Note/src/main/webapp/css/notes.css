@@ -1,0 +1,22 @@
+.note_details{
+      align-items: center
+ }
+ h2 {
+        margin-bottom: .5rem;
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.2;
+        color:white;
+ }
+ label
+ {
+    color:black;
+ }
+ 
+ img {
+    height: 450;
+    width: 500;
+    vertical-align: initial;
+    border-style: none;
+    float: left;
+ }

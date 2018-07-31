@@ -1,14 +1,9 @@
 package com.note.dao;
 
-import com.note.controller.NoteServlet;
 import com.note.model.NoteModel;
 import com.note.utils.MysqlConnection;
 import org.apache.log4j.Logger;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +13,7 @@ import java.util.List;
 
 public class NoteDaoImpl implements NoteDao {
 
-    // sql quries
+    // sql queries
     private String SQL_INSERT = "insert into  note (subject,note,owner) values (?,?,?)";
     private String SQL_DELETE = " DELETE FROM note WHERE id = ?";
     private String SQL_RETRIVE = "SELECT * FROM note ";
@@ -29,13 +24,20 @@ public class NoteDaoImpl implements NoteDao {
     MysqlConnection c = new MysqlConnection();
 
     int status = 0;
-    int count=0;
+    int count = 0;
     Connection conn = null;
 
-    //method to create a note
-    public int createNoteDao(NoteModel noteModel) {
+    /**
+     * method to create a note, stores it in database
+     *
+     * @param noteModel
+     * @return
+     */
+
+
+    public int createNote(NoteModel noteModel) {
         log.info("into create dao");
-        log.info(noteModel);
+        log.info("object : " + noteModel);
         int insertStatus = 0;
 
         //checking database connection
@@ -60,53 +62,72 @@ public class NoteDaoImpl implements NoteDao {
             conn.commit();
 
         } catch (Exception e1) {
-            log.error(e1);
+            log.error("sql exception " + e1);
             e1.printStackTrace();
         }
 
         return insertStatus;
     }
 
-    //method to delete a note
-    public int deleteNoteDao(String[] arr) {
+    /**
+     * method to delete a note
+     *
+     * @param arr
+     * @return
+     */
+    public int[] deleteNote(String[] arr) {
         log.info("in delete dao");
+        int[] deletearr = new int[arr.length
+                ];
 
-        log.info(arr);
+        log.info("array in dao : " + arr);
         //checking db connection
         try {
             conn = c.getConnect();
         } catch (Exception e) {
-            log.error("can not connect");
+            log.error("can not connect" + e);
         }
-        System.out.print(conn);
+        //System.out.print(conn);
         PreparedStatement ps = null;
         for (int i = 0; i < arr.length; i++) {
 
             try {
+                log.info("in try for delete" + arr.length);
                 // calling sql query and setting values to it
                 ps = conn.prepareStatement(SQL_DELETE);
                 ps.setInt(1, Integer.parseInt(arr[i]));
                 status = ps.executeUpdate();
-                if(status >  0) {
-                    count+= 1;
-                    log.info("in if "+status +count);
-                }
+                log.info("deleted" + status);
+                deletearr[i] = status;
+                log.info(deletearr[i]);
+//                if(status >  0) {
+//                    count+= 1;
+//                    log.info("in if "+status +count);
+//                }
+                //else array index store in variable returjn to js alerrt
 
             } catch (SQLException e) {
-                log.error(e);
+                log.error("sql exception " + e);
                 e.printStackTrace();
             }
 
-
+            log.info("in loop " + i);
         }
 
         log.info(status);
-        log.info("count is   "+count);
-        return count;
+        log.info("delete array is   " + deletearr.length);
+        //log.info(count);
+        // return count;
+        return deletearr;
     }
 
-    //method to retrieve data
-    public List<NoteModel> retrieveByNoteNameDao() {
+    /**
+     * method to retrieve data
+     *
+     * @return
+     */
+
+    public List<NoteModel> retrieveByNoteName() {
         List<NoteModel> list = new ArrayList<NoteModel>();
         log.info("in retrive dao");
         //log.info(name);
@@ -139,7 +160,7 @@ public class NoteDaoImpl implements NoteDao {
 
             //return list;
         } catch (SQLException e) {
-            log.error(e);
+            log.error("sql exception " + e);
         }
 
         return list;

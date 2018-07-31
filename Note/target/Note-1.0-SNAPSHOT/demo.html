@@ -1,0 +1,190 @@
+<link rel="stylesheet" href="/path/to/bootstrap.min.css">
+2
+<script src="/path/to/jquery.min.js"></script>
+3
+<script src="/path/to/bootstrap.min.js"></script>
+2. Load the JavaScript file jquery.toaster.js after jQuery.
+
+1
+<script src="jquery.toaster.js"></script>
+3. The JavaScript to display a default toast notification on the web page.
+
+1
+$.toaster('Your message here');
+4. Config the toast notification by passing the options array to the $.toaster.
+
+01
+$.toaster({
+02
+ 
+03
+  // toast message
+04
+  message : 'Your message here',
+05
+ 
+06
+  // toast title
+07
+  title : 'Your Title',
+08
+ 
+09
+  // or 'success', 'info', 'warning', 'danger'
+10
+  priority : 'danger'
+11
+   
+12
+});
+5. Or by passing the parameters as strings.
+
+1
+$.toaster(message, title, priority);
+6. All default plugin settings.
+
+view source
+01
+$.toaster({
+02
+settings : {
+03
+ 
+04
+  'toaster'         :
+05
+    {
+06
+      'id'        : 'toaster',
+07
+      'container' : 'body',
+08
+      'template'  : '<div></div>',
+09
+      'class'     : 'toaster',
+10
+      'css'       :
+11
+      {
+12
+        'position' : 'fixed',
+13
+        'top'      : '10px',
+14
+        'right'    : '10px',
+15
+        'width'    : '300px',
+16
+        'zIndex'   : 50000
+17
+      }
+18
+    },
+19
+ 
+20
+    'toast'       :
+21
+    {
+22
+      'template' :
+23
+      '<div class="alert alert-%priority% alert-dismissible" role="alert">' +
+24
+        '<button type="button" class="close" data-dismiss="alert">' +
+25
+          '<span aria-hidden="true">&times;</span>' +
+26
+          '<span class="sr-only">Close</span>' +
+27
+        '</button>' +
+28
+        '<span class="title"></span>%delimiter% <span class="message"></span>' +
+29
+      '</div>',
+30
+ 
+31
+      'defaults' :
+32
+      {
+33
+        'title'     : 'Notice',
+34
+        'priority'  : 'success',
+35
+        'delimiter' : ':'
+36
+      },
+37
+ 
+38
+      'css'      : {},
+39
+      'cssm'     : {},
+40
+      'csst'     : { 'fontWeight' : 'bold' },
+41
+ 
+42
+      'fade'     : 'slow',
+43
+ 
+44
+      'display'    : function ($toast)
+45
+      {
+46
+        return $toast.fadeIn(settings.toast.fade);
+47
+      },
+48
+ 
+49
+      'remove'     : function ($toast, callback)
+50
+      {
+51
+        return $toast.animate(
+52
+          {
+53
+            opacity : '0',
+54
+            padding : '0px',
+55
+            margin  : '0px',
+56
+            height  : '0px'
+57
+          },
+58
+          {
+59
+            duration : settings.toast.fade,
+60
+            complete : callback
+61
+          }
+62
+        );
+63
+      }
+64
+    },
+65
+ 
+66
+    'debug'        : false,
+67
+    'timeout'      : 1500,
+68
+    'stylesheet'   : null,
+69
+    'donotdismiss' : []
+70
+     
+71
+}
+72
+});
