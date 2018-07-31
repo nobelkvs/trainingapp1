@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlsdBuv20ceEHZf7p1sGIc41J1dGWVFTXQT3bn0MpzWNPakxQD"
+          type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+          crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+            crossorigin="anonymous"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+<div class="container-fluid">
+    <header>
+        <h3>DOCUMENT APPLICATION</h3>
+    </header>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="#" id="showCreate">Create Document</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#" id="showRetrive">Retrive Document</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="card-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 form_style">
+                <form style="display: none;" id="Create_form" autocomplete="off">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" id="action" name="action" value="create">
+                    </div>
+                    <div>
+                        <h5>
+                            <span id="createmsg"></span>
+                        </h5>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <label for="title" pattern="[A-Za-z][A-Za-z0-9]{1,}">
+                            <b>Enter Title</b>
+                        </label>
+                        <input type="text" class="form-control" name="creationdate" id="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">
+                            <b>Enter Related contacts</b>
+                        </label>
+                        <input type="text" class="form-control" name="created" id="contact" pattern="[A-Za-z]{1,15}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="deal">
+                            <b>Enter Related deals</b>
+                        </label>
+                        <input type="text" class="form-control" name="assigned" id="deal" pattern="[A-Za-z]{1,15}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="owner">
+                            <b>Enter owner name</b>
+                        </label>
+                        <input type="text" class="form-control" name="issue" id="owner" pattern="[A-Za-z]{1,15}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-primary" id="Createcancel">Cancel</button>
+                </form>
+                <form style="display: none;" id="Retrive_form" autocomplete="off">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" id="action2" name="action2" value="retreive">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="Retreive">Retrieve All</button>
+                    <button type="button" class="btn btn-primary" id="Retrivecancel">Cancel</button>
+                    <input id="myInput" type="text" placeholder="Search..">
+                    <div>
+                        <h5>
+                            <span id="retrivemsg"></span>
+                        </h5>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+<div class="container" id="tableformat" style="display: none;">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 form_style">
+            <table class="Retreive" id="retreivetable">
+                <thead>
+                <tr>
+                    <th type="checkbox"></th>
+                    <th>Title</th>
+                    <th>Related Contacts</th>
+                    <th>Owner</th>
+                    <th>Created Date</th>
+                </tr>
+                </thead>
+                <tbody id="MyTable">
+                </tbody>
+            </table>
+            <input type="hidden" class="form-control" id="action4" name="action4" value="delete">
+            <br>
+            <button type="button" id="dlt" class="btn btn-primary" value="delete">delete</button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="fixed-bottom">
+    <footer> </footer>
+</div>
+<link rel="stylesheet" type="text/css" href="document.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="document.js"></script>
+</body>
+</html>
