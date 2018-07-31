@@ -56,7 +56,7 @@ public class defectController extends HttpServlet{
 
         try {
             // Call creatingDefectService method by passing defectModel object
-            insertStatus = ds.creatingDefectService(defect);
+            insertStatus = ds.creatingDefect(defect);
 
         } catch (Exception e) {
             log.error(e);
@@ -96,7 +96,7 @@ public class defectController extends HttpServlet{
         try {
 
             // Call the retrievingByAssignedToService by passing assignedTo parameter and assigning retrieved data to list
-            list = ds.retrievingByAssignedToService(assignedTo);
+            list = ds.retrievingByAssignedTo(assignedTo);
 
             // Convert GSON object to JSON
             String json = gson.toJson(list);
@@ -137,7 +137,7 @@ public class defectController extends HttpServlet{
         try {
 
             // Call deleteDefectService by passing an array
-            deleteStatus = ts.deleteDefectService(multipleDelete);
+            deleteStatus = ts.deleteDefect(multipleDelete);
 
         } catch (Exception e) {
             log.error(e);

@@ -21,7 +21,7 @@ public class defectDAOImplementationTest {
         dModel.setPriority("p3");
         dModel.setStatus("open");
 
-        int create = dDAO.createDefectDAO(dModel);
+        int create = dDAO.createDefect(dModel);
 
         assertEquals(1,create);
 
@@ -30,8 +30,8 @@ public class defectDAOImplementationTest {
     @Test
     public void retrievingByAssignedToDAO() {
 
-        String assignedTo = "pooja";
-        List list = dDAO.retrievingByAssignedToDAO(assignedTo);
+        String assignedTo = "Tanishq";
+        List list = dDAO.retrievingByAssignedTo(assignedTo);
         assertEquals(0,list.size());
 
     }
@@ -40,7 +40,7 @@ public class defectDAOImplementationTest {
     public void deleteDefectDAO() {
 
         String multipleDelete = "123,124,125";
-        int delete = dDAO.deleteDefectDAO(multipleDelete.split(","));
+        int delete = dDAO.deleteDefect(multipleDelete.split(","));
         assertEquals(0,delete);
     }
 }

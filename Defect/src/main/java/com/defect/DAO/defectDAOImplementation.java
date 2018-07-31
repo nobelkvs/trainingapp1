@@ -28,7 +28,7 @@ public class defectDAOImplementation implements defectDAO {
      * @param dm
      * @return
      */
-    public int createDefectDAO(defectModel dm) {
+    public int createDefect(defectModel dm) {
 
         log.info("In Create Defect DAO");
 
@@ -76,7 +76,7 @@ public class defectDAOImplementation implements defectDAO {
      * @param assignedTo
      * @return
      */
-    public List<defectModel> retrievingByAssignedToDAO(String assignedTo) {
+    public List<defectModel> retrievingByAssignedTo(String assignedTo) {
 
         log.info("In Retrieve by assigned to Defect DAO");
 
@@ -128,7 +128,7 @@ public class defectDAOImplementation implements defectDAO {
      * @param Id
      * @return
      */
-    public int deleteDefectDAO(String[] Id) {
+    public int deleteDefect(String[] Id) {
 
         log.info("In Delete Defect DAO");
 

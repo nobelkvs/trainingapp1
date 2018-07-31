@@ -1,0 +1,78 @@
+body {
+    padding: 25px;
+    background-color: rgb(11, 229, 236);
+    background-image: url("http://proxy53.hellorf.com/ak7/shutterstock/videos/28360627/thumb/1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: dodgerblue;
+    font-weight: 900;
+    background-attachment: fixed;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font: inherit;
+    color: black;
+}
+
+h1 {
+    color: rgb(81, 216, 250);
+    font-family: verdana;
+    font-size: 300%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 8px;
+}
+
+tr {
+    background-color: #ffffff;
+    color: rgb(10, 10, 10)
+}
+
+th {
+    background-color: rgb(78, 171, 247);
+    color: rgb(255, 255, 255);
+}
+
+.modal-content {
+    background-color: #04cafc;
+    margin: auto;
+    /* padding: 20px; */
+    color: #ffffff;
+    width: 30%;
+    height: 35%;
+    text-align: center;
+    font-size: 30px;
+    padding: 100px;
+    top: 200px;
+}
+
+/* .input-w label, .input-w input {
+    /* Other styling.. */
+    /* text-align: right;
+    clear: both; */
+    /* float:none; 
+    
+    display: inline-block;
+    vertical-align: middle;    
+} */ 
+
+/* form input, form select {
+    max-width: 70%;
+    display: inline-block;
+   }
+ form label {
+   width: 25%;
+ } */

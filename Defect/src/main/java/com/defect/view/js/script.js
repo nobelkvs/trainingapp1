@@ -1,6 +1,17 @@
+$("#showHome").click(function () {
+
+    $("#home").css("display", "block");
+    $("#Retrive_form").css("display", "none");
+    $("#Create_form").css("display", "none");
+    $("#Delete_form").css("display", "none");
+    $("#DeleteForm").css("display", "none");
+
+});
+
 //displaying create form
 $("#showCreate").click(function () {
 
+    $("#home").css("display", "none");
     $("#Create_form").css("display", "block").trigger("reset");
     $("#Retrive_form").css("display", "none");
     $("#RetrieveForm").css("display", "none");
@@ -35,85 +46,16 @@ $("#Create_form").submit(function (event) {
             $("#failCreateModal").modal('show');
         }
     });
-
-});
-
-//displaying delete form
-$("#showDelete").click(function () {
-
-    $("#Create_form").css("display", "none");
-    $("#Retrive_form").css("display", "none");
-    $("#RetrieveForm").css("display", "none");
-    $("#Delete_form").css("display", "block").trigger("reset");
-
-});
-
-$(document).ready(function(){
-    $('select[name = role1]').change(function(){
-        if($(this).val() == "admin") {
-            $('#pwd').show();
-        }else if($(this).val() == "user"){
-            $('#pwd').hide();
-        }else {
-            $('#pwd').hide();
-        }
-    });
-});
-
-//Delete data
-$("#Delete_form").submit(function (event) {
-
-    event.preventDefault();
-    $('#pwd').hide();
-
-    
-    $("#Delete_form").css("display", "none");
-    $("#DeleteForm").css("display", "block");
-    $("#DeleteForm").submit(function (event) {
-
-        event.preventDefault();
-
-        const id = document.getElementById("Id").value;
-        const role = document.getElementById("role").value;
-        const Password = document.getElementById("password").value;
-
-        var webServiceURL = `http://localhost:8080/Defect-1.0-SNAPSHOT/filter?UserRole=${role}&password=${Password}&Id=${id}`;
-
-        //call ajax function for delete method
-        $.ajax({
-            url: webServiceURL,
-            type: 'DELETE',
-            success: function (data) {
-
-                if (data >= 1) {
-                    if (role != "admin") {
-                        $("#unauthorisedAccess").modal('show');
-                    } else {
-                        $("#wrongPassword").modal('show');
-                    }
-                }
-                else {
-                    if (data === "success") {
-                        $("#successDeleteModal").modal('show');
-                    } else {
-                        $("#failDeleteModal").modal('show');
-                    }
-                }
-
-            },
-            error: function () {
-                alert("Enter the value...");
-            }
+    $('form').each(function () {
+            this.reset()
         });
-        // $('form').each(function () {
-        //     this.reset()
-        // });
-    });
-});
 
+});
 
 //displaying retrireve form
 $("#showRetrive").click(function () {
+
+    $("#home").css("display", "none");
     $("#Retrive_form").css("display", "block").trigger("reset");
     $("#Create_form").css("display", "none");
     $("#Delete_form").css("display", "none");
@@ -123,6 +65,9 @@ $("#showRetrive").click(function () {
 
 //Retrive data 
 $("#Retrive_form").submit(function () {
+
+    $("#table").css("display", "none");
+    $("#RetreiveTable").empty();
 
     event.preventDefault();
 
@@ -148,16 +93,20 @@ $("#Retrive_form").submit(function () {
     //for inserting retrieved data into table
     function toTable(data) {
 
+        $('form').each(function () {
+            this.reset()
+        });
+
         if (data.length === 0) {
             $("#noData").modal('show');
         }
         else {
-            $('form').each(function () {
-                this.reset()
-            });
             $("#table").css("display", "block");
             $("#RetrieveTable").empty();
             var tableRef = table.getElementsByTagName('tbody')[0];
+            $(document).ready(function() {
+                $('#retreiveTable').DataTable();
+            } );
 
             $(data).each(function (index, value) {
                 var row = tableRef.insertRow(tableRef.rows.length);
@@ -250,9 +199,5 @@ $("#deleteMul").on('click', function (event) {
             $('#RetrieveForm').removeAttr('disabled');
             alert("not checked");
         }
-
-
     });
-
-
 });

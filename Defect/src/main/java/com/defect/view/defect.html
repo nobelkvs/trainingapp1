@@ -1,82 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="height: 1000px;">
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
-        crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+        crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <style>
-        body {
-            padding: 25px;
-            background-color: rgb(11, 229, 236);
-            background-image: url("http://proxy53.hellorf.com/ak7/shutterstock/videos/28360627/thumb/1.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            color: dodgerblue;
-            font-weight: 900;
-        }
-
-        button,
-        input,
-        optgroup,
-        select,
-        textarea {
-            margin: 0;
-            font: inherit;
-            color: black;
-        }
-
-        h1 {
-            color: rgb(81, 216, 250);
-            font-family: verdana;
-            font-size: 300%;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            text-align: center;
-            padding: 8px;
-        }
-
-        tr {
-            background-color: #ffffff;
-            color: rgb(10, 10, 10)
-        }
-
-        th {
-            background-color: rgb(78, 171, 247);
-            color: rgb(255, 255, 255);
-        }
-
-        .modal-content {
-            background-color: #04cafc;
-            margin: auto;
-            padding: 20px;
-            color: #ffffff;
-            width: 30%;
-            height: 35%;
-            text-align: center;
-
-            padding: 100px;
-            top: 200px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>Defects Application</title>
+    
 </head>
 
 <body>
@@ -94,9 +34,16 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#home" id="showHome">
+                        <img src="https://png.icons8.com/dusk/50/000000/home.png">Home</a>
+                </li>
 
                 <li class="nav-item ">
                     <a class="nav-link" href="#create" id="showCreate">
@@ -104,14 +51,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " href="#retrive" id="showRetrive">
-                        <img src="https://png.icons8.com/dusk/50/000000/search.png">Retrive</a>
+                    <a class="nav-link" href="#retrive" id="showRetrive">
+                        <img src="https://png.icons8.com/dusk/50/000000/search.png">Defect Details</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link " href="#delete" id="showDelete">
-                        <img src="https://png.icons8.com/dusk/50/000000/delete-forever.png">Delete</a>
-                </li>
             </ul>
 
         </div>
@@ -123,69 +66,77 @@
         <div class="container">
 
             <div class="row">
+
+                    <form id="home" style="font-size: 25px;color: white">
+                        <p>A programmer while designing and building the software can make mistakes or error. These mistakes or errors mean that there are flaws in the software. These are called defects.</p> 
+                                   
+                        <ul>
+                            <li><p><small><small>When actual result deviates from the expected result while testing a software application or product then it results into a defect. Hence, any deviation from the specification mentioned in the product functional specification document is a defect. In different organizations it’s called differently like bug, issue, incidents or problem.</small></small></p></li>
+                            
+                            <li><p><small><small>When the result of the software application or product does not meet with the end user expectations or the software requirements then it results into a Bug or Defect. These defects or bugs occur because of an error in logic or in coding which results into the failure or unpredicted or unanticipated results.</small></small></p></li>
+                        </ul>
+                                        
+                    </form> 
                 <div class="col-md-3"></div>
                 <div class="col-md-6 form_style">
-
+                    
                     <!-- Create form -->
                     <form style="display: none;" id="Create_form">
 
                         <!-- Description form -->
-                        <div class="form-group">
-                            <label for="description"><b>Description</b></label>
-                            <textarea class="form-control" id="description" rows="3" pattern="[A-Za-z]{1,15}" required></textarea>
-                        </div>
+                        <div class="form-group row">
+                            <label for="description" style="font-size: 20px;"><b>Description</b></label>
+                            <textarea class="form-control" id="description" rows="3" required></textarea>
+                        </div><br>
 
                         <!-- AssignedTo form -->
-                        <div class="form-group">
-                            <label for="assignedTo"><b>Enter whom you want to assign</b></label>
+                        <div class="form-group row">
+                            <label for="assignedTo" style="font-size: 20px;"><b>Enter whom you want to assign</b></label>
                             &nbsp&nbsp
-                            <input type="text" class="form-control" id="assignedTo" placeholder="assigne name" pattern="[A-Za-z]{1,15}" required>
-                        </div>
+                            <input type="text" class="form-control" id="assignedTo" placeholder="assigne name" pattern="[A-Za-z]{1,45}" title="Only Characters acceptable" style="height: 34px;width: 260px;" required>
+                        </div><br>
 
                         <!-- Select form for category,priority & status -->
-                        <div class="form-group">
+                        <div class="form-group row">
 
                             <!-- Category  -->
-                            <label for="category"><b>Category</b></label>
-                            &nbsp
-                            <select id="category" class="form-control" style="height: 34px">
+                            <label for="category" style="font-size: 20px;"><b>Category</b></label>
+                            &nbsp&nbsp
+                            <select id="category" class="form-control" style="height: 34px;width: 110px;">
                                 <option value="hardware">Hardware</option>
                                 <option value="software">Software</option>
                             </select>
-                        </div>
-
-                        <div class="form-group">
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
                             <!-- Priority -->
-                            <label for="priority"><b>Priority</b></label>
-                            &nbsp
-                            <select id="priority" class="form-control" style="height: 34px">
+                            <label for="priority" style="font-size: 20px;"><b>Priority</b></label>
+                            &nbsp&nbsp
+                            <select id="priority" class="form-control" style="height: 34px;width: 65px;">
                                 <option value="p1">P1</option>
                                 <option value="p2">P2</option>
                                 <option value="p3">P3</option>
                             </select>
-                        </div>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             
-                        <div class="form-group">
                             <!-- Status -->
-                            <label for="status"><b>Status</b></label>
-                            &nbsp
-                            <select id="status" class="form-control" style="height: 34px">
+                            <label for="status" style="font-size: 20px;"><b>Status</b></label>
+                            &nbsp&nbsp
+                            <select id="status" class="form-control" style="height: 34px;width: 90px;">
                                 <option value="open">Open</option>
                                 <option value="inProgress">In Progress</option>
                                 <option value="completed">Completed</option>
                             </select>
 
-                        </div>
+                        </div><br>
 
                         <!-- Submit Button -->
-                        <button type="submit" class="btn btn-primary" id="createSubmit">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="createSubmit">CREATE</button>
 
                         <!-- The Modal -->
                         <div id="successCreateModal" class="modal">
                             <!-- Modal content -->
                             <div class="modal-content">
-                                <p>Successfully Inserted</p>
+                                <p>Successfully Inserted <img src="https://png.icons8.com/flat_round/50/000000/checkmark.png"></p>
                             </div>
                         </div>
 
@@ -200,25 +151,30 @@
                     </form>
 
                     <!-- Retrieve form -->
-                    <form style="display: none;" id="Retrive_form">
+                    <form style="display: none;" id="Retrive_form" >
 
                         <!-- AssignedTo -->
-                        <div class="form-group">
-                            <label for="assigned"><b>Search</b></label>
-                            &nbsp&nbsp
-                            <input type="text" class="form-control" id="assigned" placeholder="search" pattern="[A-Za-z]{1,}" required><br> 
+
+                        <div class="form-group row">
+                            <label for="assigned" style="font-size: 20px;">Assigne Name
+                                <sup style="color: red">*</sup>
+                            </label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="assigned" pattern="[A-Za-z]{1,45}" title="Only Characters acceptable" placeholder="search" required/>
+                            </div>
+                            
                             <!-- Submit Button -->
-                            <button type="submit" class="btn btn-primary" id="Retrievesubmit">Submit</button>
+                            <button type="submit" class="btn btn-primary" style="width: 71px;height: 39px;" id="Retrievesubmit">Submit</button>
                         </div>
 
                         <!-- table form -->
-                        <div id="table" style="display: none">
+                        <div id="table"  data-show-header="true" data-pagination="true" data-id-field="name" data-page-list="[5, 10, 25, 50, 100, ALL]" data-page-size="5" style="display: none">
 
                             <!-- Filter to search -->
                             <label for="filter">Filter</label>
                             <input id="filter" type="text" placeholder="Filter Rows...">
                             <br><br>
-
+                            <div class="table-responsive">
                             <table class="Retrieve" id="retreiveTable">
                                 
                                 <!-- Table heading -->
@@ -261,24 +217,27 @@
 
                     <form style="display: none;" id="RetrieveForm">
 
-                        <div class="form-group">
+                            <!-- <div class="form-group"> -->
 
-                            <div>
-                                <label for="role1"><b>Role</b></label>
-                                
-                                <select id="role1" class="form-control" style="height: 34px">
-                                    <option value="choose">choose the role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="user">User</option>
-                                </select>
+                            <div class="form-group row" style="width: 570px;">
+                                    <label for="role1" style="font-size: 20px;"><b>Role</b></label>
+                                    &nbsp&nbsp&nbsp&nbsp
+                                    
+                                    <select id="role1" name="role" class="form-control" style="height: 34px;width: 150px;">
+                                        <option value="choose">choose the role</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="user">User</option>
+                                    </select>
+                                    &nbsp&nbsp
+                                </div>
+
+                            <div style="font-size: 20px;" class="form-group row">
+                                <div>
+                                    <label for="password1"><b>Enter password</b></label>
+                                </div>
+                                &nbsp&nbsp&nbsp&nbsp
+                                <input type="password" id="password1" class="form-control" style="height: 34px;width: 150px;" required>
                                 <br>
-                            </div>
-
-                            <div>
-                                <label for="password1"><b>Enter password</b></label>
-                                
-                                <input type="password" id="password1" class="form-control" required>
-                                <br> &nbsp&nbsp
                             </div>
 
                             <!-- Submit Button -->
@@ -302,7 +261,7 @@
                             <div id="successDeleteModal1" class="modal" style="display: none;">
                                 <!-- Modal content -->
                                 <div class="modal-content">
-                                    <p>Succesfully Deleted</p>
+                                    <p>Succesfully Deleted <img src="https://png.icons8.com/flat_round/50/000000/checkmark.png"></p>
                                 </div>
                             </div>
     
@@ -314,92 +273,20 @@
                                 </div>
                             </div>
 
-                        </div>
+                            <!-- </div> -->
 
-                    </form>
-
-                    <!-- Delete form -->
-                    <form style="display: none;" id="Delete_form">
-
-                        <div class="form-group">
-
-                            <div>
-                                <label for="role"><b>Role</b></label>
-                                &nbsp&nbsp&nbsp&nbsp
-                                
-                                <select id="role" name="role1" class="form-control" style="height: 34px">
-                                    <option value="choose">choose the role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="user">User</option>
-                                </select>
-                                &nbsp&nbsp
-                            </div>
-
-                            <div id="pwd" style="display: none">
-                                <label for="password"><b>Enter password</b></label>
-                                &nbsp&nbsp&nbsp&nbsp
-                                <input type="password" id="password" class="form-control" required>
-                                <br> &nbsp&nbsp
-                            </div>
-
-                            <button type="submit" class="btn btn-primary" id="roleSubmit">LOGIN</button>
-
-                        </div>
-
-                    </form>
-
-                    <!-- Delete Form-->
-                    <form style="display: none;" id="DeleteForm">
-                        
-                        <label for="id"><b>Enter Id to be deleted</b></label>
-                        &nbsp&nbsp
-                        <input type="text" id="Id" pattern="[0-9,]{1,150}" required> 
-                        &nbsp&nbsp
-                        <button type="submit" class="btn btn-primary" id="deleteSubmit">Submit</button>
-
-                        <!-- Modal -->
-                        <div id="successDeleteModal" class="modal" style="display: none;">
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <p>Succesfully Deleted</p>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div id="failDeleteModal" class="modal" style="display: none;">
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <p>Failed to Delete</p>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div id="unauthorisedAccess" class="modal" style="display: none;">
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <p>Unauthorised Access</p>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div id="wrongPassword" class="modal" style="display: none;">
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <p>Wrong Password</p>
-                            </div>
-                        </div>
                     </form>
 
                 </div>
+            </div>
 
-                
                 <div class="col-md-3"></div>
-
 
             </div>
         </div>
 
         <script type="text/javascript" src="js/script.js"></script>
+        
 
 </body>
 

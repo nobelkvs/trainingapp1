@@ -14,19 +14,19 @@ public interface defectDAO {
      * @param dm
      * @return
      */
-    int createDefectDAO(defectModel dm);
+    int createDefect(defectModel dm);
 
     /**
      * method declaration for retrieving defects by Assigned To
      * @param assignedTo
      * @return
      */
-    List<defectModel> retrievingByAssignedToDAO(String assignedTo);
+    List<defectModel> retrievingByAssignedTo(String assignedTo);
 
     /**
      * method declaration for deleting multiple defects
      * @param Id
      * @return
      */
-    int deleteDefectDAO(String[] Id);
+    int deleteDefect(String[] Id);
 }

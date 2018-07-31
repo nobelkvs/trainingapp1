@@ -23,29 +23,8 @@
       <file leaf-file-name="defectController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Controller/defectController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="149" column="33" lean-forward="true" selection-start-line="149" selection-start-column="33" selection-end-line="149" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="defect.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/view/defect.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServletFilters.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Controller/ServletFilters.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="38" column="75" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="75" />
+            <state relative-caret-position="2706">
+              <caret line="123" column="30" selection-start-line="123" selection-start-column="30" selection-end-line="123" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,11 +35,20 @@
       <file leaf-file-name="defectService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Service/defectService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+            <state relative-caret-position="660">
+              <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="defectControllerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/defect/Controller/defectControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="694">
+              <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -68,32 +56,8 @@
       <file leaf-file-name="defectServiceImplementation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Service/defectServiceImplementation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="defectDAOImplementation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/DAO/defectDAOImplementation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1078">
-              <caret line="55" column="31" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="defectModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Model/defectModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+            <state relative-caret-position="528">
+              <caret line="45" column="78" selection-start-line="45" selection-start-column="78" selection-end-line="45" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,8 +68,41 @@
       <file leaf-file-name="defectDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/DAO/defectDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
+            <state relative-caret-position="616">
+              <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="defectDAOImplementationTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/defect/DAO/defectDAOImplementationTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="814">
+              <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="defectServiceImplementationTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/defect/Service/defectServiceImplementationTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="41" column="38" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="defectDAOImplementation.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/DAO/defectDAOImplementation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2132">
+              <caret line="130" column="27" selection-start-line="130" selection-start-column="27" selection-end-line="130" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,8 +113,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -128,19 +125,21 @@
         <option value="$PROJECT_DIR$/src/main/java/com/defect/Model.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/defect/Controller/ContextListener.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/defect/DAO/defectDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/defect/Model/defectModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/defect/Service/defectService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/defect/Service/defectServiceImplementation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/defect/util/MySQLConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/defect.html" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/defect/view/defect.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/com/defect/DAO/defectDAOImplementationTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/defect/DAO/defectDAOImplementation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/defect/Controller/ServletFilters.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/defect/Controller/defectController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/defect/Service/defectService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/defect/Service/defectServiceImplementation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/defect/DAO/defectDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/defect/DAO/defectDAOImplementation.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/defect/DAO/defectDAOImplementationTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/defect/Controller/defectControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/defect/Service/defectServiceImplementationTest.java" />
       </list>
     </option>
   </component>
@@ -163,6 +162,8 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -212,7 +213,25 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="defect" type="462c0819:PsiDirectoryNode" />
+              <item name="DAO" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Defect" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Defect" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="defect" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Defect" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Defect" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="defect" type="462c0819:PsiDirectoryNode" />
+              <item name="Service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Defect" type="b2602c69:ProjectViewProjectNode" />
@@ -257,7 +276,34 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="defect" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Defect" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Defect" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="defect" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Defect" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Defect" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="defect" type="462c0819:PsiDirectoryNode" />
               <item name="DAO" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Defect" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Defect" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="defect" type="462c0819:PsiDirectoryNode" />
+              <item name="Service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Defect" type="b2602c69:ProjectViewProjectNode" />
@@ -272,8 +318,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,13 +331,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.defect.DAO" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.defect.Controller" />
+      <recent name="com.defect.Service" />
+      <recent name="com.defect.DAO" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.defect.Controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/defect/Controller" />
@@ -312,7 +358,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.Tomcat">
+  <component name="RunManager" selected="JUnit.defectServiceImplementationTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -332,18 +378,18 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="defectDAOImplementationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="defectControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Defect" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.defect.DAO.*" />
+          <option name="PATTERN" value="com.defect.Controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.defect.DAO" />
-      <option name="MAIN_CLASS_NAME" value="com.defect.DAO.defectDAOImplementationTest" />
+      <option name="PACKAGE_NAME" value="com.defect.Controller" />
+      <option name="MAIN_CLASS_NAME" value="com.defect.Controller.defectControllerTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -355,19 +401,19 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="defectDAOImplementationTest.createDefectDAO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="defectControllerTest.doPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Defect" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.defect.DAO.*" />
+          <option name="PATTERN" value="com.defect.Controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.defect.DAO" />
-      <option name="MAIN_CLASS_NAME" value="com.defect.DAO.defectDAOImplementationTest" />
-      <option name="METHOD_NAME" value="createDefectDAO" />
+      <option name="PACKAGE_NAME" value="com.defect.Controller" />
+      <option name="MAIN_CLASS_NAME" value="com.defect.Controller.defectControllerTest" />
+      <option name="METHOD_NAME" value="doPost" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -378,19 +424,42 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="defectDAOImplementationTest.deleteDefectDAO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="defectServiceImplementationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Defect" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.defect.DAO.*" />
+          <option name="PATTERN" value="com.defect.Service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.defect.DAO" />
-      <option name="MAIN_CLASS_NAME" value="com.defect.DAO.defectDAOImplementationTest" />
-      <option name="METHOD_NAME" value="deleteDefectDAO" />
+      <option name="PACKAGE_NAME" value="com.defect.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.defect.Service.defectServiceImplementationTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="defectServiceImplementationTest.creatingDefectService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Defect" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.defect.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.defect.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.defect.Service.defectServiceImplementationTest" />
+      <option name="METHOD_NAME" value="creatingDefectService" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -401,19 +470,19 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="defectDAOImplementationTest.retrievingByAssignedToDAO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="defectServiceImplementationTest.retrievingByAssignedToService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Defect" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.defect.DAO.*" />
+          <option name="PATTERN" value="com.defect.Service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.defect.DAO" />
-      <option name="MAIN_CLASS_NAME" value="com.defect.DAO.defectDAOImplementationTest" />
-      <option name="METHOD_NAME" value="retrievingByAssignedToDAO" />
+      <option name="PACKAGE_NAME" value="com.defect.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.defect.Service.defectServiceImplementationTest" />
+      <option name="METHOD_NAME" value="retrievingByAssignedToService" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -479,17 +548,19 @@
     </configuration>
     <list>
       <item itemvalue="Maven.Tomcat" />
-      <item itemvalue="JUnit.defectDAOImplementationTest.createDefectDAO" />
-      <item itemvalue="JUnit.defectDAOImplementationTest.retrievingByAssignedToDAO" />
-      <item itemvalue="JUnit.defectDAOImplementationTest.deleteDefectDAO" />
-      <item itemvalue="JUnit.defectDAOImplementationTest" />
+      <item itemvalue="JUnit.defectServiceImplementationTest.creatingDefectService" />
+      <item itemvalue="JUnit.defectControllerTest.doPost" />
+      <item itemvalue="JUnit.defectServiceImplementationTest.retrievingByAssignedToService" />
+      <item itemvalue="JUnit.defectServiceImplementationTest" />
+      <item itemvalue="JUnit.defectControllerTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.defectDAOImplementationTest.retrievingByAssignedToDAO" />
-        <item itemvalue="JUnit.defectDAOImplementationTest.deleteDefectDAO" />
-        <item itemvalue="JUnit.defectDAOImplementationTest" />
-        <item itemvalue="JUnit.defectDAOImplementationTest.createDefectDAO" />
+        <item itemvalue="JUnit.defectServiceImplementationTest" />
+        <item itemvalue="JUnit.defectControllerTest" />
+        <item itemvalue="JUnit.defectServiceImplementationTest.retrievingByAssignedToService" />
+        <item itemvalue="JUnit.defectServiceImplementationTest.creatingDefectService" />
+        <item itemvalue="JUnit.defectControllerTest.doPost" />
       </list>
     </recent_temporary>
   </component>
@@ -507,35 +578,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="defectDAOImplementationTest_retrievingByAssignedToDAO - 2018.07.21 at 14h 56m 57s.xml">
-      <configuration name="defectDAOImplementationTest.retrievingByAssignedToDAO" configurationId="JUnit" />
+    <history-entry file="defectServiceImplementationTest_creatingDefectService - 2018.07.28 at 14h 18m 22s.xml">
+      <configuration name="defectServiceImplementationTest.creatingDefectService" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="defectDAOImplementationTest_deleteDefectDAO - 2018.07.23 at 12h 23m 58s.xml">
-      <configuration name="defectDAOImplementationTest.deleteDefectDAO" configurationId="JUnit" />
+    <history-entry file="defectServiceImplementationTest_creatingDefectService - 2018.07.28 at 14h 19m 10s.xml">
+      <configuration name="defectServiceImplementationTest.creatingDefectService" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="defectDAOImplementationTest_retrievingByAssignedToDAO - 2018.07.23 at 12h 24m 03s.xml">
-      <configuration name="defectDAOImplementationTest.retrievingByAssignedToDAO" configurationId="JUnit" />
+    <history-entry file="defectControllerTest_doPost - 2018.07.28 at 14h 31m 54s.xml">
+      <configuration name="defectControllerTest.doPost" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="defectDAOImplementationTest_createDefectDAO - 2018.07.23 at 12h 24m 07s.xml">
-      <configuration name="defectDAOImplementationTest.createDefectDAO" configurationId="JUnit" />
+    <history-entry file="defectControllerTest_doPost - 2018.07.28 at 14h 43m 28s.xml">
+      <configuration name="defectControllerTest.doPost" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="defectDAOImplementationTest_deleteDefectDAO - 2018.07.23 at 12h 25m 41s.xml">
-      <configuration name="defectDAOImplementationTest.deleteDefectDAO" configurationId="JUnit" />
+    <history-entry file="defectControllerTest_doPost - 2018.07.28 at 14h 44m 59s.xml">
+      <configuration name="defectControllerTest.doPost" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="defectDAOImplementationTest - 2018.07.23 at 12h 30m 17s.xml">
-      <configuration name="defectDAOImplementationTest" configurationId="JUnit" />
+    <history-entry file="defectServiceImplementationTest_creatingDefectService - 2018.07.28 at 14h 45m 57s.xml">
+      <configuration name="defectServiceImplementationTest.creatingDefectService" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="defectDAOImplementationTest - 2018.07.23 at 12h 30m 56s.xml">
-      <configuration name="defectDAOImplementationTest" configurationId="JUnit" />
+    <history-entry file="defectServiceImplementationTest_retrievingByAssignedToService - 2018.07.28 at 15h 40m 03s.xml">
+      <configuration name="defectServiceImplementationTest.retrievingByAssignedToService" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="defectDAOImplementationTest_deleteDefectDAO - 2018.07.23 at 12h 37m 25s.xml">
-      <configuration name="defectDAOImplementationTest.deleteDefectDAO" configurationId="JUnit" />
+    <history-entry file="defectServiceImplementationTest - 2018.07.28 at 15h 40m 06s.xml">
+      <configuration name="defectServiceImplementationTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="defectDAOImplementationTest_retrievingByAssignedToDAO - 2018.07.23 at 12h 38m 45s.xml">
-      <configuration name="defectDAOImplementationTest.retrievingByAssignedToDAO" configurationId="JUnit" />
+    <history-entry file="defectControllerTest - 2018.07.28 at 15h 40m 12s.xml">
+      <configuration name="defectControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="defectDAOImplementationTest_retrievingByAssignedToDAO - 2018.07.23 at 12h 38m 57s.xml">
-      <configuration name="defectDAOImplementationTest.retrievingByAssignedToDAO" configurationId="JUnit" />
+    <history-entry file="defectServiceImplementationTest - 2018.07.28 at 15h 40m 18s.xml">
+      <configuration name="defectServiceImplementationTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -551,7 +622,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32946146" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.29567054" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32946146" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24986508" />
@@ -573,14 +644,14 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24986508" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -606,16 +677,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Controller/ContextListener.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Model/defectModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -872,13 +933,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/defect/DAO/defectDAOImplementationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="34" column="22" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -896,39 +950,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/DAO/defectDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/DAO/defectDAOImplementation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1078">
-          <caret line="55" column="31" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Service/defectService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/view/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/view/css/all.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/view/css/bootstrap.min.css" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/view/css/all.css" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/util/MySQLConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -936,37 +959,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Service/defectServiceImplementation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/view/defect.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Model/defectModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Controller/defectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="149" column="33" lean-forward="true" selection-start-line="149" selection-start-column="33" selection-end-line="149" selection-end-column="33" />
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -975,8 +971,86 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Controller/ServletFilters.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
+        <state relative-caret-position="682">
           <caret line="38" column="75" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/view/defect.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="137" column="28" lean-forward="true" selection-start-line="137" selection-start-column="28" selection-end-line="137" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Service/defectService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/DAO/defectDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Service/defectServiceImplementation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="45" column="78" selection-start-line="45" selection-start-column="78" selection-end-line="45" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/defect/DAO/defectDAOImplementationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/defect/Controller/defectControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="694">
+          <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/defect/Service/defectServiceImplementationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="41" column="38" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/Controller/defectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2706">
+          <caret line="123" column="30" selection-start-line="123" selection-start-column="30" selection-end-line="123" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/defect/DAO/defectDAOImplementation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2132">
+          <caret line="130" column="27" selection-start-line="130" selection-start-column="27" selection-end-line="130" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

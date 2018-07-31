@@ -23,12 +23,12 @@ public class defectServiceImplementation implements defectService {
      * @param dm
      * @return
      */
-    public int creatingDefectService(defectModel dm) {
+    public int creatingDefect(defectModel dm) {
 
         log.info("In Create defect Service");
 
         // Call createDefectDAO method
-        int createStatus = dDAO.createDefectDAO(dm);
+        int createStatus = dDAO.createDefect(dm);
 
         return createStatus;
     }
@@ -38,12 +38,12 @@ public class defectServiceImplementation implements defectService {
      * @param assignedTo
      * @return
      */
-    public List<defectModel> retrievingByAssignedToService(String assignedTo) {
+    public List<defectModel> retrievingByAssignedTo(String assignedTo) {
 
         log.info("In Retrieve by Assigned to defect Service");
 
         // Call retrievingByAssignedToDAO method and returning the retrieved list
-        List<defectModel> retrieveAssignedStatus = dDAO.retrievingByAssignedToDAO(assignedTo);
+        List<defectModel> retrieveAssignedStatus = dDAO.retrievingByAssignedTo(assignedTo);
 
         return retrieveAssignedStatus;
     }
@@ -53,12 +53,12 @@ public class defectServiceImplementation implements defectService {
      * @param Id
      * @return
      */
-    public int deleteDefectService(String[] Id) {
+    public int deleteDefect(String[] Id) {
 
         log.info("In Delete defect Service");
 
         // Call deleteDefectDAO method
-        int deleteStatus = dDAO.deleteDefectDAO(Id);
+        int deleteStatus = dDAO.deleteDefect(Id);
 
         return deleteStatus;
     }

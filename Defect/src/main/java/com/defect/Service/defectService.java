@@ -14,19 +14,19 @@ public interface defectService {
      * @param dm
      * @return
      */
-    int creatingDefectService(defectModel dm);
+    int creatingDefect(defectModel dm);
 
     /**
      * method declaration for retrieving defects by Assigned To
      * @param assignedTo
      * @return
      */
-    List<defectModel> retrievingByAssignedToService(String assignedTo);
+    List<defectModel> retrievingByAssignedTo(String assignedTo);
 
     /**
      * method declaration for deleting multiple defects
      * @param Id
      * @return
      */
-    int deleteDefectService(String[] Id);
+    int deleteDefect(String[] Id);
 }
