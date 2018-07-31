@@ -1,0 +1,736 @@
+<!doctype html>
+    <html lang="en">
+        <head>
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+            <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+            <!--title for browser-->
+            <title>Classifieds</title>
+
+            <!--Internal Styling-->
+            <style>
+
+
+
+                .container1{
+
+                    background-image:  url("http://webdesigntraining.co.in/wp-content/uploads/2017/09/classifieds_ads.jpg");
+                    background-repeat: no-repeat;
+                    background-size: 2100px;
+
+                }
+
+
+                footer {
+                        background-color: #777;
+                        padding: 10px;
+                        text-align: center;
+                        color: white;
+                        }
+
+
+
+                table {
+                        font-family: arial, sans-serif;
+                        border-collapse: collapse;
+                        width: 100%;
+                    }
+
+                td, th {
+                        border: 1px solid #dddddd;
+                        text-align: left;
+                        padding: 8px;
+                    }
+
+                th  {
+                        background-color:aquamarine
+
+                    }
+
+                tr:nth-child(even) {
+
+                        background-color:aqua;
+
+                    }
+                tr:nth-child(odd) {
+
+                        background-color:rgba(255, 181, 111);
+
+                    }
+            </style>
+
+            <!--Search Filter -->
+            <script>
+
+                    $(document).ready(function(){
+
+                      $("#myInput").on("keyup", function() {
+
+                        var value = $(this).val().toLowerCase();
+
+                        $("#myTable tr").filter(function() {
+
+                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+                        });
+
+                      });
+
+                    });
+            </script>
+
+
+        </head>
+
+        <body class="container1">
+
+            <!--header container-->
+            <div class="container-fluid">
+
+                <header style="text-align:center"><h1>Classifieds</h1></header>
+
+            </div>
+
+            <!--navbar-->
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+                <a class="navbar-brand" href="#">Home</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item ">
+
+                            <a class="nav-link" href="#" id="create">Create Classified <span class="sr-only">(current)</span></a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="#" id="retrive" >Retrive Classified</a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="#" id="delete">Delete Classified</a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </nav>
+
+            <!--display container-->
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-3"></div>
+
+                    <div class="col-md-6 form_style">
+
+                        <!--Create Form -->
+
+                        <form style="display: none;" id="CreateForm">
+
+                            <div class="form-group">
+
+                                <label>Classified Description</label>
+
+                                <textarea class="form-control"  id="classifiedDesc"  rows="3" placeholder="Enter Description" required></textarea>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>Category</label>
+
+                                <input class="form-control" type="text"id="classifiedCategory" placeholder="Enter Category" required>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>City</label>
+
+                                <input class="form-control" type="text" id="classifiedCity" placeholder="Enter City" required>
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                            <button type="reset" class="btn btn-primary" id="createCancel">Cancel</button>
+
+                        </form>
+
+                        <!--Retrieve Form -->
+
+                        <form style="display: none;" id="retriveForm">
+
+                            <div class="form-group">
+
+                                <label>City</label>
+
+                                <input class="form-control" type="text" id="searchCity" placeholder="Enter city" required>
+
+                            </div>
+
+                            <div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                            <button type="reset" class="btn btn-primary" id="retrieveCancel">Cancel</button>
+
+                                <br><br>
+
+                            </div>
+
+                            <div id="tableDiv" style="display:none">
+
+                                <input id="myInput" type="text" placeholder="Search..">
+
+                                <br><br>
+
+                                <caption>Classified Details</caption>
+
+                                <!-- Table to display retrieved values -->
+
+                                <table id="classified" class="classifiedTable" >
+
+                                    <thead>
+
+                                        <tr>
+
+                                            <th data-field="state" data-checkbox="true"></th>
+
+                                            <th data-field="classifiedDescription" data-filter-control="select" data-sortable="true" scope="col">
+                                                classifiedDescription
+
+                                            </th>
+
+                                            <th data-field="category" data-filter-control="input" data-sortable="true" scope="col">
+                                                category
+                                            <th data-field="city" data-filter-control="input" data-sortable="true" scope="col">
+                                                city
+                                            </th>
+
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody id="myTable">
+
+                                    </tbody>
+
+                                </table>
+
+                                <br><br>
+
+                                <!--Button to delete the retrieved data -->
+
+                                <button type="button" id="deleteBtn" style="margin: left">DELETE</button>
+
+                            </div>
+
+
+                        </form>
+
+                        <!--Form to delete the retrieved data directly from the table -->
+
+                        <form style="display: none;" id="deleteForm1">
+
+                            <div class="form-group">
+
+
+                                <label>Role</label>
+
+                                <select class="custom-select" id="roleId1" name="things1" required>
+
+                                    <option value="">Enter role</option>
+
+                                    <option value="admin" id="admin">admin</option>
+
+                                    <option value="user" id="user">user</option>
+
+                                </select>
+
+                                <div id="add1" style="display: none;">
+
+                                    <label>Password</label>
+
+                                    <input class="form-control" type="password" id="pwd1" placeholder="Enter password">
+
+                                </div>
+
+
+
+                            </div>
+
+                            <button type="button" class="btn btn-primary" id="delSubmit">Submit</button>
+
+
+                        </form>
+
+                        <script>
+
+                                $(document).ready(function () {
+
+                                    $('select[name = things1]').change(function () {
+
+                                        if ($(this).val() == "admin") {
+
+                                            $("#add1").show();
+
+                                        }
+                                        else if ($(this).val() == "user") {
+
+                                            $("#add1").hide();
+                                        }
+
+                                        else {
+                                            $("#add1").hide();
+                                        }
+
+                                    });
+
+
+                                });
+
+                         </script>
+
+                        <form style="display: none;" id="deleteForm">
+
+                            <div class="form-group">
+
+                                <label>Role</label>
+
+                                <select class="custom-select" id="roleId" name="things" required>
+
+                                    <option value="">Enter role</option>
+
+                                    <option value="admin">admin</option>
+
+                                    <option value="user">user</option>
+
+                                </select>
+
+                                <div id="add" style="display: none;">
+
+                                    <label>Password</label>
+
+                                    <input class="form-control" type="password" id="pwd" placeholder="Enter password">
+
+                                </div>
+
+                                <label>Classified Id</label>
+
+                                <input class="form-control" type="text" id="id" placeholder="Enter id" required>
+
+
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                            <button type="reset" class="btn btn-primary" id="deleteCancel">Cancel</button>
+
+
+
+
+                        </form>
+
+                        <!--Logic to display the password field only when role is admin -->
+
+                        <script>
+
+                                $(document).ready(function(){
+
+                                    $('select[name = things]').change(function(){
+
+                                        if($(this).val() == "admin"){
+
+                                            $("#add").show();
+
+                                         }
+
+                                         else if($(this).val() == "user"){
+
+                                            $("#add").hide();
+                                         }
+
+                                         else{
+
+                                         $("#add").hide();
+
+                                         }
+
+                                    });
+
+
+                                });
+
+                        </script>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+
+
+                <script>
+
+                $("#create").click(function () {
+                        $("#CreateForm").css("display", "block");
+                        $("#retriveForm").css("display", "none");
+                        $("#deleteForm").css("display", "none");
+                        $('#deleteForm1').css("display", "none")
+
+                    });
+
+                    $("#createCancel").click(function () {
+                        $("#CreateForm").css("display", "none");
+
+                    });
+
+                 $("#retrive").click(function () {
+                        $("#retriveForm").css("display", "block");
+                        $("#CreateForm").css("display", "none");
+                        $("#deleteForm").css("display", "none");
+                        $('#deleteForm1').css("display", "none")
+
+                    });
+
+                    $("#retrieveCancel").click(function () {
+                        $("#retriveForm").css("display", "none");
+
+                    });
+
+                    $("#delete").click(function () {
+                        $("#deleteForm").css("display", "block");
+                        $("#CreateForm").css("display", "none");
+                        $("#retriveForm").css("display", "none");
+                        $('#deleteForm1').css("display", "none")
+
+                    });
+
+                    $("#deleteCancel").click(function () {
+                        $("#deleteForm").css("display", "none");
+
+                    });
+
+
+                </script>
+
+                <!--Js code for create form -->
+
+                <script>
+
+                    $('#CreateForm').submit(function (event) {
+
+                    event.preventDefault();
+
+                    const dataObj = {
+
+                        "classifiedDescription": document.getElementById("classifiedDesc").value,
+
+                        "category": document.getElementById("classifiedCategory").value,
+
+                        "city": document.getElementById("classifiedCity").value,
+
+                    }
+                    console.log(dataObj);
+
+                    $.ajax({
+                        type: "POST",
+                        url: 'http://localhost:8080/Classifieds-1.0-SNAPSHOT/servlets',
+
+                        data: dataObj,
+                        success: function () {
+                            alert("success");
+
+                            $('#CreateForm')[0].reset();
+                        },
+                        error: function (error) {
+                            alert("fail" + error);
+                        },
+
+                    });
+
+
+                });
+
+                </script>
+
+                <!--Js code for delete form -->
+
+                <script>
+
+                    $('#deleteForm').submit(function(event){
+
+                        event.preventDefault();
+
+                        $("#add").hide();
+
+                        const cid=document.getElementById("id").value;
+
+                        const role=document.getElementById("roleId").value;
+
+                        const Password=document.getElementById("pwd").value;
+
+                        $.ajax({
+                                type: "DELETE",
+
+                                url: `http://localhost:8080/Classifieds-1.0-SNAPSHOT/servletFilter?cid=${cid}&role=${role}&password=${Password}`,
+
+                                success: function (data,status,respone) {
+
+                                          if(data === "unauthorizedAccess"){
+
+                                                alert("you are not able to delete");
+
+                                          }
+
+                                          else{
+
+                                                if(data==="success"){
+
+                                                   alert("successfully deleted");
+
+                                                }
+
+                                                else{
+
+                                                   alert("Id is not present in database so failed to delete");
+
+                                                }
+
+
+                                          }
+
+                                            $('#deleteForm')[0].reset();
+
+                                },
+
+                                error: function (error) {
+
+                                    alert("please enter correct values");
+
+                                },
+
+                        });
+                    });
+
+
+                </script>
+
+                <!-- Delete button functionality -->
+
+                <script>
+
+                    $('#deleteBtn').on('click', function (event) {
+
+                        $('#deleteForm1').css("display", "block");
+
+
+                        $('#delSubmit').on('click', function(event){
+
+
+                            var type = [];
+                            $("input[name='deleteCheckBox']:checked").each(function (i) {
+
+                                type[i] = $(this).val();
+
+
+                            });
+
+
+                            const role = document.getElementById("roleId1").value;
+                            const Password = document.getElementById("pwd1").value;
+
+                            const wurl = `http://localhost:8080/Classifieds-1.0-SNAPSHOT/servletFilter?cid=${type}&role=${role}&password=${Password}`;
+
+                            $.ajax({
+
+                                url: wurl,
+
+                                type: 'DELETE',
+
+                                success: deleteRow,
+
+                                error: DeleteError
+                            });
+
+
+                            function deleteRow(data) {
+
+                                if (data === "unauthorizedAccess") {
+
+                                    alert("you are not able to delete");
+
+
+                                }
+
+                                else {
+
+                                    if (data === "success") {
+
+                                        alert("success");
+
+                                        var checked = jQuery('input:checkbox:checked').map(function(){
+
+                                           return this.value;
+
+                                        }).get();
+
+                                        jQuery('input:checkbox:checked').parents("tr").remove();
+
+                                        $('#deleteForm1').css("display", "none");
+
+
+
+                                    }
+
+
+
+                                }
+
+                                 $('#deleteForm1')[0].reset();
+
+
+                            }
+
+                            function DeleteError(request, status, error) {
+
+                                alert('error' + request + status + error);
+                            }
+
+
+                        });
+                    });
+
+                </script>
+
+                <!--Js code for retrieve form -->
+
+                <script>
+
+                    $("#retriveForm").submit(function(event) {
+
+                        event.preventDefault();
+
+                        var dataObj3 = {
+                            "city": document.getElementById("searchCity").value
+                        };
+
+                            $.ajax({
+                                type: "GET",
+                                url: 'http://localhost:8080/Classifieds-1.0-SNAPSHOT/servlets',
+                                data: dataObj3,
+
+                                dataType:"json",
+                                contentType: 'application/json',
+                                success: fillClassifieds,
+                                error: function(error) {
+                                alert(error);
+                                }
+                            });
+
+
+                        function fillClassifieds(data, status, response) {
+
+                            if(data.length == 0){
+
+                            alert("No such record found in Database");
+
+                            }
+
+                            else{
+
+                            $("#tableDiv").css("display", "block");
+
+                            $("#myTable").empty();
+                            console.log(data);
+                            var table = document.getElementById("classified");
+                            var colNumber = 4;
+
+
+                            var tableRef = table.getElementsByTagName('tbody')[0];
+
+                            $(data).each(function(index, value) {
+
+                                var chk = "<td><input type='checkbox' value='" + value.id + "' name='deleteCheckBox' id='chk_" + index + "' /></td>";
+
+                                var row = tableRef.insertRow(tableRef.rows.length);
+                                var cell1 = row.insertCell(0);
+                                var cell2 = row.insertCell(1);
+                                var cell3 = row.insertCell(2);
+                                var cell4 = row.insertCell(3);
+                                var cell5 = row.insertCell(4);
+
+
+                                cell1.innerHTML = chk;
+                                cell2.innerHTML = value.id;
+                                cell3.innerHTML = value.classifiedDescription;
+                                cell4.innerHTML = value.category;
+                                cell5.innerHTML = value.city;
+
+                                $('#myTable tr > *:nth-child(2)').hide();
+
+                                $('#retriveForm')[0].reset();
+
+                            });
+
+                          }
+
+                        }
+                    });
+
+                </script>
+
+            </div>
+
+            <!--footer container-->
+
+            <div class="fixed-bottom">
+
+                <footer>
+
+                    <p>Footer</p>
+
+                </footer>
+
+            </div>
+
+
+        </body>
+
+    </html>
