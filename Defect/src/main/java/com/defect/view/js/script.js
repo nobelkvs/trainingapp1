@@ -104,9 +104,6 @@ $("#Retrive_form").submit(function () {
             $("#table").css("display", "block");
             $("#RetrieveTable").empty();
             var tableRef = table.getElementsByTagName('tbody')[0];
-            $(document).ready(function() {
-                $('#retreiveTable').DataTable();
-            } );
 
             $(data).each(function (index, value) {
                 var row = tableRef.insertRow(tableRef.rows.length);
