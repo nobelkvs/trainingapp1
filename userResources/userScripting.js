@@ -1,10 +1,28 @@
 //while clicking create
+$("#homepage").click(function () {
+    $("#home").css("display", "block");
+    $("#Create").css("display", "none");
+    $("#Update").css("display", "none");
+    $("#Retrieve").css("display", "none");
+    $("#Delete").css("display", "none");
+    $(".table_div").css("display", "none");
+    $("#msg").css("display","none");
+});
+
+$("#c5").click(function () {
+    $("#home").css("display", "none");
+
+});
+//while clicking create
 $("#s1").click(function () {
     $("#Create").css("display", "block");
     $("#Update").css("display", "none");
     $("#Retrieve").css("display", "none");
     $("#Delete").css("display", "none");
     $(".table_div").css("display", "none");
+    $("#home").css("display", "none");
+    $("#msg").css("display","none");
+
 });
 
 $("#c1").click(function () {
@@ -14,15 +32,6 @@ $("#c1").click(function () {
 //
 //while clicking update
 
-
-$("#home").click(function () {
-    $("#Update").css("display", "none");
-    $("#Create").css("display", "none");
-    $("#Retrieve").css("display", "none");
-    $("#Delete").css("display", "none");
-    $(".table_div").css("display", "none");
-
-});
 
 
 
@@ -36,6 +45,10 @@ $("#s3").click(function () {
     $("#Update").css("display", "none");
     $("#Delete").css("display", "none");
     $(".table_div").css("display", "none");
+    $("#home").css("display", "none");
+    $("#msg").css("display","none");
+
+
  
 
 });
@@ -54,6 +67,10 @@ $("#s4").click(function () {
     $("#Update").css("display", "none");
     $("#Retrieve").css("display", "none");
     $(".table_div").css("display", "none");
+    $("#home").css("display", "none");
+    $("#msg").css("display","none");
+
+
 });
 
 $("#c4").click(function () {
@@ -119,6 +136,8 @@ $('#Retrieve').on('submit', function () {
         function CustomerError(request, status, error) {
 
             alert('error' + request + status + error);
+            //for dilsplay errors
+            console.log(error);
 
         }
     }
@@ -128,14 +147,19 @@ $('#Retrieve').on('submit', function () {
     function fillUserTable(data, status, response) {
         //printing in console
         console.log(data);
+        
+        $("#msg").css("display","none");
        
        
-        (data.length > 0 ? printDataInUi(data) : alert("no records found please verify for duplicate entry...!"));
+        (data.length > 0 ? printDataInUi(data) : displayMsg("No records found"));
         // alert("No Records Fount For the Given Credentials" + 
-
+        
       
     }
         
+
+        
+
 
         //printing data in the ui
         function printDataInUi(data) {
@@ -145,7 +169,7 @@ $('#Retrieve').on('submit', function () {
            
             var table = document.getElementById("tbl");
             //var table='HTMLTableElement';
-            alert(table + "after ")
+            
 
             var tableRef = table.getElementsByTagName('tbody')[0];
             
@@ -154,34 +178,29 @@ $('#Retrieve').on('submit', function () {
 
             //looping the data and printing in table
             $(data).each(function (index, value) {
-                alert("in inserting data");
+              
                 //creating the cells for indaividual field
                 var row = tableRef.insertRow(tableRef.rows.length);
                 row.setAttribute("id",rowId++)
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                var cell3 = row.insertCell(2);
-                var cell4 = row.insertCell(3);
-                var cell5 = row.insertCell(4);
-                var cell6 = row.insertCell(5);
-                var cell7 = row.insertCell(6);
-                var cell8 = row.insertCell(7);
-                var cell9 = row.insertCell(8);
                 //inserting the data to each field
-                cell1.innerHTML = sno++;
-                cell2.innerHTML = "#";
-                cell3.innerHTML = value.userName;
-                cell4.innerHTML = value.userEmailAddress;
-                cell5.innerHTML = value.userRole;
-                cell6.innerHTML = value.userPhoneNumber;
-                cell7.innerHTML = value.userCreationDate.day + "-" + value.userCreationDate.month + "-" + value.userCreationDate.year;
-                //here password should not be visible to user
-                cell8.innerHTML = ".....";
-               
+                row.insertCell(0).innerHTML = sno++;
+                row.insertCell(1).innerHTML = "#";
+                row.insertCell(2).innerHTML = value.userName;
+                row.insertCell(3).innerHTML = value.userEmailAddress;
+                row.insertCell(4).innerHTML = value.userRole;
+                row.insertCell(5).innerHTML = value.userPhoneNumber;
+                row.insertCell(6).innerHTML = value.userCreationDate.day + "-" + value.userCreationDate.month + "-" + value.userCreationDate.year;
+                row.insertCell(7).innerHTML = ".....";
+                var cell9 = row.insertCell(8);
+                
                 cell9.innerHTML = "<button type='button' class='btn btn-danger' onClick='deleteUserOnUi(" + value.userId+","+(rowId-1) + ")'>Delete</button>";
-               
+//               
+//                <!-- Trigger the modal with a button -->
+//  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button>
+// TODO delete this later
 
-            });
+
+            }); 
 
         }
     
@@ -195,7 +214,8 @@ $('#Create').on('submit', function () {
     event.preventDefault();
     var ro = document.getElementById("role");
     var userRole = ro.options[ro.selectedIndex].value;
-    alert("in insert..");
+  
+    
     var inputObj = {
         "userName": document.getElementById("userName").value,
         "email": document.getElementById("email").value,
@@ -203,6 +223,7 @@ $('#Create').on('submit', function () {
         "mobile": document.getElementById("phone").value,
         "role": userRole,
     }
+   
     document.myCreateForm.reset();
     console.log(inputObj);
 
@@ -223,9 +244,8 @@ $('#Create').on('submit', function () {
         $("#Create")[0].reset();
 
         function message(data, response, status) {
-            console.log(data)
-
-            alert((data === 'success') ? "User Created Successfully...!" : "Failed to Create The User..!,Please check for duplicate entry");
+        
+            (data === 'success') ? displayMsg("User Registered Successfully") : displayMsg("Failed to Create The User..!,user already existed..");
             $("#Create").css("display", "none");
 
         }
@@ -251,14 +271,12 @@ $('#Delete').on('submit', function () {
 
     event.preventDefault();
 
-    alert("in delete..");
+    
 
     admin_Password = document.getElementById("admin_password").value,
         userId = document.getElementById("user_id").value
 
-    alert(admin_Password + " " + userId);
-
-
+   
     //calling deleteuser method
 
     deleteUser(admin_Password, userId);
@@ -274,28 +292,48 @@ $(document).ready(function () {
         });
     });
 });
+
+
+// for display messages
+function  displayMsg(msg){
+   
+    
+$("#msg").css("display","block");
+
+document.getElementById("msg").innerHTML=msg;  
+
+
+
+ }
+//when new user clicked
 function addNewUser() {
     $("#Create").css("display", "block");
     $("#Update").css("display", "none");
     $("#Retrieve").css("display", "none");
     $("#Delete").css("display", "none");
     $(".table_div").css("display", "none");
+    $("#msg").css("display","block");
 
 }
 
 
 //delete on ui
 function deleteUserOnUi(id,rowId) {
+    
+   
+    
    var adminPassword = prompt("Please Enter Admin Password");
+   confirm("Do u Wants to Delete...?")
    //calling deleteuser method
     deleteUser(adminPassword, id);
-    //alert(rowId);
+    //removing the deleted record in tbl
     $("#"+rowId).remove();
 }
 
 //delete user method accepts two arguments password and user Id and performs the operation
 function deleteUser(admin_Password, userId) {
-   // alert("in delete")
+   
+
     const res1 = `http://localhost:8080/UserAppp-1.0-SNAPSHOT/userDeleteController?admin_Password=${admin_Password}&userId=${userId}`;
     $.ajax({
         url: res1,
@@ -313,9 +351,10 @@ function deleteUser(admin_Password, userId) {
             alert("Please Enter the correct password...")
         }
 
-        //getting the status wether it is deleted or not
-        alert((data === 'success') ? "User deleted Successfully...!" : "Failed to delete The User..!,Please try again");
-        $("#Delete").css("display", "none");
+       
+       
+       (data=='success') ? displayMsg("User deleted Successfully") : displayMsg("Failed to delete The User..!");
+       
 
     }
 
@@ -326,4 +365,56 @@ function deleteUser(admin_Password, userId) {
     }
 
 
+}
+
+
+//validations on the create user form
+function validate(){
+    //getting the form data
+    var username=document.forms["myCreateForm"]["userName"].value;
+    var mobile=document.forms["myCreateForm"]["phone"].value;
+    var email=document.forms["myCreateForm"]["email"].value;
+    var pass=document.forms["myCreateForm"]["pass"].value;
+    var regUsername=/^[a-zA-Z ]{3,20}$/;
+    var regMobile = /^\d{10}$/;
+    var regEmail=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    
+    var regPass=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+//testing username
+     if(regUsername.test(username)==false){
+       
+        document.getElementById("err").innerHTML="username should be alphabetic minimum 3characters and max 20";
+        document.getElementById("userName").focus;
+        return false;
+    }
+//testing email
+    if(regEmail.test(email)==false){
+        document.getElementById("err").innerHTML="";
+
+        document.getElementById("err3").innerHTML="email should be like ex: example@xxx.xx";
+        document.getElementById("email").focus;
+        return false;
+    }
+//testing mobile number
+    else if(regMobile.test(mobile)==false){
+        document.getElementById("err3").innerHTML="";
+        document.getElementById("err1").innerHTML="phone number should be 10 digit number";
+        document.getElementById("phone").focus;
+
+        return false;
+    }
+//testing password    
+   else if(regPass.test(pass)==false){
+
+        document.getElementById("err1").innerHTML="";
+        document.getElementById("err2").innerHTML="password should be minimum 8ch and atleast 1cha 1 digit 1 Capital letter";
+        document.getElementById("pass").focus;
+
+
+        return false;
+    }    
+    else{
+        
+        return true;
+    }
 }

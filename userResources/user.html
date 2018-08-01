@@ -2,10 +2,19 @@
 
 <head>
     <meta charset="ISO-8859-1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="userStyle.css">
+    <link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -14,19 +23,20 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
-    <title>APPLICATION</title>
+
+    <title>USER APPLICATION</title>
 
 
 </head>
 
 <div id="header">
-    <br>
-    <span>
+ 
+        <br>
         <center>
             <h2 class="title_name" style="color: black;">USER REGISTRATION APPLICATION</h2>
         </center>
-</div>
-</span>
+    </div>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -38,11 +48,11 @@
 
             <ul class="navbar-nav" id="submenu">
 
-                    <li class="nav-item ">
-                            <a class="nav-link" href="#" id="home">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li class="nav-item ">
+                    <a class="nav-link" href="#home" id="homepage">Home
+                        <!-- <span class="sr-only">(current)</span> -->
+                    </a>
+                </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <li class="nav-item ">
                     <a class="nav-link" href="#Create" id="s1">Create
                         <span class="sr-only">(current)</span>
@@ -67,34 +77,37 @@
             </ul>
 
         </div>
-        </div>
+       
     </nav>
 </nav>
+
+
 <div class="container">
 
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6 form_style">
+            <div class="formdiv">
             <form style="display: none;" id="Create" name="myCreateForm" enctype='application/json'>
                 <div class="form-group">
-                    <label for="text">User Name</label>
-                    <input type="text" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="Created By" required pattern="[A-Za-z ]{3,}">
+                    <label for="text">User Name<sup style="color: red">*</sup></label>
+                    <input type="text" class="form-control" id="userName" aria-describedby="emailHelp" autofocus placeholder="user name" maxlength="20" required pattern="[A-Za-z ]{3,}"><div id="err"><span></span></div>
                 </div>
                 <div class="form-group">
 
-                    <label for="text">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email address" required>
+                    <label for="text">Email<sup style="color: red">*</sup></label><i class="glyphicon glyphicon-user"></i>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" autofocus  placeholder="Email address" required ><div id="err3"><span></span></div>
                 </div>
                 <div class="form-group">
-                    <label for="text">Phone number</label>
-                    <input type="text" class="form-control" id="phone" aria-describedby="emailHelp" placeholder="Phone number" required pattern="[0-9]{10}">
+                    <label for="text">Phone number<sup style="color: red">*</sup></label>
+                    <input type="number" class="form-control" id="phone" aria-describedby="emailHelp" autofocus placeholder="Phone number" required pattern="[0-9]{10}"><div id="err1"><span></span></div>
                 </div>
                 <div class="form-group">
-                    <label for="text">Password</label>
-                    <input type="password" class="form-control" id="pass" aria-describedby="emailHelp" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                    <label for="text">Password<sup style="color: red">*</sup></label>
+                    <i class="glyphicon glyphicon-lock"></i><input type="password" class="form-control" id="pass" aria-describedby="emailHelp" autofocus placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"><div id="err2"><span></span></div>
                 </div>
                 <div class="form-group">
-                    <label for="text">Role</label>
+                    <label for="text">Role<sup style="color: red">*</sup></label>
                     <select class="form-control" id="role">
                         <option value="">Select</option>
                         <option value="agent">Agent</option>
@@ -103,45 +116,58 @@
 
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary" >Submit</button>
-                <button type="submit" class="btn btn-primary" id="c1">Cancel</button>    
+                <center>
+                    <button type="submit" class="btn btn-primary" onclick="return validate()">Submit</button>
+                    <button type="submit" class="btn btn-primary" id="c1">Cancel</button>
+                </center>
             </form>
 
             <output id="list"></output>
         </div>
         <div class="col-md-3"></div>
     </div>
+    </div>
 </div>
-<!-- <div class="container">
+    
+<!-- **********for homepage**********/ -->
 
-              <div class="row">
-                  <div class="col-md-3"></div>
-                  <div class="col-md-6 form_style">
-                      <form style="display: none;" id="Update">
-                          <div class="form-group">
-                              <label >user id</label>
-                              <input type="text" class="form-control" id="userId"  placeholder="Ticket-ID">
-                          </div>
-                          <div class="form-group">
-                                <label >userName</label>
-                                <input type="text" class="form-control" id="userName"  placeholder="Ticket-ID">
-                            </div>
-                          <div class="form-group">
-                              <label >Email Id</label>
-                              <input type="text" class="form-control" id="email" placeholder="Updated By">
-                          </div>
-                          <div class="form-group">
-                              <label >Password</label>
-                              <input type="date" class="form-control" id="Password" placeholder="Date">
-                          </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                          <button type="submit" class="btn btn-primary" id="c2">Cancel</button>
-                   
-                        </form>
-                    </div>
-                  <div class="col-md-3"></div>
-          </div>
-          </div> -->
+<div class="container">
+
+    <div id="home">
+
+
+        <center>
+            <h1>
+                About Application
+            </h1>
+        </center>
+
+        <div id="para1">
+            <h3>
+                This Project is Aimed to delvelop the a simple application to meat the requirements of Registering A new User and Performs
+                operations Like
+            </h3>
+        </div>
+
+        <div id="para2">
+            <p>
+
+               <u>i)Creating A User:</u>  To Create or Register a New User He/She need To Fill the Following information on the form given in the
+                UI. The Fields Are Following 1.Created By 2.Email Address 3.Phone Number 4.Password 5.Role (either user or
+                Agent) Afer Filling the fields Then submit then it will insert data in the database if it is valid data else
+                it shows invalid data.
+            </p>
+            <p>
+
+               <u>ii)Retriving a The User Information:</u>  To Retrive the data We can get it by two ways , 1.Based on UserID 2.Based on Role iii)Deleting
+                the User: Deletion can be done by two ways , 1.By clicking Delete button on navigation bar and entering admin
+                password and used id 2.By Clicking the button on each row after retreving the user information if correct
+                information is provided then it will allert as Successfully Deleted else shows error
+            </p>
+        </div>
+    </div>
+
+</div>
 
 <div class="container">
 
@@ -162,9 +188,9 @@
 
                 <div class="form-group">
                     <label>id or Role</label>
-                    <input type="text" class="form-control" id="userId" placeholder="id or role" required>
+                    <input type="text" class="form-control" id="userId" placeholder="id or role" required maxlength="5">
                 </div>
-                <button type="submit" class="btn btn-primary" >Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
                 <button type="submit" class="btn btn-primary" id="c3">Cancel</button>
 
             </form>
@@ -173,6 +199,33 @@
     </div>
 
 </div>
+    
+    
+    
+    
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Delete</h4>
+        </div>
+        <form name="deleteForm">
+           <div class="modal-body">
+          <p>Enter admin Password</p>
+               <input type="password" id="pass1" maxlength="10"/>
+        </div>
+          
+          
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             <button type="button" class="btn btn-primary" onclick="deleteUserOnUi()">Submit</button>
+        </div>
+            </form>
+      </div>
+    </div>
+  </div>
 
 <div class="container">
 
@@ -180,25 +233,31 @@
         <div class="col-md-3"></div>
         <div class="col-md-6 form_style">
             <form style="display: none;" id="Delete" name="myDeleteForm">
+
+              
                 <div class="form-group">
-                    <label>Admin Password</label>
+                    <label>Admin Password<sup style="color: red">*</sup></label>
                     <input type="password" class="form-control" id="admin_password" placeholder="enter admin password" required>
                 </div>
                 <div class="form-group">
-                    <label>User ID</label>
+                    <label>User ID<sup style="color: red">*</sup></label>
                     <input type="text" class="form-control" id="user_id" placeholder="userId" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary" >Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
                 <button type="submit" class="btn btn-primary" id="c4">Cancel</button>
-                
+
             </form>
         </div>
         <div class="col-md-3"></div>
     </div>
 </div>
 
-<div id="output">
+
+    
+<div class="container">
+    
+        <span id="msg"><p></p></span>
 
 </div>
 
@@ -209,11 +268,14 @@
             <h2 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;color: aliceblue">
                 <caption style="text-align: center;"> User Details</caption>
             </h2>
-            <div id="msg"><span class="msg-spn"></span></div>
-            <button type="button" class="btn btn-primary" onclick="addNewUser()">Add New User</button><br>
+          
+            <button type="button" class="btn btn-primary" onclick="addNewUser()">Add New User</button>
+            <br>
 
 
-        </center><br>
+        </center>
+        <br>
+      
         <table class="table" id="tbl" style="display: none">
 
             <thead style="background-color: cornflowerblue">
@@ -234,6 +296,10 @@
             <tbody style="background-color:powderblue" id="mytableBody">
             </tbody>
         </table>
+        
+    </div>
+    <div class="fixed-footer">  
+        <div id="foot">Copyright &copy; 2018 AgileCRM</div>        
     </div>
 </body>
 <script src="userScripting.js" type="text/javascript"></script>
