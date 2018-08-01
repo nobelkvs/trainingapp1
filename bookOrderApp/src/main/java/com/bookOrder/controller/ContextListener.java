@@ -12,10 +12,11 @@ import java.io.File;
 public class ContextListener implements ServletContextListener {
 
     // Create Logger instance
-    static final Logger log=Logger.getLogger(ContextListener.class);
+    static final Logger log = Logger.getLogger(ContextListener.class);
 
     /**
      * Initialize log4j when the application is being started
+     *
      * @param event
      */
     @Override
@@ -24,7 +25,7 @@ public class ContextListener implements ServletContextListener {
         ServletContext context = event.getServletContext();
         String log4jConfigFile = context.getInitParameter("log4j-config-location");
         String fullPath = context.getRealPath("") + File.separator + log4jConfigFile;
-        System.out.println("fullPath "+fullPath);
+        System.out.println("fullPath " + fullPath);
         PropertyConfigurator.configure(fullPath);
 
     }

@@ -17,7 +17,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Iterator;
 import java.util.List;
 
 public class OrderController extends HttpServlet {
@@ -172,7 +171,6 @@ public class OrderController extends HttpServlet {
     }
 
     /**
-     *
      * @param data
      * @return json
      * @throws JSONException
@@ -219,6 +217,5 @@ public class OrderController extends HttpServlet {
         out.print(deleteStatus);
 
     }
-
 
 }

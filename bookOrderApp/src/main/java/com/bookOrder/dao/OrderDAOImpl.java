@@ -34,10 +34,12 @@ public class OrderDAOImpl implements OrderDAO {
      * @throws SQLException
      */
     @Override
-    public int createOrderDAO(Order o) throws SQLException {
+    public int createOrder(Order o) throws SQLException {
         log.info("inside create order dao---");
 
         Connection conn = null;
+
+        log.info("object passed to dao is..." + o);
         int insertStatus = 0;
 
         // Create connection to database
@@ -52,7 +54,6 @@ public class OrderDAOImpl implements OrderDAO {
         PreparedStatement ps = null;
         try {
 
-            // Create prepareStatement
             ps = conn.prepareStatement(SQL_INSERT_INTO_ORDER);
 
             ps.setString(1, o.getOrderDate());
@@ -60,7 +61,7 @@ public class OrderDAOImpl implements OrderDAO {
             ps.setInt(3, o.getBookId());
             ps.setInt(4, o.getQuantity());
 
-            // Executing prepareStaement
+            // Executing prepareStatement
             insertStatus = ps.executeUpdate();
 
             log.info("after inserting into database--" + insertStatus);
@@ -82,10 +83,10 @@ public class OrderDAOImpl implements OrderDAO {
      * @throws SQLException
      */
     @Override
-    public List<Order> getOrderDAO(String authorName) throws SQLException {
+    public List<Order> getOrder(String authorName) throws SQLException {
 
 
-        log.info("enterd getOrderDAO method...");
+        log.info("entered getOrderDAO method...");
 
         // Create ArrayList instance
         List list = new ArrayList<>();
@@ -97,7 +98,7 @@ public class OrderDAOImpl implements OrderDAO {
         try {
             conn = c.getConnection();
         } catch (Exception e) {
-           log.error("error in getOrderDAO..."+e);
+            log.error("error in getOrderDAO..." + e);
         }
 
         PreparedStatement ps = null;
@@ -148,7 +149,7 @@ public class OrderDAOImpl implements OrderDAO {
      * @throws SQLException
      */
     @Override
-    public int updateOrderDAO(Order o) throws SQLException {
+    public int updateOrder(Order o) throws SQLException {
 
 
         log.info("inside update order dao---");
@@ -193,7 +194,7 @@ public class OrderDAOImpl implements OrderDAO {
      * @throws SQLException
      */
     @Override
-    public int deleteOrderDAO(int orderId) throws SQLException {
+    public int deleteOrder(int orderId) throws SQLException {
         log.info("inside delete order dao---");
 
         Connection conn = null;

@@ -1,6 +1,8 @@
 package com.bookOrder.dao;
 
+import com.bookOrder.controller.OrderController;
 import com.bookOrder.model.Order;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -10,19 +12,22 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 
-public class OrderDAOImplTest {
+public class OrderDAOImplTest extends OrderController {
 
-    OrderDAOImpl odi=new OrderDAOImpl();
+    // Initialize log4j
+    static final Logger log = Logger.getLogger(OrderController.class);
 
-    // test case to test delete method
+    OrderDAOImpl odi = new OrderDAOImpl();
+
+    // Test case to test delete method
     @Test
     public void testDeleteOrder() {
 
-        int orderId=8;
+        int orderId = 8;
 
         try {
-            int deleteStatus= odi.deleteOrderDAO(orderId);
-            assertEquals(0,deleteStatus);
+            int deleteStatus = odi.deleteOrder(orderId);
+            assertEquals(0, deleteStatus);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -30,37 +35,47 @@ public class OrderDAOImplTest {
 
     }
 
-    // junit test case to test create
+    // Junit test case to test create
+
+    /**
+     * @throws SQLException
+     */
     @Test
     public void testCreateOrder() throws SQLException {
-        Order o=new Order();
-       // o.setOrderId(3);
-        o.setOrderDate("2018-08-19");
-        o.setOrderBy("nidhi");
-        o.setBookId(4);
+        Order o = new Order();
+        o.setOrderDate("2018-08-28");
+        o.setOrderBy("nikita");
+        o.setBookId(5);
         o.setQuantity(16);
-       int insertStatus= odi.createOrderDAO(o);
-       assertEquals(1,insertStatus);
+        int insertStatus = odi.createOrder(o);
+        assertEquals(1, insertStatus);
 
     }
 
-    // junit test case to test retrieve method
-    @Test
-    public void testGetOrder()throws SQLException{
+    // Junit test case to test retrieve method
 
-        String authorName="forouzan";
-        odi.getOrderDAO(authorName);
+    /**
+     * @throws SQLException
+     */
+    @Test
+    public void testGetOrder() throws SQLException {
+
+        String authorName = "forouzan";
+        List li = odi.getOrder(authorName);
+        log.info(li);
 
     }
 
-    // method ton test retr
-    @Test
-    public void testEmptyGetOrder()throws SQLException {
-        List list= new ArrayList();
-        String authorName=" ";
-        list=odi.getOrderDAO(authorName);
-        assertEquals(0,list.size());
+    // Method to test retrieve
 
+    /**
+     * @throws SQLException
+     */
+    @Test
+    public void testEmptyGetOrder() throws SQLException {
+        String authorName = " ";
+        List list = odi.getOrder(authorName);
+        assertEquals(0, list.size());
     }
 
 }

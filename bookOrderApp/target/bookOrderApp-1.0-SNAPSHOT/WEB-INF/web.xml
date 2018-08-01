@@ -4,9 +4,6 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
 
-    <welcome-file-list>
-        <welcome-file>book.html</welcome-file>
-    </welcome-file-list>
     <servlet>
         <servlet-name>firstservlet</servlet-name>
         <servlet-class>com.bookOrder.controller.OrderController</servlet-class>
@@ -15,6 +12,7 @@
         <servlet-name>firstservlet</servlet-name>
         <url-pattern>/book</url-pattern>
     </servlet-mapping>
+
 
     <context-param>
         <param-name>log4j-config-location</param-name>

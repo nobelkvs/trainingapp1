@@ -24,6 +24,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * Method used to get book_id from bookDAO and  pass that
+     *
      * @param o
      * @param bName
      * @return insertStatus
@@ -50,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
             OrderDAOImpl odi = new OrderDAOImpl();
 
             // Call createOrder method of OrderDAOImpl
-            insertStatus = odi.createOrderDAO(o);
+            insertStatus = odi.createOrder(o);
         }
 
         return insertStatus;
@@ -59,6 +60,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * Method to retrieve details from DAO
+     *
      * @param authorName
      * @return orderList
      * @throws SQLException
@@ -68,13 +70,19 @@ public class OrderServiceImpl implements OrderService {
         OrderDAOImpl odi = new OrderDAOImpl();
 
         // Call getOrderDAO method to get order
-        List<Order> orderList = odi.getOrderDAO(authorName);
+        List<Order> orderList = odi.getOrder(authorName);
         log.info("retrieved data is..." + orderList);
 
         return orderList;
     }
 
     // Method to pass update_order details to OrderDAO
+
+    /**
+     * @param o
+     * @return updateStatus
+     * @throws SQLException
+     */
     @Override
     public int updateOrder(Order o) throws SQLException {
 
@@ -82,7 +90,7 @@ public class OrderServiceImpl implements OrderService {
         OrderDAOImpl odi = new OrderDAOImpl();
 
         // Call updateOrderDAO method of OrderDAOImpl class
-        updateStatus = odi.updateOrderDAO(o);
+        updateStatus = odi.updateOrder(o);
         log.info("updated records are......" + updateStatus);
 
         return updateStatus;
@@ -91,6 +99,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * Method to delete order from database
+     *
      * @param orderId
      * @return deleteStatus
      * @throws SQLException
@@ -102,7 +111,7 @@ public class OrderServiceImpl implements OrderService {
         OrderDAOImpl odi = new OrderDAOImpl();
 
         // Call deleteOrderDAO method of OrderDAOImpl class
-        deleteStatus = odi.deleteOrderDAO(orderId);
+        deleteStatus = odi.deleteOrder(orderId);
         log.info("deleted records are..." + deleteStatus);
         return deleteStatus;
     }

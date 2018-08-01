@@ -9,8 +9,8 @@ import java.io.Serializable;
 /**
  * Model class has private properties, setter and getter methods
  */
-@Getter
 @Setter
+@Getter
 @ToString
 public class Order implements Serializable {
 
@@ -20,6 +20,7 @@ public class Order implements Serializable {
     private Integer bookId;
     private Integer quantity;
     private String bookName;
+
     private String authorName;
 
 }

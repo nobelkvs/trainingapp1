@@ -17,11 +17,12 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="./css/style.css" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/book.css" crossorigin="anonymous">
 
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
+    <link rel="icon" href="img/bookImg1.png">
     <title>Book Order</title>
 
 </head>
@@ -42,27 +43,34 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+
                 <li class="nav-item ">
-                    <a class="nav-link" href="#createForm" id="createOrder">Create Order
-
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link " href="#updateForm" id="updateOrder">Update Order</a>
-                </li>
+                    <a class="nav-link" href="#createForm" id="createOrder">
+                    <img src="img/create.png" style="width: 35px;height: 35px;"> Create</a>
+                </li>&nbsp;&nbsp;
 
                 <li class="nav-item">
-                    <a class="nav-link " href="#retrieveForm" id="retrieveOrder">Retrive Order</a>
-                </li>
+                    <a class="nav-link" href="#updateForm" id="updateOrder">
+                    <img src="img/update.png" style="width: 30px;height: 30px;"> Update</a>
+                </li>&nbsp;&nbsp;
+
                 <li class="nav-item">
-                    <a class="nav-link " href="#" id="deleteOrder">Delete Order</a>
+                    <a class="nav-link" href="#retrieveForm" id="retrieveOrder">
+                    <img src="img/search.png" style="width: 40px;height: 35px;"> Retrieve</a>
+                </li>&nbsp;&nbsp;
+
+                <li>
+                    <input id="myInput" type="text" title="search in retrieve only.." autocomplete=off placeholder="Search..">
                 </li>
             </ul>
 
         </div>
     </nav>
 
+    <div class="container">
+
+        <div id="alert_placeholder"></div>
+    </div>
 
     <div class="card-body">
 
@@ -72,17 +80,12 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-6 form_style">
 
-
-
                     <!-- Create order form -->
                     <form style="display: none;" id="createForm">
 
-                        <div>
-                            <span id="create_msg"> </span>
-                        </div>
                         <div class="form-group">
                             <label for="orderBy" class="required">Enter name</label>
-                            <input type="text" class="form-control" pattern=[a-zA-Z]{2,30} id="orderBy" required>
+                            <input type="text" class="form-control" title="enter your name" pattern=[a-zA-Z]{2,30} id="orderBy" autocomplete=off required>
 
                         </div>
 
@@ -96,14 +99,14 @@
                                 <option value="os">Operating System</option>
                                 <option value="networking">Networking</option>
                                 <option value="c">C</option>
-
+                                <option value="web technologies">Web Technologies</option>
                             </select>
 
                         </div>
                         <div class="form-group">
                             <label for="quantity" class="required">quantity</label>
 
-                            <input type="number" class="form-control" id="quantity" required>
+                            <input type="number" class="form-control" id="quantity" autocomplete=off required>
                             <span id="checkQuantity"></span>
 
                         </div>
@@ -117,17 +120,15 @@
 
                     <!-- Update order form -->
                     <form style="display: none;" id="updateForm">
-                        <div>
-                            <span id="update_msg"> </span>
-                        </div>
+
                         <div class="form-group">
                             <label for="orderId" class="required">Enter Your Order id</label>
-                            <input type="number" class="form-control" id="uOrderId" required>
+                            <input type="number" class="form-control" id="uOrderId" autocomplete=off required>
                         </div>
 
                         <div class="form-group">
                             <label for="uQuantity" class="required">Enter quantity </label>
-                            <input type="number" pattern=[0-9]{1,3}class="form-control" id="uQuantity" required>
+                            <input type="number" pattern=[0-9]{1,3}class="form-control" id="uQuantity" autocomplete=off required>
                             <span id="checkBookQuantity"></span>
                         </div>
 
@@ -140,9 +141,7 @@
 
                     <!-- Retrieve form -->
                     <form style="display: none;" id="retrieveForm">
-                        <div>
-                            <span id="retrieve_msg"> </span>
-                        </div>
+
                         <div class="form-group">
                             <label for="bAuthorName" class="required">Select author Name</label>
                             <select class="form-control" id="bAuthorName" required>
@@ -152,6 +151,7 @@
                                 <option value="james gosling">James Gosling</option>
                                 <option value="galvin">Galvin</option>
                                 <option value="forouzan">Forouzan</option>
+                                <option value="jackson">Jackson</option>
 
                             </select>
                         </div>
@@ -163,12 +163,6 @@
                         <br/>
                         <div class="form-group">
 
-                            <input id="myInput" style="display:none;" type="text" placeholder="Search..">
-                            <div>
-                                <span id="deleteSuccess"></span>
-                            </div>
-                            <br/>
-
                             <div class="panel panel-primary filterable">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"></h3>
@@ -179,23 +173,23 @@
                                 </div>
 
                                 <table id="ordreTable" class="table table-striped" style="display:none;">
-                                    <label>Order Details</label>
+
                                     <center>
                                         <thead>
                                             <tr class="filters">
                                                 <th data-field="state" data-checkbox="true"></th>
                                                 <th scope="col" id="id_column">
-                                                    <input type="text" class="form-control" placeholder="order_id" disabled>
+                                                    <input type="text" class="form-control" placeholder="order id" disabled>
                                                 </th>
                                                 <th scope="col">
-                                                    <input type="text" class="form-control" placeholder="order_date" disabled>
+                                                    <input type="text" class="form-control" placeholder="order date" disabled>
                                                 </th>
                                                 <th scope="col">
-                                                    <input type="text" class="form-control" placeholder="book_name" disabled>
+                                                    <input type="text" class="form-control" placeholder="book name" disabled>
                                                 </th>
-                                                <th scope="col">
-                                                    <input type="text" class="form-control" placeholder="author_name" disabled>
-                                                </th>
+                                                <!-- <th scope="col">
+                                                    <input type="text" class="form-control" placeholder="author name" disabled>
+                                                </th> -->
                                                 <th scope="col">
                                                     <input type="text" class="form-control" placeholder="quantity" disabled>
                                                 </th>
@@ -206,24 +200,13 @@
                                     <tbody id="orderTableBody">
                                     </tbody>
                                 </table>
-                                <button type="button" id="deleteBtn" style="display: none;">DELETE</button>
+
+                                <button type="button" class="btn btn-primary" id="deleteBtn">
+                                    Delete
+                                </button>
                             </div>
-                        </div>
-                    </form>
 
-
-                    <!-- Delete form -->
-                    <form style="display: none;" id="deleteForm">
-                        <div>
-                            <span id="delete_msg"></span>
                         </div>
-                        <div class="form-group">
-                            <label for="orderId" class="required">Enter Your Order id</label>
-                            <input type="number" class="form-control" id="orderId" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-primary" id="deleteCancel">Cancel</button>
                     </form>
 
                 </div>
@@ -233,7 +216,7 @@
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-        <script type="text/JavaScript" src="./js/script.js"> </script>
+        <script type="text/JavaScript" src="./js/book.js"> </script>
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 
