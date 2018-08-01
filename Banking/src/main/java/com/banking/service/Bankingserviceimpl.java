@@ -10,23 +10,23 @@ public class Bankingserviceimpl implements Bankingservice {
   Bankingdao bdao = null;
     // Method creation for createbankService and pass model object
 
-    public int createbankingservice(Bankingmodel obj) throws SQLException {
+    public int createbanking(Bankingmodel obj) throws SQLException {
         bdao = new Bankingdaoimpl();
-        int createstatus = bdao.createbankingDAO(obj);
+        int createstatus = bdao.createbanking(obj);
         return createstatus;
 
     }
 
     // Method creation for deletebankService and passing the phone number
-    public int deletebankingservice(Integer phoneno) throws SQLException {
+    public int deletebanking(Integer phoneno) throws SQLException {
         bdao=new Bankingdaoimpl();
-        int deletestatus=bdao.deletebankingDAO(phoneno);
+        int deletestatus=bdao.deletebanking(phoneno);
         return deletestatus;
     }
     // Method creation for retrievebankService and passing the bank branch name
     public List<Bankingmodel> retrivebybranchname(String branch) {
         bdao=new Bankingdaoimpl();
-        List<Bankingmodel> retreivestatus=bdao.retrivebankingDAO(branch);
+        List<Bankingmodel> retreivestatus=bdao.retrivebanking(branch);
         return retreivestatus;
     }
 }

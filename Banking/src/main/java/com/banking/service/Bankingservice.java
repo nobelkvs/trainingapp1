@@ -8,9 +8,9 @@ import java.util.List;
 public interface Bankingservice {
 
     // Creating method for the banking service
-    int createbankingservice(Bankingmodel obj) throws SQLException;
+    int createbanking(Bankingmodel obj) throws SQLException;
     // Deleting method for the banking service
-    int deletebankingservice(Integer phoneno) throws SQLException;
+    int deletebanking(Integer phoneno) throws SQLException;
     // Retrieving method for the banking service
     List<Bankingmodel> retrivebybranchname(String branch);
 

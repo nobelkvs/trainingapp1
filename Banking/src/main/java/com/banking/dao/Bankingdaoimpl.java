@@ -23,7 +23,7 @@ public class Bankingdaoimpl implements Bankingdao {
 
 
     // INSERTING THE DATA
-    public int createbankingDAO(Bankingmodel obj) {
+    public int createbanking(Bankingmodel obj) {
         // Create an object for connection
         Connection connect = null;
 
@@ -75,7 +75,7 @@ public class Bankingdaoimpl implements Bankingdao {
 
 
     // DELETING THE DATA
-    public int deletebankingDAO(Integer phoneno) {
+    public int deletebanking(Integer phoneno) {
         // Create an object for connection
         Connection connect = null;
 
@@ -100,7 +100,7 @@ public class Bankingdaoimpl implements Bankingdao {
     }
 
         //RETREIVING THE DATA
-    public List<Bankingmodel> retrivebankingDAO(String branch) {
+    public List<Bankingmodel> retrivebanking(String branch) {
         List<Bankingmodel> branchlist = new ArrayList<Bankingmodel>();
         Connection connect = null;
 
@@ -139,7 +139,7 @@ public class Bankingdaoimpl implements Bankingdao {
     public static void main(String[]args) throws SQLException {
         // Create an object for dao
         Bankingdao bd = new Bankingdaoimpl();
-        List <Bankingmodel> b =bd.retrivebankingDAO("li");
+        List <Bankingmodel> b =bd.retrivebanking("li");
         for(Bankingmodel bm : b){
             log.info(b);
         }

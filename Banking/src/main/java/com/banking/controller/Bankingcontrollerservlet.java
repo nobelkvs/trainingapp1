@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 public class Bankingcontrollerservlet extends HttpServlet {
     // It is able to access the logger from all classes in Banking Application
     static final Logger log = Logger.getLogger(Bankingcontrollerservlet.class);
@@ -45,7 +46,7 @@ public class Bankingcontrollerservlet extends HttpServlet {
         // Creating an object for sevice
         Bankingservice bs = new Bankingserviceimpl();
         try {
-            insertStatus = bs.createbankingservice(b);
+            insertStatus = bs.createbanking(b);
         } catch (SQLException e) {
             // This method helps to trace the exception.
             e.printStackTrace();
@@ -100,7 +101,7 @@ public class Bankingcontrollerservlet extends HttpServlet {
         // Create an object for service
         Bankingservice bs = new Bankingserviceimpl();
         try {
-            deleteStatus = bs.deletebankingservice(phoneno);
+            deleteStatus = bs.deletebanking(phoneno);
         } catch (SQLException e) {
             e.printStackTrace();
         }

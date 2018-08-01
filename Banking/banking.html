@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
+   <!-- title-->
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
       <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
+ <!--Linking up with css file-->
       <link rel="stylesheet" href="banking.css">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -17,6 +18,7 @@
             <h1 style="color:white;"><img src="logo.jpg" style="width:80px;height:60px;border:2px;color:white;">Bank Account</h1>
          </header>
       </div>
+       <!-- Navigation bar-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
          <a class="navbar-brand" href="#" title="Home"> </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,6 +67,7 @@
          <span class="carousel-control-next-icon"></span>
          </a>
       </div>
+       <!-- Form for creating an account-->
       <div class="container-fluid">
          <div class="row">
             <div class="col-md-3"></div>
@@ -99,6 +102,7 @@
             </div>
             <div class="col-md-3"></div>
          </div>
+          <!--Form for retrieving an account-->
          <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6 form_style">
@@ -111,6 +115,7 @@
                   <button type="submit" class="btn btn-inverse" id="retrieve_cancel">Cancel</button>
                
                   <caption>         </caption>
+                   <!-- table for retrieving the account-->
                   <div class="table-responsive">
                      <table id="bankingtable" class="bankingtable">
                         <caption>       </caption>
@@ -134,6 +139,7 @@
             </div>
             <div class="col-md-3"></div>
          </div>
+          <!--calling the java script file-->
          <script src="banking.js"></script>
       </div>
    </body>

@@ -7,7 +7,9 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.io.File;
 import org.apache.log4j.Logger;
+
 @WebListener("application context listener")
+
 public class ContextListener implements ServletContextListener{
 
     static final Logger log =Logger.getLogger(Bankingcontrollerservlet.class);

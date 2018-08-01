@@ -6,6 +6,7 @@ $(document).ready(function(){
       });
     });
   });
+  //function for showing the alert.
   function showalert(message, alerttype) {
 
     $('#alert_placeholder').append('<div id="alertdiv" class="alert ' + alerttype + '"><a class="close" data-dismiss="alert"></a><span>' + message + '</span></div>');
@@ -13,7 +14,7 @@ $(document).ready(function(){
         $("#alertdiv").remove();
     });
 }
-
+// displaying the home page only and hiding all other pages information
   $("#show_home").click(function () {
     $("#demo").css("display", "block");
     $("#showHome_form").css("display", "block");
@@ -21,18 +22,20 @@ $(document).ready(function(){
     $("#showRetrieve_form").css("display", "none");
 });
 
-      
+// displaying the create page only and hiding all other pages information
 $("#show_crt").click(function () {
     $("#demo").css("display", "none");
     $("#showCrt_form").css("display", "block");
     $("#showRetrieve_form").css("display", "none");
     $("#showHome_form").css("display", "none");
 });
-
+//cancel button for create page
 $("#create_cancel").click(function () {
     $("#showCrt_form").css("display", "none");
 
 });
+// displaying the retrieve page only and hiding all other pages information
+
 
 $("#show_retrieve").click(function () {
     $("#demo").css("display", "none");
@@ -47,7 +50,7 @@ $("#retrieve_cancel").click(function () {
     $("#showRetrieve_form").css("display", "none");
 
 });
-
+//function for create form
 $('#showCrt_form').submit(function (event) {
     event.preventDefault();
     var customername,branch,address,phoneno,emailaddr;
@@ -59,7 +62,7 @@ $('#showCrt_form').submit(function (event) {
         "emailaddr": document.getElementById("emailaddr").value
     };
   
-
+   //ajax calling for creating an account
     $.ajax({
         type: "POST",
         url: `http://localhost:8080/Banking-1.0-SNAPSHOT/servlets`,
@@ -74,7 +77,7 @@ $('#showCrt_form').submit(function (event) {
 
     
 });
-
+//function for deleting an account
 function deletefun(phonenum){
     event.preventDefault();
    
@@ -91,7 +94,7 @@ function deletefun(phonenum){
 
         });
 }
-
+//function for retrieving an account using the branch name of a bank
 $("#retrivefun").click(function() {
 
     var dataObj3 = {
