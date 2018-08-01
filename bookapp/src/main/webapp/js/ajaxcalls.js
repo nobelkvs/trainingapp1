@@ -1,523 +1,545 @@
- $(document).ready(function() {
-
-     //order books function
-     $('#orderbook').click(function() {
-
-         var customer = $('#customer').val();
-         var bookname = $('#bookname').val();
-         var quantity = $('#quantity').val();
-
-         if (customer != '' && !customer.match(/^[a-zA-Z]+$/)) {
-             $("#quantityerror").html('');
-             $("#nameerror").html("Name should contain only alphabets");
-         } else if (quantity < 0 || quantity.match(/^[a-zA-Z]+$/) || !quantity.match(/^[0-9]+$/)) {
-             $("#nameerror").html('');
-             $("#quantityerror").html("please enter quantity properly");
-         } else if (customer != '' && bookname != '' && quantity != '') {
-             $("#nameerror").html('');
-             $("#quantityerror").html('');
-
-             var orderdata = {
-                 customer: customer,
-                 bookname: bookname,
-                 quantity: quantity
-             };
-
-             $.ajax({
-                 type: "POST",
-                 url: "http://localhost:8081/bookapp/BookController",
-                 data: orderdata,
-                 success: function(response) {
-                     $('#customer').val('');
-                     $('#bookname').val('');
-                     $('#quantity').val('');
-                     $("#success").html("order placed successfully");
-                     $("#error").css("display", "none");
-
-                 },
-                 error: function(response) {
-                     alert("Error in order books function" + response)
-                 }
-             });
-
-         }
-
-     });
-
-
-
-     // Getting total orders
-     function showOrders() {
-
-         $.ajax({
-             type: "GET",
-             url: "http://localhost:8081/bookapp/BookController",
-             data: {},
-             success: function(response) {
-                 display_data(response);
-             },
-             error: function(response) {
-                 alert("Error in Getting total orders" + response)
-             }
-         });
-
-         // Displaying data to front-end
-         function display_data(output) {
-             var out = JSON.parse(output);
-             var col = [];
-             for (var i = 0; i < out.length; i++) {
-                 for (var key in out[i]) {
-                     if (col.indexOf(key) === -1) {
-                         col.push(key);
-                     }
-                 }
-             }
-
-             var table = document.createElement("table");
-             table.setAttribute("class", "table table-striped table-bordered")
-             table.setAttribute("id", "example")
-             var tr = table.insertRow(-1);
-
-             for (var i = 0; i < col.length + 1; i++) {
-                 if (i < col.length) {
-                     var th = document.createElement("th");
-                     th.innerHTML = col[i];
-                     tr.appendChild(th);
-                 } else {
-                     var th = document.createElement("th");
-                     th.innerHTML = "delete orders";
-                     tr.appendChild(th);
-                 }
-
-             }
-
-             for (var i = 0; i < out.length; i++) {
-                 tr = table.insertRow(-1);
-                 for (var j = 0; j < col.length + 1; j++) {
-                     if (j < col.length) {
-                         var tabCell = tr.insertCell(-1);
-                         tabCell.innerHTML = out[i][col[j]];
-                     } else {
-                         var tabCell = tr.insertCell(-1);
-                         tabCell.innerHTML = '<input type="checkbox" name="delete" value="' + out[i][col[0]] + '">';
-                     }
-                 }
-             }
-
-             $("#delete_order").css("display", "block");
-             var divContainer = document.getElementById("showData");
-             divContainer.innerHTML = "";
-             divContainer.appendChild(table);
-         }
-     }
-
-     // Deleting Orders using checkboxs
-     $('#delete_order').click(function() {
-
-         var delete_array = [];
-
-         $.each($("input[name='delete']:checked"), function() {
-             delete_array.push($(this).val());
-         });
-         alert(delete_array)
-
-         $.ajax({
-             type: "DELETE",
-             url: `http://localhost:8081/bookapp/BookController?delete_array=${delete_array}`,
-             success: function(response) {
-                 $("#total_orders").click();
-             },
-             error: function(response) {
-                 alert("Error in Deleting Orders using checkboxs" + response)
-             }
-         });
-
-     });
-
-     // Getting Available books
-     $('#availble_books').click(function() {
-
-         $.ajax({
-             type: "GET",
-             url: "http://localhost:8081/bookapp/AvailiableBookController",
-             data: {},
-             success: function(response) {
-                 display_data(response);
-             },
-             error: function(response) {
-                 alert("Error in Deleting Orders using checkboxs" + response);
-             }
-         });
-
-         // Displaying data to front-end
-         function display_data(output) {
-             var out = JSON.parse(output);
-             var col = [];
-             for (var i = 0; i < out.length; i++) {
-                 for (var key in out[i]) {
-                     if (col.indexOf(key) === -1) {
-                         col.push(key);
-                     }
-                 }
-             }
-
-             var table = document.createElement("table");
-             table.setAttribute("class", "table table-striped table-bordered")
-             table.setAttribute("id", "example")
-             var tr = table.insertRow(-1);
-
-             for (var i = 0; i < col.length - 1; i++) {
-                 var th = document.createElement("th");
-                 th.innerHTML = col[i];
-                 tr.appendChild(th);
-             }
-
-             for (var i = 0; i < out.length; i++) {
-
-                 tr = table.insertRow(-1);
-
-                 for (var j = 0; j < col.length - 1; j++) {
-                     var tabCell = tr.insertCell(-1);
-                     tabCell.innerHTML = out[i][col[j]];
-                     if (j == 4)
-                         if (out[i][col[j]] > 100) {
-                             tabCell.style.backgroundColor = "#4CAF50";
-                             tabCell.style.color = "white";
-                         }
-                     else if (out[i][col[j]] > 50) {
-                         tabCell.style.backgroundColor = "#da9a39";
-                         tabCell.style.color = "white";
-                         1
-                     } else {
-                         tabCell.style.backgroundColor = "#da5039";
-                         tabCell.style.color = "white";
-                     }
-                 }
-             }
-             var divContainer = document.getElementById("showData1");
-             divContainer.innerHTML = "";
-             divContainer.appendChild(table);
-         }
-
-     });
-
-
-     // Getting data for select option (i.e available books)
-     $('#order_book').click(function() {
-
-         $.ajax({
-             type: "GET",
-             url: "http://localhost:8081/bookapp/AvailiableBookController",
-             data: {},
-             success: function(response) {
-                 display_data(response);
-             },
-             error: function(response) {
-                 alert("Error in function Getting data for select options" + response);
-             }
-         });
-
-
-         function display_data(output) {
-             var out = JSON.parse(output);
-             var col = [];
-             for (var i = 0; i < out.length; i++) {
-                 for (var key in out[i]) {
-                     if (col.indexOf(key) === -1) {
-                         col.push(key);
-                     }
-                 }
-             }
-
-             var table = document.createElement("table");
-             table.setAttribute("class", "table table-striped table-bordered")
-             table.setAttribute("id", "example")
-             var tr = table.insertRow(-1);
-
-             for (var i = 0; i < col.length; i++) {
-                 var th = document.createElement("th");
-                 th.innerHTML = col[i];
-                 tr.appendChild(th);
-             }
-             var books = [];
-
-             for (var i = 0; i < out.length; i++) {
-
-                 tr = table.insertRow(-1);
-
-                 for (var j = 0; j < col.length; j++) {
-                     var tabCell = tr.insertCell(-1);
-                     1
-                     tabCell.innerHTML = out[i][col[j]];
-                     if (j == 1)
-                         books.push(out[i][col[j]]);
-                 }
-             }
-             console.log(books + "------------")
-             var datajs = JSON.stringify(books);
-
-             console.log(books[0] + "------------")
-             var i = 0;
-             var output = [];
-
-             $.each(books, function(i, value) {
-                 output.push('<option value="' + books[i] + '">' + books[i] + '</option>');
-                 i++;
-             });
-
-             $('#bookname').html(output.join(''));
-
-         }
-
-     });
-
-
-
-     // For home page
-     $(document).ready(function() {
-
-         $.ajax({
-             type: "GET",
-             url: "http://localhost:8081/bookapp/AvailiableBookController",
-             data: {},
-             success: function(response) {
-                 display_data(response);
-             },
-             error: function(response) {
-                 console.log('fail' + response)
-                 console.log(response)
-             }
-         });
-
-
-         function display_data(output) {
-             var out = JSON.parse(output);
-             var col = [];
-             for (var i = 0; i < out.length; i++) {
-                 for (var key in out[i]) {
-                     if (col.indexOf(key) === -1) {
-                         col.push(key);
-                     }
-                 }
-             }
-
-             var table = document.createElement("table");
-             table.setAttribute("class", "table table-striped table-bordered")
-             table.setAttribute("id", "example")
-             var tr = table.insertRow(-1);
-
-             for (var i = 0; i < col.length; i++) {
-                 var th = document.createElement("th");
-                 th.innerHTML = col[i];
-                 tr.appendChild(th);
-             }
-             var books = [];
-             var links = [];
-             var author = [];
-             var price = [];
-
-
-             for (var i = 0; i < out.length; i++) {
-
-                 tr = table.insertRow(-1);
-
-                 for (var j = 0; j < col.length; j++) {
-                     var tabCell = tr.insertCell(-1);
-
-                     tabCell.innerHTML = out[i][col[j]];
-                     if (j == 1)
-                         books.push(out[i][col[j]]);
-                     if (j == 2)
-                         author.push(out[i][col[j]]);
-                     if (j == 3)
-                         price.push(out[i][col[j]]);
-                     if (j == 5)
-                         links.push(out[i][col[j]]);
-                 }
-             }
-             console.log(books + "------------")
-             var datajs = JSON.stringify(books);
-
-             console.log(books[0] + "------------")
-             var i = 0;
-             var output = [];
-
-             $.each(books, function(i, value) {
-                 output.push('<div class="col-sm-3"><div class="thumbnail"><img src="' + links[i] + '" alt="Paris" width="400" height="350"><h3>' + books[i] + '</h3><p><span class="write">Written By:</span>' + author[i] + '</p><p><span class="write">Price:</span>' + price[i] + '</p></div></div>');
-                 i++;
-             });
-
-
-             $('#display_book').html(output.join(''));
-
-         }
-
-     });
-
-     // function for getting book details by book name
-     $('#disable').click(function() {
-
-         var book_name = $('#book_name').val();
-         var jsondata = null;
-         jsondata = {
-             book_name: book_name
-         }
-
-
-         $.ajax({
-             type: "GET",
-             url: "http://localhost:8081/bookapp/SearchBookController",
-             data: jsondata,
-             success: function(response) {
-                 if (response != 0) {
-                     $("#recorderror").html('')
-                     display_data(response);
-
-                 } else
-                     $("#recorderror").html('No records found')
-             },
-             error: function() {
-                 alert("Error in function for getting book details by book name")
-
-             }
-         });
-
-         function display_data(output) {
-             var out = JSON.parse(output);
-             var col = [];
-             for (var i = 0; i < out.length; i++) {
-                 for (var key in out[i]) {
-                     if (col.indexOf(key) === -1) {
-                         col.push(key);
-                     }
-                 }
-             }
-
-             var table = document.createElement("table");
-             table.setAttribute("class", "table table-striped table-bordered")
-             table.setAttribute("id", "example")
-             var tr = table.insertRow(-1);
-
-             for (var i = 0; i < col.length; i++) {
-                 var th = document.createElement("th");
-                 th.innerHTML = col[i];
-                 tr.appendChild(th);
-             }
-
-             for (var i = 0; i < out.length; i++) {
-
-                 tr = table.insertRow(-1);
-
-                 for (var j = 0; j < col.length; j++) {
-                     var tabCell = tr.insertCell(-1);
-                     tabCell.innerHTML = out[i][col[j]];
-                     if (j == 4)
-                         if (out[i][col[j]] > 100) {
-                             tabCell.style.backgroundColor = "#4CAF50";
-                             tabCell.style.color = "white";
-                         }
-                     else if (out[i][col[j]] > 50) {
-                         tabCell.style.backgroundColor = "#da9a39";
-                         tabCell.style.color = "white";
-                     } else {
-                         tabCell.style.backgroundColor = "#da5039";
-                         tabCell.style.color = "white";
-                     }
-                 }
-             }
-             var divContainer = document.getElementById("showData2");
-             divContainer.innerHTML = "";
-             divContainer.appendChild(table);
-         }
-
-     });
-
-     // function for getting book details by Author name
-     $('#disable1').click(function() {
-         var author_name = $('#author_name').val();
-         var jsondata = null;
-         jsondata = {
-             author_name: author_name
-         }
-
-         $.ajax({
-             type: "GET",
-             url: "http://localhost:8081/bookapp/SearchAuthorController",
-             data: jsondata,
-             success: function(response) {
-                 if (response != 0) {
-                     $("#recorderror").html('')
-                     display_data(response);
-
-                 } else
-                     $("#recorderror").html('No records found')
-             },
-             error: function(response) {
-                 alert("Error in function for getting book details by Author name")
-             }
-         });
-
-         function display_data(output) {
-             var out = JSON.parse(output);
-             var col = [];
-             for (var i = 0; i < out.length; i++) {
-                 for (var key in out[i]) {
-                     if (col.indexOf(key) === -1) {
-                         col.push(key);
-                     }
-                 }
-             }
-
-             var table = document.createElement("table");
-             table.setAttribute("class", "table table-striped table-bordered")
-             table.setAttribute("id", "example")
-             var tr = table.insertRow(-1);
-
-             for (var i = 0; i < col.length; i++) {
-                 var th = document.createElement("th");
-                 th.innerHTML = col[i];
-                 tr.appendChild(th);
-             }
-
-             for (var i = 0; i < out.length; i++) {
-
-                 tr = table.insertRow(-1);
-
-                 for (var j = 0; j < col.length; j++) {
-                     var tabCell = tr.insertCell(-1);
-                     tabCell.innerHTML = out[i][col[j]];
-                     if (j == 4)
-                         if (out[i][col[j]] > 100) {
-                             tabCell.style.backgroundColor = "#4CAF50";
-                             tabCell.style.color = "white";
-                         }
-                     else if (out[i][col[j]] > 50) {
-                         tabCell.style.backgroundColor = "#da9a39";
-                         tabCell.style.color = "white";
-                     } else {
-                         tabCell.style.backgroundColor = "#da5039";
-                         tabCell.style.color = "white";
-                     }
-                 }
-             }
-             var divContainer = document.getElementById("showData2");
-             divContainer.innerHTML = "";
-             divContainer.appendChild(table);
-         }
-
-     });
-
-     $('#login').click(function() {
-         var username = $('#username').val();
-         var password = $('#password').val();
-         if (username == "admin" && password == "admin") {
-             $("#errormsg").css("display", "none");
-             $('#username').val('');
-             $('#password').val('');
-             showOrders();
-             $('#close').click();
-         } else {
-             $("#errormsg").css("display", "block");
-         }
-     });
- });
+function myfun(price, link) {
+    $("#order_book").click();
+    var img = document.createElement("img")
+    img.setAttribute("id", "")
+
+    img.setAttribute("src", link);
+    img.setAttribute("width", "100%");
+    img.setAttribute("id", "mine")
+
+    var order = document.getElementById("img_details");
+    order.innerHTML = ''
+    order.appendChild(img)
+
+}
+$(document).ready(function() {
+
+    //order books function
+    $('#orderbook').click(function() {
+        var images = document.getElementById('mine');
+
+        var customer = $('#customer').val();
+        var bookname = $('#bookname').val();
+        var quantity = $('#quantity').val();
+        var email = $('#email').val();
+        var image = images.src;
+
+        //validation
+        if (customer != '' && !customer.match(/^[a-zA-Z]+$/)) {
+            $("#quantityerror").html('');
+            $("#nameerror").html("Name should contain only alphabets");
+        } else if (quantity < 0 || quantity.match(/^[a-zA-Z]+$/) || !quantity.match(/^[0-9]+$/)) {
+            $("#nameerror").html('');
+            $("#quantityerror").html("please enter quantity properly");
+        } else if (customer != '' && bookname != '' && quantity != '') {
+            $("#nameerror").html('');
+            $("#quantityerror").html('');
+
+            var orderdata = {
+                customer: customer,
+                bookname: bookname,
+                quantity: quantity,
+                email: email,
+                image: image
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8081/bookapp/BookController",
+                data: orderdata,
+                success: function(response) {
+                    // If order placed successfully it will clear 
+                    $('#customer').val('');
+                    $('#bookname').val('');
+                    $('#quantity').val('');
+                    $('#email').val('');
+
+                    $("#success").html("order placed successfully");
+                    $("#error").css("display", "none");
+
+                },
+                error: function(response) {
+                    alert("Error in order books function" + response)
+                }
+            });
+
+        }
+
+    });
+
+
+
+    // Getting total orders
+    function showOrders() {
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8081/bookapp/BookController",
+            data: {},
+            success: function(response) {
+                display_data(response);
+            },
+            error: function(response) {
+                alert("Error in Getting total orders" + response)
+            }
+        });
+
+        // Displaying data to front-end
+        function display_data(output) {
+            var out = JSON.parse(output);
+            var col = [];
+            for (var i = 0; i < out.length; i++) {
+                for (var key in out[i]) {
+                    if (col.indexOf(key) === -1) {
+                        col.push(key);
+                    }
+                }
+            }
+
+            var table = document.createElement("table");
+            table.setAttribute("class", "table table-striped table-bordered")
+            table.setAttribute("id", "example")
+            var tr = table.insertRow(-1);
+
+            for (var i = 0; i < col.length + 1; i++) {
+                if (i < col.length) {
+                    var th = document.createElement("th");
+                    th.innerHTML = col[i];
+                    tr.appendChild(th);
+                } else {
+                    var th = document.createElement("th");
+                    th.innerHTML = "delete orders";
+                    tr.appendChild(th);
+                }
+
+            }
+
+            for (var i = 0; i < out.length; i++) {
+                tr = table.insertRow(-1);
+                for (var j = 0; j < col.length + 1; j++) {
+                    if (j < col.length) {
+                        var tabCell = tr.insertCell(-1);
+                        tabCell.innerHTML = out[i][col[j]];
+                    } else {
+                        var tabCell = tr.insertCell(-1);
+                        tabCell.innerHTML = '<input type="checkbox" name="delete" value="' + out[i][col[0]] + '">';
+                    }
+                }
+            }
+
+            $("#delete_order").css("display", "block");
+            var divContainer = document.getElementById("showData");
+            divContainer.innerHTML = "";
+            divContainer.appendChild(table);
+        }
+    }
+
+    // Deleting Orders using checkboxs
+    $('#delete_order').click(function() {
+
+        var delete_array = [];
+
+        $.each($("input[name='delete']:checked"), function() {
+            delete_array.push($(this).val());
+        });
+
+        $.ajax({
+            type: "DELETE",
+            url: `http://localhost:8081/bookapp/BookController?delete_array=${delete_array}`,
+            success: function(response) {
+                $("#total_orders").click();
+            },
+            error: function(response) {
+                alert("Error in Deleting Orders using checkboxs" + response)
+            }
+        });
+
+    });
+
+    // Getting Available books
+    $('#availble_books').click(function() {
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8081/bookapp/AvailiableBookController",
+            data: {},
+            success: function(response) {
+                display_data(response);
+            },
+            error: function(response) {
+                alert("Error in Deleting Orders using checkboxs" + response);
+            }
+        });
+
+        // Displaying data to front-end
+        function display_data(output) {
+            var out = JSON.parse(output);
+            var col = [];
+            for (var i = 0; i < out.length; i++) {
+                for (var key in out[i]) {
+                    if (col.indexOf(key) === -1) {
+                        col.push(key);
+                    }
+                }
+            }
+
+            var table = document.createElement("table");
+            table.setAttribute("class", "table table-striped table-bordered")
+            table.setAttribute("id", "example")
+            var tr = table.insertRow(-1);
+
+            for (var i = 0; i < col.length - 1; i++) {
+                var th = document.createElement("th");
+                th.innerHTML = col[i];
+                tr.appendChild(th);
+            }
+
+            for (var i = 0; i < out.length; i++) {
+
+                tr = table.insertRow(-1);
+
+                for (var j = 0; j < col.length - 1; j++) {
+                    var tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = out[i][col[j]];
+                    if (j == 4)
+                        if (out[i][col[j]] > 100) {
+                            tabCell.style.backgroundColor = "#4CAF50";
+                            tabCell.style.color = "white";
+                        }
+                    else if (out[i][col[j]] > 50) {
+                        tabCell.style.backgroundColor = "#da9a39";
+                        tabCell.style.color = "white";
+                        1
+                    } else {
+                        tabCell.style.backgroundColor = "#da5039";
+                        tabCell.style.color = "white";
+                    }
+                }
+            }
+            var divContainer = document.getElementById("showData1");
+            divContainer.innerHTML = "";
+            divContainer.appendChild(table);
+        }
+
+    });
+
+
+    // Getting data for select option (i.e available books)
+    $('#order_book').click(function() {
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8081/bookapp/AvailiableBookController",
+            data: {},
+            success: function(response) {
+                display_data(response);
+            },
+            error: function(response) {
+                alert("Error in function Getting data for select options" + response);
+            }
+        });
+
+
+        function display_data(output) {
+            var out = JSON.parse(output);
+            var col = [];
+            for (var i = 0; i < out.length; i++) {
+                for (var key in out[i]) {
+                    if (col.indexOf(key) === -1) {
+                        col.push(key);
+                    }
+                }
+            }
+
+            var table = document.createElement("table");
+            table.setAttribute("class", "table table-striped table-bordered")
+            table.setAttribute("id", "example")
+            var tr = table.insertRow(-1);
+
+            for (var i = 0; i < col.length; i++) {
+                var th = document.createElement("th");
+                th.innerHTML = col[i];
+                tr.appendChild(th);
+            }
+            var books = [];
+
+            for (var i = 0; i < out.length; i++) {
+
+                tr = table.insertRow(-1);
+
+                for (var j = 0; j < col.length; j++) {
+                    var tabCell = tr.insertCell(-1);
+                    1
+                    tabCell.innerHTML = out[i][col[j]];
+                    if (j == 1)
+                        books.push(out[i][col[j]]);
+                }
+            }
+            console.log(books + "------------")
+            var datajs = JSON.stringify(books);
+
+            console.log(books[0] + "------------")
+            var i = 0;
+            var output = [];
+
+            $.each(books, function(i, value) {
+                output.push('<option value="' + books[i] + '">' + books[i] + '</option>');
+                i++;
+            });
+
+            $('#bookname').html(output.join(''));
+
+        }
+
+    });
+
+
+
+    // For home page
+    $(document).ready(function() {
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8081/bookapp/AvailiableBookController",
+            data: {},
+            success: function(response) {
+                display_data(response);
+            },
+            error: function(response) {
+                console.log('fail' + response)
+                console.log(response)
+            }
+        });
+
+
+        function display_data(output) {
+            var out = JSON.parse(output);
+            var col = [];
+            for (var i = 0; i < out.length; i++) {
+                for (var key in out[i]) {
+                    if (col.indexOf(key) === -1) {
+                        col.push(key);
+                    }
+                }
+            }
+
+            var table = document.createElement("table");
+            table.setAttribute("class", "table table-striped table-bordered")
+            table.setAttribute("id", "example")
+            var tr = table.insertRow(-1);
+
+            for (var i = 0; i < col.length; i++) {
+                var th = document.createElement("th");
+                th.innerHTML = col[i];
+                tr.appendChild(th);
+            }
+            var books = [];
+            var links = [];
+            var author = [];
+            var price = [];
+
+
+            for (var i = 0; i < out.length; i++) {
+
+                tr = table.insertRow(-1);
+
+                for (var j = 0; j < col.length; j++) {
+                    var tabCell = tr.insertCell(-1);
+
+                    tabCell.innerHTML = out[i][col[j]];
+                    if (j == 1)
+                        books.push(out[i][col[j]]);
+                    if (j == 2)
+                        author.push(out[i][col[j]]);
+                    if (j == 3)
+                        price.push(out[i][col[j]]);
+                    if (j == 5)
+                        links.push(out[i][col[j]]);
+                }
+            }
+            console.log(books + "------------")
+            var datajs = JSON.stringify(books);
+
+            console.log(books[0] + "------------")
+            var i = 0;
+            var output = [];
+
+            $.each(books, function(i, value) {
+                output.push('<div class="col-sm-3"><div class="thumbnail"><img src="' + links[i] + '" alt="Paris" width="400" height="350"><h3>' + books[i] + '</h3><p><span class="write">Written By:</span>' + author[i] + '</p><p><span class="write">Price:</span>' + price[i] + '</p> <button class="btn" onclick="myfun(' + price[i] + ',\'' + links[i] + '\')">Add to Cart</button></div></div>');
+                i++;
+            });
+
+
+            $('#display_book').html(output.join(''));
+
+        }
+
+    });
+
+    // function for getting book details by book name
+    $('#disable').click(function() {
+
+        var book_name = $('#book_name').val();
+        var jsondata = null;
+        jsondata = {
+            book_name: book_name
+        }
+
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8081/bookapp/SearchBookController",
+            data: jsondata,
+            success: function(response) {
+                if (response != 0) {
+                    $("#recorderror").html('')
+                    display_data(response);
+
+                } else
+                    $("#recorderror").html('No records found')
+            },
+            error: function() {
+                alert("Error in function for getting book details by book name")
+
+            }
+        });
+
+        function display_data(output) {
+            var out = JSON.parse(output);
+            var col = [];
+            for (var i = 0; i < out.length; i++) {
+                for (var key in out[i]) {
+                    if (col.indexOf(key) === -1) {
+                        col.push(key);
+                    }
+                }
+            }
+
+            var table = document.createElement("table");
+            table.setAttribute("class", "table table-striped table-bordered")
+            table.setAttribute("id", "example")
+            var tr = table.insertRow(-1);
+
+            for (var i = 0; i < col.length; i++) {
+                var th = document.createElement("th");
+                th.innerHTML = col[i];
+                tr.appendChild(th);
+            }
+
+            for (var i = 0; i < out.length; i++) {
+
+                tr = table.insertRow(-1);
+
+                for (var j = 0; j < col.length; j++) {
+                    var tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = out[i][col[j]];
+                    if (j == 4)
+                        if (out[i][col[j]] > 100) {
+                            tabCell.style.backgroundColor = "#4CAF50";
+                            tabCell.style.color = "white";
+                        }
+                    else if (out[i][col[j]] > 50) {
+                        tabCell.style.backgroundColor = "#da9a39";
+                        tabCell.style.color = "white";
+                    } else {
+                        tabCell.style.backgroundColor = "#da5039";
+                        tabCell.style.color = "white";
+                    }
+                }
+            }
+            var divContainer = document.getElementById("showData2");
+            divContainer.innerHTML = "";
+            divContainer.appendChild(table);
+        }
+
+    });
+
+    // function for getting book details by Author name
+    $('#disable1').click(function() {
+        var author_name = $('#author_name').val();
+        var jsondata = null;
+        jsondata = {
+            author_name: author_name
+        }
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8081/bookapp/SearchAuthorController",
+            data: jsondata,
+            success: function(response) {
+                if (response != 0) {
+                    $("#recorderror").html('')
+                    display_data(response);
+
+                } else
+                    $("#recorderror").html('No records found')
+            },
+            error: function(response) {
+                alert("Error in function for getting book details by Author name")
+            }
+        });
+
+        function display_data(output) {
+            var out = JSON.parse(output);
+            var col = [];
+            for (var i = 0; i < out.length; i++) {
+                for (var key in out[i]) {
+                    if (col.indexOf(key) === -1) {
+                        col.push(key);
+                    }
+                }
+            }
+
+            var table = document.createElement("table");
+            table.setAttribute("class", "table table-striped table-bordered")
+            table.setAttribute("id", "example")
+            var tr = table.insertRow(-1);
+
+            for (var i = 0; i < col.length; i++) {
+                var th = document.createElement("th");
+                th.innerHTML = col[i];
+                tr.appendChild(th);
+            }
+
+            for (var i = 0; i < out.length; i++) {
+
+                tr = table.insertRow(-1);
+
+                for (var j = 0; j < col.length; j++) {
+                    var tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = out[i][col[j]];
+                    if (j == 4)
+                        if (out[i][col[j]] > 100) {
+                            tabCell.style.backgroundColor = "#4CAF50";
+                            tabCell.style.color = "white";
+                        }
+                    else if (out[i][col[j]] > 50) {
+                        tabCell.style.backgroundColor = "#da9a39";
+                        tabCell.style.color = "white";
+                    } else {
+                        tabCell.style.backgroundColor = "#da5039";
+                        tabCell.style.color = "white";
+                    }
+                }
+            }
+            var divContainer = document.getElementById("showData2");
+            divContainer.innerHTML = "";
+            divContainer.appendChild(table);
+        }
+
+    });
+
+    $('#login').click(function() {
+        var username = $('#username').val();
+        var password = $('#password').val();
+        if (username == "admin" && password == "admin") {
+            $("#errormsg").css("display", "none");
+            $('#username').val('');
+            $('#password').val('');
+            showOrders();
+            $('#close').click();
+        } else {
+            $("#errormsg").css("display", "block");
+        }
+    });
+});

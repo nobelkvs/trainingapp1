@@ -100,7 +100,9 @@ public class BookOrderDaoImple implements BookOrderDao {
 	
 				ps.setInt(1, o.getOrder_quantity());
 				ps.setString(2, o.getOrder_book_name());
-
+				
+				
+				
 				createStatus = ps.executeUpdate();
 				
 			}
@@ -247,21 +249,21 @@ public class BookOrderDaoImple implements BookOrderDao {
 	public int deleteOrder(int order_id) {
 		Connection con = null;
 		PreparedStatement ps = null;
-		int createStatus = 0, createStatus1 = 0;
+		int deleteStatus = 0, dleteStatus1 = 0;
 		try {
 			con = Mysqldb.getConnection();
 			ps = con.prepareStatement(SQL_DELETE_ORDERS_DETAILS);
 			
 			ps.setInt(1, order_id);
 			
-			createStatus  = ps.executeUpdate();
+			deleteStatus  = ps.executeUpdate();
 			
-			if(createStatus == 1) {
+			if(deleteStatus == 1) {
 				ps = con.prepareStatement(SQL_DELETE_ORDERS);
 				
 				ps.setInt(1, order_id);
 
-				createStatus1  = ps.executeUpdate();
+				dleteStatus1  = ps.executeUpdate();
 				
 			}		
 			
@@ -269,7 +271,7 @@ public class BookOrderDaoImple implements BookOrderDao {
 			e.printStackTrace();
 		}
 		
-		return createStatus1;
+		return dleteStatus1;
 	}
 
 }

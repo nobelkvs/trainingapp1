@@ -62,12 +62,16 @@ a:hover {
 	box-shadow: 0 0 1px 1px rgba(20, 23, 28, .1), 0 3px 1px 0 rgba(20, 23, 28, .1);
 }
 
-
+.navbar-inverse .navbar-nav>.active>a {
+	color: #fff;
+	background-color: #b5b732 !important;
+}
 
 .thumbnail p {
 	margin-top: 15px;
 	color: #555;
 }
+
 .btn {
 	padding: 10px 20px;
 	background-color: #333;
@@ -75,12 +79,14 @@ a:hover {
 	border-radius: 0;
 	transition: .2s;
 }
+
 .btn:hover,
 .btn:focus {
 	border: 1px solid #333;
 	background-color: #fff;
 	color: #000;
 }
+
 .write {
 	color: red;
 }

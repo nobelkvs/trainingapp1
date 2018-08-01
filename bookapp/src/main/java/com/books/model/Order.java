@@ -18,4 +18,5 @@ public class Order{
 	private String order_book_name;
 	private int order_quantity;
 	private String order_date;
+	private String email;
 }

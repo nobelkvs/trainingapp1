@@ -42,17 +42,28 @@ public class BookController extends HttpServlet {
 		String order_book_name = req.getParameter("bookname");
 		int order_quantity = Integer.parseInt(req.getParameter("quantity"));
 		LocalDate order_date =  LocalDate.now();
+		String email = req.getParameter("email");
+		String imgsrc= req.getParameter("image");
 		
 		log.info("Setting values to Object Order");
 		order.setOrder_by(order_by);
 		order.setOrder_book_name(order_book_name);
 		order.setOrder_quantity(order_quantity);
+		order.setEmail(email);
 		order.setOrder_date(order_date.toString());
 		
 		createStatus = new BookOrderServiceImpl().createOrder(order);
 		
 		if(createStatus == 1) {
 			log.info("Order placed successfully");
+			
+			String to=email;
+			String subject="AGILE CART";
+			String someHtmlMessage= "<h2>Hi "+order_by+",</h2>"
+					+ "<h3>Your order placed successfully</h3>"
+					+ "<table border='1'><tr><th>Item</th><th>Item Name</th><th>Quantity</th></tr><tr><td><img src="+imgsrc+" width='20%'></td><td>"+order_book_name+"</td><td>"+order_quantity+"</td></tr></table>";
+
+			Mailer.send(to, subject, someHtmlMessage);
 			out.println("sucess");
 		}else
 			out.println("fail");
@@ -98,6 +109,7 @@ public class BookController extends HttpServlet {
 		String a[] = delete_array.split(",");
 		int cc[] = new int[a.length];
 		int j = 0;
+		
 		for(String i : a) {
 			int order_id = Integer.parseInt(i);
 			deleteStatus = new BookOrderServiceImpl().deleteOrder(order_id);
@@ -112,7 +124,6 @@ public class BookController extends HttpServlet {
 		}
 		else
 			out.println("fail");
-		
 
 	}
 }
