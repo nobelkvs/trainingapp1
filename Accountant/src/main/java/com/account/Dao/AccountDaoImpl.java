@@ -36,7 +36,7 @@ public class AccountDaoImpl implements accountDao{
     * createAccountDao is use to insert the data in the database
     * @param account
     * @return insertstatus
-    * @throws SQLExcpetion
+    * @throws SQLException
      */
     public int createAccountDao(Account account) throws SQLException {
 
@@ -58,9 +58,6 @@ public class AccountDaoImpl implements accountDao{
         }
 
         PreparedStatement ps = null;
-
-        // Making the object of Model class to getting and setting the value of the parameters passed--------------------
-        Account acc=new Account();
         try {
 
             // Passing the query prepared stmt to fetch the value
@@ -101,7 +98,7 @@ public class AccountDaoImpl implements accountDao{
     * retrieveAccountDao is use to retrieve the data in the database
     * @param Fname
     * @return alist
-    * @throws SQLExcpetion
+    * @throws SQLException
      */
     public List<Account> retrieveAccountDao(String Fname) {
 
@@ -157,7 +154,7 @@ public class AccountDaoImpl implements accountDao{
     * deleteAccount is use to delete the data in the database
     * @param Id
     * @return deleteStatus
-    * @throws SQLExcpetion
+    * @throws SQLException
      */
     public int deleteAccount(String[] Id) throws SQLException {
         Connection conn = null;
@@ -167,9 +164,11 @@ public class AccountDaoImpl implements accountDao{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.print(conn);
+        
         PreparedStatement ps = null;
         try {
+              
+              log.info("inside deleteting id");
 
             // There might be chances user want multiple records to be deleted for that purpose use loop to iterate through the parameters passed and delete them
             for (int i = 0; i<Id.length ; i++) {
@@ -178,7 +177,8 @@ public class AccountDaoImpl implements accountDao{
                 deleteStatus = ps.executeUpdate();
             }
         } catch (SQLException e) {
-            //  System.out.print(e);
+
+            log.error("error in deleting data");
             e.printStackTrace();
         }
 

@@ -2,7 +2,9 @@ package com.account.service;
 
 import com.account.Dao.AccountDaoImpl;
 import com.account.Dao.accountDao;
+import com.account.controller.AccountController;
 import com.account.model.Account;
+import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -14,14 +16,16 @@ import java.util.List;
  * using deleteAccount method for deleting the account detail
  */
 public class AccountServiceImpl implements AccountService {
-    accountDao Accountdao = null;
 
+
+static final Logger log=Logger.getLogger(AccountController.class);
 /**
  * implementation of create method
- @return status
+ * @return status
  */
     public int createAccountService(Account account) throws SQLException {
-        Accountdao = new AccountDaoImpl();
+        log.info("inside creating account");
+        accountDao Accountdao = new AccountDaoImpl();
         int status = Accountdao.createAccountDao(account);
         return status;
     }
@@ -33,9 +37,8 @@ public class AccountServiceImpl implements AccountService {
 
  */
     public List<Account> retriveByName(String Fname) {
-        accountDao Accountdao = null;
-
-        Accountdao=new AccountDaoImpl();
+        log.info("inside retrieve account detail");
+        accountDao Accountdao = new AccountDaoImpl();
         List<Account> Status=Accountdao.retrieveAccountDao(Fname);
         return Status;
     }
@@ -47,9 +50,8 @@ public class AccountServiceImpl implements AccountService {
 
  */
     public int deleteAccount(String[] Id) throws SQLException {
-        accountDao Accountdao = null;
-
-        Accountdao=new AccountDaoImpl();
+        log.info("inside delete account detail");
+        accountDao Accountdao = new AccountDaoImpl();
         int deleteStatus=Accountdao.deleteAccount(Id);
         return deleteStatus;
     }

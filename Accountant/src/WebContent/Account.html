@@ -1,544 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-          crossorigin="anonymous">
+        crossorigin="anonymous">
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
-            crossorigin="anonymous"></script>
-
+        crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="./account.css" crossorigin="anonymous">
     <title>ACCOUNTANT</title>
 
-    <!-- // Filter function -->
-    <script>
-    $(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#mytable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-
-  
-    </script>
-    <style>
-       #h1{
-         color:white;  
-       }
-		footer {
-			background-color: #777;
-			padding: 10px;
-			text-align: center;
-			color: white;
-		}
-      
-        table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
-    text-align: left;
-    padding: 8px;
-}
-
-.aligncenter {
-    text-align: center;
-}
-
-tr:nth-child(even){background-color: #f2f2f2}
-body{
-    background-image: url('one.jpg');
-    background-repeat: no-repeat;
-    background-size: 1900px;
-    filter: blur(.5px);
-}
-
-    </style>
     
     
+
+
 </head>
+
 <body>
-<div class="container-fluid">
-    <header style="text-align:center">
-        <label><h1><b>BANK ACCOUNTANT</b></h1></label>
-    </header>
-</div>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="#" id="showclear">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a class="nav-link" href="#" id="showCreate"><b>Insert Details</b>
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link " href="#retrieveticket" id="showRetrive"><b>Retrive Details</b></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#" id="showDelete"><b>Delete Information</b></a>
-            </li>
-        </ul>
-
+    <div class="container-fluid">
+        <header style="text-align:center">
+            <label>
+                <h1>
+                    <b>BANK ACCOUNTANT</b>
+                </h1>
+            </label>
+        </header>
     </div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#" id="showclear">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-</nav>
-<div class="card-body">
-    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#" id="showCreate">
+                        <b>Account Creation</b>
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
 
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6 form_style">
-                <form style="display: none;" name="myForm" id="Create_form" >
+                <li class="nav-item">
+                    <a class="nav-link " href="#retrieveticket" id="showRetrive">
+                        <b>Check For Details</b>
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link " href="#" id="showDelete">
+                        <b>Delete Information</b>
+                    </a>
+                </li> -->
+            </ul>
 
-                    <div class="form-group">
-                        <label for="Fname"><b>First Name</b></label>
-                        <input type="text" class="form-control" pattern="[a-zA-Z]{3,30}"  id="Fname" required>
+        </div>
 
-                    </div>
+    </nav>
+    <div class="card-body">
+        <div class="container">
 
-                    <div class="form-group">
-                        <label for="Lname"><b>Last Name</b></label>
-                        <input type="text" class="form-control" id="Lname"  pattern="[a-zA-Z]{3,30}" required>
-
-                    </div>
-
-                    <div class="form-group">
-                        <label><b>Name of the Bank</b></label>
-                        <input type="text" class="form-control" id="Bankname" pattern="[a-zA-Z]{3,30}" required>
-
-                    </div>
-                    <div class="form-group">
-                        <label><b>Branch Name</b></label>
-                        <input type="text" class="form-control" id="Branch" pattern="[a-zA-Z]{3,30}" required>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="Address"><b>Address</b></label>
-                        
-                        <textarea class="form-control" id="Address" rows="3" pattern="[a-zA-Z]{3,30}" required></textarea>  
-
-                    </div>
-                    <div class="form-group">
-                        <label><b>Phone Number</b></label>
-                        <input type="text"  minlength="5" maxlength="10" class="form-control" id="Phone" required>
-                        <!-- pattern="[7-9]{1}[0-9]{9}" -->
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="submit" class="btn btn-square btn-danger" id="Create_cancel">Cancel</button>
-                    <!-- <button type="submit" class="btn btn-square btn-danger" id="cancel">Cancel</button> -->
-
-                </form>
-
-
-
-
-
-
-                <form style="display: none;" id="Retrive_form">
-                
-                    <div class="form-group">
-                        <label>
-                            <b>Enter the First Name</b>
-                        </label>
-                        <input type="text" class="form-control" id="First" placeholder="Please Enter first name...." required>
-                    </div>
-                
-                    <button type="submit" class="btn btn-primary" id="sub">Submit</button>
-                    <button type="submit" class="btn btn-square btn-danger" id="Retrivecancel">Cancel</button>
-                    <br>
-                    <p>
-                        <div class="form-group">
-                            <input id="myInput" type="text" class="form-control" placeholder="Search..">
-                        </div>
-                    </p>
-                
-                
-                
-                
-                
-                
-                    <table class="table" id="retriveTabl" style="display: none;" data-toggle="table" data-search="true" data-filter-control="true"
-                        data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar" scope="col">
-                        <label id="details" style="display: none">
-                            <b>Details of Bank</b>
-                        </label>
-                
-                
-                
-                        <thead class="thead-dark">
-                            <!-- <div><b>Details of Bank</b></div> -->
-                            
-                            
-                            <tr>
-                
-                                <th data-field="state" data-checkbox="true"></th>
-                
-                                <th data-field="id" data-filter-control="select" data-sortable="true" scope="col">
-                
-                                    ID
-                
-                                </th>
-                
-                                <th data-field="Firstname" data-filter-control="select" data-sortable="true" scope="col">
-                
-                                    Firstname
-                
-                                </th>
-                
-                                <th data-field="Lastname" data-filter-control="input" data-sortable="true" scope="col">
-                
-                                    Lastname
-                
-                                </th>
-                
-                                <th data-field="BankName" data-filter-control="input" data-sortable="true" scope="col">
-                
-                                    BankName
-                
-                                </th>
-                
-                                <th data-field="Branch" data-filter-control="input" data-sortable="true" scope="col">
-                
-                                    Branch
-                
-                                </th>
-                
-                                <th data-field="Address" data-filter-control="input" data-sortable="true" scope="col">
-                
-                                    Address
-                
-                                </th>
-                                <th data-field="Phone" data-filter-control="input" data-sortable="true" scope="col">
-                
-                                    Phone
-                
-                                </th>
-                
-                            </tr>
-                
-                        </thead>
-                
-                        <tbody id="mytable" style="color:black;">
-                
-                
-                
-                
-                        </tbody>
-                
-                
-                
-                    </table>
-                
-                    <button type="button" class="btn btn-warning" id="deletebtn" style="margin: left; display: none">DELETE</button>
-                    <div><span id="retrive_mesg"></span></div>
-                    </div>
-                
-                </form>
-                
-                
-                
-                <form style="display: none;" id="Delete_form">
-                    <div class="form-group">
-                        <label for="Deletefirst">
-                            <b>Enter the ID assigned</b>
-                        </label>
-                        <input type="text" class="form-control" id="Deletefirst" required>
-                    </div>
-                
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="submit" class="btn btn-square btn-danger" id="Deletecancel">Cancel</button>
-                
-                </form>
-                
-                </div>
-                
-                
+            <div class="row">
                 <div class="col-md-3"></div>
-                
-                
+                <div class="col-md-6 form_style">
+                        
+                    <form style="display: none;" name="myForm" id="Create_form">
+                        <div id="retrieve" style="display: none" class="alert alert-success">
+                            <strong>Success!</strong> Account has been created Successfully
+                          </div>
+                          <div id="notretrieve" style="display: none" class="alert alert-danger">
+                                <strong>Sorry!</strong> Account has not been created
+                              </div>
+                              <div id="notretrieve1" style="display: none" class="alert alert-danger">
+                                    <strong>Sorry!</strong> Check with your connection
+                                  </div>
+                        <div class="form-group">
+                            <label for="Fname">
+                                <b>First Name</b>
+                            </label>
+                            <input type="text" class="form-control" maxlength="10" pattern="[a-zA-Z]{3,30}" id="Fname" required>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Lname">
+                                <b>Last Name</b>
+                            </label>
+                            <input type="text" class="form-control" id="Lname" maxlength="10" pattern="[a-zA-Z]{3,30}" required>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <b>Name of the Bank</b>
+                            </label>
+                            <input type="text" class="form-control" id="Bankname" maxlength="5" pattern="[a-zA-Z]{3,30}" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <b>Branch Name</b>
+                            </label>
+                            <input type="text" class="form-control" id="Branch" maxlength="10" pattern="[a-zA-Z]{3,30}" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="Address">
+                                <b>Address</b>
+                            </label>
+
+                            <textarea class="form-control" id="Address" rows="3" maxlength="45" pattern="[a-zA-Z]{3,30}" required></textarea>
+
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <b>Phone Number</b>
+                            </label>
+                            <input type="number" name="text1" class="form-control" maxlength="10" id="Phone"  required>
+                        
+                        </div>
+                        <button type="submit" class="btn btn-primary" >Submit</button>
+                        <button type="cancel" class="btn btn-square btn-danger" id="Create_cancel">Cancel</button>
+                        
+
+                    </form>
+
+                    <form style="display: none;" name="myForm" id="Home_form">
+                        <div><img src="six.jpeg" alt="Paris" class="center"></div>
+                        <div>
+                            <p>
+                                <h1>Function Specific</h1>
+In many larger financial institutions, a bank accountant is responsible for a specific financial function. An internal auditor,
+for example, is a staff accountant who reviews the bank’s financial records to ensure its compliance with company policy,
+        as well as federal and local laws. A tax specialist, on the other hand, focuses solely on ensuring that the company’s taxes
+        are accurately processed and filed, researching and applying appropriate deductions in the process. Alternatively, a treasury
+        accountant focuses on cash management, identifying ways to increase revenue and researching potential funding resources.
+
+
+                            </p>
+                        </div>
+                    </form>
+
+                    
+
+
+
+
+                    <form style="display: none;" id="Retrive_form">
+                       
+                        <div class="form-group">
+                            <label>
+                                <b>Enter the First Name</b>
+                            </label>
+                            <input type="text" class="form-control" id="First" placeholder="Please Enter first name...." required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="sub">Submit</button>
+                        <button type="submit" class="btn btn-square btn-danger" id="Retrivecancel">Cancel</button>
+                        <!-- <div id="tableshow" style="display: none" class="alert alert-success">
+                                <strong>Success!</strong> Data Fetched Successfully
+                              </div> -->
+                        <br>
+                        <p>
+                            <div class="form-group">
+                                <input id="myInput" type="text" class="form-control" style="display: none" placeholder="Search..">
+                            </div>
+                        </p>
+
+
+
+
+                        <!-- <div>
+                            <b><span id="retrive_mesg"></span></b>
+                        </div> -->
+                        <!-- <div id="retrive_mesg" class="alert alert-success">
+                            <strong>Success!</strong> This alert box could indicate a successful or positive action.
+                          </div> -->
+
+
+                        <table class="table" id="retriveTabl" style="display: none;" data-toggle="table" data-search="true" data-filter-control="true"
+                            data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar" scope="col">
+                            <label id="details" style="display: none">
+                                <b>Details of Bank</b>
+                            </label>
+
+
+                            
+                            <thead class="thead-dark">
+                                
+
+
+                                <tr>
+
+                                    <th data-field="state" data-checkbox="true"></th>
+
+                                    <!-- <th data-field="id" data-filter-control="select" data-sortable="true" scope="col">
+
+                                        ID
+
+                                    </th> -->
+
+                                    <th data-field="Firstname" data-filter-control="select" data-sortable="true" scope="col" onclick="sortTable(0)">
+
+                                        Firstname
+
+                                    </th>
+
+                                    <th data-field="Lastname" data-filter-control="input" data-sortable="true" scope="col">
+
+                                        Lastname
+
+                                    </th>
+
+                                    <th data-field="BankName" data-filter-control="input" data-sortable="true" scope="col">
+
+                                        BankName
+
+                                    </th>
+
+                                    <th data-field="Branch" data-filter-control="input" data-sortable="true" scope="col" onclick="sortTable(1)">
+
+                                        Branch
+
+                                    </th>
+
+                                    <th data-field="Address" data-filter-control="input" data-sortable="true" scope="col">
+
+                                        Address
+
+                                    </th>
+                                    <th data-field="Phone" data-filter-control="input" data-sortable="true" scope="col">
+
+                                        Phone
+
+                                    </th>
+
+                                </tr>
+                                
+                            </thead>
+
+                            <tbody id="mytable" style="color:black;">
+
+                                 
+
+
+                            </tbody>
+
+                            
+
+                        </table>
+                        <div id="norecord" style="display: none">
+                            <p><center>No Result Found</center></p>
+                        </div>
+
+                        <button type="button" class="btn btn-warning" id="deletebtn" style="margin: left; display: none" onclick="myFunction()">DELETE
+
+                        </button>
+                        <div id="snackbar">Deleted Successfully</div>
+                        <script src="account.js">
+                            
+                        </script>
+
+                    </form>
+
+                   
+
+                    <form style="display: none;" id="Delete_form">
+                        <div class="form-group">
+                            <label for="Deletefirst">
+                                <b>Enter the ID assigned: </b>
+                            </label>
+                            <input type="text" class="" id="Deletefirst" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" onclick="myFunction()">Submit</button>
+                        <button type="cancel" class="btn btn-square btn-danger" id="Deletecancel">Cancel</button>
+                        <div id="snackbar">Deleted Successfully</div>
+                        <script src="account.js">
+                            
+                        </script>
+                    </form>
+
+
+
+
+                    <div class="col-md-3"></div>
+
+
+
+
+
                 </div>
-                </div>
-                
                 <div class="fixed-bottom">
                     <footer style>
-                
+
                     </footer>
                 </div>
-                
+
+
+
+
+
+
                 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+                <script src="account.js"></script>
+
                 
-                
-                
-                <script>
-                    // 
-                    $("#showCreate").click(function () {
-                        $("#Create_form").css("display", "block");
-                        $("#show_form").css("display", "none");
-                        $("#Retrive_form").css("display", "none");
-                        $("#Delete_form").css("display", "none");
-
-                    });
-
-                    $("#Create_cancel").click(function () {
-                        $("#Create_form").css("display", "none");
-
-                    });
-
-
-
-
-
-                    $("#showRetrive").click(function () {
-                        $("#Retrive_form").css("display", "block");
-                        $("#Create_form").css("display", "none");
-                        $("#show_form").css("display", "none");
-                        $("#Delete_form").css("display", "none");
-
-                    }); $("#Retrivecancel").click(function () {
-                        $("#Retrive_form").css("display", "none");
-
-                    });
-
-                    $("#showDelete").click(function () {
-                        $("#Delete_form").css("display", "block");
-                        $("#Create_form").css("display", "none");
-                        $("#show_form").css("display", "none");
-                        $("#Retrive_form").css("display", "none");
-
-                    });
-
-                    $("#Deletecancel").click(function () {
-                        $("#Delete_form").css("display", "none");
-
-                    });
-                    $("#showclear").click(function () {
-                        $("#show_form").css("display", "block");
-                        $("#Create_form").css("display", "none");
-                        $("#Retrive_form").css("display", "none");
-                        $("#Delete_form").css("display", "none");
-
-
-                    });
-
-
-
-
-
-                    $("#mytable").click(function () {
-
-                        // Remove the sort classes for all the column, but not the first
-                        $("#mytable").not($(this)).removeClass("sorted-asc sorted-desc");
-
-                        // Set or change the sort direction
-                        if ($(this).hasClass("sorted-asc") || $(this).hasClass("sorted-desc")) {
-                            $(this).toggleClass("sorted-asc sorted-desc");
-                        } else {
-                            $(this).addClass("sorted-asc");
-                        }
-
-                        //Sort the table using the current sorting order
-                        sortTable($(myTable),
-                            $(this).index(),
-                            $(this).hasClass("sorted-asc") ? "asc" : "desc");
-
-                    });
-
-
-
-
-
-
-                </script>
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-                <script>
-                    $('#Create_form').submit(function (event) {
-                        event.preventDefault();
-                        var Fname, Lname, Bankname, Branch, Address, Phone;
-                        const dataobj = {
-                            "Fname": document.getElementById("Fname").value,
-                            "Lname": document.getElementById("Lname").value,
-                            "Bankname": document.getElementById("Bankname").value,
-                            "Branch": document.getElementById("Branch").value,
-                            "Address": document.getElementById("Address").value,
-                            "Phone": document.getElementById("Phone").value
+                
 
-                        }
-                        console.log(dataobj);
-                        $.ajax({
-                            type: "POST",
-                            url: `http://localhost:8080/Accountant-1.0-SNAPSHOT/servlets`,
-                            //dataType:"json",
-                            data: dataobj,
-                            success: function (result) {
+            </div>
+            <div class="fixed-bottom" id="foter">
+                <footer>
 
-                                if(result!=0)
-                                {
-                                    alert("Successfully Created");
-                                }
-                                else
-                                alert("not created");
-                                
-                            },
-                            error: function (re, error) {
-                                alert("failed" + error);
-                            },
-                        })
-                    })
-
- 
-                    $('#deletebtn').on('click', function (event) {
-
-                        var type = [];
-
-                        $("input[name='deleteCheckBox']:checked").each(function (i) {
-
-                            type[i] = $(this).val();
-
-                        }).get();jQuery('input:checkbox:checked').parents("tr").remove();
-
-
-
-                        const wurl = `http://localhost:8080/Accountant-1.0-SNAPSHOT/servlets?Id=${type}`;
-
-
-
-
-                        $.ajax({
-                            url: wurl,
-                            type: 'DELETE',
-                            success: deleteRow,
-                            error: DeleteError
-                        });
-                        $('#deletebtn')[0].reset();
-                        function deleteRow(deleteStatus) {
-                            if(dele)
-                            $('#retrive_mesg').addClass("success").html("Deleted successfully...");
-
-                            //$('#retrive_mesg').html("Deleted successfully...");
-
-                            // toTable();
-                            alert("deleted sucessfully");
-                        }
-                        function DeleteError(request, status, error) {
-                            alert('error' + request + status + error);
-                        }
-
-                    });
-                    $('#Delete_form').submit(function (event) {
-                        event.preventDefault();
-                        const deletefirst = document.getElementById("Deletefirst").value;
-                        var webServiceURL = `http://localhost:8080/Accountant-1.0-SNAPSHOT/servlets?Id=${deletefirst}`;
-                        $.ajax({
-                            url: webServiceURL,
-                            type: 'DELETE',
-                            success: function (result) {
-                                console.log("inside success ..deleted "+result)
-                                if(result != 0)
-                                {
-                                    alert("successfully deleted");
-                                }
-                                
-                                else
-                                {
-                                    alert("no data found");
-                                }
-                                
-                            },
-                            error: function () {
-                                alert("failed to deleted");
-                            }
-
-                        });
-                    });
-                    $('#Retrive_form').submit(function (event) {
-                        event.preventDefault();
-                        $('#retriveTabl').css("display", "block");
-
-                        const retrieve = {
-                            "Fname": document.getElementById("First").value
-                        }
-                        console.log(retrieve);
-                        $.ajax({
-                            url: `http://localhost:8080/Accountant-1.0-SNAPSHOT/servlets`,
-                            type: 'GET',
-                            data: retrieve,
-                            dataType: 'JSON',
-                            success: toTable,
-                            error: customerError
-
-                        });
-                        function customerError(error) {
-                            alert('Data not found');
-                        }
-
-
-                    });
-                    function toTable(data, status, response) {
-                        alert("in filling Data");
-                        $("#details").css("display","block");
-                        $("#deletebtn").css("display","block");
-                        
-                        var level1obj = data;
-                        console.log(level1obj);
-                        //console.log(data+"data");
-                        var table = document.getElementById("retriveTabl");
-                        var colNumber = 8; // number of table columns
-
-                        var tableRef = table.getElementsByTagName('tbody')[0];
-
-                        $("#mytable").empty();
-                        $(level1obj).each(function (index, value) {
-                            var chk = "<td><input type='checkbox' value='" + value.Id + "' name='deleteCheckBox' id='chk" + index + "' /></td>";
-
-                            var row = tableRef.insertRow(tableRef.rows.length);
-                            var cell1 = row.insertCell(0);
-                            var cell2 = row.insertCell(1);
-                            var cell3 = row.insertCell(2);
-                            var cell4 = row.insertCell(3);
-                            var cell5 = row.insertCell(4);
-                            var cell6 = row.insertCell(5);
-                            var cell7 = row.insertCell(6);
-                            var cell8 = row.insertCell(7);
-
-                            cell1.innerHTML = chk;
-                            cell2.innerHTML = value.Id;
-                            cell3.innerHTML = value.Fname;
-                            cell4.innerHTML = value.Lname;
-                            cell5.innerHTML = value.Bankname;
-                            cell6.innerHTML = value.Branch;
-                            cell7.innerHTML = value.Address;
-                            cell8.innerHTML = value.Phone;
-
-                        });
-
-                    }
-
-                </script>
-
-</div>
-<div class="fixed-bottom" id="foter">
-    <footer>
-        
-    </footer>
-</div>
+                </footer>
+            </div>
 </body>
+
 </html>
