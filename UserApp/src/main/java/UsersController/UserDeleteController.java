@@ -2,6 +2,7 @@ package UsersController;
 
 import UsersService.UserService;
 import UsersServiceImpl.UserServiceImpl;
+import UsersUtils.MyException;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -26,13 +27,19 @@ public class UserDeleteController extends HttpServlet {
 
         //validation password
         if (adminPassword == null | adminPassword == "") {
-            log.info("Please Enter the admin Password..!");
+
+            try {
+                //This is a new Userdefined exception
+                throw new MyException("Admin Password Should not be empty or null");
+            } catch (MyException ude) {
+                log.info("Please Enter the admin Password..!"+ude);
+            }
         } else if (adminPassword.equalsIgnoreCase("agile123")) {
 
             try {
 
                 us = new UserServiceImpl();
-                int deleteStatus = us.removeUserService(uid);
+                int deleteStatus = us.removeUser(uid);
 
                 out.print(deleteStatus > 0 ? "success" : "failed");
 

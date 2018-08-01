@@ -5,10 +5,6 @@ import UsersDao.UserDao;
 import UsersModels.UserPojo;
 import UsersUtils.MyConnection;
 import org.apache.log4j.Logger;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,20 +38,22 @@ public class UserDaoImpl implements UserDao {
      */
 
     @Override
-    public int createUserDao(UserPojo userpojo) throws SQLException {
+    public int createUser(UserPojo userpojo) throws SQLException {
 
         try {
             //getting the connection from the util package Myconnection class
             con = mc.getConnect();
             //            con.setAutoCommit(false); is to avoid the duplicate or improper information in database
             con.setAutoCommit(false);
-
-            System.out.print("in dao");
+            log.info("inside Create UserDao");
 
             PreparedStatement ps = null;
 
+
+
             //Preparing the insert statement
             ps = con.prepareStatement(INSERT_USER_INFO_TO_USERTABLE);
+
             ps.setString(1, userpojo.getUserName());
             ps.setString(2, userpojo.getUserEmailAddress());
             ps.setString(3, userpojo.getUserRole());
@@ -93,7 +91,7 @@ public class UserDaoImpl implements UserDao {
 
 
     @Override
-    public int removeUserDao(int userId) throws SQLException {
+    public int removeUser(int userId) throws SQLException {
 
         int deleteStatus = 0;
         log.info("in getUserByRoleDao");
@@ -107,11 +105,6 @@ public class UserDaoImpl implements UserDao {
 
         } catch (Exception e) {
             log.info("error in remove dao" + e);
-        }finally {
-            log.info("Closing the Connection...!");
-            con.close();
-            ps.close();
-
         }
 
 
@@ -125,7 +118,7 @@ public class UserDaoImpl implements UserDao {
      * @see SQLException
      */
     @Override
-    public List<UserPojo> getUserByRoleDao(String userRole) throws SQLException {
+    public List<UserPojo> getUserByRole(String userRole) throws SQLException {
 
         log.info("in getUserByRoleDao");
         con = mc.getConnect();
@@ -157,16 +150,10 @@ public class UserDaoImpl implements UserDao {
         } catch (Exception e) {
             log.info("error in dao retrive" + e);
 
-        }finally {
-            log.info("Closing the Connection...!");
-            con.close();
-            ps.close();
-            rs.close();
         }
 
 
         return listOfUsers;
-
     }
 
     /**
@@ -181,9 +168,9 @@ public class UserDaoImpl implements UserDao {
 
 
     @Override
-    public List<UserPojo> getUserByIdDao(int userId) throws SQLException {
+    public List<UserPojo> getUserById(int userId) throws SQLException {
 
-        List<UserPojo> users = new ArrayList<>();
+        List<UserPojo> users = new ArrayList();
 
         log.info("in getUserByIdDao");
         log.info("inside dao " + userId);
@@ -212,16 +199,14 @@ public class UserDaoImpl implements UserDao {
 
         } catch (Exception e) {
             log.info("errorrr" + e);
-        }finally {
-            log.info("Closing the Connection...!");
-            con.close();
-            rs.close();
-
         }
 
         return users;
     }
 
-
+    @Override
+    public int updateUserById(int userId) {
+        return 0;
+    }
 
 }

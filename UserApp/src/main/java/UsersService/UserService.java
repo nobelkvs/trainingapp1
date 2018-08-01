@@ -12,19 +12,19 @@ public interface UserService {
 
 
     //create user interface method declaration
-    int createUserService(UserPojo userpojo) throws SQLException;
+    int createUser(UserPojo userpojo) throws SQLException;
 
     //remove user by userid method declaration
-    int removeUserService(int userId) throws SQLException, ClassNotFoundException;
+    int removeUser(int userId) throws SQLException, ClassNotFoundException;
 
     //list of users getting userinformation by role
-    List<UserPojo> getUserByRoleService(String userRole) throws SQLException;
+    List<UserPojo> getUserByRole(String userRole) throws SQLException;
 
     //    //single  user information by userid
-    List<UserPojo> getUserByIdService(int userId) throws SQLException;
+    List<UserPojo> getUserById(int userId) throws SQLException;
 
     //update user by userId
-    int updateUserByIdService(int userId);
+    int updateUserById(int userId);
 
 
 }

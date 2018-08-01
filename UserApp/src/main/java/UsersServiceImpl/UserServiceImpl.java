@@ -28,9 +28,9 @@ public class UserServiceImpl implements UserService {
      * @see SQLException
      */
     @Override
-    public int createUserService(UserPojo userpojo) throws SQLException {
+    public int createUser(UserPojo userpojo) throws SQLException {
         userDao = new UserDaoImpl();
-        int createStatus = userDao.createUserDao(userpojo);
+        int createStatus = userDao.createUser(userpojo);
 
 
         return createStatus;
@@ -46,9 +46,9 @@ public class UserServiceImpl implements UserService {
      */
 
     @Override
-    public int removeUserService(int userId) throws SQLException, ClassNotFoundException {
+    public int removeUser(int userId) throws SQLException, ClassNotFoundException {
         userDao = new UserDaoImpl();
-        int deleteStatus = userDao.removeUserDao(userId);
+        int deleteStatus = userDao.removeUser(userId);
         return deleteStatus;
     }
 
@@ -62,9 +62,9 @@ public class UserServiceImpl implements UserService {
      */
 
     @Override
-    public List<UserPojo> getUserByRoleService(String userRole) throws SQLException {
+    public List<UserPojo> getUserByRole(String userRole) throws SQLException {
         userDao = new UserDaoImpl();
-        List<UserPojo> up = userDao.getUserByRoleDao(userRole);
+        List<UserPojo> up = userDao.getUserByRole(userRole);
         return up;
     }
 
@@ -78,18 +78,18 @@ public class UserServiceImpl implements UserService {
      */
 
     @Override
-    public List<UserPojo> getUserByIdService(int userId) throws SQLException {
+    public List<UserPojo> getUserById(int userId) throws SQLException {
         log.info("in serviceimpl getUserByIdService " + userId);
 
         userDao = new UserDaoImpl();
         log.info("inside service " + userId);
-        List<UserPojo> listOfUsers = userDao.getUserByIdDao(userId);
+        List<UserPojo> listOfUsers = userDao.getUserById(userId);
 
         return listOfUsers;
     }
 
     @Override
-    public int updateUserByIdService(int userId) {
+    public int updateUserById(int userId) {
         userDao = new UserDaoImpl();
 
 

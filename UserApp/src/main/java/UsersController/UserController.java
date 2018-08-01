@@ -3,6 +3,7 @@ package UsersController;
 import UsersModels.UserPojo;
 import UsersService.UserService;
 import UsersServiceImpl.UserServiceImpl;
+import UsersUtils.MyException;
 import com.google.gson.Gson;
 import org.apache.log4j.Logger;
 
@@ -75,7 +76,7 @@ public class UserController extends HttpServlet {
 
         try {
             //calling service create method
-            insertStatus = us.createUserService(userPojo);
+            insertStatus = us.createUser(userPojo);
             out.print(insertStatus > 0 ? "success" : "failed");
         } catch (Exception e) {
             log.error(e + "Failed to creat User");
@@ -86,11 +87,20 @@ public class UserController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         PrintWriter out = res.getWriter();
+        String retriveType=null;
         //creating the instance of gson object
         Gson gson = new Gson();
         log.info("in do get method");
         //reading the type of retrieve
-        String retriveType = req.getParameter("retriveBy");
+        try {
+            retriveType = req.getParameter("retriveBy");
+            log.info("type of retrieve:"+retriveType);
+            if(retriveType==null || retriveType=="")
+                throw new MyException("retriveBy can not be null");
+        }catch (MyException ude){
+            log.info("MyException "+ude);
+        }
+
         log.info("inside controller " + retriveType);
         log.info(retriveType);
 
@@ -111,16 +121,12 @@ public class UserController extends HttpServlet {
                 us = new UserServiceImpl();
 
                 //returns the list of users based on user id
-                listOfUsers = us.getUserByIdService(userid);
+                listOfUsers = us.getUserById(userid);
 
                 log.info("after retrival" + listOfUsers);
 
             } catch (Exception e) {
-                try {
-                    throw new Exception("Please Enter the valid type of retrive");
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+
                 log.error(e + "Failed to get the user details,Please Try agin");
             }
 
@@ -132,13 +138,14 @@ public class UserController extends HttpServlet {
 
             //getting userid from the request
             String userRole = req.getParameter("type");
+            log.info(userRole);
 
             UserService us = null;
 
             try {
                 us = new UserServiceImpl();
                 //returns the list of users based on the role of user
-                listOfUsers = us.getUserByRoleService(userRole);
+                listOfUsers = us.getUserByRole(userRole);
                 log.info("successfully retrieved..!" + listOfUsers);
 
             } catch (Exception e) {
