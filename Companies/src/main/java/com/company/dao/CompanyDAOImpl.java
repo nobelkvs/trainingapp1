@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Implementation class for CompanyDAO
  */
+
 public class CompanyDAOImpl implements CompanyDAO {
     static final Logger log = Logger.getLogger(CompanyDAOImpl.class);
 
@@ -26,8 +27,12 @@ public class CompanyDAOImpl implements CompanyDAO {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
 
+    /**
+     * Inserting details into database
+     * @param company
+     * @return
+     */
 
-    //Inserting details into database
     public int insertDetails(Company company) {
         int insertStatus = 0;
 
@@ -51,7 +56,12 @@ public class CompanyDAOImpl implements CompanyDAO {
         return insertStatus;
     }
 
-    //Retrieve details from database
+
+    /**
+     *Retrieve details from database
+     * @param HeadOffice
+     * @return
+     */
     public List retriveByName(String HeadOffice) {
         List list = new ArrayList();
         log.info("inside retrive in dao impl");
@@ -72,7 +82,7 @@ public class CompanyDAOImpl implements CompanyDAO {
                 log.info(resultSet);
                 Company company = new Company();
 
-                //Setting values to the model and adding ittothe list
+                //Setting values to the model and adding it to the list
                 company.setId(resultSet.getInt(1));
                 company.setName(resultSet.getString(2));
                 company.setEmployees(resultSet.getLong(3));
@@ -91,8 +101,14 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
 
-    //Method to deleting the records from database
-    public int deleteCompanies(String[] s) {
+
+
+    /**
+     *Method to deleting the records from database
+     * @param id
+     * @return
+     */
+    public int deleteCompanies(String[] id) {
         int deleteStatus = 0;
         log.info("inside delete in dao impl");
         try {
@@ -100,14 +116,15 @@ public class CompanyDAOImpl implements CompanyDAO {
             connection = mysqlConnection.getConnection();
 
             //Setting the positional parameters and executing the query
-            for (int i = 0; i < s.length; i++) {
+            for (int i = 0; i < id.length; i++) {
                 preparedStatement = connection.prepareStatement(QUERY_TO_DELETE);
-                preparedStatement.setInt(1, Integer.parseInt(s[i]));
+                preparedStatement.setInt(1, Integer.parseInt(id[i]));
                 deleteStatus = preparedStatement.executeUpdate();
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
+            log.warn(e);
         }
         log.info("status :" + deleteStatus);
 

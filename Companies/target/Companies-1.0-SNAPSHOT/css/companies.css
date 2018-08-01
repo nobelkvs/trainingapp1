@@ -1,0 +1,53 @@
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            background-color: bisque
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        body {
+           
+            background-color: wheat;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-size: 20px;
+        }
+
+
+        .required:before {
+            content: "*";
+            font-weight: bold;
+            color: red;
+        }
+        .modal-content {
+            background-color: #04cafc;
+            margin: auto;
+            /* padding: 20px; */
+            color: #ffffff;
+            width: 30%;
+            height: 35%;
+            text-align: center;
+            font-size: 30px;
+            padding: 100px;
+            top: 200px;
+        }
+.success{
+    color: green;
+    
+    
+} 
+.failure{
+    color: red;
+}       

@@ -7,75 +7,29 @@ height: 1000px">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
-
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- CSS StyleSheet-->
+    <link rel="stylesheet" href="css/companies.css" type="text/css">
+
     <title>Companies</title>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-            background-color: bisque
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-
-        body {
-            background-image: url("http://www.centrinity.com/wp-content/uploads/2017/08/companies.jpg");
-            background-color: #cccccc;
-            background-repeat: no-repeat;
-            background-size: cover;
-            font-size: 20px;
-        }
-
-
-        .required:before {
-            content: "*";
-            font-weight: bold;
-            color: red;
-        }
-    </style>
-    <script> 
-
-        // Search Filter Script
-        $(document).ready(function () {
-            (function ($) {
-                $('#filter').keyup(function () {
-                    var rex = new RegExp($(this).val(), 'i');
-                    $('.searchable tr').hide();
-                    $('.searchable tr').filter(function () {
-                        return rex.test($(this).text());
-                    }).show();
-
-                })
-
-            }(jQuery));
-        });
-
-        //script for asteric
-        $("input[required]").parent("label").addClass("required");
-
-    </script>
+    <link rel="icon" type="image/ico" href="http://www.yespharma.com/Uploads/images/about.jpg" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -84,7 +38,6 @@ height: 1000px">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js "></script>
 
-
     <div class="container-fluid">
         <header style="text-align:center; color:black">
             <h1 style="padding: 25px">COMPANIES APPLICATION</h1>
@@ -92,77 +45,88 @@ height: 1000px">
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent
-                " aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon" style="
-        width: 30px;
-        height: 30px"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="width: 30px;height: 30px"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
             <ul class="navbar-nav mr-auto" style="color: black">
                 <li class="nav-item">
-                    <a class="nav-link" href="# " id="insertShow" style="color: black;cursor: pointer;">Create
+                    <a class="nav-link" href="#Home" id="Home" >Home
+                            <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="# " id="insertShow"">Create
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="# " id="retriveShow" style="color: black;cursor: pointer;">Retrive</a>
+                    <a class="nav-link" href="# " id="retriveShow" >Retrieve
+                            <span class="sr-only">(current)</span>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="# " id="deleteShow" style="color: black;cursor: pointer;">Delete</a>
-                </li>
-
             </ul>
-
         </div>
 
     </nav>
     <div class="card-body">
+           
         <div class="container">
+            <div class="wrapper">
+                <p id="HomeForm" class="headofc">
+                    This Application is to Create the Company and Retrieve the list of Companies based on Head Office. We can Delete the Companies in the Retrieve itself. 
+                    <br>
+                    <br>
+                     
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaLB0jOM-1OwuDh-N9TtAQNHI5zf3H-482qDx6tDaWABwiKaMx" alt="Company Image" width="500" height="333" style="margin-left: 300px">
+                </p>
+            </div>
+
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6 form_style">
-                   
-                   <!---------------- Create form ---------------- -->
-                  
+
+                    <!---------------- Create form ---------------- -->
                     <form style="display: none" id="CompanyForm">
+                        <div class="success" id="message"></div>
                         <div class="form-group">
-                            <h6 style="color: red">asteric(*) fields are mandatory</h6>
+                            <h6 style="color: red">Asterisk(*) fields are mandatory</h6>
                             <label for="companyName" class="required">Company Name</label>
-                            <input type="text" class="form-control" id="companyName" placeholder="company name" required>
+                            <input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" class="form-control" id="companyName" aria-describedby="NameHelp" placeholder="company name"
+                                required>
+                            <small id="NameHelp" class="form-text text-muted" style="font-size: 12px">Enter Only Alphabets.</small>
+
                         </div>
                         <div class="form-group">
                             <label for="Employees" class="required">No.Of Employees</label>
-                            <input type="text" class="form-control" id="Employees" placeholder="employees " required>
+                            <input type="number" class="form-control" id="Employees" placeholder="employees " required>
                         </div>
                         <div class="form-group">
                             <label for="HeadOffice" class="required">Head Office</label>
-                            <input type="text" class="form-control" id="headofc" placeholder="head office" required>
+                            <input type="text" pattern="[a-zA-Z]{1,45}[a-zA-Z\s]*" class="form-control" id="headofc" placeholder="head office" required>
                         </div>
                         <button type="submit" class="btn btn-primary" style="background-color:green">Submit</button>
                         <button type="submit" class="btn btn-primary" id="cancel" style="background-color:tomato">Cancel
                         </button>
 
                     </form>
-
-                    <!---------------- Delete form ---------------- -->
-                    <form style="display: none" id="DeleteCompanyForm">
-                        <label for="companyId" class="required">Enter company Id:
-                            <input id="companyId" type="text" required/>
-                        </label>
-                        <button type="submit" class="btn btn-primary" style="background-color:green">Submit</button>
-                    </form>
-
                     <!-- ------------- Retrieve form ---------- -->
                     <form style="display: none" id="RetrieveCompanyForm">
+
+                        <div id="RetrieveMessage"></div>
+
                         <div class="form-group">
-                            <label for="Headoffice">Enter Head Office</label>
-                            <input type="text" class="form-control" id="Headoffice" placeholder="head office">
+                            <label for="Headoffice" class="required">Enter Head Office:
+                                <input id="Headoffice" type="text" pattern="[A-Za-z]{2,45}" placeholder="head office" required/>
+                            </label>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary" id="submitBUtton" style="background-color:green">
                                 Submit
+                            </button>
+                            <button type="reset" class="btn btn-primary" id="Retrivecancel" style="background-color:tomato">Cancel
                             </button>
                             <br>
                             <br>
@@ -177,11 +141,11 @@ height: 1000px">
                                 </span>
                             </div>
                             <!---------------- Table Creation ---------------- -->
-                            <table class="table table-striped" id="retrieve">
+                            <table class="table table-striped table table-hover" id="retrieve">
                                 <thead>
                                     <tr>
-                                        <th><input type="checkbox" name="name1" />&nbsp;</th>
-                                        <th>Id</th>
+                                        <th>
+                                            <input type="checkbox" name="name1" style="display: none;" />&nbsp;</th>
                                         <th>company name</th>
                                         <th>no.of employees</th>
                                         <th>headOffice</th>
@@ -193,7 +157,6 @@ height: 1000px">
                             <button id="deleteButton" type="button" style="margin: left;">DELETE</button>
                         </div>
                     </form>
-
                 </div>
                 <div class="col-md-3"></div>
             </div>
@@ -203,41 +166,6 @@ height: 1000px">
             <footer></footer>
         </div>
 
-        <script>
-            $("#insertShow").click(function () {
-                $("#CompanyForm").css("display", "block");
-                $("#RetrieveCompanyForm").css("display", "none");
-                $("#DeleteCompanyForm").css("display", "none ");
-            });
-            $("#cancel").click(function () {
-                $("#CompanyForm").css("display", "none");
-
-            });
-
-            $("#retriveShow").click(function () {
-                $("#RetrieveCompanyForm").css("display", "block");
-                $("#CompanyForm").css("display", "none");
-                $("#DeleteCompanyForm").css("display", "none");
-
-            });
-
-            $("#Retrivecancel").click(function () {
-                $("#RetrieveCompanyForm").css("display", "none");
-
-            });
-
-            $("#deleteShow").click(function () {
-                $("#DeleteCompanyForm").css("display", "block");
-                $("#CompanyForm").css("display", "none");
-                $("#RetrieveCompanyForm").css("display", "none");
-
-            });
-            $("#Deletecancel").click(function () {
-                $("#DeleteCompanyForm").css("display", "none");
-
-            });
-
-        </script>
         <script type="text/JavaScript" src="js/companies.js"></script>
     </div>
     </div>

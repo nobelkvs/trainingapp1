@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * implementation class for CompanyService
+  
  */
 public class CompanyServiceImpl implements CompanyService {
 
@@ -27,9 +28,9 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     //service implementation for deleting
-    public int deleteMultipleComp(String[] s) {
+    public int deleteMultipleComp(String[] id) {
         CompanyDAO companyDAO = new CompanyDAOImpl();
-        int deleteStatus = companyDAO.deleteCompanies(s);
+        int deleteStatus = companyDAO.deleteCompanies(id);
         return deleteStatus;
     }
 }

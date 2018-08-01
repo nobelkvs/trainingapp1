@@ -13,10 +13,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+/**
 
+ */
 public class CompanyController extends HttpServlet {
-    //Creating the instance of class
+    //Creating the instance of logger class
     static final Logger log = Logger.getLogger(CompanyController.class);
+
     /**
      * Getting the values from UI and sending it to the service for retrieve operation
      * @param req
@@ -24,6 +27,7 @@ public class CompanyController extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -36,12 +40,12 @@ public class CompanyController extends HttpServlet {
 
         CompanyService companyService = new CompanyServiceImpl();
         list = companyService.retrieveCompanyDetailsByName(HeadOffice);
+        
         //Creating Gson object and then converting it to json
         Gson gson = new Gson();
         String s = gson.toJson(list);
         log.info("json data:" + s);
         out.print(s);
-
     }
 
     /**
@@ -115,7 +119,7 @@ public class CompanyController extends HttpServlet {
         try {
             //Status to check whether details are deleted are not
             deleteStatus = companyService.deleteMultipleComp(multiple);
-            log.info(deleteStatus + "deleteStatus in controller");
+            log.info(deleteStatus + ": deleteStatus in controller");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -123,9 +127,8 @@ public class CompanyController extends HttpServlet {
 
         if (deleteStatus >= 1) {
             log.info("successfully deleted");
-            out.println("success");
+            out.println(deleteStatus);
         } else {
-
             log.warn("Failed");
         }
 

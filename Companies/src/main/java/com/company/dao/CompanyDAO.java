@@ -12,5 +12,5 @@ public interface CompanyDAO {
     List retriveByName(String HeadOffice);
 
     //DAO interface for deleting
-    int deleteCompanies(String[] s);
+    int deleteCompanies(String[] id);
 }

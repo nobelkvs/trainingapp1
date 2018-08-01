@@ -12,7 +12,6 @@ public class CompanyDAOImplTest {
 
    @Test
     public void insertDetails() {
-
         Company company = new Company();
         company.setName("TCS");
         company.setEmployees(Long.parseLong("1500"));

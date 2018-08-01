@@ -1,11 +1,16 @@
 package com.company.model;
 
+//Model Class
 public class Company {
+
+   //Fields 
    private int id;
    private String name;
    private Long employees;
    private String headOffice;
 
+
+    //Getters and Setters 
     public int getId() {
         return id;
     }

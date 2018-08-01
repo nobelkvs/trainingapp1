@@ -22,12 +22,11 @@ public class MysqlConnection {
             log.info(con);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            log.warn(e);
         }
         return con;
 
     }
-
-
 }
 
 

@@ -13,6 +13,6 @@ public interface CompanyService {
     int createCompany(Company company);
 
     //Service interface for deleting
-    int deleteMultipleComp(String[] s);
+    int deleteMultipleComp(String[] id);
 
 }
