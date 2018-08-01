@@ -1,7 +1,7 @@
 package com.event.daoimpl;
 
 
-import com.event.dao.DAODeal;
+import com.event.dao.DealDAO;
 import com.event.model.ModelDeal;
 import org.junit.Test;
 
@@ -12,6 +12,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class DAODealImplTest {
+    DealDAO dao=new DealDAOImpl();
     ModelDeal deal=new ModelDeal();
     @Test
     public void testCreateDAO() {
@@ -22,19 +23,15 @@ public class DAODealImplTest {
         deal.setProbability(20);
         deal.setCustomerName("druthi");
         deal.setCustomerContact("1578359648");
-        DAODeal dao=new DAODealImpl();
-        String  mesg=dao.createDAO(deal);
+        String  mesg=dao.create(deal);
         String originalmesg="****Deal created successfully****";
-        //String othermesg="deal created";
         assertEquals(mesg,originalmesg);
-        //System.out.println("deal created successfully");
     }
 
     @Test
     public void testRetriveDAO() {
-        DAODeal dao=new DAODealImpl();
         String name="aparna";
-        List list=dao.retriveDAO(name);
+        List list=dao.retrive(name);
         int id=1;
        int retrivedDealId=0;
         Iterator itr=list.iterator();
@@ -47,21 +44,18 @@ public class DAODealImplTest {
 
     @Test
     public void testDeleteDAO() {
-        DAODeal dao=new DAODealImpl();
         int i=5;
-        int deleteStatus=dao.deleteDAO(i);
+        int deleteStatus=dao.delete(i);
         assertEquals(0,deleteStatus);
     }
 
     @Test
     public void testUpdateDAO() {
-        DAODeal dao=new DAODealImpl();
         deal.setDealValue("99L");
         deal.setProbability(99);
        deal.setDealId(1);
-        int updateStatus=dao.updateDAO(deal);
+        int updateStatus=dao.update(deal);
         assertEquals(1,updateStatus);
-        //System.out.println(mesg);
     }
 
 }

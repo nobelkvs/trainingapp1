@@ -1,19 +1,7 @@
 label {
 	color: black;
 	font-weight: bold;
-	font-size: 30px;
-}
-
-.success {
-	font-weight: bold;
-	color: green;
-	font-size: 24px;
-}
-
-.fail {
-	font-weight: bold;
-	color: red;
-	font-size: 24px;
+	font-size: 22px;
 }
 
 .required:before{
@@ -22,7 +10,6 @@ label {
 	font-size:20px;
 	color: red;
 }
-
 
 .filterable {
     margin-top: 15px;
@@ -50,4 +37,38 @@ label {
 #filterId{
 	background-color: #007bff;
 	color: white;
+}
+#header{
+    font-weight: bold;
+    padding: 5px;
+    font-size: 24;
+    text-align: center;
+}
+
+#id_header{
+	display: none;
+}
+td:nth-child(2){
+	display: none;
+}
+#mysearch{
+	position: absolute;
+	left: 1600px;
+}
+.nav-link {
+   color: #000;
+    cursor: pointer;
+    font-size: 18px;
+}
+.active, .nav-link:hover {
+	font-weight: bold;
+    color: black;
+}
+.text-center {
+    text-align: center!important;
+}
+.container{
+    position: absolute;
+    top: 20%;
+    left: 20%;
 }

@@ -52,14 +52,39 @@ $(document).ready(function () {
     });
 });
 
+//for alert message
+function showalert(message, alerttype) {
+
+    $('#alert_placeholder').append('<div id="alertdiv" class="alert ' + alerttype + '">' + message + '</span></div>');
+    $('#trigger_event').on('click', function () {
+        $("#alertdiv").remove();
+    });
+}
+
+// Add active class to the current button (highlight it)
+var header = document.getElementById("navbarNav");
+var btns = header.getElementsByClassName("nav-link");
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+    });
+}
 
 
+$("#home_menu").click(function () {
+    $("#home").css("display", "block");//display only home page content
+    $("#Create").css("display", "none");
+    $("#Update").css("display", "none");
+    $("#Retrieve").css("display", "none");
+    $("#Delete").css("display", "none");
+});
 
 // Create function
 $("#create_menu").click(function () {
-    $('#create_mesg').text(" ");
-    clearRetriveOnClickOfOther();
     $("#Create").css("display", "block");//display only create form
+    $("#home").css("display", "none");
     $("#Update").css("display", "none");
     $("#Retrieve").css("display", "none");
     $("#Delete").css("display", "none");
@@ -70,16 +95,12 @@ $("#cancel_create").click(function () {
 
 });
 
-// To reset message upon another deal creation
-$("#deal_name").click(function () {
-    $('#create_mesg').text(" ");
-});
 
 // Update function
 $("#update_menu").click(function () {
-    $('#update_mesg').text(" ");
-    clearRetriveOnClickOfOther();
+    $('#Update')[0].reset();
     $("#Update").css("display", "block");//display only update form
+    $("#home").css("display", "none");
     $("#Create").css("display", "none");
     $("#Retrieve").css("display", "none");
     $("#Delete").css("display", "none");
@@ -91,17 +112,13 @@ $("#cancel_update").click(function () {
 
 });
 
-// To reset message upon another deal updation
-$("#deal_id1").click(function () {
-    $('#update_mesg').text(" ");
-});
 
 
 // Retrive function
 $("#retrive_menu").click(function () {
-    $('#retrive_mesg').text(" ");
     clearRetriveOnClickOfOther();
     $("#Retrieve").css("display", "block");//display only retrive form
+    $("#home").css("display", "none");
     $("#Create").css("display", "none");
     $("#Update").css("display", "none");
     $("#Delete").css("display", "none");
@@ -112,25 +129,6 @@ $("#cancel_retrive").click(function () {
     $("#body").css("display", "none");
 });
 
-
-// Delete function
-$("#delete_menu").click(function () {
-    $('#delete_mesg').text(" ");
-    clearRetriveOnClickOfOther();
-    $("#Delete").css("display", "block");//display only delete form
-    $("#Create").css("display", "none");
-    $("#Update").css("display", "none");
-    $("#Retrieve").css("display", "none");
-});
-
-$("#cancel_delet").click(function () {
-    $("#Delete").css("display", "none");
-});
-
-// To reset message upon another deal deletion
-$("#deal_id2").click(function () {
-    $('#delete_mesg').text(" ");
-});
 
 /*
 On submit event to create deal
@@ -151,18 +149,18 @@ $('#Create').on('submit', function () {
         url: 'http://localhost:8080/Deal-1.0-SNAPSHOT/deal',
         type: 'POST',
         data: dataObj,
-        crossDomain: true,
         success: created,
+        crossDomain: true,
         error: createFail,
 
     });
     function created() {
-        $('#create_mesg').addClass("success").html("Created successfully...");
+        showalert("Created successfully", "alert-success");
         $('#Create')[0].reset();
 
     }
     function createFail(error) {
-        $('#create_mesg').addClass("fail").html("Creation failure...." + error);
+        showalert("Creation failure...." + error, "alert-danger");
     }
 
 
@@ -186,60 +184,27 @@ $('#Update').on('submit', function (event) {
         type: 'PUT',
         contentType: 'application/json',
         data: updateObj2,
-        success: updateTable,
+        success: update,
         crossDomain: true,
-        error: updateError
+        error: updateFail
     });
-    $('#Update')[0].reset();
-    function updateTable(data) {
+
+    function update(data) {
         if (data != 0) {
-            $('#update_mesg').addClass("success").html("Updated successfully...");
+            showalert("Updated Successfully", "alert-success");
+            $('#Update')[0].reset();
         } else {
-            $('#update_mesg').addClass("fail").html("enter a valid Id..");
+            showalert("enter a valid Id..", "alert-danger");
+            $('#deal_id1').val(" ");
         }
     }
-    function updateError(error) {
-
-        $('#update_mesg').addClass("fail").html("Updation failure...." + error);
+    function updateFail(error) {
+        showalert("Updation failure...." + error, "alert-danger");
     }
-
-
-
-
 
 });
-/*
-Event to delete from delete menu method
-*/
-
-$('#Delete').on('submit', function () {
-    const deal_id = document.getElementById("deal_id2").value;
-    const wurl = `http://localhost:8080/Deal-1.0-SNAPSHOT/deal?deal_id=${deal_id}`;
-    $.ajax({
-        url: wurl,
-        type: 'DELETE',
-        success: deleteRow,
-        error: DeleteError
-    });
-    $('#Delete')[0].reset();
-    function deleteRow(data) {
-        if (data != 0) {
-            $('#delete_mesg').addClass("success").html("Deleted successfully...");
-
-        } else {
-            $('#delete_mesg').addClass("fail").html("Enter a valid Id...");
-        }
-    }
-
-    function DeleteError(error) {
-
-        $('#delete_mesg').addClass("fail").html("Deletion Failure..." + error);
-        $('#delete_mesg').removeClass("fail");
-    }
 
 
-
-});
 /*
 To refresh retrive menu event
 */
@@ -248,7 +213,6 @@ function clearRetriveOnClickOfOther() {
     $(".panel-heading").css("display", "none");
     $('#retrive').css("display", "none");
     $('#Retrieve').css("display", "none");
-    $('#mysearch').css("display", "none");
     $('#deletebtn').css("display", "none");
 
 }
@@ -269,18 +233,16 @@ $('#deletebtn').on('click', function () {
     $.ajax({
         url: wurl,
         type: 'DELETE',
-        success: deleteRow,
-        error: DeleteError
+        success: deleteSuccess,
+        error: DeleteFail
     });
-    $('#deletebtn')[0].reset();
-    function deleteRow() {
-        $('#retrive_mesg').addClass("success").html("Deleted successfully...");
+    function deleteSuccess() {
+        showalert("Deleted successfully...", "alert-success");
         $('#Retrieve')[0].reset();
     }
 
-    function DeleteError(request, status, error) {
-        $('#retrive_mesg').addClass("fail").html("Deletion Failure...");
-        alert('error' + request + status + error);
+    function DeleteFail(error) {
+        showalert("Deletion Failure..." + error, "alert-danger");
     }
 
 
@@ -303,8 +265,8 @@ function getCustomer() {
         error: CustomerError
     });
 
-    function CustomerError(request, status, error) {
-        alert('error' + request + status + error);
+    function CustomerError(error) {
+        showalert("Retrive Failure..." + error, "alert-danger");
 
     }
 
@@ -312,11 +274,11 @@ function getCustomer() {
 /*
 This method is to fill table body
 */
-function fillDeal(data, status, response) {
+function fillDeal(data) {
 
     console.log(data);
     if (data == []) {
-        $('#retrive_mesg').addClass("fail").html("Enter a valid name...");
+        showalert("Enter a valid name...", "alert-danger");
     }
     var table = document.getElementById("retrive");
     var colNumber = 8; // number of table columns
@@ -328,36 +290,28 @@ function fillDeal(data, status, response) {
 
         var chk = "<td><input type='checkbox' value='" + value.dealId + "' name='deleteCheckBox' id='chk_" + index + "' /></td>";
         var row = tableRef.insertRow(tableRef.rows.length);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-        var cell6 = row.insertCell(5);
-        var cell7 = row.insertCell(6);
-        var cell8 = row.insertCell(7);
 
-        cell1.innerHTML = chk;
-        cell2.innerHTML = value.dealId;
-        cell3.innerHTML = value.dealName;
-        cell4.innerHTML = value.ownerName;
-        cell5.innerHTML = value.dealValue;
-        cell6.innerHTML = value.probability;
-        cell7.innerHTML = value.customerName;
-        cell8.innerHTML = value.customerContact;
+        row.insertCell(0).innerHTML = chk;
+        row.insertCell(1).innerHTML = value.dealId;
+        row.insertCell(2).innerHTML = value.dealName;
+        row.insertCell(3).innerHTML = value.ownerName;
+        row.insertCell(4).innerHTML = value.dealValue;
+        row.insertCell(5).innerHTML = value.probability;
+        row.insertCell(6).innerHTML = value.customerName;
+        row.insertCell(7).innerHTML = value.customerContact;
 
         $("#deletebtn").css("display", "block");
+
+
         // It resets on Retrival of another deal
         $("#deal_name22").click(function () {
             $('#Retrieve')[0].reset();
             $(".panel-heading").css("display", "none");
             $('#retrive').css("display", "none");
-            $('#mysearch').css("display", "none");
             $('#deletebtn').css("display", "none");
         });
 
     });
-
 
 
 }
@@ -365,8 +319,6 @@ function fillDeal(data, status, response) {
 // Event for retrive menu option
 $('#Retrieve').on('submit', function (event) {
     event.preventDefault();
-
-    $("#mysearch").css("display", "block");
     $(".panel-heading").css("display", "block");
     $("#retrive").css("display", "block");
     getCustomer();
