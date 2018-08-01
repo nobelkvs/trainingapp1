@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>servlets</servlet-name>
-        <servlet-class>com.bank.controller.bankcontrollerservlet</servlet-class>
+        <servlet-class>com.bank.controller.BankControllerServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>servlets</servlet-name>

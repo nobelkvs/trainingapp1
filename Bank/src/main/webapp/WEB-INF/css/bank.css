@@ -1,0 +1,52 @@
+.banktable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.banktable {
+    width: 80%;
+    margin: 0px auto;
+    margin-top: 30px;
+}
+
+.banktable>caption {
+    font-size: 20px;
+}
+
+.banktable>thead>tr {
+    align: center;
+    font-size: 14px;
+}
+
+.banktable>thead>tr>th {
+    background-color: #666;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.banktable>tbody {
+    font-size: 14px;
+    overflow: auto;
+    height: 300px;
+}
+
+.carousel-inner img {
+    width: 120%;
+    height: 100%;
+    position:center;
+    
+}

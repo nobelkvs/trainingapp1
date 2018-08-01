@@ -10,7 +10,7 @@ import java.io.File;
 import org.apache.log4j.Logger;
 @WebListener("application context listener")
 public class ContextListener implements ServletContextListener {
-    static final Logger log=Logger.getLogger(bankcontrollerservlet.class);
+    static final Logger log=Logger.getLogger(BankControllerServlet.class);
 
     /**
      * Initialize log4j when the application is being started

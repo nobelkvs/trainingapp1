@@ -1,1 +1,3 @@
-/home/pc/IdeaProjects/Bank/src/test/java/com/bank/dao/bankdaoimplTest.java
+/home/pc/IdeaProjects/Bank/src/test/java/com/bank/dao/bankDaoImplTest.java
+/home/pc/IdeaProjects/Bank/src/test/java/com/bank/service/BankServiceImplTest.java
+/home/pc/IdeaProjects/Bank/src/test/java/com/bank/controller/BankControllerServletTest.java

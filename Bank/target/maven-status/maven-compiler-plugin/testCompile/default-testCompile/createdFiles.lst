@@ -1,1 +1,3 @@
-com/bank/dao/bankdaoimplTest.class
+com/bank/dao/bankDaoImplTest.class
+com/bank/controller/BankControllerServletTest.class
+com/bank/service/BankServiceImplTest.class
