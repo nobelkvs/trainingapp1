@@ -6,12 +6,12 @@ import java.util.List;
 public interface LmsService {
 
 
-    public int createLmsService(LmsModel lms);
+    public String createLms(LmsModel lms);
 
-    public int updateLmsService(LmsModel lms);
+    public String updateLms(LmsModel lms);
 
-    public List<LmsModel> retrieveByEmpId(int EmpId);
+    public List<LmsModel> retrieveByEmpName(String EmpName);
 
-    public int deleteLmsService(int EmpId);
+    public int deleteLms(String[] array);
 }
 

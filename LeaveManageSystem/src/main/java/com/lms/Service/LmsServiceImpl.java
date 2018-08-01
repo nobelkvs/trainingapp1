@@ -15,33 +15,20 @@ public class LmsServiceImpl {
     int createstatus;
     int updateStatus;
     int deleteStatus;
-
-    public int createLmsService(LmsModel lms) {
-        log.info("serviceimpl");
+/* Method to create the leave to the dao */
+    public int createLms(LmsModel lms) {
+        log.info(" create serviceimpl");
         int createStatus = 0;
-        createStatus = LmsDAOImpl.createLmsDAO(lms);
+        createStatus = LmsDAOImpl.createLms(lms);
         return createStatus;
     }
-
-    public List<LmsModel> retrieveByEmpId(int EmpId) {
+/* Method to retrieve the leaves from dao */
+    public List<LmsModel> retrieveByEmpName(String EmpName) {
         log.info("retrieve serviceimpl");
         LmsDAOImpl ldao = new LmsDAOImpl();
-        List<LmsModel> modelList = ldao.retrieveByEmpId(EmpId);
+        List<LmsModel> modelList = ldao.retrieveByEmpName(EmpName);
         log.info(modelList);
         return modelList;
     }
 
-    public int deleteLmsService(int EmpId) {
-        log.info("serviceimpl");
-        int deleteStatus = 0;
-        deleteStatus = LmsDAOImpl.deleteLmsDAO(EmpId);
-        return deleteStatus;
-    }
-  /*  public static int updateLmsService(LmsModel lms) {
-        int updateStatus = 0;
-        LmsDAOImpl td = new LmsDAOImpl();
-        updateStatus = td.updateLmsDAO(lms);
-        return updateStatus;
-    }
-*/
 }

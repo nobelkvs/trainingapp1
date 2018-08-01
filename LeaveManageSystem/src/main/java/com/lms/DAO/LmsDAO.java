@@ -5,8 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface LmsDAO {
-    int createLmsDAO(LmsModel lms) throws SQLException;
-    //int updateLmsDAO(modelTicket ticket) throws SQLException;
-    int deleteLmsDAO(LmsModel ticketId) throws SQLException;
-    public List<LmsModel> retrieveByEmpId(int EmpId) throws SQLException;
+    int createLms(LmsModel lms) throws SQLException;
+
+     List<LmsModel> retrieveByEmpName() throws SQLException;
 }
