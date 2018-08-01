@@ -1,20 +1,26 @@
-package com.event.dao;
+package com.event.controller;
+
 import com.event.model.EventModel;
+import com.event.service.EventServiceImp;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.Assert.*;
-//Writing class to test the methods of dao implementation
-public class EventDaoImpTest {
-    //creating log to check program flow
-    static final Logger log = Logger.getLogger(EventDaoImp.class);
-    //Creating object for dao implementation class
-    EventDaoImp edao = new EventDaoImp();
-    // junit test case to test create
+
+public class EventControllerTest {
+
+    //creating a log to check the flow of program
+    static final Logger log = Logger.getLogger(EventController.class);
+    //Creating object for service implementation class
+    EventServiceImp eser = new EventServiceImp();
+
+    // junit test case to test doPost method
     @Test
-    public void testCreateEventData() {
+    public void testDoPost() {
         //creating object for model class to make use of getter and setter methods
         EventModel em = new EventModel();
         //Binding data to the object
@@ -27,40 +33,41 @@ public class EventDaoImpTest {
         em.setEndDate("2018-10-12");
         em.setEndTime("06:00:30");
         em.setEmailAddress("aruhi@gmail.com");
-        int status= 0;
         try {
-            status = edao.createEventData(em);
+            eser.createEventData(em);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.error("SQLException in Controller test class in testDoPost "+e);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            log.error("ClassNotFoundException in Dao test class in testCreateEventData "+e);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            log.error("SQLException in Dao test class in testCreateEventData "+e);
+            log.error("ClassNotFoundException in Controller test class in testDoPost "+e);
         }
-        assertEquals(status,status);
+
     }
-    // junit test case to test retrieve method
+
+    // junit test case to test doGet method
     @Test
-    public void testRetrieveEventData(){
+    public void testDoGet() {
         List<EventModel> list = new ArrayList<>();
         try {
-            edao.retrieveEventData();
+            list = eser.retrieveEventData();
         } catch (SQLException e) {
             e.printStackTrace();
-            log.error("SQLException in Dao test class in testRetrieveEventData "+e);
+            log.error("SQLException in Controller test class in testDoGet "+e);
         }
         assertEquals(list.size(), list.size());
     }
-    // test case to test delete method
+
+    // junit test case to test doDelete method
     @Test
-    public void testDeleteEventData() {
+    public void testDoDelete() {
         int eventId = 4;
         int status = 0;
         try {
-            status = edao.deleteEventdata(eventId);
+            status = eser.deleteEventData(eventId);
         } catch (SQLException e) {
             e.printStackTrace();
-            log.error("SQLException in Dao test class in testDeleteEventData "+e);
+            log.error("SQLException in Controller test class in testDoDelete "+e);
         }
         assertEquals(status, status);
     }

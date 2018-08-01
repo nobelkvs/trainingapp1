@@ -8,14 +8,15 @@ import java.util.List;
 /*
  * interface class for service
  * Service layer useful to do any business logics
+ * @see EventServiceImp class
  */
 
 public interface EventService {
     // methods for create, retrieve and delete operations in service layer
-    int createEventDataService(EventModel userDetails) throws SQLException, ClassNotFoundException;
+    int createEventData(EventModel userDetails) throws SQLException, ClassNotFoundException;
 
-    List<EventModel> retrieveEventDataService() throws SQLException;
+    List<EventModel> retrieveEventData() throws SQLException;
 
-    int deleteEventDataService(int eventId) throws SQLException;
+    int deleteEventData(int eventId) throws SQLException;
 
 }

@@ -23,14 +23,16 @@ public class EventServiceImp implements EventService {
      * @return
      * @throws SQLException
      * @throws ClassNotFoundException
+     * @see EventDao class
      */
     @Override
-    //Implementing createEventDataService method of service class
-    public int createEventDataService(EventModel userDetails) throws SQLException, ClassNotFoundException {
+    //Implementing createEventData method of service class
+    public int createEventData(EventModel userDetails) throws SQLException, ClassNotFoundException {
         log.info("Entered createEventDataService in service implementation class");
+        log.info(userDetails);
         //Creating object to send the user data to dao
         EventDao ed = new EventDaoImp();
-        int status = ed.createEventdataDao(userDetails);
+        int status = ed.createEventData(userDetails);
         return status;
     }
 
@@ -38,33 +40,29 @@ public class EventServiceImp implements EventService {
      *
      * @return
      * @throws SQLException
+     * @see EventDao class
      */
     @Override
-    //Implementing retrieveEventDataService method of service class
-    public List<EventModel> retrieveEventDataService() throws SQLException {
+    //Implementing retrieveEventData method of service class
+    public List<EventModel> retrieveEventData() throws SQLException {
         log.info("Entered retrieveEventDataService in service implementation class");
         //Creating object to send the user data to dao
         EventDao ed = new EventDaoImp();
         List<EventModel> list = new ArrayList<>();
         //getting event deatails as list of objects by calling dao method
-        list = ed.retrieveEventDataDao();
+        list = ed.retrieveEventData();
         return list;
     }
 
-    /**
-     *
-     * @param eventId
-     * @return
-     * @throws SQLException
-     */
     @Override
-    //Implementing deleteEventData method of service class
-    public int deleteEventDataService(int eventId) throws SQLException {
-        log.info("Entered deleteEventDataService in service implementation class");
+    public int deleteEventData(int eventId) throws SQLException {
+        log.info("Entered deleteEventData in service implementation class");
         //Creating object to send the user data to dao
         EventDao ed = new EventDaoImp();
         //passing id to the method of dao implementation
-        int status = ed.deleteEventdataDao(eventId);
+        int status = ed.deleteEventdata(eventId);
         return status;
     }
+
+
 }

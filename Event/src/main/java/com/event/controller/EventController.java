@@ -1,7 +1,6 @@
 package com.event.controller;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,12 +14,9 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.System.out;
 
 
 /**
@@ -43,12 +39,11 @@ public class EventController extends HttpServlet {
      * @param request
      * @param response
      * @throws IOException
-     * @see EventService
+     * @see EventService class
      */
 
     //writing method to Insert(POST) user details in a database
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PrintWriter pw = response.getWriter();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         //assigning user data to variables
         String eventName = request.getParameter("eventName");
         String priority = request.getParameter("priority");
@@ -60,7 +55,6 @@ public class EventController extends HttpServlet {
         String endTime = request.getParameter("endTime");
         String emailAddress = request.getParameter("emailAddress");
 
-        PrintWriter out = response.getWriter();
         //creating object for event model class
         EventModel em = new EventModel();
         //Binding data to the object of type model class
@@ -78,23 +72,25 @@ public class EventController extends HttpServlet {
         EventService eventService = new EventServiceImp();
         //writing try catch blocks to perform further actions
         try {
-            //Sending data to the method createEventDataService in EventService class
-            insertStatus = eventService.createEventDataService(em);
-        } catch (Exception e) {  //get to know if there is any exception
-            pw.println(e);
-            log.error("Got SQL exception " + e);
+            //Sending data to the method createEventData in EventService class
+            insertStatus = eventService.createEventData(em);
+        }
+        //get to know if there is any exception
+        catch (Exception e) {
+            e.printStackTrace();
+            log.error("Got exception " + e);
         }
         //get to know whether data inserted successfully or not
-        log.info((insertStatus >= 1)?"Successfully Inserted the data":"Failed to Insert the Data");
+        log.info((insertStatus >= 1) ? "Successfully Inserted the data" : "Failed to Insert the Data");
     }
 
 
     /**
-     *
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
+     * @see EventService class
      */
     //Retrieving method to get the data from event data table
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -102,16 +98,14 @@ public class EventController extends HttpServlet {
         PrintWriter out = response.getWriter();
         //Creating object to call service
         EventService es = new EventServiceImp();
-        ;
-
         //Creating GSOn object
         Gson gson = new Gson();
 
         try {
             //creating a list for storing the retrieved records
             List<EventModel> listOfEvents = new ArrayList<>();
-            //calling method retrieveEventDataService of service class
-            listOfEvents = es.retrieveEventDataService();
+            //calling method retrieveEventData of service class
+            listOfEvents = es.retrieveEventData();
             //Converting listOfEvents to JSON object
             String json2 = gson.toJson(listOfEvents);
             log.info(json2);
@@ -156,11 +150,11 @@ public class EventController extends HttpServlet {
     }
 
     /**
-     *
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
+     * @see EventService class
      */
     //Deleting method to remove the data from event data table
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -174,9 +168,9 @@ public class EventController extends HttpServlet {
             //creating object for service classes
             EventService eventService = new EventServiceImp();
             try {
-                //sending event id to the deleteEventDataService method of serivce classes
-                deleteStatus = eventService.deleteEventDataService(eventId);
-                log.info((deleteStatus >= 1)?"Successfully removed event details" : "sorry!! failed to remove the event details, try again");
+                //sending event id to the deleteEventData method of serivce classes
+                deleteStatus = eventService.deleteEventData(eventId);
+                log.info((deleteStatus >= 1) ? "Successfully removed event details" : "sorry!! failed to remove the event details, try again");
                 out.print(deleteStatus);
             } catch (SQLException e) {
                 e.printStackTrace();

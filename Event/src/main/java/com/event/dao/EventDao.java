@@ -8,12 +8,13 @@ import java.util.List;
 /*
  * Writing interface class for dao layer
  * writing methods to perform different operations such as creating,retrieving,deleting
+ * @see EventDaoImp class
  */
 public interface EventDao {
 
-    int createEventdataDao(EventModel userDetails) throws ClassNotFoundException, SQLException;
+    int createEventData(EventModel userDetails) throws ClassNotFoundException, SQLException;
 
-    List<EventModel> retrieveEventDataDao() throws SQLException;
+    List<EventModel> retrieveEventData() throws SQLException;
 
-    int deleteEventdataDao(int eventId) throws SQLException;
+    int deleteEventdata(int eventId) throws SQLException;
 }

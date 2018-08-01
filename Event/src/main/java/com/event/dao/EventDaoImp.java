@@ -6,7 +6,6 @@ import com.event.model.EventModel;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 /*
@@ -27,6 +26,9 @@ public class EventDaoImp implements EventDao {
     private static final String Sql_Delete_From_EventDataTable = "DELETE FROM eventdata WHERE event_id=?";
     //Connecting to the database
     MysqlConnection connection = new MysqlConnection();
+    //Initializing Connection and ResultSet
+    Connection conn = null;
+    ResultSet rs = null;
 
     /**
      * @param userDetails
@@ -35,11 +37,12 @@ public class EventDaoImp implements EventDao {
      * @throws SQLException
      */
 
-    //implementing method createEventdataDao to insert the data in a database
+    //implementing method createEventdata to insert the data in a database
     @Override
-    public int createEventdataDao(EventModel userDetails) throws ClassNotFoundException, SQLException {
+    public int createEventData(EventModel userDetails) throws ClassNotFoundException, SQLException {
+        log.info(userDetails+" test class details");
 
-        log.info("In createEventdataDao method Implementation");
+        log.info("In createEventdata method Implementation");
 
         Connection conn = null;
         int insertStatus = 0;
@@ -50,7 +53,7 @@ public class EventDaoImp implements EventDao {
             else
                 log.info("Connection failed");
         } catch (Exception e) {
-            log.error("Exception in createEventdataDao method " + e);
+            log.error("Exception in createEventdata method " + e);
 
         }
 
@@ -80,11 +83,9 @@ public class EventDaoImp implements EventDao {
      */
     //implementing method retrieveEventDataDao to get the data from database
     @Override
-    public List<EventModel> retrieveEventDataDao() throws SQLException {
-        log.info("Enetered createEventdataDao method Implementation");
+    public List<EventModel> retrieveEventData() throws SQLException {
+        log.info("Enetered retrieveEventdata method Implementation");
 
-        Connection conn = null;
-        ResultSet rs = null;
         //Try block for connecting to the database
         try {
             conn = connection.getConnect();
@@ -94,7 +95,7 @@ public class EventDaoImp implements EventDao {
                 log.info("Connection failed");
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("Exception in retrieveEventDataDao method " + e);
+            log.error("Exception in retrieveEventData method " + e);
         }
         //log.info("Connection id " + conn);
 
@@ -130,13 +131,11 @@ public class EventDaoImp implements EventDao {
      * @throws SQLException
      */
 
-    //implementing method deleteEventdataDao to get the delete data from database
+    //implementing method deleteEventdata to get the delete data from database
     @Override
-    public int deleteEventdataDao(int eventId) throws SQLException {
-        log.info("In createEventdataDao method Implementation");
+    public int deleteEventdata(int eventId) throws SQLException {
+        log.info("In createEventdata method Implementation");
 
-        Connection conn = null;
-        ResultSet rs = null;
         int deleteStatus = 0;
         //Try block for connecting to the database
         try {
@@ -147,7 +146,7 @@ public class EventDaoImp implements EventDao {
                 log.info("Connection failed");
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("Exception in deleteEventdataDao method " + e);
+            log.error("Exception in deleteEventdata method " + e);
         }
         //prepare statemennt
         PreparedStatement ps = null;
@@ -161,7 +160,7 @@ public class EventDaoImp implements EventDao {
 
         } catch (Exception e1) {
             e1.printStackTrace();
-            log.error("exception in deleteEventdatadao method " + e1);
+            log.error("exception in deleteEventdata method " + e1);
         }
         //returning delete status of event data
         return deleteStatus;
