@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="com.response.dao.ResponseDAOTest" time="0.359" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="com.response.dao.ResponseDAOTest" time="0.401" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/local/java/jdk1.8.0_171/jre/lib/amd64"/>
@@ -35,7 +35,7 @@
     <property name="os.version" value="4.15.0-29-generic"/>
     <property name="library.jansi.path" value="/usr/share/maven/lib/jansi-native"/>
     <property name="user.home" value="/home/admin"/>
-    <property name="user.timezone" value="Asia/Kolkata"/>
+    <property name="user.timezone" value="America/New_York"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
     <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="UTF-8"/>
@@ -62,8 +62,8 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.response.dao.ResponseDAOTest" name="createResponseDAO" time="0.322"/>
-  <testcase classname="com.response.dao.ResponseDAOTest" name="retrieveResponseDAO" time="0.01"/>
-  <testcase classname="com.response.dao.ResponseDAOTest" name="retrieveLables" time="0.012"/>
-  <testcase classname="com.response.dao.ResponseDAOTest" name="deleteResponseDAO" time="0.015"/>
+  <testcase classname="com.response.dao.ResponseDAOTest" name="createResponseDAO" time="0.331"/>
+  <testcase classname="com.response.dao.ResponseDAOTest" name="retrieveResponseDAO" time="0.011"/>
+  <testcase classname="com.response.dao.ResponseDAOTest" name="retrieveLables" time="0.01"/>
+  <testcase classname="com.response.dao.ResponseDAOTest" name="deleteResponseDAO" time="0.049"/>
 </testsuite>

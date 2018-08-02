@@ -1,7 +1,6 @@
 
 // When User Wants to enter there own Label(By Selecting the 'Other' Option in Select Box)
 
-
 $(document).ready(function () {
     $('select[name=things]').change(function () {
         if ($(this).val() == "") {
@@ -22,28 +21,13 @@ $(document).ready(function () {
     });
 });
 
-function toasterOptions() {
-    toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": true,
-        "progressBar": true,
-        "positionClass": "toast-top-center",
-        "preventDuplicates": true,
-        "onclick": null,
-        "showDuration": "100",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "show",
-        "hideMethod": "hide"
-    };
-};
-toasterOptions();
-
-
+//Customized Alerts
+function showalert(message,alerttype) {
+          $('#alert_placeholder').append('<div id="alertdiv" class="alert ' +  alerttype + '"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>');
+          $("#trigger").on('click', function() {
+             $("#alertdiv").remove();
+          });
+      }
 
 //Table Filter In Delete Response form
 
@@ -56,18 +40,13 @@ $(document).ready(function () {
     });
 });
 
-
 //By Click On CreatResponse -> Updating the Select Box List From DataBase (Dynamicaliy Adding Options To Select Box)
-
-
-
 //Navbar Create Response
 
 $("#create1").click(function () {
     $("#create_form1").css("display", "block");
     $("#retrieve_form1").css("display", "none");
     $("#delete_form1").css("display", "none");
-
 
     //Sending action as a Parameter to Controller
     const obj1 = {
@@ -80,8 +59,7 @@ $("#create1").click(function () {
         data: obj1,
         success: successMsg,
         error: function () {
-            //alert("Options Retrieved Failed");
-            toastr.error("Lables failed to retrieve");
+             showalert("Lables failed to retrieve","alert-danger");
         }
     });
 
@@ -127,10 +105,10 @@ $("#retrieve1").click(function () {
         data: obj1,
         success: successMsg,
         error: function () {
-            //alert("Options are Failed to Retrieve");
-            toastr.error("Failed To Retrieve Lables");
+            showalert("Lables failed to retrieve","alert-danger");
         }
     });
+
     function successMsg(data, status, response) {
         var labelsArr = data.substr(1, (data.length - 2));
         var strarr = labelsArr.split(",");
@@ -169,7 +147,7 @@ $("#delete1").click(function () {
         data: obj1,
         success: successMsg,
         error: function () {
-            toastr.error("Error failed in retrireve lables");
+            showalert("Lables failed to retrieve","alert-danger");
         }
     });
 
@@ -248,14 +226,14 @@ $('#create_form1').submit(function (event) {
     $('#form_message').val('').empty();
     function successMessage(data, status, response) {
         if (data === "Success") {
-            toastr.success("Response Saved Successfully !!")
+            showalert("Response Saved Successfully !!","alert-success");
         }
         else {
-            toastr.error("The Title You entered is already existed Please try with another Title");
+            showalert("The Title You entered is already existed Please try with another Title","alert-danger");
         }
     }
     function errorMessage(request, status, error) {
-        toastr.error("Oops!! Response is Failed to Save ,Please Try Again");
+        showalert("Oops!! Response is Failed to Save ,Please Try Again","alert-danger");
     }
 
     $("#create_form1")[0].reset();
@@ -289,7 +267,7 @@ $('#retrieve_form1').on('submit', function () {
     function fillResponse(data, status, response) {
         if (data.length <= 0) {
             $("#dtable").hide();
-            alert("No Responses are Available");
+            showalert("No Responses are Available","alert-danger")
 
         }
         else {
@@ -318,8 +296,7 @@ $('#retrieve_form1').on('submit', function () {
     }
 
     function fillResponsesError(request, status, error) {
-
-        toastr.error('Oops!! Responses are failed to Load, Please Try again Later');
+        showalert("Oops!! Responses are failed to Load, Please Try again Later","alert-danger");
     }
 
 });
@@ -352,18 +329,17 @@ $('#deletebtn1').on('click', function (event) {
 
     function deleteRow(data) {
         if (data === "adminloginfailed") {
-            toastr.error("User Name and Password does not Matached Please Enter Correct Login Credential's");
+           showalert("User Name and Password does not Matached Please Enter Correct Login Credential's","alert-danger");
         }
         else if (data === "Success") {
-            toastr.success("Selected Rows Deleted Successfully");
+           showalert("Selected Rows are Deleted Successfully","alert-success");
         } else {
-            toastr.error("Please Select the Rows to Delete");
+           showalert("Please Select the Rows to Delete","alert-danger")
         }
     };
 
     function deleteError(request, status, error) {
-
-        toastr.error('Oops Failed To Deleted Please Try Again Later');
+        showalert("Oops Failed To Deleted Please Try Again Later","alert-danger");
     }
     document.getElementById("user_id").value = "";
     document.getElementById("pwd").value = "";
@@ -395,7 +371,7 @@ $('#delete_form1').submit(function (event) {
     }
     document.getElementById("form_deletelabel").value = "";
     function fillResponsesError() {
-        toaster.error("failed to fill");
+        showalert("failed to fill","alert-danger");
     }
 
 
@@ -416,8 +392,6 @@ $('#delete_form1').submit(function (event) {
             var cell6 = row.insertCell(5);
             var cell7 = row.insertCell(6);
 
-
-            console.log("cell insertion dione");
             cell1.innerHTML = check;
             cell2.innerHTML = value.response_id;
             cell3.innerHTML = value.title;
@@ -431,8 +405,6 @@ $('#delete_form1').submit(function (event) {
         $('#myTable1 tr>*:nth-child(2)').hide();
 
     }
-
-
 
 });
 

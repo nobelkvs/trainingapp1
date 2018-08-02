@@ -10,15 +10,26 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/alertify.min.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
           crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/Response.css" />
+    <link rel="icon"
+          type="image"
+          href="css/img.jpeg" sizes="20x20" />
 
 </head>
 
-<body>
+<body id = "toasterBody">
 
 <div class="container-fluid">
     <header style="text-align:center">
@@ -67,6 +78,8 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6 form_style">
+
+            <div id="alert_placeholder"></div>
 
             <!-- form To Add Response -->
             <form style="display: none;" id="create_form1" name="create_form">
