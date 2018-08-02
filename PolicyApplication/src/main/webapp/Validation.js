@@ -9,6 +9,12 @@ $("#create").click(function () {
     $("#updateForm ").css("display", "none");
     $("#searchDiv").css("display", "none");
 });
+
+$("nav ul li").on("click", function() {
+    $("nav li").removeClass("active");
+    $(this).addClass("active");
+  });
+
 //To hide the form when the user clicks on the cancel button of the create form. 
 $("#createCancel").click(function () {
     displayMsg("");
@@ -232,3 +238,5 @@ $("#searchBar").on("keyup", function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
+
+
