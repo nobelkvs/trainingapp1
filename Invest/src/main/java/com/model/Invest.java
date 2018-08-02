@@ -9,12 +9,12 @@ import java.io.Serializable;
 @ToString
 
 public class Invest implements Serializable {
-    private Integer User_id;
-    private String First_Name;
-    private String Last_Name;
-    private Integer Principal;
-    private Integer Annual_rate;
-    private Integer No_years;
-    private Integer Periods;
+    private Integer uid;
+    private String fname;
+    private String lname;
+    private Integer principal;
+    private Integer arate;
+    private Integer no_years;
+    private Integer periods;
 
 }

@@ -12,6 +12,6 @@ import java.io.Serializable;
  */
 public class admin_model implements Serializable {
 
-    private String Uname;
+    private String uname;
     private String password;
 }

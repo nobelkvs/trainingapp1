@@ -41,21 +41,21 @@ public class controller extends HttpServlet {
         /**
          * req.getParameter() is used to take values from the UI text fields
          */
-        String First_Name = req.getParameter("First_Name");
-        String Last_Name = req.getParameter("Last_Name");
-        int Principal = Integer.parseInt(req.getParameter("Principal"));
-        int Annual_rate = Integer.parseInt(req.getParameter("Annual_rate"));
-        int No_years = Integer.parseInt(req.getParameter("No_years"));
-        int Periods = Integer.parseInt(req.getParameter("Periods"));
-        invest.setFirst_Name(First_Name);
-        invest.setLast_Name(Last_Name);
-        invest.setPrincipal(Principal);
-        invest.setAnnual_rate(Annual_rate);
-        invest.setNo_years(No_years);
-        invest.setPeriods(Periods);
+        String fname = req.getParameter("First_Name");
+        String lname = req.getParameter("Last_Name");
+        int principal = Integer.parseInt(req.getParameter("Principal"));
+        int arate = Integer.parseInt(req.getParameter("Annual_rate"));
+        int no_years = Integer.parseInt(req.getParameter("No_years"));
+        int periods = Integer.parseInt(req.getParameter("Periods"));
+        invest.setFname(fname);
+        invest.setLname(lname);
+        invest.setPrincipal(principal);
+        invest.setArate(arate);
+        invest.setNo_years(no_years);
+        invest.setPeriods(periods);
         PrintWriter out = res.getWriter();
         service = (InvestServiceInt) new InvestService();
-        insertstatus = service.createInvestService(invest);
+        insertstatus = service.createInvest(invest);
         /**
          * out.println() is used to pass the message to the UI
          */
@@ -77,7 +77,7 @@ public class controller extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("User_id"));
         PrintWriter out = res.getWriter();
         int deletestatus = 0;
-        deletestatus = service.deleteInvestService(id);
+        deletestatus = service.deleteInvest(id);
         out.println(1);
     }
 
@@ -98,10 +98,10 @@ public class controller extends HttpServlet {
          * Gson is used for conversion to json data
          */
         Gson gson = new Gson();
-        String First_Name = req.getParameter("First_Name");
+        String fname = req.getParameter("First_Name");
         try {
             log.info("IN GET BLOCK");
-            List<Invest> list_first = service.retrieveByFirstService(First_Name);
+            List<Invest> list_first = service.retrieveByFirst(fname);
             String jp = gson.toJson(list_first);
             out.println(jp);
             log.info(list_first);
@@ -111,6 +111,3 @@ public class controller extends HttpServlet {
     }
 
 }
-
-
-

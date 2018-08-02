@@ -37,7 +37,7 @@ public class InvestDAO implements InvestDAOint {
      * @return the status of insertion to the Service , if value is greater than or equal to 1 then data in inserted
      * or else data is not executed
      */
-    public int createInvestDAO(Invest invest) {
+    public int createInvest(Invest invest) {
         Connection conn = null;
         int insertStatus = 0;
         try {
@@ -52,10 +52,10 @@ public class InvestDAO implements InvestDAOint {
 
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(SQL_INSERT_INTO_INVEST);
-            ps.setString(1,invest.getFirst_Name());
-            ps.setString(2, invest.getLast_Name());
+            ps.setString(1,invest.getFname());
+            ps.setString(2, invest.getLname());
             ps.setInt(3, invest.getPrincipal());
-            ps.setInt(4, invest.getAnnual_rate());
+            ps.setInt(4, invest.getArate());
             ps.setInt(5, invest.getNo_years());
             ps.setInt(6,invest.getPeriods());
             insertStatus = ps.executeUpdate();
@@ -66,20 +66,19 @@ public class InvestDAO implements InvestDAOint {
             try {
                 conn.rollback();
             } catch (SQLException e2) {
-                log.error(e2);
+                log.error("SQL Exception:"+e2);
                 log.error("under DAO");
-                e2.printStackTrace();
             }
         }
         return insertStatus;
     }
 
     /**
-     * @param User_id represents the id which is to be deleted
+     * @param uid represents the id which is to be deleted
      * @return the status of deletion, if value is greater than or equal to 1, then User_id is deleted
      * else not deleted
      */
-    public int deleteInvestDAO(int User_id)  {
+    public int deleteInvest(int uid)  {
         // get the Connection
         Connection conn = null;
         int deleteStatus = 0;
@@ -93,7 +92,7 @@ public class InvestDAO implements InvestDAOint {
         try {
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(SQL_DELETE_INVEST_BY_USER_ID);
-            ps.setInt(1, User_id);
+            ps.setInt(1, uid);
             deleteStatus = ps.executeUpdate();
             conn.commit();
         } catch (SQLException e) {
@@ -101,19 +100,19 @@ public class InvestDAO implements InvestDAOint {
             try {
                 conn.rollback();
             } catch (SQLException e1) {
-                log.info("under DAO...");
-                e1.printStackTrace();
+                log.info("under DAO..."+e1);
+
             }
         }
         return deleteStatus;
     }
 
     /**
-     * @param First_name represents the First Name based on which retrival should be done
+     * @param fname represents the First Name based on which retrival should be done
      * @return the entire list based on given name to Service class
      */
 
-    public List<Invest> retrieveByFirstDAO(String First_name)  {
+    public List<Invest> retrieveByFirst(String fname)  {
 
         List<Invest> investList = new ArrayList<Invest>();
         // get the Connection
@@ -129,15 +128,15 @@ public class InvestDAO implements InvestDAOint {
         ResultSet rs = null;
         try {
             ps = conn.prepareStatement(SQL_GET_INVEST_BY_First_Name);
-        ps.setString(1, First_name);
+            ps.setString(1, fname);
             rs = (ResultSet) ps.executeQuery();
             while (rs.next()) {
                 Invest tc = new Invest();
-                tc.setUser_id(rs.getInt(1));
-                tc.setFirst_Name(rs.getString(2));
-                tc.setLast_Name(rs.getString(3));
+                tc.setUid(rs.getInt(1));
+                tc.setFname(rs.getString(2));
+                tc.setLname(rs.getString(3));
                 tc.setPrincipal(rs.getInt(4));
-                tc.setAnnual_rate(rs.getInt(5));
+                tc.setArate(rs.getInt(5));
                 tc.setNo_years(rs.getInt(6));
                 tc.setPeriods(rs.getInt(7));
                 investList.add(tc);
@@ -149,7 +148,7 @@ public class InvestDAO implements InvestDAOint {
                 conn.rollback();
             } catch (SQLException e1) {
 
-                log.error("under DAO...");
+                log.error("SQLException..."+e1);
                 e1.printStackTrace();
             }
         }
@@ -162,7 +161,7 @@ public class InvestDAO implements InvestDAOint {
      * It is used to get all the data and displays it in UI
      * @return
      */
-    public List<Invest> retrieveDetailsDAO(){
+    public List<Invest> retrieveDetails(){
         List<Invest> list_details = new ArrayList<Invest>();
         // get the Connection
         Connection conn = null;
@@ -180,11 +179,11 @@ public class InvestDAO implements InvestDAOint {
             rs = (ResultSet) ps.executeQuery();
             while (rs.next()) {
                 Invest tc = new Invest();
-                tc.setUser_id(rs.getInt(1));
-                tc.setFirst_Name(rs.getString(2));
-                tc.setLast_Name(rs.getString(3));
+                tc.setUid(rs.getInt(1));
+                tc.setFname(rs.getString(2));
+                tc.setLname(rs.getString(3));
                 tc.setPrincipal(rs.getInt(4));
-                tc.setAnnual_rate(rs.getInt(5));
+                tc.setArate(rs.getInt(5));
                 tc.setNo_years(rs.getInt(6));
                 tc.setPeriods(rs.getInt(7));
                 list_details.add(tc);
@@ -196,7 +195,7 @@ public class InvestDAO implements InvestDAOint {
                 conn.rollback();
             } catch (SQLException e1) {
 
-                log.error("under DAO...");
+                log.error("SQLException..."+e1);
                 e1.printStackTrace();
             }
         }

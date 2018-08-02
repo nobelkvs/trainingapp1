@@ -1,7 +1,7 @@
-.image{
-    background-image: url("https://i1.wp.com/static.financebuddha.com/blog/wp-content/uploads/2018/03/14164454/Investment-Options-to-have-Regular-Monthly-Income.jpeg?fit=945%2C532&ssl=1");
+.image {
+    background-image: url("http://www.nuffoodsspectrum.in/NuFFooDs_CMS/upload/FILE_5a000bf4e90351.jpg");
     background-repeat: no-repeat;
-    background-size:cover
+    background-size: cover
 }
 
 body {
@@ -154,11 +154,28 @@ span.psw {
         width: 100%;
     }
 }
+.modal-backdrop.show {
+    opacity: .5;
+}
+.modal-backdrop.fade {
+    opacity: 0;
+}
+.modal-backdrop {
+    /* position: fixed; */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+}
+
 tfoot input {
     width: 100%;
     padding: 3px;
     box-sizing: border-box;
 }
+
 .button1 {
     padding: 10px 15px;
     font-size: 24px;
@@ -170,12 +187,43 @@ tfoot input {
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-  }
-  
-  .button1:hover {background-color: #3e8e41}
-  
-  .button1:active {
+}
+
+.button1:hover {
+    background-color: #3e8e41
+}
+
+.button1:active {
     background-color: red;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
-  }
+}
+
+.filterable {
+    margin-top: 15px;
+}
+
+.filterable .panel-heading .pull-right {
+    margin-top: -20px;
+}
+
+.filterable .filters input[disabled] {
+    background-color: whitesmoke;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+}
+
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+    color: #333;
+}
+
+.filterable .filters input[disabled]::-moz-placeholder {
+    color: #333;
+}
+
+.filterable .filters input[disabled]:-ms-input-placeholder {
+    color: #333;
+}

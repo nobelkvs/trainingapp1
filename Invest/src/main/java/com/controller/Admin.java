@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.model.Invest;
 import com.model.admin_model;
 import com.service.InvestService;
-import com.service.InvestServiceInt;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,13 +33,13 @@ public class Admin extends HttpServlet {
         /**
          * req.getParameter() is used to take values from the UI text fields
          */
-        String Uname = req.getParameter("Uname");
+        String uname = req.getParameter("Uname");
         String password = req.getParameter("password");
         admin.setPassword(password);
-        admin.setUname(Uname);
+        admin.setUname(uname);
 
         PrintWriter out = res.getWriter();
-        if(Uname.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin"))
+        if(uname.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin"))
         //out.println(,) dislpays the data in UI
         {
             out.println(1);
@@ -52,23 +51,23 @@ public class Admin extends HttpServlet {
     }
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-            InvestService service = new InvestService();
-            PrintWriter out = res.getWriter();
-            /**
-             * Gson is used for conversion to json data
-             */
-            Gson gson = new Gson();
-            try {
-                log.info("IN GET BLOCK");
-                List<Invest> list_details = service.retrieveDetailsService();
-                String jp = gson.toJson(list_details);
-                //passes the data to UI in the form of Object
-                out.println(jp);
-                log.info(list_details);
-            } catch (Exception e) {
-                //if database is empty, then it return the belo statement
-                out.println("NO DATA FOUND");
-            }
+        InvestService service = new InvestService();
+        PrintWriter out = res.getWriter();
+        /**
+         * Gson is used for conversion to json data
+         */
+        Gson gson = new Gson();
+        try {
+            log.info("IN GET BLOCK");
+            List<Invest> list_details = service.retrieveDetails();
+            String jp = gson.toJson(list_details);
+            //passes the data to UI in the form of Object
+            out.println(jp);
+            log.info(list_details);
+        } catch (Exception e) {
+            //if database is empty, then it return the belo statement
+            out.println("NO DATA FOUND");
+        }
 
     }
 }
