@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="com.defect.DAO.defectDAOImplementationTest" time="0.032" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="com.defect.Controller.defectControllerTest" time="0.275" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
@@ -62,7 +62,7 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.defect.DAO.defectDAOImplementationTest" name="deleteDefect" time="0.014"/>
-  <testcase classname="com.defect.DAO.defectDAOImplementationTest" name="retrievingByAssignedTo" time="0.005"/>
-  <testcase classname="com.defect.DAO.defectDAOImplementationTest" name="createDefect" time="0.013"/>
+  <testcase classname="com.defect.Controller.defectControllerTest" name="doPost" time="0.258"/>
+  <testcase classname="com.defect.Controller.defectControllerTest" name="doDelete" time="0.009"/>
+  <testcase classname="com.defect.Controller.defectControllerTest" name="doGet" time="0.008"/>
 </testsuite>

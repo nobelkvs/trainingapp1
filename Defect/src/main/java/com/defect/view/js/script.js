@@ -1,10 +1,9 @@
+//displaying Home form
 $("#showHome").click(function () {
 
     $("#home").css("display", "block");
     $("#Retrive_form").css("display", "none");
     $("#Create_form").css("display", "none");
-    $("#Delete_form").css("display", "none");
-    $("#DeleteForm").css("display", "none");
 
 });
 
@@ -15,8 +14,6 @@ $("#showCreate").click(function () {
     $("#Create_form").css("display", "block").trigger("reset");
     $("#Retrive_form").css("display", "none");
     $("#RetrieveForm").css("display", "none");
-    $("#Delete_form").css("display", "none");
-    $("#DeleteForm").css("display", "none");
 
 });
 
@@ -58,8 +55,6 @@ $("#showRetrive").click(function () {
     $("#home").css("display", "none");
     $("#Retrive_form").css("display", "block").trigger("reset");
     $("#Create_form").css("display", "none");
-    $("#Delete_form").css("display", "none");
-    $("#DeleteForm").css("display", "none");
 
 });
 
@@ -106,8 +101,6 @@ $("#Retrive_form").submit(function () {
             $("#RetrieveTable").empty();
             var tableRef = table.getElementsByTagName('tbody')[0];
 
-            console.log(tableRef)
-
             $(data).each(function (index, value) {
                 var row = tableRef.insertRow(tableRef.rows.length);
                 var cell1 = row.insertCell(0);
@@ -129,11 +122,9 @@ $("#Retrive_form").submit(function () {
             });
             
             $('#retreiveTable').DataTable();
-    
         }
- 
-
-    }  $('#retreiveTable').DataTable().destroy(); 
+    }
+    $('#retreiveTable').DataTable().destroy();
 });
 
 //deleting data in retrieve form
@@ -155,7 +146,8 @@ $("#deleteMul").on('click', function (event) {
                 $("input[name='check']:checked").each(function (i) {
                     Id[i] = $(this).val();
                 });
-
+                
+                // Webservice Call
                 var webServiceURL = `http://localhost:8080/Defect-1.0-SNAPSHOT/filter?UserRole=${role}&password=${Password}&Id=${Id}`;
 
                 //call ajax function for delete method in retrieve form
@@ -192,7 +184,6 @@ $("#deleteMul").on('click', function (event) {
             });
         } else {
             $('#RetrieveForm').removeAttr('disabled');
-            alert("not checked");
         }
     });
 });
