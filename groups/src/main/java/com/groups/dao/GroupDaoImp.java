@@ -35,12 +35,12 @@ public class GroupDaoImp implements GroupDao {
      * @throws SQLException
      */
     @Override
-    public int CreateGroupDao(Group group) throws SQLException {
+    public int CreateGroup(Group group) throws SQLException {
         //get the connection
         Connection con = c.getConnect();
         log.info("Connection" + con);
         int insertStatus = 0;
-        // PreparedStatement ps = null;
+
         try {
 
             con.setAutoCommit(false);
@@ -110,7 +110,7 @@ public class GroupDaoImp implements GroupDao {
      * @return deleteStatus
      */
     @Override
-    public int deleteGroupDao(String[] gid) {
+    public int deleteGroup(String[] gid) {
         //get the connection
         int deleteStatus = 0;
         Connection con = null;

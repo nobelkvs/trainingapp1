@@ -1,415 +1,159 @@
 <html>
 
 <head>
-    <style>
-        footer {
-            background-color: #777;
-            padding: 10px;
-            text-align: center;
-            color: white;
-        }
-        .image{
-            
-            background-image: url("http://www.intentionalcaregiver.com/wp-content/uploads/2016/03/Depositphotos_14006320_s-2015.jpg");
-            background-repeat: no-repeat;
-            background-size: 100px;
-            margin: auto;
-            margin-top: 10px;
-            background-position:center;
-           
-         }
-    </style>
-
-
+    <title>Groups Application</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="http://www.intentionalcaregiver.com/wp-content/uploads/2016/03/Depositphotos_14006320_s-2015.jpg" type="image/gif" sizes="16x16">
 </head>
 
-<body class="image">
-    <div class="card text-center">
-        <div class="card-header">
-            <h1>Groups Application</h1>
-        </div>
+<body class="image" id="trigger">
+<div class="card text-center">
+    <div class="card-header">
+        <h1>Groups Application</h1>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Home</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><button class="btn" onclick="home()"><img src="https://png.icons8.com/metro/50/000000/home.png" style="height: 20px">Home</button></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#" id="create">CREATE
-                    <!-- <span class = "sr-only">(current)</span> -->
-                </a>
+                <a class="nav-link" href="#" id="create"><img src="https://png.icons8.com/ultraviolet/50/000000/add-user-group-man-man.png" style="height: 30px">Create</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#" id="retrieve">RETRIVE</a>
+                <a class="nav-link" href="#" id="retrieve"><img src="https://png.icons8.com/color/50/000000/show-property.png" style="height: 30px">Retrieve</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" id="delete">DELETE</a>
+                <a class="nav-link" href="#" id="delete"><img src="https://png.icons8.com/office/50/000000/remove-user-male.png" style="height: 30px">Delete</a>
             </li>
         </ul>
-        </div>
-    </nav>
-    <div class="container">
+    </div>
+</nav>
 
-        <div class="row">
+<h4 id="homePageData" class="homePageData" style="text-align: center;"></h4>
+
+<div class="container">
+
+    <div class="row">
 
 
-            <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
 
-            <div class="col-md-6 form_style">
-                <!--Creation form -->
+        <div class="col-md-6 form_style">
+            <!-alert messages->
+            <div id="alert_placeholder"></div>
 
-                <form style="display: none;" id="create_form">
-                    <div class="form-group">
+            <!--Creation form -->
 
-                        <label>GroupName label</label>
-                        <input type="text" class="form-control" id="groupName" placeholder="GroupName" required>
+            <form style="display: none;" id="create_form">
+                <div class="form-group">
 
-                    </div>
-                    <div class="form-group">
-                        <label >Group Owner</label>
-                        <input type="text" class="form-control" id="owner" placeholder="Owner" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Send As Email</label>
-                        <input type="text" class="form-control" id="sendAs" placeholder="SendAs Email" required>
-                    </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" value="NO" id="feedback">
-                        <label class="form-check-label">Enable Feedback</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                    <button type="reset" class="btn btn-primary" id="cancel1">Cancel</button>
+                    <label>GroupName </label>
+                    <input type="text" class="form-control" id="groupName" placeholder="GroupName" pattern="[A-Za-z]{1,45}" required>
 
-                </form>
+                </div>
+                <div class="form-group">
+                    <label >Group Owner</label>
+                    <input type="text" class="form-control" id="owner" placeholder="Owner" pattern="[A-Za-z]{1,45}" required>
+                </div>
+                <div class="form-group">
+                    <label>SendAs Email</label>
+                    <input type="email" class="form-control" id="sendAs" placeholder="SendAs Email" required>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" value="NO" id="feedback">
+                    <label class="form-check-label">Enable Feedback</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="reset" class="btn btn-primary" id="cancel1">Cancel</button>
 
-                <!--Retrieve form -->
-                <form style="display: none;" id="retrieve_form">
-                    <div class="form-group">
+            </form>
 
-                        <label>Group Name</label>
-                        <input type="text" class="form-control" id="GroupName1" placeholder="GroupName" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-primary" id="cancel2">Cancel</button>
-                    <br><br>
-                    <div id="tableshow"  style="display: none">     
+            <!--Retrieve form -->
+            <form style="display: none;" id="retrieve_form">
+                <div class="form-group">
+
+                    <label>Group Name</label>
+                    <input type="text" class="form-control" id="GroupName1" placeholder="GroupName" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary" id="cancel2">Cancel</button>
+                <br><br>
+                <div id="tableshow"  style="display: none">
                     <input id="myInput" type="text" placeholder="Search...." class="form-control">
                     <br><br>
 
-                               
+
                     <table class="table" id="Group" style="display: block;" data-toggle="table" data-search="true" data-filter-control="true"
-                     data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                           data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
 
                         <thead class="thead-dark">
-                            <tr>
-                                <th data-field="state" data-checkbox="true"></th>
-                                <!-- <th data-field="group_id" data-filter-control="select" data-sortable="true" scope="col">
-                                    Group_Id
-                                </th> -->
-                                <th data-field="group_name" data-filter-control="select" data-sortable="true" scope="col">
-                                    Group_NAME
-                                </th>
-                                <th data-field="owner_name" data-filter-control="input" data-sortable="true" scope="col">
-                                    OWNER_NAME
-                                </th>
-                                <th data-field="SendAs" data-filter-control="input" data-sortable="true" scope="col">
-                                        SendAs
-                                </th>
-                                <th data-field="Feedback" data-filter-control="input" data-sortable="true" scope="col">
-                                        Feedback
-                                </th>
-                            </tr>
+                        <tr>
+                            <th data-field="state" data-checkbox="true"></th>
+                            <!-- <th data-field="group_id">Group_Id</th> -->
+                            <th >Group Name</th>
+                            <th >Owner Name</th>
+                            <th >SendAs</th>
+                            <th >Feedback</th>
+                        </tr>
                         </thead>
-                     <tbody id="myTable" style="color:black;">
+                        <tbody id="myTable" style="color:black;">
 
-                     </tbody>
+                        </tbody>
 
                     </table>
                     <button type="button" id="deletebtn" class="btn btn-outline-danger" style="margin: left">DELETE</button>
-                    </div>
-        
-                </form>
+                </div>
 
-                <!--Delete form based on given credentials -->
+            </form>
 
-                <form style="display: none;" id="delete_form">
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Username" required>
-                        <label>Admin Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" required>
-                        <label>Group_Id</label>
-                        <input type="text" class="form-control" id="gid" placeholder="Group_Id" required>
+            <!--Delete form based on given credentials -->
 
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-primary" id="cancel3">Cancel</button>
-                </form>
+            <form style="display: none;" id="delete_form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username" pattern="[A-Za-z]{1,7}" required>
+                    <label>Admin Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    <label>Group_Id</label>
+                    <input type="text" class="form-control" id="gid" placeholder="Group_Id" required>
 
-
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary" id="cancel3">Cancel</button>
+            </form>
 
 
-                <form style="display: none;" id="delete_form2">
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control" id="username1" placeholder="Username" required>
-                            <label>Admin Password</label>
-                            <input type="password" class="form-control" id="password1" placeholder="Password" required>
-    
-                        </div>
-                        <button type="button" id="deletebtnn" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-primary" id="cancel4">Cancel</button>
-                    </form>
-            </div>
-             <div class="col-md-3"></div>
-     </div>
+
+
+            <form style="display: none;" id="delete_form2">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" id="username1" placeholder="Username" pattern="[A-Za-z]{1,7}" required>
+                    <label>Admin Password</label>
+                    <input type="password" class="form-control" id="password1" placeholder="Password" required>
+
+                </div>
+                <button type="button" id="deletebtnn" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary" id="cancel4">Cancel</button>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
     </div>
-    <div class="fixed-bottom">
-        <footer> Copyright © 2018 by Rajashekar Shingarapu. </footer>
-    </div>
-        
-    <script>
-        //Create code
-        $("#create").click(function() {
-            $("#create_form").css("display", "block");
-            $("#delete_form").css("display", "none");
-            $("#retrieve_form").css("display", "none");
-            $("#delete_form2").css("display", "none");
+</div>
+<div class="fixed-bottom">
+    <footer> Copyright © 2018 by Rajashekar Shingarapu. </footer>
+</div>
 
-        });
+<script type="text/javascript" src="js/group.js" ></script>
 
-        $("#cancel1").click(function() {
-            $("#create_form").css("display", "none");
-
-        });
-
-       //checking the checkbox validation
-        $(document).ready(function(){
-            $('#feedback').on('change', function(){
-                    if($(this).prop('checked')){
-                        $(this).val('YES');
-                    }else{
-                        $(this).val('NO');
-                    }
-            });
-        });
-        
-        $('#create_form').submit(function(event) {
-            // Stop the browser from submitting the form.
-            event.preventDefault();
-            //Making the all html data into json object
-            var dataObj = {
-                "groupName": document.getElementById("groupName").value,
-                "owner": document.getElementById("owner").value,
-                "sendAs": document.getElementById("sendAs").value,
-                "feedback": document.getElementById("feedback").value
-            }
-           $('#create_form')[0].reset();
-            //submitting form using ajax
-            $.ajax({
-                type: 'POST',
-                url: 'http://localhost:8080/groups-1.0-SNAPSHOT/servlets',
-                data: dataObj,
-               // dataType: 'json',
-                success: function message(data) {
-                    data < 1 ? alert("Entered values already existed") : alert("Successfully Group Created");
-                },
-                error: function Error() {
-                    alert("Error in Insertion");
-                }
-            });
-
-        });
-
-
-        // Delete code
-        $("#delete").click(function() {
-            $("#create_form").css("display", "none");
-            $("#retrieve_form").css("display", "none");
-            $("#delete_form").css("display", "block");
-            $("#delete_form2").css("display", "none");
-        });
-
-        $("#cancel3").click(function() {
-            $("#delete_form").css("display", "none");
-
-        });
-
-        $("#delete_form").submit(function(event) {
-            // Stop the browser from submitting the form.
-            event.preventDefault();
-            const Group_Id = document.getElementById("gid").value;
-            const username = document.getElementById("username").value;
-            const pwd  = document.getElementById("password").value;
-            $("#delete_form")[0].reset();
-            //submitting form using ajax
-            $.ajax({
-                type: "DELETE",
-                url: `http://localhost:8080/groups-1.0-SNAPSHOT/filter?gid=${Group_Id}&username=${username}&password=${pwd}`,
-                success: Message,
-                error: function() {
-                    alert("Error in deletion");
-                }
-            });
-
-           function Message(data){
-               if(data==="UnauthorizedAccess"){
-                   alert("Unauthorized Access");
-               }else{
-                data < 1 ? alert("Id doesn't Exist") : alert("Group Deleted");
-            }
-            };
-
-        });
-
-        // Retrieve code
-
-        $("#retrieve").click(function() {
-            $("#retrieve_form").css("display", "block");
-            $("#create_form").css("display", "none");
-            $("#delete_form").css("display", "none");
-            $("#delete_form2").css("display", "none");
-        });
-
-        $("#cancel2").click(function() {
-            $("#retrieve_form").css("display", "none");
-
-        });
-
-        $("#retrieve_form").submit(function(event) {
-            event.preventDefault();
-            $("#tableshow").css("display", "block");
-            getTable();
-
-
-         });
-
-
-        //Deletion using selected checkboxes 
-        $('#deletebtn').on('click', function (event) {
-            var gid = [];
-            $("input[name='deleteCheckBox']:checked").each(function (i) {
-                gid[i] = $(this).val();
-            });
-
-           
-           //   get and checking Credentials           
-                $("#delete_form2").css("display", "block");
-                $("#deletebtnn").on('click', function(event) {
-                    // Stop the browser from submitting the form.
-                    event.preventDefault();
-                   
-                    const username = document.getElementById("username1").value;
-                    const pwd  = document.getElementById("password1").value;
-                  //  $("#delete_form")[0].reset();
-                    //submitting form using ajax
-                    $.ajax({
-                        type: "DELETE",
-                        url: `http://localhost:8080/groups-1.0-SNAPSHOT/filter?username=${username}&password=${pwd}&gid=${gid}`,
-                        success: Message,
-                        error: DeleteError
-                        // function() {
-                        //     alert("Error in deletion");
-                        // }
-                    });
-                    $("#cancel4").click(function() {
-                        $("#delete_form2").css("display", "none");
-                    });
-                 function Message(data){
-                   
-                    if(data==="UnauthorizedAccess"){
-                        alert("Unauthorized Access");
-                    }else{
-                      //  data < 1 ? alert("Id doesn't Exist") : alert("Successfully Deleted");
-                        if(data>=1)
-                        {
-                            alert("Successfully Deleted");
-                            $("#delete_form2").css("display", "none");
-                            // Removing the deleted records from table
-                            var checked = jQuery('input:checkbox:checked').map(function () {
-                            return this.value;
-                            }).get();
-                            jQuery('input:checkbox:checked').parents("tr").remove();
-                        }      
-                        // }else{
-                        //     alert("Id doesn't Exist");
-                        // }
-                       
-                        $("#delete_form2")[0].reset();
-                    }
-                 }
-                  function DeleteError(request, status, error) {
-                    if(error)
-                        alert('error in deletion' + error);
-                    else
-                        alert('Please select option to Delete');
-                  }
-        
-                });
-        });
-            function getTable() {
-                var Group_Name = document.getElementById("GroupName1").value;
-                //submitting form using ajax
-                $.ajax({
-                    url: `http://localhost:8080/groups-1.0-SNAPSHOT/servlets?GroupName=${Group_Name}`,
-                    type: 'GET',
-                    dataType: 'JSON',
-                    success: filltable,
-                    error: function() {
-                        alert("Error in Retrieving");
-                    }
-                });
-            }
-            //filling data into table
-            function filltable(data, status, response) {
-                $('#retrieve_form')[0].reset();
-                $("#myTable").empty();
-                if(data.length == 0){
-                    alert("No Records found");
-                    }else{
-                        var table = document.getElementById("Group");
-                        var tableRef = table.getElementsByTagName('tbody')[0];
-                        $(data).each(function(index, value) {
-                            var chk = "<td><input type='checkbox' value='" + value.gid + "' name='deleteCheckBox' /></td>";
-                            var row = tableRef.insertRow(tableRef.rows.length);
-                            var cell1 = row.insertCell(0);
-                            var cell2 = row.insertCell(1);
-                            var cell3 = row.insertCell(2);
-                            var cell4 = row.insertCell(3);
-                            var cell5 = row.insertCell(4);
-                            var cell6 = row.insertCell(5);
-                            var cell7 = row.insertCell(6);
-                            var cell8 = row.insertCell(7);
-
-                            cell1.innerHTML = chk;
-                            cell2.innerHTML = value.gid;
-                            cell3.innerHTML = value.groupName;
-                            cell4.innerHTML = value.Owner;
-                            cell5.innerHTML = value.sendAs;
-                            cell6.innerHTML = value.feedback;                           
-                        });   
-                        $('#myTable tr > *:nth-child(2)').hide();  
-                }
-             }
-    </script>
- </body>
+</body>
 
 </html>

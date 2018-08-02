@@ -24,8 +24,8 @@ public class GroupServiceImp implements GroupService {
      * @throws SQLException
      */
     @Override
-    public int CreateGroupService(Group groupObj) throws SQLException {
-        status = groupDao.CreateGroupDao(groupObj);
+    public int CreateGroup(Group groupObj) throws SQLException {
+        status = groupDao.CreateGroup(groupObj);
         log.info(status);
         return status;
     }
@@ -58,8 +58,8 @@ public class GroupServiceImp implements GroupService {
      * @return
      */
     @Override
-    public int deleteGroupService(String[] gid) {
-        status = groupDao.deleteGroupDao(gid);
+    public int deleteGroup(String[] gid) {
+        status = groupDao.deleteGroup(gid);
         log.info(status);
         return status;
     }

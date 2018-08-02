@@ -51,7 +51,7 @@ public class GroupsController extends HttpServlet {
 
         try {
             // calling create group service
-            insertStatus = groupService.CreateGroupService(group);
+            insertStatus = groupService.CreateGroup(group);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -113,7 +113,7 @@ public class GroupsController extends HttpServlet {
         int deletestatus = 0;
         try {
             //calling the delete group service
-            deletestatus = groupService.deleteGroupService(gid);
+            deletestatus = groupService.deleteGroup(gid);
         } catch (SQLException e) {
           //  e.printStackTrace();
             log.info(e);

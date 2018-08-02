@@ -11,9 +11,9 @@ import java.util.List;
  */
 public interface GroupDao {
 
-    int CreateGroupDao(Group group) throws SQLException;
+    int CreateGroup(Group group) throws SQLException;
 
     List<Group> RetrieveGroupDetails(String groupName) throws SQLException, IOException;
 
-    int deleteGroupDao(String[] gid);
+    int deleteGroup(String[] gid);
 }

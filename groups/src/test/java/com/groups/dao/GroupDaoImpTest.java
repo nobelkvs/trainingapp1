@@ -20,7 +20,7 @@ public class GroupDaoImpTest {
         group.setOwner("Raja");
         group.setSendAs("sraja@gmail.com");
         group.setFeedback("");
-        int status = dao.CreateGroupDao(group);
+        int status = dao.CreateGroup(group);
         if (status == 1)
             assertEquals(1, status);
         else
@@ -37,7 +37,7 @@ public class GroupDaoImpTest {
         group.setSendAs("sraja@gmail.com");
        // group.setFeedback("");
         try {
-            int status = dao.CreateGroupDao(group);
+            int status = dao.CreateGroup(group);
         }catch (SQLException e)
         {
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class GroupDaoImpTest {
        String str = "1,2,3,19";
        String [] s=str.split(",");
 
-        int status = dao.deleteGroupDao(s);
+        int status = dao.deleteGroup(s);
         if (status == 1)
             assertEquals(1, status);
         else

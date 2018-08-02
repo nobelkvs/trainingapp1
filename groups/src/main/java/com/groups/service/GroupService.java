@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface GroupService {
 
-    int CreateGroupService(Group groupObj) throws SQLException;
+    int CreateGroup(Group groupObj) throws SQLException;
 
     List<Group> RetrieveGroupDetails(String groupName) throws SQLException;
 
-    int deleteGroupService(String[] gid) throws SQLException;
+    int deleteGroup(String[] gid) throws SQLException;
 }
