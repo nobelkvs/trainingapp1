@@ -101,9 +101,12 @@ $("#Retrive_form").submit(function () {
             $("#noData").modal('show');
         }
         else {
+
             $("#table").css("display", "block");
             $("#RetrieveTable").empty();
             var tableRef = table.getElementsByTagName('tbody')[0];
+
+            console.log(tableRef)
 
             $(data).each(function (index, value) {
                 var row = tableRef.insertRow(tableRef.rows.length);
@@ -124,18 +127,13 @@ $("#Retrive_form").submit(function () {
                 cell7.innerHTML = "<input type='checkbox' value='" + value.Id + "' name='check' id='check_" + index + "' />";
 
             });
+            
+            $('#retreiveTable').DataTable();
+    
         }
-    }
-});
+ 
 
-//for filter in retrieve
-$(document).ready(function () {
-    $("#filter").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
-        $("#RetrieveTable tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-    });
+    }  $('#retreiveTable').DataTable().destroy(); 
 });
 
 //deleting data in retrieve form

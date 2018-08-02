@@ -4,7 +4,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
@@ -12,11 +12,27 @@
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
         crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+
+
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>Defects Application</title>
-    
+
 </head>
 
 <body>
@@ -34,7 +50,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        
+
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
@@ -44,11 +60,13 @@
                     <a class="nav-link" href="#home" id="showHome">
                         <img src="https://png.icons8.com/dusk/50/000000/home.png">Home</a>
                 </li>
+                &nbsp&nbsp&nbsp&nbsp;
 
                 <li class="nav-item ">
                     <a class="nav-link" href="#create" id="showCreate">
                         <img src="https://png.icons8.com/cotton/50/000000/create-new.png">Create</a>
                 </li>
+                &nbsp&nbsp&nbsp&nbsp;
 
                 <li class="nav-item">
                     <a class="nav-link" href="#retrive" id="showRetrive">
@@ -67,40 +85,69 @@
 
             <div class="row">
 
-                    <form id="home" style="font-size: 25px;color: white">
-                        <p>A programmer while designing and building the software can make mistakes or error. These mistakes or errors mean that there are flaws in the software. These are called defects.</p> 
-                                   
-                        <ul>
-                            <li><p><small><small>When actual result deviates from the expected result while testing a software application or product then it results into a defect. Hence, any deviation from the specification mentioned in the product functional specification document is a defect. In different organizations it’s called differently like bug, issue, incidents or problem.</small></small></p></li>
-                            
-                            <li><p><small><small>When the result of the software application or product does not meet with the end user expectations or the software requirements then it results into a Bug or Defect. These defects or bugs occur because of an error in logic or in coding which results into the failure or unpredicted or unanticipated results.</small></small></p></li>
-                        </ul>
-                                        
-                    </form> 
+                <form id="home" style="font-size: 25px;color: white">
+                    <p>A programmer while designing and building the software can make mistakes or error. These mistakes or
+                        errors mean that there are flaws in the software. These are called defects.</p>
+
+                    <ul>
+                        <li>
+                            <p>
+                                <small>
+                                    <small>When actual result deviates from the expected result while testing a software application
+                                        or product then it results into a defect. Hence, any deviation from the specification
+                                        mentioned in the product functional specification document is a defect. In different
+                                        organizations it’s called differently like bug, issue, incidents or problem.</small>
+                                </small>
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                <small>
+                                    <small>When the result of the software application or product does not meet with the end user
+                                        expectations or the software requirements then it results into a Bug or Defect. These
+                                        defects or bugs occur because of an error in logic or in coding which results into
+                                        the failure or unpredicted or unanticipated results.</small>
+                                </small>
+                            </p>
+                        </li>
+                    </ul>
+
+                </form>
                 <div class="col-md-3"></div>
-                <div class="col-md-6 form_style">
-                    
+                <div class="col-md-8 form_style">
+
                     <!-- Create form -->
                     <form style="display: none;" id="Create_form">
 
                         <!-- Description form -->
                         <div class="form-group row">
-                            <label for="description" style="font-size: 20px;"><b>Description</b></label>
+                            <label for="description" style="font-size: 20px;">
+                                <b>Description</b>
+                            </label>
+                            &nbsp&nbsp
                             <textarea class="form-control" id="description" rows="3" required></textarea>
-                        </div><br>
+                        </div>
+                        <br>
 
                         <!-- AssignedTo form -->
                         <div class="form-group row">
-                            <label for="assignedTo" style="font-size: 20px;"><b>Enter whom you want to assign</b></label>
+                            <label for="assignedTo" style="font-size: 20px;">
+                                <b>Enter whom you want to assign</b>
+                            </label>
                             &nbsp&nbsp
-                            <input type="text" class="form-control" id="assignedTo" placeholder="assigne name" pattern="[A-Za-z]{1,45}" title="Only Characters acceptable" style="height: 34px;width: 260px;" required>
-                        </div><br>
+                            <input type="text" class="form-control" id="assignedTo" placeholder="assigne name" pattern="[A-Za-z]{1,45}" title="Only Characters acceptable"
+                                style="height: 34px;width: 260px;" required>
+                        </div>
+                        <br>
 
                         <!-- Select form for category,priority & status -->
                         <div class="form-group row">
 
                             <!-- Category  -->
-                            <label for="category" style="font-size: 20px;"><b>Category</b></label>
+                            <label for="category" style="font-size: 20px;">
+                                <b>Category</b>
+                            </label>
                             &nbsp&nbsp
                             <select id="category" class="form-control" style="height: 34px;width: 110px;">
                                 <option value="hardware">Hardware</option>
@@ -109,7 +156,9 @@
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
                             <!-- Priority -->
-                            <label for="priority" style="font-size: 20px;"><b>Priority</b></label>
+                            <label for="priority" style="font-size: 20px;">
+                                <b>Priority</b>
+                            </label>
                             &nbsp&nbsp
                             <select id="priority" class="form-control" style="height: 34px;width: 65px;">
                                 <option value="p1">P1</option>
@@ -117,9 +166,11 @@
                                 <option value="p3">P3</option>
                             </select>
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            
+
                             <!-- Status -->
-                            <label for="status" style="font-size: 20px;"><b>Status</b></label>
+                            <label for="status" style="font-size: 20px;">
+                                <b>Status</b>
+                            </label>
                             &nbsp&nbsp
                             <select id="status" class="form-control" style="height: 34px;width: 90px;">
                                 <option value="open">Open</option>
@@ -127,7 +178,8 @@
                                 <option value="completed">Completed</option>
                             </select>
 
-                        </div><br>
+                        </div>
+                        <br>
 
                         <!-- Submit Button -->
                         <button type="submit" class="btn btn-primary" id="createSubmit">CREATE</button>
@@ -136,7 +188,9 @@
                         <div id="successCreateModal" class="modal">
                             <!-- Modal content -->
                             <div class="modal-content">
-                                <p>Successfully Inserted <img src="https://png.icons8.com/flat_round/50/000000/checkmark.png"></p>
+                                <p>Successfully Inserted
+                                    <img src="https://png.icons8.com/flat_round/50/000000/checkmark.png">
+                                </p>
                             </div>
                         </div>
 
@@ -151,58 +205,58 @@
                     </form>
 
                     <!-- Retrieve form -->
-                    <form style="display: none;" id="Retrive_form" >
+                    <form style="display: none;" id="Retrive_form">
 
                         <!-- AssignedTo -->
 
                         <div class="form-group row">
-                            <label for="assigned" style="font-size: 20px;">Assigne Name
-                                <sup style="color: red">*</sup>
-                            </label>
+                            <label for="assigned" style="font-size: 20px;">Assigne Name</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="assigned" pattern="[A-Za-z]{1,45}" title="Only Characters acceptable" placeholder="search" required/>
+                                <input type="text" class="form-control" id="assigned" pattern="[A-Za-z]{1,45}" title="Only Characters acceptable" placeholder="search"
+                                    required/>
                             </div>
-                            
+
                             <!-- Submit Button -->
                             <button type="submit" class="btn btn-primary" style="width: 71px;height: 39px;" id="Retrievesubmit">Submit</button>
                         </div>
 
                         <!-- table form -->
-                        <div id="table"  data-show-header="true" data-pagination="true" data-id-field="name" data-page-list="[5, 10, 25, 50, 100, ALL]" data-page-size="5" style="display: none">
+                        <div id="table" style="display: none">
 
                             <!-- Filter to search -->
-                            <label for="filter">Filter</label>
+                            <!-- <label for="filter">Filter</label>
                             <input id="filter" type="text" placeholder="Filter Rows...">
-                            <br><br>
+                            <br><br> -->
                             <div class="table-responsive">
-                            <table class="Retrieve" id="retreiveTable">
-                                
-                                <!-- Table heading -->
-                                <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>description</th>
-                                        <th>category</th>
-                                        <th>assignedTo</th>
-                                        <th>priority</th>
-                                        <th>status</th>
-                                        <th>remove</th>
-                                    </tr>
-                                </thead>
+                                <table class="Retrieve" id="retreiveTable">
 
-                                <!-- Table body -->
-                                <tbody id="RetrieveTable">
-                                </tbody>
+                                    <!-- Table heading -->
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>description</th>
+                                            <th>category</th>
+                                            <th>assignedTo</th>
+                                            <th>priority</th>
+                                            <th>status</th>
+                                            <th>remove</th>
+                                        </tr>
+                                    </thead>
 
-                            </table>
-                            <br>
+                                    <!-- Table body -->
+                                    <tbody id="RetrieveTable">
+                                    </tbody>
 
-                            <!-- Submit Button -->
-                            <div>
-                                <button type='button' class='btn btn-primary' id='deleteMul'>Submit</button>
+                                </table>
+                                <br>
+
+                                <!-- Submit Button -->
+                                <div>
+                                    <button type='button' class='btn btn-primary' id='deleteMul'>Submit</button>
+                                </div>
+                                <br>
+
                             </div>
-                            <br>
-
                         </div>
 
                         <!-- Modal -->
@@ -217,76 +271,116 @@
 
                     <form style="display: none;" id="RetrieveForm">
 
-                            <!-- <div class="form-group"> -->
+                        <!-- <div class="form-group"> -->
 
-                            <div class="form-group row" style="width: 570px;">
-                                    <label for="role1" style="font-size: 20px;"><b>Role</b></label>
-                                    &nbsp&nbsp&nbsp&nbsp
-                                    
-                                    <select id="role1" name="role" class="form-control" style="height: 34px;width: 150px;">
-                                        <option value="choose">choose the role</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="user">User</option>
-                                    </select>
-                                    &nbsp&nbsp
-                                </div>
+                        <div class="form-group row" style="width: 570px;">
+                            <label for="role1" style="font-size: 20px;">
+                                <b>Role</b>
+                            </label>
+                            &nbsp&nbsp&nbsp&nbsp
 
-                            <div style="font-size: 20px;" class="form-group row">
-                                <div>
-                                    <label for="password1"><b>Enter password</b></label>
-                                </div>
-                                &nbsp&nbsp&nbsp&nbsp
-                                <input type="password" id="password1" class="form-control" style="height: 34px;width: 150px;" required>
-                                <br>
+                            <select id="role1" name="role" class="form-control" style="height: 34px;width: 150px;">
+                                <option value="choose">choose the role</option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                            &nbsp&nbsp
+                        </div>
+
+                        <div style="font-size: 20px;" class="form-group row">
+                            <div>
+                                <label for="password1">
+                                    <b>Enter password</b>
+                                </label>
                             </div>
+                            &nbsp&nbsp&nbsp&nbsp
+                            <input type="password" id="password1" class="form-control" style="height: 34px;width: 150px;" required>
+                            <br>
+                        </div>
 
-                            <!-- Submit Button -->
-                            <button type="button" class="btn btn-primary" id="rolePwdSubmit">LOGIN</button>
+                        <!-- Submit Button -->
+                        <button type="button" class="btn btn-primary" id="rolePwdSubmit">LOGIN</button>
 
-                            <div id="unauthorisedAccess1" class="modal" style="display: none;">
-                                <!-- Modal content -->
-                                <div class="modal-content">
-                                    <p>Unauthorised Access</p>
-                                </div>
+                        <div id="unauthorisedAccess1" class="modal" style="display: none;">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>Unauthorised Access</p>
                             </div>
+                        </div>
 
-                            <div id="wrongPassword1" class="modal" style="display: none;">
-                                <!-- Modal content -->
-                                <div class="modal-content">
-                                    <p>Wrong Password</p>
-                                </div>
+                        <div id="wrongPassword1" class="modal" style="display: none;">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>Wrong Password</p>
                             </div>
+                        </div>
 
-                            <!-- Modal -->
-                            <div id="successDeleteModal1" class="modal" style="display: none;">
-                                <!-- Modal content -->
-                                <div class="modal-content">
-                                    <p>Succesfully Deleted <img src="https://png.icons8.com/flat_round/50/000000/checkmark.png"></p>
-                                </div>
+                        <!-- Modal -->
+                        <div id="successDeleteModal1" class="modal" style="display: none;">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>Succesfully Deleted
+                                    <img src="https://png.icons8.com/flat_round/50/000000/checkmark.png">
+                                </p>
                             </div>
-    
-                            <!-- Modal -->
-                            <div id="failDeleteModal1" class="modal" style="display: none;">
-                                <!-- Modal content -->
-                                <div class="modal-content">
-                                    <p>Failed to Delete</p>
-                                </div>
-                            </div>
+                        </div>
 
-                            <!-- </div> -->
+                        <!-- Modal -->
+                        <div id="failDeleteModal1" class="modal" style="display: none;">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <p>Failed to Delete</p>
+                            </div>
+                        </div>
+
+                        <!-- </div> -->
 
                     </form>
 
                 </div>
             </div>
 
-                <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
 
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <i class="fa fa-envelope prefix grey-text"></i>
+                        <input type="email" id="defaultForm-email" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+                    </div>
+    
+                    <div class="md-form mb-4">
+                        <i class="fa fa-lock prefix grey-text"></i>
+                        <input type="password" id="defaultForm-pass" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+                    </div>
+    
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-default">Login</button>
+                </div>
             </div>
         </div>
+    </div>
+    
+    <div class="text-center">
+        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch Modal Login Form</a>
+    </div>
 
-        <script type="text/javascript" src="js/script.js"></script>
-        
+    <script type="text/javascript" src="js/script.js"></script>
+
 
 </body>
 

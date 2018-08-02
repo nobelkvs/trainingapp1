@@ -51,7 +51,7 @@ th {
     margin: auto;
     /* padding: 20px; */
     color: #ffffff;
-    width: 30%;
+    width: 20%;
     height: 35%;
     text-align: center;
     font-size: 30px;
@@ -59,20 +59,12 @@ th {
     top: 200px;
 }
 
-/* .input-w label, .input-w input {
-    /* Other styling.. */
-    /* text-align: right;
-    clear: both; */
-    /* float:none; 
-    
-    display: inline-block;
-    vertical-align: middle;    
-} */ 
+textarea.form-control {
+    height: auto;
+    width: 450px;
+}
 
-/* form input, form select {
-    max-width: 70%;
+div.dataTables_wrapper div.dataTables_length select {
+    width: 60px;
     display: inline-block;
-   }
- form label {
-   width: 25%;
- } */
+}
