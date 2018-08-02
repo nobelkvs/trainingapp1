@@ -9,7 +9,7 @@ $("#create").click(function () {
     $("#updateForm ").css("display", "none");
     $("#searchDiv").css("display", "none");
 });
-
+//For highlighting the nav bar options
 $("nav ul li").on("click", function() {
     $("nav li").removeClass("active");
     $(this).addClass("active");
