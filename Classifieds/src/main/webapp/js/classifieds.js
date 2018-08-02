@@ -93,7 +93,8 @@ $("#create").click(function () {
     $("#retriveForm").css("display", "none");
     $("#deleteForm").css("display", "none");
     $('#deleteForm1').css("display", "none");
-    $("#homeForm").css("display", "none")
+    $("#homeForm").css("display", "none");
+    $('#CreateForm')[0].reset();
 
 });
 
@@ -110,7 +111,8 @@ $("#retrive").click(function () {
     $("#deleteForm").css("display", "none");
     $('#deleteForm1').css("display", "none");
     $("#tableDiv").css("display", "none");
-    $("#homeForm").css("display", "none")
+    $("#homeForm").css("display", "none");
+    $('#retriveForm')[0].reset();
 
 });
 
@@ -168,7 +170,6 @@ $('#CreateForm').submit(function (event) {
 
     });
 
-
 });
 
 //Delete button functionality
@@ -181,7 +182,7 @@ $('#deleteBtn').on('click', function (event) {
 
         $("#add1").hide();
 
-        //Array to add all the checked valures
+        //Array to add all the checked values
         var cid = [];
 
         $("input[name='deleteCheckBox']:checked").each(function (i) {
